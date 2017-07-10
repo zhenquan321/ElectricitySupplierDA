@@ -1,0 +1,41 @@
+﻿<div class="navbar navbar-inverse " style="border-radius:0px;border:0px">
+    <div style="padding:0 20px;height:50px;">
+        <div class="shousuo" ng-click="side_bar_fun()">
+            <i class="fa fa-outdent" ng-if="side_bar_show"></i>
+            <i class="fa fa-indent" ng-if="!side_bar_show"></i>
+        </div>
+        <div class="collapse navbar-collapse" id="myc">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="mr5">
+                    <a class="mr5" ui-sref="home.main_1" ui-sref-active="active_s" class="header_li_h">首页</a>
+                </li>
+                <li class="mr5">
+                    <a class="mr5" ui-sref="modelSelect" ui-sref-active="active_s" class="header_li_h">项目列表</a>
+                </li>
+                <li><a class="mr5" ui-sref="DiscoveryPage" ui-sref-active="active_s">发现</a></li>
+                <li class="mr5">
+                    <a class="mr5" ui-sref="Dashboard" ui-sref-active="active_s" class="header_li_h">用户控制中心</a>
+                </li>
+                <li id="accountName" ng-click="showamendpwd(1)" ng-mouseenter="showamendpwd(1)" ng-mouseleave="hideamendpwd(1)" style="margin-left:50px;">
+                    <a>
+                        <img src="Scripts/app/images/uploadpic.jpg" ng-if="!$root.uer_PictureSrc">
+                        <img ng-src="{{$root.uer_PictureSrc}}" ng-if="$root.uer_PictureSrc">
+                        <span title={{$root.NickName}} href="" class="header_li_h" style="display: inline-block;" ng-if="$root.Gender">{{$root.Gender}}</span>
+                        <span title={{$root.NickName}} href="" class="header_li_h" style="display: inline-block;" ng-if="!$root.Gender">{{$root.LoginName}}</span>
+                        <ul id="amendpwd" ng-if="showAmendAndOff==1"style="top:50px;">
+                            <li ui-sref="UserCenter">
+                                <i class="fa fa-info-circle"></i>&nbsp;<span>用户信息</span>
+                            </li>
+                            <li ui-sref="home.login" ng-click="off()">
+                                <i class="fa fa-sign-out"></i> <span>安全退出</span>
+                            </li>
+                        </ul>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+

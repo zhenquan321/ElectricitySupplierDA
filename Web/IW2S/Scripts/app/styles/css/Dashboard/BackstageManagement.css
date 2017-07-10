@@ -1,0 +1,1597 @@
+.computingResources {
+  margin-top: 50px;
+}
+.computingResources .green1 {
+  background-color: #009999 !important;
+}
+.computingResources .gray {
+  background-color: #ccc !important;
+}
+.computingResources #lineChartKeyword ~ div > button {
+  display: block;
+  border-radius: 0 4px 4px 0;
+  margin-bottom: 23px;
+  outline: none;
+  color: #fff;
+}
+.computingResources #keyWordsChart ~ div > button {
+  float: left;
+  border-radius: 0 4px 4px 0;
+  margin-bottom: 8px;
+  outline: none;
+  color: #fff;
+}
+.computingResources #selkuang {
+  background: #099;
+  position: absolute;
+  width: 100px;
+  height: 80px;
+  top: 43px;
+  color: #fff;
+  display: none;
+}
+.computingResources #selkuang span {
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+.computingResources #selkuang span:hover {
+  background: #12908b;
+}
+#UserManage {
+  margin-top: 60px;
+}
+#UserManage #dashboard {
+  /*.myAppNameSpan-images images{
+        width: 100%;
+    }*/
+  /*#code-info .author{
+        height: 70px; background: url(Scripts/app_pc/images/user.png) center left no-repeat;
+        padding-left: 25px; color: #000;
+        float: left;
+        margin-right: 5px;
+    }*/
+  /*-----------------------------------*/
+  /*----------------------------------------*/
+  /*-----------------------------------------*/
+  /*------------------------------------------------*/
+  /* 新版成员管理 */
+  /* mcm部分 */
+  /* mcm部分结束 */
+  /*移交应用*/
+}
+#UserManage #dashboard #app-info {
+  box-shadow: 0 2px 4px #ccc;
+}
+#UserManage #dashboard .wrapper {
+  color: #999;
+}
+#UserManage #dashboard .arr-b.toggleDesUp {
+  background: url(Scripts/app_pc/images/arr_b_pull.png) no-repeat;
+  display: inline-block;
+  width: 19px;
+  height: 18px;
+  vertical-align: middle;
+  position: relative;
+  top: 15px;
+}
+#UserManage #dashboard .qiehuan_t .left_b {
+  text-align: center;
+  font-size: 16px;
+  height: 39px;
+  line-height: 40px;
+  cursor: pointer;
+  background-color: #f1f1f1;
+  color: #867e7e;
+  border-right: 1px solid #ccc;
+}
+#UserManage #dashboard .qiehuan_t .left_b:hover {
+  background-color: #5082c5;
+  color: #fff;
+}
+#UserManage #dashboard .qiehuan_t .right_t {
+  text-align: center;
+  font-size: 14px;
+  height: 40px;
+  line-height: 40px;
+  color: #797979;
+  cursor: pointer;
+}
+#UserManage #dashboard .qiehuan_t .right_t:hover i {
+  color: #4D7BB6;
+}
+#UserManage #dashboard .qiehuan_t .right_t i {
+  cursor: pointer;
+  font-size: 18px;
+  margin-right: 5px;
+}
+#UserManage #dashboard .qiehuan_t .right_t .time_kj {
+  width: 100%;
+  height: 185px;
+  background-color: #fff;
+  z-index: 100;
+  position: absolute;
+  box-shadow: 0px 2px 2px #777;
+  left: 0px;
+  width: 358px;
+  top: 38px;
+}
+#UserManage #dashboard .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+#UserManage #dashboard .usr-info .thumb {
+  width: 72px;
+  height: 72px;
+  border-radius: 10px;
+}
+#UserManage #dashboard #CADAppInfo {
+  padding: 20px;
+  position: relative;
+}
+#UserManage #dashboard #CADAppInfo h5 {
+  font-size: 14px;
+  color: #4c4c4c;
+}
+#UserManage #dashboard #CADAppInfo .profile-desk a.btn {
+  float: none;
+}
+#UserManage #dashboard #CADAppInfo .profile-desk a.del {
+  background-color: #ff7233;
+}
+#UserManage #dashboard #CADAppInfo .profile-desk a.transfer {
+  margin-left: 12px;
+}
+#UserManage #dashboard .myAppName {
+  margin-top: 0;
+  color: #000;
+}
+#UserManage #dashboard .touxiang_3 {
+  display: inline-block;
+  height: 90px;
+  width: 90px;
+  background-color: #ccc;
+  color: #fff;
+  font-size: 50px;
+  border-radius: 50px;
+  line-height: 91px;
+  text-align: center;
+}
+#UserManage #dashboard .myAppName span {
+  color: #999;
+  font-size: 12px;
+}
+#UserManage #dashboard .pull-right {
+  color: #999;
+}
+#UserManage #dashboard .pie_s_s {
+  color: #099;
+  background: rgba(204, 204, 204, 0);
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  top: 60px;
+  padding-top: 41px;
+  font-size: 28px;
+  height: 70%;
+}
+#UserManage #dashboard .myAppName .myAppNameSpan {
+  font-size: 24px;
+  color: #464646;
+  cursor: pointer;
+}
+#UserManage #dashboard .myAppName .myAppNameSpan:hover {
+  color: #099;
+}
+#UserManage #dashboard .myAppName .myAppNameSpan span {
+  font-size: 10px;
+  color: #8c8c8c;
+}
+#UserManage #dashboard .myAppName .myAppNameSpan span i {
+  font-size: 14px;
+  margin-right: 5px;
+}
+#UserManage #dashboard .myAppNameSpan-images {
+  width: 16px;
+  height: 13px;
+  margin-left: 12px;
+}
+#UserManage #dashboard .myAppNameSpan-images i {
+  font-size: 16px;
+  color: #9c9c9c;
+}
+#UserManage #dashboard .fa-pencil-square-o:hover {
+  color: #5183c3;
+}
+#UserManage #dashboard .myAppNameSpan-sure {
+  position: relative;
+  display: none;
+}
+#UserManage #dashboard .myAppNameSpan-sure input {
+  width: 145px;
+  height: 30px;
+  border-radius: 5px;
+  outline: none;
+  border-color: #cccdc9;
+}
+#UserManage #dashboard .myAppNameSpan-sure images {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: -4px;
+  right: 4px;
+  cursor: pointer;
+}
+#UserManage #dashboard #CADAppInfo .profile-desk {
+  padding-top: 10px;
+}
+#UserManage #dashboard #CADAppInfo .profile-desk a {
+  float: right;
+}
+#UserManage #dashboard #CADAppInfo .detail {
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 0;
+  z-index: 10;
+  background: #fff;
+  padding: 0px 20px 20px;
+  border-bottom: 1px solid #ccc;
+  box-shadow: 0px 2px 2px #ccc;
+  width: 100%;
+  min-height: 66px;
+}
+#UserManage #dashboard #CADAppInfo .detail .deleapp {
+  width: 82px;
+  height: 34px;
+  background-image: url(Scripts/app_pcScripts/app_pc/images/btn-loading.gif);
+  background-position: 50% center;
+  background-repeat: no-repeat;
+  background-color: #4d8ceb;
+  /*text-indent: 10000em;*/
+}
+#UserManage #dashboard #CADAppInfo .profile-desk .hr {
+  display: inline-block;
+  width: 100%;
+  border-bottom: 1px #eee solid;
+  margin-top: 10px;
+  margin-bottom: 18px;
+}
+#UserManage #dashboard #CADAppInfo .profile-desk .detail label {
+  margin-bottom: 10px;
+}
+#UserManage #dashboard #CADAppInfo .profile-desk .detail .font-normal {
+  float: left;
+}
+#UserManage #dashboard #CADAppInfo .profile-desk .detail .font-dark {
+  word-wrap: break-word;
+  word-break: break-all;
+  color: #020202;
+  display: inline-block;
+}
+#UserManage #dashboard #CADAppInfo .profile-desk .detail .appinfo-detail {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+#UserManage #dashboard #CADAppInfo .profile-desk .summary {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+#UserManage #dashboard .new-user,
+#UserManage #dashboard .hot-user {
+  text-align: center;
+  padding-top: 20px;
+}
+#UserManage #dashboard .new-user .count,
+#UserManage #dashboard .hot-user .count {
+  font-size: 36px;
+  height: 2.2em;
+  margin-top: 15px;
+  /*letter-spacing: -2px;*/
+}
+#UserManage #dashboard .new-user .count {
+  color: #4d8ceb;
+}
+#UserManage #dashboard .useropt .count > span {
+  background: url(appoverview.png) no-repeat;
+  display: block;
+  width: 35px;
+  height: 30px;
+  margin: 0 auto;
+}
+#UserManage #dashboard .useropt .bor_t {
+  height: 50.5%;
+  padding-top: 12px;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+  padding-left: 20px;
+}
+#UserManage #dashboard .useropt .bor_b {
+  height: 49.5%;
+  padding-top: 11px;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+  padding-left: 20px;
+}
+#UserManage #dashboard .useropt .title_23 {
+  color: #616161;
+  font-size: 16px;
+  display: inline-block;
+  margin-top: 3px;
+}
+#UserManage #dashboard .useropt .title_23 span {
+  font-weight: 600;
+  color: #607d8b;
+}
+#UserManage #dashboard .useropt .bor_t_l {
+  border-right: 1px solid #ccc;
+  height: 100%;
+}
+#UserManage #dashboard .useropt .bor_t_r {
+  height: 100%;
+}
+#UserManage #dashboard .useropt .bor_t_r_t {
+  border-bottom: 1px solid #ccc;
+  height: 50%;
+}
+#UserManage #dashboard .new-user .count > span {
+  background-position: -434px -58px;
+}
+#UserManage #dashboard .hot-user .count {
+  color: #ff7233;
+}
+#UserManage #dashboard .hot-user .count > span {
+  background-position: -86px -58px;
+}
+#UserManage #dashboard .all-user,
+#UserManage #dashboard .all-user ul {
+  height: 100%;
+  text-align: center;
+}
+#UserManage #dashboard .all-user span {
+  margin-top: 15px;
+  display: inline-block;
+}
+#UserManage #dashboard .all-user ul li {
+  height: 50%;
+}
+#UserManage #dashboard .all-user .push {
+  border-top: 1px solid #e3e3e3;
+}
+#UserManage #dashboard .all-user .bold {
+  font-size: 18px;
+  padding-top: 5px;
+}
+#UserManage #dashboard #app-info .code {
+  margin-left: 20px;
+  display: inline-block;
+  width: 18px;
+  height: 16px;
+  background: url(appoverview.png) no-repeat;
+  background-position: -6px -68px;
+  position: absolute;
+  right: 22px;
+}
+#UserManage #dashboard #app-info {
+  background-color: #fff;
+}
+#UserManage #dashboard #app-info .section {
+  background-color: #fff;
+  height: 200px;
+  border-right: 1px solid #e8e8e8;
+}
+#UserManage #dashboard #app-info .col-md-3,
+#UserManage #dashboard #app-info .last {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+#UserManage #dashboard #app-info .col-md-4 {
+  padding-left: 0;
+  padding-right: 0;
+}
+#UserManage #dashboard #stat-info .section {
+  height: 140px;
+}
+#UserManage #dashboard #stat-info table {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  top: 26px;
+}
+#UserManage #dashboard #stat-info th {
+  text-align: center;
+}
+#UserManage #dashboard #stat-info hr.border {
+  width: 80%;
+  position: relative;
+  border: 1px solid #dedede;
+  top: 18px;
+  z-index: -1;
+  margin: 0 auto;
+  display: inline-block;
+}
+#UserManage #dashboard #stat-info td {
+  height: 26px;
+  text-align: center;
+  width: 16.6666%;
+  position: relative;
+  width: 20.6666%\9;
+}
+#UserManage #dashboard #stat-info .tdIcon a {
+  width: 26px;
+  display: block;
+  height: 26px;
+  margin: 0 auto;
+  background: url(Scripts/app_pc/images/media/package.png) no-repeat;
+}
+#UserManage #dashboard #stat-info .launch a {
+  background-position: -5px -82px;
+}
+#UserManage #dashboard #stat-info .launch.active a {
+  background-position: -5px -56px;
+}
+#UserManage #dashboard #stat-info .cert a {
+  background-position: -40px -82px;
+}
+#UserManage #dashboard #stat-info .cert.active a {
+  background-position: -40px -56px;
+}
+#UserManage #dashboard #stat-info .code a {
+  background-position: -75px -82px;
+}
+#UserManage #dashboard #stat-info .code.active a {
+  background-position: -75px -56px;
+}
+#UserManage #dashboard #stat-info .mod a {
+  background-position: -110px -82px;
+}
+#UserManage #dashboard #stat-info .mod.active a {
+  background-position: -110px -56px;
+}
+#UserManage #dashboard #stat-info .pack a {
+  background-position: -145px -82px;
+}
+#UserManage #dashboard #stat-info .pack.active a {
+  background-position: -145px -56px;
+}
+#UserManage #dashboard #stat-info .active a {
+  color: #4d8ceb;
+}
+#UserManage #dashboard #code-info .codeinfo-green {
+  color: #54b533;
+  /*margin-right: 16px;*/
+}
+#UserManage #dashboard #code-info .codeinfo-black {
+  color: #000;
+}
+#UserManage #dashboard #code-info {
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+}
+#UserManage #dashboard #code-info .kehu_z {
+  color: #565656;
+  font-size: 15px;
+  border-right: 1px solid #e2e2e2;
+}
+#UserManage #dashboard #code-info header {
+  height: 70px;
+  line-height: 70px;
+  border-bottom: 1px solid #e3e3e3;
+}
+#UserManage #dashboard #code-info .svn {
+  padding-top: 20px;
+  clear: both;
+}
+#UserManage #dashboard #code-info header,
+#UserManage #dashboard #code-info .svn {
+  /*padding-left: 20px; padding-right: 20px;*/
+}
+#UserManage #dashboard #code-info .title {
+  font-size: 14px;
+  color: #000;
+  margin: 0 14px;
+}
+#UserManage #dashboard #code-info .codeinfo-right {
+  padding: 0;
+  min-width: 58.33333333%;
+}
+#UserManage #dashboard #code-info .detail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  padding: 10px 20px 20px;
+  border-bottom: 1px solid #ccc;
+  box-shadow: 0px 2px 2px #ccc;
+  display: none;
+  background-color: #fff;
+  width: 100%;
+  min-height: 64px;
+}
+#UserManage #dashboard #code-info .detail1 {
+  width: 93%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-indent: 20px;
+}
+#UserManage #dashboard #code-info .arr-b.toggleDesUp {
+  float: right;
+}
+#UserManage #dashboard #code-info .code {
+  margin-right: 20px;
+  display: inline-block;
+  width: 18px;
+  height: 70px;
+  float: right;
+  background: url(Scripts/app_pc/images/menu1.png) center center no-repeat;
+}
+#UserManage #dashboard #code-info .time {
+  float: right;
+  margin-right: 18px;
+}
+#UserManage #dashboard #code-info .author {
+  height: 70px;
+  color: #000;
+  float: left;
+  margin-right: 5px;
+}
+#UserManage #dashboard #code-info .author .author-icon {
+  background: url(appoverview.png) no-repeat;
+  background-position: -36px -67px;
+  display: block;
+  margin-top: 25px;
+  width: 24px;
+  height: 20px;
+  float: left;
+}
+#UserManage #dashboard #cloud-pack {
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+}
+#UserManage #dashboard #cloud-pack .chaoshi_t {
+  display: inline-block;
+  height: 70px;
+  border-bottom: 1px solid #fff;
+  width: 100%;
+  padding-top: 10px;
+  background-color: #607d8b;
+  color: #fff;
+}
+#UserManage #dashboard #cloud-pack .chaoshi_c {
+  display: inline-block;
+  height: 70px;
+  width: 100%;
+  padding-top: 10px;
+  background-color: #607d8b;
+  color: #fff;
+}
+#UserManage #dashboard #cloud-pack a {
+  display: block;
+  height: 100%;
+  background: #009999 url() no-repeat center 30px;
+  padding-top: 86px;
+  color: #e7eed5;
+  font-size: 14px;
+}
+#UserManage #dashboard #cloud-pack a:hover {
+  background-color: #81a200;
+  text-decoration: none;
+}
+#UserManage #dashboard #cloud-pack a[disabled] {
+  background-color: #d6d6d6;
+}
+#UserManage #dashboard #pack-info {
+  box-shadow: none;
+}
+#UserManage #dashboard #pack-info .section {
+  box-shadow: 0px 2px 4px #ccc;
+  height: 140px;
+}
+#UserManage #dashboard #pack-info header {
+  height: 70px;
+  line-height: 70px;
+  padding: 0 20px;
+  border-bottom: 1px solid #e3e3e3;
+}
+#UserManage #dashboard #pack-info .title {
+  font-size: 14px;
+  color: #000;
+}
+#UserManage #dashboard #pack-info .code {
+  margin-left: 20px;
+  display: inline-block;
+  width: 18px;
+  height: 16px;
+  background: url(Scripts/app_pc/images/menu1.png) no-repeat;
+}
+#UserManage #dashboard #pack-info .svn {
+  clear: both;
+  padding: 20px;
+}
+#UserManage #dashboard #pack-info .author {
+  color: #000;
+  margin-bottom: 20px;
+  float: left;
+  width: 40%;
+  overflow: hidden;
+}
+#UserManage #dashboard #pack-info .author .author-icon {
+  background: url(appoverview.png) no-repeat;
+  background-position: -36px -67px;
+  display: block;
+  width: 24px;
+  height: 20px;
+  float: left;
+}
+#UserManage #dashboard #pack-info .pack-info {
+  overflow: hidden;
+}
+#UserManage #dashboard #pack-info .pack-info .status {
+  float: left;
+}
+#UserManage #dashboard #pack-info .pack-info .err {
+  color: #ff4f00;
+}
+#UserManage #dashboard #pack-info .download {
+  float: right;
+}
+#UserManage #dashboard #pack-info .ver {
+  color: #54b533;
+  padding-left: 10px;
+}
+#UserManage #dashboard #pack-info .first {
+  padding-left: 0;
+}
+#UserManage #dashboard #pack-info .last {
+  padding-right: 0;
+}
+#UserManage #dashboard #pack-info .download a {
+  display: inline-block;
+  /*border-right: 1px solid #c9c9c9; */
+  padding: 0 10px;
+  color: #4d8ceb;
+}
+#UserManage #dashboard #pack-info .download .last {
+  border-right: none;
+}
+#UserManage #dashboard #pack-info .safe {
+  clear: both;
+}
+#UserManage #dashboard #pack-info .safe ul {
+  padding: 20px;
+}
+#UserManage #dashboard #pack-info .safe em {
+  font-style: normal;
+}
+#UserManage #dashboard #pack-info .safe .status {
+  overflow: hidden;
+  padding-bottom: 15px;
+}
+#UserManage #dashboard #pack-info .safe .status span {
+  float: left;
+}
+#UserManage #dashboard #pack-info .safe span.user {
+  float: right;
+}
+#UserManage #dashboard #pack-info .safe .verify {
+  padding-left: 20px;
+}
+#UserManage #dashboard #pack-info .safe .warn {
+  color: #ff4f00;
+}
+#UserManage #dashboard #pack-info .safe .limit em {
+  display: inline-block;
+  background: url(Scripts/app_pc/images/dot.png) no-repeat left center;
+  padding-left: 16px;
+  padding-right: 6px;
+}
+#UserManage #dashboard #pack-info .safe .limit em.active {
+  background: url(Scripts/app_pc/images/dot-l.png) no-repeat left center;
+}
+#UserManage #dashboard #safe-limit images {
+  margin-right: 8px;
+}
+#UserManage #dashboard #project-info {
+  box-shadow: none;
+}
+#UserManage #dashboard #project-info .yusuan_l {
+  border-bottom: 1px solid #e3e3e3;
+}
+#UserManage #dashboard #project-info .nei_l_ys {
+  height: 63px;
+  line-height: 63px;
+  padding-left: 20px;
+  color: #777;
+  font-size: 16px;
+}
+#UserManage #dashboard #project-info .nei_l_ys span {
+  color: #607d8b;
+  font-weight: 600;
+}
+#UserManage #dashboard #project-info .section {
+  height: 140px;
+  box-shadow: 0px 2px 4px #ccc;
+}
+#UserManage #dashboard #project-info .first {
+  padding-left: 0;
+}
+#UserManage #dashboard #project-info .member table {
+  width: 100%;
+  height: 100%;
+}
+#UserManage #dashboard #project-info .member td.inner {
+  vertical-align: top;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+#UserManage #dashboard #project-info .member td.inner .toggle {
+  float: right;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+#UserManage #dashboard #project-info .member .inner {
+  height: auto;
+}
+#UserManage #dashboard #project-info .member .inner td {
+  padding: 6px 6px 0;
+}
+#UserManage #dashboard #project-info .member th,
+#UserManage #dashboard #project-info .member td {
+  text-align: center;
+}
+#UserManage #dashboard #project-info .member th {
+  color: #000;
+  font-weight: normal;
+}
+#UserManage #dashboard #project-info .member .title {
+  font-size: 14px;
+  font-weight: normal;
+  color: #000;
+  border-right: 1px solid #e3e3e3;
+  vertical-align: top;
+  padding: 20px 8px 0;
+}
+#UserManage #dashboard #project-info .member tfoot {
+  display: none;
+}
+#UserManage #dashboard #project-info .member .toggleMember {
+  float: right;
+  margin-right: 30px;
+  margin-top: 20px;
+}
+#UserManage #dashboard #project-info .publish {
+  padding-right: 0;
+  margin-bottom: 30px;
+}
+#UserManage #dashboard #project-info .update {
+  padding-left: 0;
+  padding-right: 0;
+}
+#UserManage #dashboard #project-info header {
+  height: 70px;
+  line-height: 70px;
+  padding: 0 20px;
+  border-bottom: 1px solid #e3e3e3;
+  overflow: hidden;
+}
+#UserManage #dashboard #project-info .title {
+  font-size: 14px;
+  color: #000;
+}
+#UserManage #dashboard #project-info .ver {
+  color: #54b533;
+  padding-left: 10px;
+}
+#UserManage #dashboard #project-info .ver-info {
+  clear: both;
+  padding: 20px;
+}
+#UserManage #dashboard #project-info .ver-info em {
+  display: inline-block;
+  text-indent: -9999px;
+}
+#UserManage #dashboard #project-info .ver-info .ios {
+  width: 16px;
+  height: 17px;
+  background: url(appoverview.png) no-repeat;
+  background-position: -157px -156px;
+}
+#UserManage #dashboard #project-info .ver-info .android {
+  width: 15px;
+  height: 17px;
+  background: url(appoverview.png) no-repeat;
+  background-position: -308px -127px;
+}
+#UserManage #dashboard #project-info .author {
+  background: url(Scripts/app_pc/images/user.png) center left no-repeat;
+  padding-left: 25px;
+  color: #000;
+}
+#UserManage #dashboard #project-info .update a {
+  display: block;
+  text-align: center;
+  height: 100%;
+  font-size: 14px;
+  background: #4d8ceb url(Scripts/app_pc/images/rocket.png) no-repeat center 30px;
+  padding-top: 86px;
+  color: #e7eed5;
+}
+#UserManage #dashboard #project-info .update a:hover {
+  background-color: #4276C5;
+  text-decoration: none;
+}
+#UserManage #dashboard #project-info .update a[disabled] {
+  background-color: #d6d6d6;
+}
+#UserManage #dashboard #project-info .bottom {
+  padding-right: 0;
+}
+#UserManage #dashboard #project-info .bottom .member-panel {
+  min-height: 140px;
+  padding-bottom: 16px;
+  padding-bottom: 0\9;
+}
+#UserManage #dashboard #project-info .bottom .member-container {
+  height: 120px;
+  padding-left: 0;
+  padding-right: 0;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+#UserManage #dashboard #project-info .bottom .member-icon {
+  margin: 16px auto;
+  margin-bottom: 0px;
+  display: block;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  /*border: 1px solid #EEE;*/
+}
+#UserManage #dashboard #project-info .bottom .member-name {
+  width: 100%;
+  margin: 5px 0;
+  text-align: center;
+  display: inline-block;
+  color: #3a3a3a;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+#UserManage #dashboard #project-info .bottom .member-name.pending {
+  color: #9140c8;
+}
+#UserManage #dashboard #project-info .bottom .member-loginTime {
+  width: 100%;
+  height: 17px;
+  text-align: center;
+  margin-bottom: 10px;
+  overflow-y: hidden;
+}
+#UserManage #dashboard #overviewMemberPanel {
+  /*height: 140px;*/
+  height: 80px;
+  line-height: 80px;
+  overflow: hidden;
+  -webkit-transition: all .4s ease;
+  -moz-transition: all .4s ease;
+  -ms-transition: all .4s ease;
+  -o-transition: all .4s ease;
+  transition: all .4s ease;
+}
+#UserManage #dashboard .overviewMemberPanel {
+  min-height: 48px;
+  line-height: 28px;
+  font-size: 16px;
+  padding: 10px;
+  color: #777;
+  padding-left: 20px;
+}
+#UserManage #dashboard .overviewMemberPanel span {
+  color: #607d8b;
+}
+#UserManage #dashboard #overviewMemberPanel.active {
+  max-height: 700px;
+}
+#UserManage #dashboard #overviewMemberPanel-btn {
+  position: absolute;
+  right: 19px;
+  bottom: 22px;
+}
+#UserManage #dashboard #overviewMemberPanel-btn.active {
+  background: url(Scripts/app_pc/images/arr_b_pull.png) no-repeat;
+}
+#UserManage #dashboard #project-info #mcm-info,
+#UserManage #dashboard #project-info #mcm-info .row {
+  box-shadow: none;
+}
+#UserManage #dashboard #project-info #mcm-info .row {
+  margin-bottom: 0;
+  height: 50px;
+}
+#UserManage #dashboard #project-info #mcm-info .mcm-info-label {
+  text-align: right;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  margin: 0;
+  color: #999;
+}
+#UserManage #dashboard #project-info #mcm-info .progress {
+  margin-bottom: 0;
+  margin-top: 13px;
+  height: 26px;
+  width: 94%;
+  position: relative;
+  background-color: #C9C9CA;
+}
+#UserManage #dashboard #project-info #mcm-info .progress.dropped {
+  background-color: #F5AF29;
+}
+#UserManage #dashboard #project-info #mcm-info .progress .show-text-left,
+#UserManage #dashboard #project-info #mcm-info .progress .show-text-right {
+  position: absolute;
+}
+#UserManage #dashboard #project-info #mcm-info .progress .show-text-left {
+  left: 12px;
+}
+#UserManage #dashboard #project-info #mcm-info .progress .show-text-left em,
+#UserManage #dashboard #project-info #mcm-info .progress .show-text-right em {
+  color: #FFF;
+  text-align: left;
+  font-size: 12px;
+  height: 26px;
+  line-height: 26px;
+}
+#UserManage #dashboard #project-info #mcm-info .progress .show-text-right {
+  right: 14px;
+}
+#UserManage #dashboard #project-info #mcm-info .progress-bar.DB {
+  background-color: #E48070;
+}
+#UserManage #dashboard #project-info #mcm-info .progress-bar.FS {
+  background-color: #F5A966;
+}
+#UserManage #dashboard #project-info #mcm-info .progress-bar.DT {
+  background-color: #79B967;
+}
+#UserManage #dashboard #project-info #mcm-info .progress-bar.AR {
+  background-color: #84BC5C;
+}
+#UserManage #dashboard #transfer-dialog {
+  overflow: hidden;
+}
+#UserManage #dashboard .transfer-dialog {
+  font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", "Hiragino Sans GB", "Hiragino Sans GB W3", "WenQuanYi Micro Hei", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 12px;
+  border-radius: 0;
+  border: none;
+  padding: 0;
+  box-shadow: #555 0 0 15px;
+}
+#UserManage #dashboard .transfer-dialog .ui-dialog-titlebar {
+  border-radius: 0;
+  padding: 15px 30px;
+  border: none;
+  background-image: none;
+  background-color: #f2f2f2;
+}
+#UserManage #dashboard .transfer-dialog .ui-dialog-title {
+  font-size: 14px;
+}
+#UserManage #dashboard .transfer-dialog .ui-dialog-content {
+  padding: 0;
+}
+#UserManage #dashboard .transfer-dialog .ui-dialog-titlebar-close {
+  right: 22px;
+  border: none;
+  background-image: none;
+  background-color: transparent;
+  margin-top: -12px;
+}
+#UserManage #dashboard .transfer-dialog .note {
+  color: #404040;
+  padding: 40px 30px;
+  font-size: 14px;
+}
+#UserManage #dashboard .transfer-dialog .form-horizontal .form-group {
+  margin-left: 0;
+  margin-right: 0;
+}
+#UserManage #dashboard .transfer-dialog .accepter-con {
+  margin-bottom: 40px;
+}
+#UserManage #dashboard .transfer-dialog .control-label {
+  color: #a1a1a1;
+  text-align: left;
+  width: 9em;
+  padding-left: 30px;
+  padding-right: 0;
+}
+#UserManage #dashboard .transfer-dialog .accepter-input {
+  padding-left: 0;
+}
+#UserManage #dashboard .transfer-dialog .btns {
+  text-align: right;
+  padding-right: 30px;
+  margin-bottom: 20px;
+}
+#UserManage #dashboard .transfer-dialog .btns button {
+  width: 80px;
+}
+#UserManage #dashboard .transfer-dialog .transfer {
+  margin-right: 10px;
+  background-color: #4c7bb5;
+  color: #fff;
+}
+#UserManage #dashboard .transfer-dialog .transfer[disabled] {
+  background-image: url(Scripts/app_pcScripts/app_pc/images/btn-loading.gif);
+  background-position: 50% center;
+  background-repeat: no-repeat;
+  text-indent: 10000em;
+}
+#UserManage #dashboard .transfer-dialog .cancel {
+  background-color: transparent;
+  color: #a0a0a0;
+  border: 1px solid #808080;
+}
+#UserManage #dashboard .transfer-dialog label.error {
+  margin-top: 8px;
+}
+#UserManage #dashboard .section {
+  background-color: #fff;
+  height: 170px;
+  border-right: 1px solid #e8e8e8;
+}
+#UserManage #dashboard .section .title {
+  color: #999;
+}
+#UserManage #dashboard .section .title_22 {
+  color: #616161;
+  font-size: 16px;
+  display: inline-block;
+  margin-top: 1px;
+}
+#UserManage #dashboard .section .title_22 span {
+  font-weight: 600;
+  color: #607d8b;
+}
+#UserManage #dashboard .section .pull-right {
+  color: #999;
+}
+#UserManage #dashboard .section ul li span {
+  color: #999;
+}
+#UserManage #dashboard ul {
+  padding-left: 0px;
+}
+#UserManage #dashboard .span_rq {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: #607d8b;
+  text-align: center;
+  border-radius: 20px;
+  padding: 10px;
+  color: #fff;
+}
+#UserManage #dashboard .span_rq i {
+  font-size: 20px;
+}
+#UserManage #dashboard .card_buji {
+  height: 160px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px #ccc;
+}
+#UserManage #dashboard .card_buji .card_n_t {
+  height: 80px;
+  border-bottom: 1px solid #e3e3e3;
+  border-right: 1px solid #e3e3e3;
+}
+#UserManage #dashboard .card_buji .card_n_t .title_GJ {
+  color: #777;
+  font-size: 14px;
+  padding: 8px 15px 2px;
+}
+#UserManage #dashboard .card_buji .card_n_t .ner_nr {
+  text-align: center;
+  font-size: 22px;
+  color: #607d8b;
+}
+#UserManage #dashboard .card_buji .card_n_b {
+  height: 80px;
+  border-right: 1px solid #e3e3e3;
+}
+#UserManage #dashboard .card_buji .card_n_b .title_GJ {
+  color: #777;
+  font-size: 15px;
+  padding: 10px 15px 3px;
+}
+#UserManage #dashboard .card_buji .card_n_b .ner_nr {
+  text-align: center;
+  font-size: 22px;
+  color: #607d8b;
+}
+#UserManage #caseInquiry {
+  margin-top: 15px;
+}
+#UserManage #caseInquiry .panel {
+  padding: 0;
+}
+#UserManage #caseInquiry .panel .tubiao_1 {
+  border-top: 1px solid #ccc;
+  padding: 20px 10%;
+}
+#UserManage #caseInquiry .panel label {
+  margin: 0;
+  padding: 0;
+}
+#UserManage #caseInquiry .row {
+  margin: 0;
+}
+#UserManage #caseInquiry .form-control {
+  z-index: 1;
+}
+#UserManage #caseInquiry .glyphicon {
+  top: 0;
+  background-color: #4D7BB6;
+  color: #FFF;
+  border-color: #4D7BB6;
+  width: 38px;
+  height: 34px;
+  float: left;
+}
+#UserManage #caseInquiry .header {
+  background-color: #fff;
+  height: 50px;
+  padding: 10px 20px 17px 2px;
+  position: relative;
+  box-shadow: 0px 0px 0px #ccc;
+}
+#UserManage #caseInquiry .header h3 {
+  font-size: 14px;
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+  padding: 0px;
+  margin: 0;
+}
+#UserManage #caseInquiry #dropdownMenu1:hover {
+  background-color: #F4F6F4 !important;
+  color: #AEB0B0;
+}
+#UserManage #caseInquiry .input-group-filter {
+  width: 185px;
+}
+#UserManage #caseInquiry .input-group-filter .module-filter-text {
+  width: 146px;
+  border-radius: 0 6px 6px 0;
+}
+#UserManage #caseInquiry #mod-container {
+  margin-right: -1%;
+}
+#UserManage #caseInquiry .module-container-box {
+  margin-right: -30px;
+}
+#UserManage #caseInquiry .module-container {
+  background-color: #FFF;
+  /* max-width: 262px; */
+  width: 49%;
+  /* min-width: 244px; */
+  height: 130px;
+  margin-right: 1%;
+  margin-bottom: 10px;
+  position: relative;
+  box-shadow: 0px 2px 4px #ccc;
+  border-radius: 5px;
+}
+#UserManage #caseInquiry .module-container-header h4 {
+  color: #A1A2A2;
+  font-size: 20px;
+  text-indent: 6px;
+}
+#UserManage #caseInquiry .module-name {
+  float: left;
+  height: 78px;
+  font-size: 16px;
+  /*text-indent: 63px;*/
+  text-indent: 30px;
+  line-height: 78px;
+}
+#UserManage #caseInquiry .module-icon {
+  width: 20px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 20px;
+  color: #C9C9CA;
+  margin-right: 16px;
+  display: inline-block;
+  float: right;
+}
+#UserManage #caseInquiry .row-border-top {
+  border-top: 1px solid #E8E8E7;
+  background-color: #fff;
+  position: absolute;
+  width: 100%;
+  height: 36px;
+  bottom: 0;
+}
+#UserManage #caseInquiry .row-border-top .module-describe {
+  font-weight: normal;
+  padding: 0 20px 0 30px;
+  color: #868684;
+  height: 36px;
+  line-height: 36px;
+}
+#UserManage #caseInquiry .module-name-box .module-describe {
+  position: absolute;
+  left: 30px;
+  bottom: 42px;
+  color: #868684;
+}
+#UserManage #caseInquiry .btn-module-btn {
+  float: right;
+  margin-right: 25px;
+  margin-left: -10px;
+  width: 16px;
+  height: 78px;
+  line-height: 30px;
+  color: #6B90CA;
+}
+#UserManage #caseInquiry .module-added {
+  float: right;
+  width: 41px;
+  height: 16px;
+  margin-right: 20px;
+  margin-left: -10px;
+  /*background: url(Scripts/app_pc/images/module-added.png) center center no-repeat;*/
+  /*right: 6px;*/
+  padding: 0;
+  display: none;
+  position: relative;
+  top: 32px;
+  color: #fff;
+  font-size: 12px;
+  line-height: 16px;
+  background-color: #818181;
+  border-radius: 2px;
+  text-align: center;
+}
+#UserManage #caseInquiry .btn-detail {
+  cursor: pointer;
+}
+#UserManage #caseInquiry .btn-remove {
+  display: none;
+  background: url(Scripts/app_pc/images/module-remove.png) center center no-repeat;
+}
+#UserManage #caseInquiry .btn-add {
+  display: none;
+  background: url(Scripts/app_pc/images/module-add.png) center center no-repeat;
+}
+#UserManage #caseInquiry .btn-delete {
+  display: none;
+  background: url(Scripts/app_pc/images/module-del.png) center center no-repeat;
+}
+#UserManage #caseInquiry .btn-edit {
+  display: none;
+  background: url(Scripts/app_pc/images/module-modify.png) center center no-repeat;
+}
+#UserManage #caseInquiry .module-added.active,
+#UserManage #caseInquiry #module .btn-add.active,
+#UserManage #caseInquiry #module .btn-delete.active,
+#UserManage #caseInquiry #module .added .btn-remove.active,
+#UserManage #caseInquiry #module .btn-edit.active {
+  display: block;
+}
+#UserManage #caseInquiry .custom {
+  position: relative;
+  min-height: 450px;
+}
+#UserManage #caseInquiry .custom .btn-delete {
+  color: #C33B26;
+}
+#UserManage #caseInquiry .panel-header > table {
+  width: 74%;
+}
+#UserManage #caseInquiry table {
+  max-width: 100%;
+  background-color: transparent;
+}
+#UserManage #caseInquiry table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+#UserManage #caseInquiry tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+#UserManage #caseInquiry .panel-header > table th {
+  text-align: center;
+  border-right: solid 1px #cccccc;
+  border-bottom: solid 0px #cccccc;
+  font-size: 14px;
+  padding: 24px 0;
+  position: relative;
+  width: 20%;
+}
+#UserManage #caseInquiry .panel-header > table th a {
+  cursor: pointer;
+  display: block;
+  color: #81867c;
+  font-weight: normal;
+}
+#UserManage #caseInquiry .panel-header > table th.active .topselect {
+  width: 100%;
+  height: 0;
+  border: 2px solid #099;
+  position: absolute;
+  top: 0;
+}
+#UserManage #caseInquiry .panel-header > table th.active a {
+  color: #88a21e !important;
+}
+#UserManage #caseInquiry .btn_xl {
+  border-right: 0px;
+  background-color: #4f83c3;
+  border: 1px solid #4f83c3;
+  COLOR: #FFF;
+}
+#UserManage #caseInquiry .form-group {
+  margin-bottom: 0px!important;
+}
+#UserManage #caseInquiry #detailsTable {
+  border-top: 1px solid #ccc;
+  position: relative;
+}
+#UserManage #caseInquiry #detailsTable .fanhui {
+  position: absolute;
+  right: 0px;
+  background-color: rgba(152, 152, 152, 0.57);
+  width: 100px;
+  height: 35px;
+  top: 20px;
+  color: #fff3f3;
+  text-align: center;
+  padding: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+#UserManage #caseInquiry #detailsTable .fanhui:hover {
+  background-color: #099;
+}
+#UserManage #caseInquiry #detailsTable .isLoading {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: block;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 1000;
+  line-height: 44px;
+}
+#UserManage #caseInquiry .isLoading {
+  text-align: center;
+  font-size: 14px;
+  color: #666666;
+}
+#UserManage #caseInquiry .isLoading images {
+  margin-right: 10px;
+  margin-left: -10px;
+  width: 20px;
+}
+#UserManage #caseInquiry images {
+  vertical-align: middle;
+}
+#UserManage #caseInquiry images {
+  border: 0;
+}
+#UserManage #caseInquiry #detailsTable table {
+  border-bottom: solid 1px #ddd;
+}
+#UserManage #caseInquiry .table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+#UserManage #caseInquiry table {
+  max-width: 100%;
+  background-color: transparent;
+}
+#UserManage #caseInquiry table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+#UserManage #caseInquiry .table > thead > tr > th {
+  font-weight: normal;
+  border-bottom: 1px solid #ddd;
+}
+#UserManage #caseInquiry .table > thead > tr > th,
+#UserManage #caseInquiry #detailsTable .table > tbody > tr > th,
+#UserManage #caseInquiry #detailsTable .table > tfoot > tr > th,
+#UserManage #caseInquiry #detailsTable .table > thead > tr > td,
+#UserManage #caseInquiry #detailsTable .table > tbody > tr > td,
+#UserManage #caseInquiry #detailsTable .table > tfoot > tr > td {
+  padding: 12px;
+  border-top: none;
+  color: #858585;
+  font-size: 13px;
+}
+#UserManage #caseInquiry .moreUpAndDown {
+  border-top: 1px solid #ccc;
+  color: #099;
+  display: block;
+  font-size: 14px;
+  padding: 20px 0px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 15px;
+}
+#UserManage #caseInquiry .moreUpAndDown .left_xs {
+  padding: 20px 0px;
+  border-right: 1px solid #ccc;
+}
+#UserManage #caseInquiry .moreUpAndDown .left_xs:hover i {
+  color: #099!important;
+}
+#UserManage #caseInquiry .moreUpAndDown .right_xs {
+  padding: 20px 0px;
+}
+#UserManage #caseInquiry .moreUpAndDown .right_xs:hover i {
+  color: #099!important;
+}
+#UserManage #caseInquiry .moreUpAndDown_2 {
+  border-top: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
+  color: #099;
+  display: block;
+  font-size: 14px;
+  padding: 15px 0;
+  text-align: center;
+  cursor: pointer;
+  font-size: 15px;
+}
+#UserManage #caseInquiry .moreUpAndDown_2:hover i {
+  color: #099!important;
+}
+#UserManage #caseInquiry .active_moreUpAndDown {
+  background-color: #f5f5f5;
+}
+#UserManage #caseInquiry .active_moreUpAndDown i {
+  color: #099!important;
+}
+#UserManage #caseInquiry .btn-group,
+#UserManage #caseInquiry .btn-group-vertical {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+#UserManage #caseInquiry .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+#UserManage #caseInquiry .btn-group > .btn-custom-default:first-child {
+  border-left: none;
+}
+#UserManage #caseInquiry .btn-group > .btn:first-child {
+  margin-left: 0;
+}
+#UserManage #caseInquiry .btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+  border-radius: 0;
+}
+#UserManage #caseInquiry .btn-group .btn + .btn,
+#UserManage #caseInquiry .btn-group .btn + .btn-group,
+#UserManage #caseInquiry .btn-group .btn-group + .btn,
+#UserManage #caseInquiry .btn-group .btn-group + .btn-group {
+  margin-left: -1px;
+}
+#UserManage #caseInquiry .btn-group > .btn,
+#UserManage #caseInquiry .btn-group-vertical > .btn {
+  position: relative;
+  float: left;
+}
+#UserManage #caseInquiry .btn-custom-default {
+  background-color: #deeaea;
+  border-left: solid 1px #c7cad0;
+  color: #7f838a;
+}
+#UserManage #caseInquiry .btn-custom-default:hover,
+#UserManage #caseInquiry .btn-custom-default:active,
+#UserManage #caseInquiry .btn-custom-default.active {
+  background-color: #099;
+  border-left: solid 1px #099;
+  color: white;
+}
+#UserManage #caseInquiry .tundui_n {
+  width: 80%;
+  border: 1px solid #cecece;
+  border-radius: 3px;
+  background-color: #fff;
+  z-index: 3;
+  position: absolute;
+  top: 48px;
+  padding: 12px 20px 20px;
+  box-shadow: 0px 2px 4px #ccc;
+}
+#UserManage #caseInquiry .tundui_n .bumentitle {
+  padding: 5px;
+  font-size: 18px;
+  color: #099;
+}
+#UserManage #caseInquiry .tundui_n .close_1 {
+  color: #a2a2a2;
+  font-size: 20px;
+  float: right;
+  cursor: pointer;
+  margin: -6px;
+}
+#UserManage #caseInquiry .tundui_n .close_1:hover {
+  color: #099;
+}
+#UserManage #caseInquiry .tundui_n .dange_w {
+  margin-top: 10px;
+}
+#UserManage #caseInquiry .tundui_n .dange_w span {
+  display: inline-block;
+  border-right: 1px solid #ccc;
+  padding-right: 10px;
+  padding-left: 5px;
+  margin: 3px 0px;
+  height: 17px;
+  line-height: 15px;
+  cursor: pointer;
+}
+#UserManage #caseInquiry .tundui_n .dange_w span:hover {
+  color: #099;
+}
+#UserManage #caseInquiry .tundui_n .dange_w .active {
+  color: #099;
+  font-weight: 600;
+}
+#UserManage #caseInquiry .i_top {
+  font-size: 36px;
+  position: absolute;
+  top: -25px;
+  background-color: #fff;
+  color: #8e8e8e;
+}
+#UserManage #caseInquiry .i_top_1 {
+  left: 13px;
+}
+#UserManage #caseInquiry .i_top_2 {
+  left: 80px;
+}
+#UserManage #caseInquiry .i_top_3 {
+  left: 162px;
+}
+#UserManage #caseInquiry .i_top_4 {
+  left: 242px;
+}
+#UserManage #caseInquiry .i_top_5 {
+  left: 323px;
+}
+#UserManage #caseInquiry .i_top_6 {
+  left: 405px;
+}
+#UserManage .panel {
+  border-radius: 0px;
+  width: 100%;
+  box-shadow: 0 1px 3px #ccc;
+  position: relative;
+  border: 0px;
+}
+#UserManage .btn-custom-default {
+  padding: 3px 12px;
+}
+#UserManage .table > tbody > tr > td {
+  padding: 12px;
+  border-top: none;
+  color: #858585;
+  font-size: 13px;
+}

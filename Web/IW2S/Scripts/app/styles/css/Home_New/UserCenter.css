@@ -1,0 +1,750 @@
+#UserCenter .panel {
+  padding: 0;
+}
+#UserCenter .panel .tubiao_1 {
+  border-top: 1px solid #ccc;
+  padding: 20px 10%;
+}
+#UserCenter .panel label {
+  margin: 0;
+  padding: 0;
+}
+#UserCenter .row {
+  margin: 0;
+}
+#UserCenter .form-control {
+  z-index: 1;
+}
+#UserCenter .glyphicon {
+  top: 0;
+  background-color: #4D7BB6;
+  color: #FFF;
+  border-color: #4D7BB6;
+  width: 38px;
+  height: 34px;
+  float: left;
+}
+#UserCenter .clearBtn {
+  right: 5px;
+  z-index: 1;
+}
+#UserCenter .hide-file {
+  opacity: 0;
+  height: 0px;
+  width: 10px;
+}
+#UserCenter .header {
+  background-color: #fff;
+  height: 70px;
+  padding: 17px 20px 17px 25px;
+  position: relative;
+  box-shadow: 0px 0px 0px #ccc;
+  border-top: 1px solid #ccc;
+}
+#UserCenter .header h3 {
+  font-size: 14px;
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+  padding: 0px;
+  margin: 0;
+}
+#UserCenter .row {
+  background-color: #FFF;
+}
+#UserCenter .row.no-background {
+  background-color: transparent;
+}
+#UserCenter #dropdownMenu1:hover {
+  background-color: #F4F6F4 !important;
+  color: #AEB0B0;
+}
+#UserCenter .input-group-filter {
+  width: 185px;
+}
+#UserCenter .input-group-filter .module-filter-text {
+  width: 146px;
+  border-radius: 0 6px 6px 0;
+}
+#UserCenter #mod-container {
+  margin-right: -1%;
+}
+#UserCenter .module-container-box {
+  margin-right: -30px;
+}
+#UserCenter .module-container {
+  background-color: #FFF;
+  /* max-width: 262px; */
+  width: 49%;
+  /* min-width: 244px; */
+  height: 130px;
+  margin-right: 1%;
+  margin-bottom: 10px;
+  position: relative;
+  box-shadow: 0px 2px 4px #ccc;
+  border-radius: 5px;
+}
+#UserCenter .module-container-header h4 {
+  color: #A1A2A2;
+  font-size: 20px;
+  text-indent: 6px;
+}
+#UserCenter .module-name {
+  float: left;
+  height: 78px;
+  font-size: 16px;
+  /*text-indent: 63px;*/
+  text-indent: 30px;
+  line-height: 78px;
+}
+#UserCenter .module-icon {
+  width: 20px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 20px;
+  color: #C9C9CA;
+  margin-right: 16px;
+  display: inline-block;
+  float: right;
+}
+#UserCenter .row-border-top {
+  border-top: 1px solid #E8E8E7;
+  background-color: #fff;
+  position: absolute;
+  width: 100%;
+  height: 36px;
+  bottom: 0;
+}
+#UserCenter .row-border-top .module-describe {
+  font-weight: normal;
+  padding: 0 20px 0 30px;
+  color: #868684;
+  height: 36px;
+  line-height: 36px;
+}
+#UserCenter .module-name-box .module-describe {
+  position: absolute;
+  left: 30px;
+  bottom: 42px;
+  color: #868684;
+}
+#UserCenter .btn-module-btn {
+  float: right;
+  margin-right: 25px;
+  margin-left: -10px;
+  width: 16px;
+  height: 78px;
+  line-height: 30px;
+  color: #6B90CA;
+}
+#UserCenter .module-added {
+  float: right;
+  width: 41px;
+  height: 16px;
+  margin-right: 20px;
+  margin-left: -10px;
+  /*background: url(Scripts/app_pc/images/module-added.png) center center no-repeat;*/
+  /*right: 6px;*/
+  padding: 0;
+  display: none;
+  position: relative;
+  top: 32px;
+  color: #fff;
+  font-size: 12px;
+  line-height: 16px;
+  background-color: #818181;
+  border-radius: 2px;
+  text-align: center;
+}
+#UserCenter .btn-detail {
+  cursor: pointer;
+}
+#UserCenter .btn-remove {
+  display: none;
+  background: url(Scripts/app_pc/images/module-remove.png) center center no-repeat;
+}
+#UserCenter .btn-add {
+  display: none;
+  background: url(Scripts/app_pc/images/module-add.png) center center no-repeat;
+}
+#UserCenter .btn-delete {
+  display: none;
+  background: url(Scripts/app_pc/images/module-del.png) center center no-repeat;
+}
+#UserCenter .btn-edit {
+  display: none;
+  background: url(Scripts/app_pc/images/module-modify.png) center center no-repeat;
+}
+#UserCenter .module-added.active,
+#UserCenter #module .btn-add.active,
+#UserCenter #module .btn-delete.active,
+#UserCenter #module .added .btn-remove.active,
+#UserCenter #module .btn-edit.active {
+  display: block;
+}
+#UserCenter .custom {
+  position: relative;
+  min-height: 450px;
+}
+#UserCenter .custom .btn-delete {
+  color: #C33B26;
+}
+#UserCenter .panel-header > table {
+  width: 80%;
+}
+#UserCenter table {
+  max-width: 100%;
+  background-color: transparent;
+}
+#UserCenter table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+#UserCenter tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+#UserCenter .panel-header > table th {
+  text-align: center;
+  border-right: solid 1px #cccccc;
+  border-bottom: solid 0px #cccccc;
+  font-size: 14px;
+  padding: 24px 0;
+  position: relative;
+  width: 20%;
+}
+#UserCenter .panel-header > table th a {
+  cursor: pointer;
+  display: block;
+  color: #81867c;
+  font-weight: normal;
+}
+#UserCenter .panel-header > table th.active .topselect {
+  width: 100%;
+  height: 0;
+  border: 2px solid #009999;
+  position: absolute;
+  top: 0;
+}
+#UserCenter .panel-header > table th.active a {
+  color: #009999 !important;
+}
+#UserCenter .module-store-filter {
+  height: 70px;
+}
+#UserCenter .header {
+  background-color: #fff;
+  height: 72px;
+  padding: 17px 20px 17px 25px;
+  position: relative;
+  box-shadow: 0px 0px 0px #ccc;
+}
+#UserCenter .btn_xl {
+  border-right: 0px;
+  background-color: #4f83c3;
+  border: 1px solid #4f83c3;
+  COLOR: #FFF;
+}
+#UserCenter .form-group {
+  margin-bottom: 0px!important;
+}
+#UserCenter #detailsTable {
+  border-top: 1px solid #ccc;
+  position: relative;
+}
+#UserCenter #detailsTable .fanhui {
+  position: absolute;
+  right: 0px;
+  background-color: rgba(152, 152, 152, 0.57);
+  width: 100px;
+  height: 35px;
+  top: 20px;
+  color: #fff3f3;
+  text-align: center;
+  padding: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+#UserCenter #detailsTable .fanhui:hover {
+  background-color: #8FB300;
+}
+#UserCenter #detailsTable .isLoading {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: block;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 1000;
+  line-height: 44px;
+}
+#UserCenter .isLoading {
+  text-align: center;
+  font-size: 14px;
+  color: #666666;
+}
+#UserCenter .isLoading images {
+  margin-right: 10px;
+  margin-left: -10px;
+  width: 20px;
+}
+#UserCenter images {
+  vertical-align: middle;
+}
+#UserCenter images {
+  border: 0;
+}
+#UserCenter #detailsTable table {
+  border-bottom: solid 1px #ddd;
+}
+#UserCenter .table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+#UserCenter table {
+  max-width: 100%;
+  background-color: transparent;
+}
+#UserCenter table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+#UserCenter .table > thead > tr > th {
+  font-weight: normal;
+  border-bottom: 1px solid #ddd;
+}
+#UserCenter .table > thead > tr > th,
+#UserCenter #detailsTable .table > tbody > tr > th,
+#UserCenter #detailsTable .table > tfoot > tr > th,
+#UserCenter #detailsTable .table > thead > tr > td,
+#UserCenter #detailsTable .table > tbody > tr > td,
+#UserCenter #detailsTable .table > tfoot > tr > td {
+  padding: 12px;
+  border-top: none;
+  color: #858585;
+  font-size: 13px;
+}
+#UserCenter .moreUpAndDown {
+  border-top: 1px solid #ccc;
+  color: #8aa422;
+  display: block;
+  font-size: 14px;
+  padding: 20px 0px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 15px;
+}
+#UserCenter .moreUpAndDown .left_xs {
+  padding: 20px 0px;
+  border-right: 1px solid #ccc;
+}
+#UserCenter .moreUpAndDown .left_xs:hover i {
+  color: #8FB300!important;
+}
+#UserCenter .moreUpAndDown .right_xs {
+  padding: 20px 0px;
+}
+#UserCenter .moreUpAndDown .right_xs:hover i {
+  color: #8FB300!important;
+}
+#UserCenter .moreUpAndDown_2 {
+  border-top: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
+  color: #8aa422;
+  display: block;
+  font-size: 14px;
+  padding: 15px 0;
+  text-align: center;
+  cursor: pointer;
+  font-size: 15px;
+}
+#UserCenter .moreUpAndDown_2:hover i {
+  color: #8FB300!important;
+}
+#UserCenter .active_moreUpAndDown {
+  background-color: #f5f5f5;
+}
+#UserCenter .active_moreUpAndDown i {
+  color: #8FB300!important;
+}
+#UserCenter .btn-group,
+#UserCenter .btn-group-vertical {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+#UserCenter .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+#UserCenter .btn-group > .btn-custom-default:first-child {
+  border-left: none;
+}
+#UserCenter .btn-group > .btn:first-child {
+  margin-left: 0;
+}
+#UserCenter .btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+  border-radius: 0;
+}
+#UserCenter .btn-group .btn + .btn,
+#UserCenter .btn-group .btn + .btn-group,
+#UserCenter .btn-group .btn-group + .btn,
+#UserCenter .btn-group .btn-group + .btn-group {
+  margin-left: -1px;
+}
+#UserCenter .btn-group > .btn,
+#UserCenter .btn-group-vertical > .btn {
+  position: relative;
+  float: left;
+}
+#UserCenter .btn-custom-default {
+  background-color: #e7eaef;
+  border-left: solid 1px #c7cad0;
+  color: #7f838a;
+}
+#UserCenter .btn-custom-default:hover,
+#UserCenter .btn-custom-default:active,
+#UserCenter .btn-custom-default.active {
+  background-color: #4d7bb6;
+  border-left: solid 1px #4d7bb6;
+  color: white;
+}
+#UserCenter .tundui_n {
+  width: 80%;
+  border: 1px solid #cecece;
+  border-radius: 3px;
+  background-color: #fff;
+  z-index: 3;
+  position: absolute;
+  top: 48px;
+  padding: 12px 20px 20px;
+  box-shadow: 0px 2px 4px #ccc;
+}
+#UserCenter .tundui_n .bumentitle {
+  padding: 5px;
+  font-size: 18px;
+  color: #8fb300;
+}
+#UserCenter .tundui_n .close_1 {
+  color: #a2a2a2;
+  font-size: 20px;
+  float: right;
+  cursor: pointer;
+  margin: -6px;
+}
+#UserCenter .tundui_n .close_1:hover {
+  color: #8FB300;
+}
+#UserCenter .tundui_n .dange_w {
+  margin-top: 10px;
+}
+#UserCenter .tundui_n .dange_w span {
+  display: inline-block;
+  border-right: 1px solid #ccc;
+  padding-right: 10px;
+  padding-left: 5px;
+  margin: 3px 0px;
+  height: 17px;
+  line-height: 15px;
+  cursor: pointer;
+}
+#UserCenter .tundui_n .dange_w span:hover {
+  color: #8FB300;
+}
+#UserCenter .tundui_n .dange_w .active {
+  color: #8FB300;
+  font-weight: 600;
+}
+#UserCenter .i_top {
+  font-size: 36px;
+  position: absolute;
+  top: -25px;
+  background-color: #fff;
+  color: #8e8e8e;
+}
+#UserCenter .i_top_1 {
+  left: 13px;
+}
+#UserCenter .i_top_2 {
+  left: 80px;
+}
+#UserCenter .i_top_3 {
+  left: 162px;
+}
+#UserCenter .i_top_4 {
+  left: 242px;
+}
+#UserCenter .i_top_5 {
+  left: 323px;
+}
+#UserCenter .i_top_6 {
+  left: 405px;
+}
+#UserCenter #ChangePws form label {
+  margin-top: 5px!important;
+  font-size: 16px;
+  font-weight: 500;
+  color: #666;
+}
+#UserCenter #ChangePws form .but_g {
+  text-align: center;
+}
+#UserCenter #ChangePws form .but_g input {
+  margin: 5px;
+}
+#UserCenter #PpMag form label {
+  margin-top: 7px!important;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+}
+#UserCenter #PpMag .but_g {
+  text-align: center;
+}
+#UserCenter #PpMag .but_g input {
+  margin: 5px;
+}
+#UserCenter #PpMag .img_header img {
+  width: 55px;
+  height: 55px;
+  border-radius: 35px;
+  display: inline-block;
+  float: right;
+}
+#UserCenter .btn-blue {
+  background-color: #099;
+  color: white;
+  outline: none;
+}
+#UserCenter .btn-blue:hover {
+  color: #fff;
+  background-color: #188;
+}
+#UserCenter .MyServerPage {
+  padding: 50px 60px;
+}
+#UserCenter .MyServerPage .UserMag {
+  padding-bottom: 30px;
+  border-bottom: 1px dotted #CCF;
+}
+#UserCenter .MyServerPage .UserMag .SJbBut {
+  float: right;
+  border: 2px solid #099;
+  padding: 10px 24px;
+  color: #099;
+  border-radius: 6px;
+  margin-top: 15px;
+  margin-right: 10px;
+}
+#UserCenter .MyServerPage .UserMag .SJbBut:hover {
+  background-color: #099;
+  color: #fff;
+}
+#UserCenter .MyServerPage .UserMag .UMCard .USPic {
+  float: left;
+}
+#UserCenter .MyServerPage .UserMag .UMCard .USPic img {
+  width: 75px;
+  height: 75px;
+  border-radius: 40px;
+}
+#UserCenter .MyServerPage .UserMag .UMCard .USName {
+  float: left;
+  margin-left: 15px;
+  margin-top: 17px;
+}
+#UserCenter .MyServerPage .UserMag .UMCard .USName .UName {
+  font-size: 16px;
+}
+#UserCenter .MyServerPage .UserMag .UMCard .USName .UName i {
+  color: #777;
+}
+#UserCenter .MyServerPage .UserMag .UMCard .USName .ISVip {
+  line-height: 30px;
+  font-size: 13px;
+  color: #666;
+}
+#UserCenter .MyServerPage .ServerList {
+  text-align: center;
+  padding: 40px 0;
+}
+#UserCenter .MyServerPage .ServerList .SLCard {
+  cursor: pointer;
+}
+#UserCenter .MyServerPage .ServerList .SLCard:hover .SLCDsm {
+  visibility: initial;
+}
+#UserCenter .MyServerPage .ServerList .SLCard .SLCIcon {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  font-size: 25px;
+  background: #ccc;
+  border-radius: 25px;
+  color: #fff;
+  line-height: 50px;
+}
+#UserCenter .MyServerPage .ServerList .SLCard .SLCIconActive {
+  background: #099;
+}
+#UserCenter .MyServerPage .ServerList .SLCard .SLCTitle {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #555;
+}
+#UserCenter .MyServerPage .ServerList .SLCard .SLCNum {
+  margin-top: 2px;
+  color: #888;
+}
+#UserCenter .MyServerPage .ServerList .SLCard .SLCDsm {
+  color: #099;
+  margin-top: 10px;
+  visibility: hidden;
+}
+#UserCenter .MyServerPage .VipServer {
+  margin-bottom: 30px;
+}
+#UserCenter .MyServerPage .VipServer .VSCard {
+  min-height: 120px;
+  border: 1px solid #ccf;
+  padding: 15px;
+  margin-top: 15px;
+}
+#UserCenter .MyServerPage .VipServer .VSCard .VSCms {
+  font-size: 14px;
+  color: #ccc;
+}
+#UserCenter .MyServerPage .VipServer .VSCard .VSbut {
+  text-align: center;
+}
+#UserCenter .MyServerPage .VipServer .VSCard .VIPserverBut {
+  border: 1px solid #099;
+  padding: 6px 16px;
+  color: #099;
+  border-radius: 6px;
+  margin-top: 15px;
+  margin-right: 10px;
+  font-size: 14px;
+}
+#UserCenter .MyServerPage .VipServer .VSCard .VIPserverBut:hover {
+  background-color: #099;
+  color: #fff;
+}
+#UserCenter .ServiceBill {
+  padding: 50px 60px;
+}
+#UserCenter .ServiceBill .payment {
+  margin-bottom: 40px;
+}
+#UserCenter .ServiceBill .payment .PMMonth {
+  border: 1px dashed #bbb8b8;
+  width: 300px;
+  background-color: #d9ecec;
+  border-radius: 5px;
+  padding: 10px;
+  color: #666;
+}
+#UserCenter .ServiceBill .payment .PMMonth span {
+  margin-left: 20px;
+  color: #6f8d94;
+  font-size: 12px;
+  display: inline-block;
+}
+#UserCenter .ServiceBill .payment .PMdo {
+  text-align: right;
+}
+#UserCenter .ServiceBill .payment .PMdo .PMDzhi {
+  border-bottom: 1px solid #ccc;
+  width: 140px;
+  padding-bottom: 15px;
+  font-size: 16px;
+  display: inline-block;
+}
+#UserCenter .ServiceBill .payment .PMdo .PMDzhi span {
+  color: #ff8e3a;
+  font-weight: 600;
+}
+#UserCenter .ServiceBill .payment .PMdo .PMDzhiZ {
+  padding-top: 12px;
+  color: #099;
+  font-weight: 600;
+}
+#UserCenter .VipServer {
+  margin-bottom: 30px;
+}
+#UserCenter .VipServer .VSCard {
+  min-height: 120px;
+  border: 1px solid #CCF;
+  padding: 15px;
+  margin-top: 15px;
+}
+#UserCenter .VipServer .VSCard .VSCms {
+  font-size: 14px;
+  color: #ccc;
+}
+#UserCenter .VipServer .VSCard .VSbut {
+  text-align: center;
+}
+#UserCenter .VipServer .VSCard .VIPserverBut {
+  border: 1px solid #099;
+  padding: 6px 16px;
+  color: #099;
+  border-radius: 6px;
+  margin-top: 15px;
+  margin-right: 10px;
+  font-size: 14px;
+}
+#UserCenter .VipServer .VSCard .VIPserverBut:hover {
+  background-color: #099;
+  color: #fff;
+}
+#UserCenter table {
+  border-bottom: 0px!important;
+}
+#UserCenter .serviceTableMain {
+  border: 1px solid #ccf;
+  padding: 30px 30px 0 30px;
+  margin-bottom: 40px;
+}
+#UserCenter .serviceTableMain .dTableRow {
+  margin-bottom: 10px;
+}
+#UserCenter .serviceTableMain .dTableRowOne {
+  margin-bottom: 20px;
+}
+#UserCenter .serviceTableMain .dTableRow .dTableCol table {
+  width: 100%;
+}
+#UserCenter .serviceTableMain .dTableRow .dTableCol table tbody tr {
+  width: 100%;
+  display: table;
+  margin-bottom: 15px;
+}
+#UserCenter .serviceTableMain .dTableRow .dTableCol table tbody tr:nth-child(1) {
+  margin-bottom: 20px;
+}
+#UserCenter .serviceTableMain .dTableRow .dTableCol table tbody tr:nth-child(1) td,
+#UserCenter .serviceTableMain .dTableRow .dTableCol table tbody tr td:nth-child(1) {
+  color: #323232;
+}
+#UserCenter .serviceTableMain .dTableRow .dTableCol table tbody tr.tr1 td:nth-child(1) {
+  color: #099;
+}
+#UserCenter .serviceTableMain .dTableRow .dTableCol table tbody tr td {
+  width: 30%;
+  display: inline-table;
+  text-align: left;
+  color: #ababab;
+}
+#UserCenter .serviceTableMain .dTableRow .dTableCol table tbody tr td.firstTd {
+  width: 38%;
+}
+#UserCenter .servicetypeMain:nth-child(2) .serviceTableMain {
+  margin-bottom: 0;
+}
+#UserCenter .colorababab {
+  color: #ababab!important;
+}

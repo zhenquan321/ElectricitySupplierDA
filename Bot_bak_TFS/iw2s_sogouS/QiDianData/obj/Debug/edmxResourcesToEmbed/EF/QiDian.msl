@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QiDianSogouModelStoreContainer" CdmEntityContainer="QiDianSogouEntities">
+    <EntitySetMapping Name="NovelLibrary">
+      <EntityTypeMapping TypeName="QiDianSogouModel.NovelLibrary">
+        <MappingFragment StoreEntitySet="NovelLibrary">
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="IsBot" ColumnName="IsBot" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NovelName" ColumnName="NovelName" />
+          <ScalarProperty Name="RealName" ColumnName="RealName" />
+          <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+          <ScalarProperty Name="NovelType" ColumnName="NovelType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ResultLiks">
+      <EntityTypeMapping TypeName="QiDianSogouModel.ResultLiks">
+        <MappingFragment StoreEntitySet="ResultLiks">
+          <ScalarProperty Name="States" ColumnName="States" />
+          <ScalarProperty Name="BlackId" ColumnName="BlackId" />
+          <ScalarProperty Name="TopDomain" ColumnName="TopDomain" />
+          <ScalarProperty Name="Domain" ColumnName="Domain" />
+          <ScalarProperty Name="BeiYong" ColumnName="BeiYong" />
+          <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+          <ScalarProperty Name="LinkUrl" ColumnName="LinkUrl" />
+          <ScalarProperty Name="LinkAbstract" ColumnName="LinkAbstract" />
+          <ScalarProperty Name="LinkTitle" ColumnName="LinkTitle" />
+          <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+          <ScalarProperty Name="RealName" ColumnName="RealName" />
+          <ScalarProperty Name="NovelName" ColumnName="NovelName" />
+          <ScalarProperty Name="NovelId" ColumnName="NovelId" />
+          <ScalarProperty Name="Rid" ColumnName="Rid" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WhiteList">
+      <EntityTypeMapping TypeName="QiDianSogouModel.WhiteList">
+        <MappingFragment StoreEntitySet="WhiteList">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AuthorizedName" ColumnName="AuthorizedName" />
+          <ScalarProperty Name="AuthorizedUrl1" ColumnName="AuthorizedUrl1" />
+          <ScalarProperty Name="AuthorizedUrl2" ColumnName="AuthorizedUrl2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BlackList">
+      <EntityTypeMapping TypeName="QiDianSogouModel.BlackList">
+        <MappingFragment StoreEntitySet="BlackList">
+          <ScalarProperty Name="DomainType" ColumnName="DomainType" />
+          <ScalarProperty Name="Domain" ColumnName="Domain" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

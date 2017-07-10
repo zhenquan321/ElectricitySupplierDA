@@ -1,0 +1,780 @@
+﻿#UserCenter{
+    .panel{
+        padding: 0;
+         .tubiao_1{
+            border-top: 1px solid #ccc;
+            padding:20px 10%;
+        }
+    }
+    .panel label{
+        margin: 0;padding: 0;
+    }
+    .row{
+        margin: 0;
+    }
+    .form-control{
+        z-index: 1;
+    }
+    .glyphicon{
+        top: 0;
+        background-color: #4D7BB6;
+        color: #FFF;
+        border-color: #4D7BB6;
+        width: 38px;
+        height: 34px;
+        float: left;
+    }
+    .clearBtn{
+        right: 5px;
+        z-index: 1;
+    }
+    .hide-file{
+        opacity: 0;
+        height: 0px;
+        width: 10px;
+    }
+    .header{
+        background-color: #fff;
+        height: 70px;
+        padding: 17px 20px 17px 25px;
+        position: relative;
+        box-shadow: 0px 0px 0px #ccc;
+        border-top:1px solid #ccc;
+
+    }
+    .header h3{
+        font-size: 14px;
+        display: inline-block;
+        height: 36px;
+        line-height: 36px;
+        padding: 0px;
+        margin: 0;
+    }
+    .row{
+        background-color: #FFF;
+    }
+    .row.no-background{
+        background-color: transparent;
+    }
+    #dropdownMenu1:hover{
+        background-color: #F4F6F4 !important;
+        color: #AEB0B0;
+    }
+    .input-group-filter{
+        width: 185px;
+    }
+    .input-group-filter .module-filter-text{
+        width: 146px;
+        border-radius: 0 6px 6px 0;
+    }
+    #mod-container{
+        margin-right: -1%;
+    }
+    .module-container-box{
+        margin-right: -30px;
+    }
+    .module-container{
+        background-color: #FFF;
+        /* max-width: 262px; */
+        width: 49%;
+        /* min-width: 244px; */
+        height: 130px;
+        margin-right: 1%;
+        margin-bottom: 10px;
+        position: relative;
+        box-shadow: 0px 2px 4px #ccc;
+        border-radius: 5px;
+    }
+    .module-container-header h4{
+        color: #A1A2A2;
+        font-size: 20px;
+        text-indent: 6px;
+    }
+    .module-name{
+        float: left;
+        height: 78px;
+        font-size: 16px;
+        /*text-indent: 63px;*/
+        text-indent: 30px;
+        line-height: 78px;
+    }
+    .module-icon{
+        width: 20px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 20px;
+        color: #C9C9CA;
+        margin-right: 16px;
+        display: inline-block;
+        float: right;
+    }
+    .row-border-top{
+        border-top: 1px solid #E8E8E7;
+        background-color: #fff;
+        position: absolute;
+        width: 100%;
+        height: 36px;
+        bottom: 0;
+    }
+    .row-border-top .module-describe{
+        font-weight: normal;
+        padding: 0 20px 0 30px;
+        color: #868684;
+        height: 36px;
+        line-height: 36px;
+    }
+    .module-name-box .module-describe{
+        position: absolute;
+        left: 30px;
+        bottom: 42px;
+        color: #868684;
+    }
+    .btn-module-btn{
+        float: right;
+        margin-right: 25px;
+        margin-left: -10px;
+        width: 16px;
+        height: 78px;
+        line-height: 30px;
+        color: #6B90CA;
+    }
+    .module-added{
+        float: right;
+        width: 41px;
+        height: 16px;
+        margin-right: 20px;
+        margin-left: -10px;
+        /*background: url(Scripts/app_pc/images/module-added.png) center center no-repeat;*/
+        /*right: 6px;*/
+        padding: 0;
+        display: none;
+        position: relative;
+        top: 32px;
+        color: #fff;
+        font-size: 12px;
+        line-height: 16px;
+        background-color: #818181;
+        border-radius: 2px;
+        text-align: center;
+    }
+    .btn-detail{
+        cursor: pointer;
+    }
+    .btn-remove{
+        display: none;
+        background: url(Scripts/app_pc/images/module-remove.png) center center no-repeat;
+    }
+    .btn-add{
+        display: none;
+        background: url(Scripts/app_pc/images/module-add.png) center center no-repeat;
+    }
+    .btn-delete{
+        display: none;
+        background: url(Scripts/app_pc/images/module-del.png) center center no-repeat;
+    }
+    .btn-edit{
+        display: none;
+        background: url(Scripts/app_pc/images/module-modify.png) center center no-repeat;
+    }
+    .module-added.active,#module .btn-add.active,#module .btn-delete.active,#module .added .btn-remove.active,#module .btn-edit.active{
+        display: block;
+    }
+    .custom{
+        position: relative; min-height: 450px;
+    }
+    .custom .btn-delete{
+        color: #C33B26;
+    }
+
+    .panel-header>table {
+        width: 80%;
+    }
+    table {
+        max-width: 100%;
+        background-color: transparent;
+    }
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+    tr {
+        display: table-row;
+        vertical-align: inherit;
+        border-color: inherit;
+    }
+    .panel-header>table th {
+        text-align: center;
+        border-right: solid 1px #cccccc;
+        border-bottom: solid 0px #cccccc;
+        font-size: 14px;
+        padding: 24px 0;
+        position: relative;
+        width: 20%;
+    }
+    .panel-header>table th a {
+        cursor: pointer;
+        display: block;
+        color: #81867c;
+        font-weight: normal;
+    }
+    .panel-header>table th.active .topselect {
+        width: 100%;
+        height: 0;
+        border: 2px solid #009999;
+        position: absolute;
+        top: 0;
+      
+    }
+    .panel-header > table th.active a{
+            color:#009999!important
+        }
+    .module-store-filter {
+        height: 70px;
+    }
+
+     .header {
+        background-color: #fff;
+        height: 72px;
+        padding: 17px 20px 17px 25px;
+        position: relative;
+        box-shadow: 0px 0px 0px #ccc;
+    }
+    .btn_xl{
+        border-right: 0px;
+        background-color:#4f83c3;
+        border: 1px solid #4f83c3;
+        COLOR: #FFF;
+    }
+    .form-group{
+        margin-bottom:0px!important;
+    }
+    #detailsTable {
+        border-top: 1px solid #ccc;
+        position: relative;
+
+        .fanhui{
+            position: absolute;
+            right: 0px;
+            background-color: rgba(152, 152, 152, 0.57);
+            width: 100px;
+            height: 35px;
+            top: 20px;
+            color: #fff3f3;
+            text-align: center;
+            padding: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            &:hover{
+                background-color:#8FB300;
+            }
+        }
+    }
+    #detailsTable .isLoading {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        display: block;
+        background-color: rgba(255,255,255,.5);
+        z-index: 1000;
+        line-height: 44px;
+    }
+    .isLoading {
+        text-align: center;
+        font-size: 14px;
+        color: #666666;
+    }
+    .isLoading images {
+        margin-right: 10px;
+        margin-left: -10px;
+        width: 20px;
+    }
+    images {
+        vertical-align: middle;
+    }
+    images {
+        border: 0;
+    }
+    #detailsTable table {
+    border-bottom: solid 1px #ddd;
+    }
+    .table {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    table {
+        max-width: 100%;
+        background-color: transparent;
+    }
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+    .table > thead > tr > th {
+        font-weight: normal;
+        border-bottom: 1px solid #ddd;
+    }
+    .table > thead > tr > th, #detailsTable .table > tbody > tr > th, #detailsTable .table > tfoot > tr > th, #detailsTable .table > thead > tr > td, #detailsTable .table > tbody > tr > td, #detailsTable .table > tfoot > tr > td {
+        padding: 12px;
+        border-top: none;
+        color: #858585;
+        font-size:13px;
+    }
+    .moreUpAndDown {
+        border-top: 1px solid #ccc;
+        color: #8aa422;
+        display: block;
+        font-size: 14px;
+        padding: 20px 0px;
+        text-align: center;
+        cursor: pointer;
+        font-size:15px;
+        .left_xs{
+            padding:20px 0px;
+            border-right:1px solid #ccc;
+              &:hover{
+                        i{
+                            color:#8FB300!important;
+                        }
+                    }
+
+        }
+        .right_xs{
+        padding:20px 0px;
+            &:hover{
+                    i{
+                        color:#8FB300!important;
+                    }
+                }
+
+          }
+      
+    }
+     .moreUpAndDown_2 {
+        border-top: 1px solid #dcdcdc;
+        border-bottom: 1px solid #dcdcdc;
+        color: #8aa422;
+        display: block;
+        font-size: 14px;
+        padding: 15px 0;
+        text-align: center;
+        cursor: pointer;
+        font-size:15px;
+        &:hover{
+            i{
+                color:#8FB300!important;
+            }
+        }
+    }
+    .active_moreUpAndDown{
+        background-color:#f5f5f5;
+         i{
+                color:#8FB300!important;
+            }
+    }
+
+    .btn-group, .btn-group-vertical {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+    }
+    .btn-group > .btn-custom-default:first-child {
+        border-left: none;
+    }
+    .btn-group>.btn:first-child {
+        margin-left: 0;
+    }
+    .btn-group>.btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+        border-radius: 0;
+    }
+    .btn-group .btn+.btn, .btn-group .btn+.btn-group, .btn-group .btn-group+.btn, .btn-group .btn-group+.btn-group {
+        margin-left: -1px;
+    }
+    .btn-group>.btn, .btn-group-vertical>.btn {
+        position: relative;
+        float: left;
+    }
+    .btn-custom-default {
+        background-color: #e7eaef;
+        border-left: solid 1px #c7cad0;
+        color: #7f838a;
+    }
+    .btn-custom-default:hover, .btn-custom-default:active, .btn-custom-default.active {
+        background-color: #4d7bb6;
+        border-left: solid 1px #4d7bb6;
+        color: white;
+    }
+    .tundui_n{
+        width: 80%;
+        border: 1px solid #cecece;
+        border-radius:3px;
+        background-color: #fff;
+        z-index: 3;
+        position: absolute;
+        top: 48px;
+        padding: 12px 20px 20px;
+        box-shadow: 0px 2px 4px #ccc;
+        .bumentitle{
+                padding: 5px;
+            font-size: 18px;
+            color: #8fb300;
+        }
+        .close_1{
+            color: #a2a2a2;
+            font-size: 20px;
+            float: right;
+            cursor: pointer;
+            margin: -6px;
+            &:hover{
+                color:#8FB300;
+
+            }
+        }
+        .dange_w{
+            margin-top:10px;
+            span{
+                display: inline-block;
+                border-right: 1px solid #ccc;
+                padding-right: 10px;
+                padding-left: 5px;
+                margin: 3px 0px;
+                height: 17px;
+                line-height: 15px;
+                cursor:pointer;
+                &:hover{
+                    color:#8FB300;
+                }
+            }
+            .active{
+                color:#8FB300;
+                font-weight:600;
+            }
+
+        }
+    }
+
+      .i_top{
+            font-size: 36px;
+            position: absolute;
+            top: -25px;
+            background-color: #fff;
+            color:#8e8e8e;
+        }
+        .i_top_1{
+            left:13px;
+        }
+        .i_top_2{
+            left:80px;
+        }
+        .i_top_3{
+            left:162px;
+        }
+        .i_top_4{
+            left:242px;
+        }
+        .i_top_5{
+            left:323px;
+        }
+        .i_top_6{
+            left:405px;
+        }
+#ChangePws{
+    form{
+        label{
+                margin-top: 5px!important;
+                font-size: 16px;
+                font-weight: 500;
+                color: #666;
+        }
+         .but_g{
+            text-align:center;
+            input{
+                margin:5px;
+            }
+        }
+    }
+   
+}
+#PpMag{
+     form{
+        label{
+                   margin-top: 7px!important;
+                font-size: 14px;
+                font-weight: 500;
+                color: #666;
+        }
+       
+    }
+     .but_g{
+            text-align:center;
+            input{
+                margin:5px;
+            }
+        }
+     .img_header{
+         
+         img{
+              width: 55px;
+            height: 55px;
+            border-radius: 35px;
+                display: inline-block;
+                float:right;
+         }
+            
+     }
+}
+
+
+  .btn-blue {
+    background-color: #099;
+    color: white;
+    outline: none;
+  
+    &:hover{
+        color:#fff;
+        background-color:#188;
+    }
+}
+
+
+
+    .MyServerPage{
+         padding: 50px 60px;
+         .UserMag{
+                 padding-bottom: 30px;
+                 border-bottom: 1px dotted #CCF;
+             .SJbBut{
+                     float: right;
+                    border: 2px solid #099;
+                    padding: 10px 24px;
+                    color: #099;
+                    border-radius: 6px;
+                    margin-top: 15px;
+                    margin-right: 10px;
+                    &:hover{
+                        background-color:#099;
+                        color:#fff;
+                    }
+             }
+             .UMCard{
+                 .USPic{
+                     float:left;
+                     img{
+                        width: 75px;
+                        height: 75px;
+                        border-radius: 40px;
+                     }
+                 }
+                 .USName{
+                     float:left;
+                     margin-left: 15px;
+                     margin-top: 17px;
+                     .UName{
+                             font-size: 16px;
+                             i{
+                                     color: #777;
+                             }
+                     }
+                     .ISVip{
+                             line-height: 30px;
+                            font-size: 13px;
+                            color: #666;
+                     }
+                 }
+             }
+
+         }
+        .ServerList{
+            text-align: center;
+            padding: 40px 0;
+            .SLCard{
+                cursor:pointer;
+                &:hover{
+                     .SLCDsm{
+                        visibility: initial;
+                    }
+                }
+                .SLCIcon{
+                    width: 50px;
+                    height: 50px;
+                    display: inline-block;
+                    font-size: 25px;
+                    background: #ccc;
+                    border-radius: 25px;
+                    color: #fff;
+                    line-height: 50px;
+                }
+                .SLCIconActive{
+                    background: #099;
+                }
+                .SLCTitle{
+                    margin-top: 15px;
+                    font-size: 14px;
+                    color: #555;
+                }  
+                .SLCNum{
+                    margin-top: 2px;
+                    color: #888;
+                } 
+                .SLCDsm{
+                    color: #099;
+                    margin-top: 10px;
+                    visibility: hidden;
+                }
+
+            }
+           
+        }
+        .VipServer{
+            margin-bottom:30px;
+            .VSCard{
+                 min-height: 120px;
+                border: 1px solid #ccf;
+                padding: 15px;
+                margin-top: 15px;
+                .VSCms{
+                    font-size:14px;
+                    color:#ccc;
+                }
+                .VSbut{
+                    text-align:center;
+                }
+                .VIPserverBut{
+                    border: 1px solid #099;
+                    padding: 6px 16px;
+                    color: #099;
+                    border-radius: 6px;
+                    margin-top: 15px;
+                    margin-right: 10px;
+                    font-size:14px;
+                    &:hover{
+                        background-color:#099;
+                        color:#fff;
+                    }
+                }
+            }
+
+        }
+       
+
+    }
+     .ServiceBill{
+            padding:50px 60px;
+            .payment{
+                margin-bottom:40px;
+                .PMMonth{
+                    border: 1px dashed #bbb8b8;
+                    width: 300px;
+                    background-color: #d9ecec;
+                    border-radius: 5px;
+                    padding: 10px;
+                    color: #666;
+                    span{
+                        margin-left: 20px;
+                        color: #6f8d94;
+                        font-size: 12px;
+                        display: inline-block;
+                    }
+                }
+                .PMdo{
+                    text-align: right;
+                    .PMDzhi{
+                            border-bottom: 1px solid #ccc;
+                            width: 140px;
+                            padding-bottom: 15px;
+                            font-size: 16px;
+                            display: inline-block;
+                            span{
+                                color:#ff8e3a;
+                                font-weight: 600;
+                            }
+                    }
+                    .PMDzhiZ{
+                        padding-top: 12px;
+                        color: #099;
+                        font-weight: 600;
+                    }
+                }
+            }
+    
+             }
+          .VipServer{
+            margin-bottom:30px;
+            .VSCard{
+                 min-height: 120px;
+                border: 1px solid #CCF;
+                padding: 15px;
+                margin-top: 15px;
+                .VSCms{
+                    font-size:14px;
+                    color:#ccc;
+                }
+                .VSbut{
+                    text-align:center;
+                }
+                .VIPserverBut{
+                    border: 1px solid #099;
+                    padding: 6px 16px;
+                    color: #099;
+                    border-radius: 6px;
+                    margin-top: 15px;
+                    margin-right: 10px;
+                    font-size:14px;
+                    &:hover{
+                        background-color:#099;
+                        color:#fff;
+                    }
+                }
+            }
+        }
+       table{
+           border-bottom:0px!important;
+       }
+        
+            .serviceTableMain{border: 1px solid #ccf;padding: 30px 30px 0 30px;margin-bottom:40px;}
+            .serviceTableMain .dTableRow{margin-bottom:10px;}
+            .serviceTableMain .dTableRowOne{margin-bottom:20px;}
+            .serviceTableMain .dTableRow .dTableCol{}
+            .serviceTableMain .dTableRow .dTableCol table{width: 100%;}
+            .serviceTableMain .dTableRow .dTableCol table tbody{}
+            .serviceTableMain .dTableRow .dTableCol table tbody tr{width: 100%;display:table;margin-bottom:15px;}
+            .serviceTableMain .dTableRow .dTableCol table tbody tr:nth-child(1){margin-bottom:20px;}
+            .serviceTableMain .dTableRow .dTableCol table tbody tr:nth-child(1) td,
+            .serviceTableMain .dTableRow .dTableCol table tbody tr td:nth-child(1){color:#323232;}
+            .serviceTableMain .dTableRow .dTableCol table tbody tr.tr1 td:nth-child(1){color:#099;}
+            .serviceTableMain .dTableRow .dTableCol table tbody tr td{
+	            width:30%;
+	            display:inline-table;
+	            text-align:left;
+	            color:#ababab;
+            }
+            .serviceTableMain .dTableRow .dTableCol table tbody tr td.firstTd{
+	            width: 38%;
+            }
+            .servicetypeMain:nth-child(2) .serviceTableMain{margin-bottom: 0;}
+
+
+            .colorababab {
+                color: #ababab!important;
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

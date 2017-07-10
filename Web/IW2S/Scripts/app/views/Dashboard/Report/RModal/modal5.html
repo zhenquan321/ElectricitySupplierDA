@@ -1,0 +1,40 @@
+﻿<div id="modal5">
+    <div class="M5_nei">
+        <div >
+            <h5>3.在线媒体报道刊发量中，刊发网站平台的构成与影响力分布</h5>
+            <div class="HoverActiveYu" ng-class="{true:'HoverActive',false:''}[MouseOn==51&&keXiuGai]" ng-mouseover="MouseOnShow(51)" ng-mouseleave="MouseOnShow(0)">
+                <div class="caozuo">
+                    <i class="fa fa-refresh" ng-click="GetDomainChart(true)"></i>
+                    <i class="fa fa-pencil-square-o" ng-click="ChangeTJMS(51)"></i>
+                    <i class="fa fa-low-vision"></i>
+                </div>
+                <div class="row mt20">
+                    <div id="RP_GetBubbleList" style="width: 100%; height: 400px; text-align: center; overflow: hidden;"></div>
+                </div>
+                <div class="mb10 ">
+                    <div class="mt10" ng-show="ChangeTJMSShow==0&&GetDomainChartDate.Description">
+                        {{GetDomainChartDate.Description}}
+                    </div>
+                    <div ng-show="ChangeTJMSShow==0&&!GetDomainChartDate.Description">
+                        <div class="addMS">
+                            <div class="nei_TJMS" ng-click="ChangeTJMS(51)" ng-show="keXiuGai">
+                                <i class="fa fa-plus-square mr5"></i>添加描述
+                            </div>
+                            <div class="nei_TJMS_no" ng-show="!keXiuGai">
+                                <i class="fa fa-plus-square mr5"></i>您尚未添加描述
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt10" ng-show="ChangeTJMSShow==51">
+                        <textarea class="form-control" rows="3" placeholder="请输入采集统计概览描述" ng-model="model2.GetDCdescription"></textarea>
+                        <div id="caozuoBut">
+                            <button type="button" class="btn btn-primary queren" ng-click="UpdateDomainOverview()">修改</button>
+                            <button type="button" class="btn btn-default quxiao" ng-click="ChangeTJMS(0)">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

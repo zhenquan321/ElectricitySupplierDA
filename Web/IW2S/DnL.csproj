@@ -1,0 +1,963 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{19C479EB-1BE7-4321-8ED5-186A8CA746F9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IW2S</RootNamespace>
+    <AssemblyName>IW2S</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AISSystem">
+      <HintPath>..\packages\AISSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="JiebaNet.Analyser, Version=0.37.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\JieBaSegmenter\Libs\JiebaNet.Analyser.dll</HintPath>
+    </Reference>
+    <Reference Include="JiebaNet.Segmenter, Version=0.38.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\JieBaSegmenter\Libs\JiebaNet.Segmenter.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Bson, Version=2.2.2.10, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Assemblies\Libs\MongoDBV2\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\..\Assemblies\Libs\MongoDBV2\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core">
+      <HintPath>..\..\Assemblies\Libs\MongoDBV2\MongoDB.Driver.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.GridFS">
+      <HintPath>..\..\Assemblies\Libs\MongoDBV2\MongoDB.Driver.GridFS.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Legacy">
+      <HintPath>..\..\Assemblies\Libs\MongoDBV2\MongoDB.Driver.Legacy.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoV2">
+      <HintPath>..\..\Assemblies\Libs\MongoDBV2\MongoV2.dll</HintPath>
+    </Reference>
+    <Reference Include="MSScriptControl">
+      <HintPath>..\packages\MSScriptControl.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\学习\Summary\Summary\Libs\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>..\packages\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Abstractions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.0.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.0.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.1\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing">
+      <HintPath>..\..\Assemblies\Libs\zxing.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="ExportFiles\ImgUpload\" />
+    <Folder Include="ExportFiles\ImportExcel\" />
+    <Folder Include="Views\Export\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
+    <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
+    <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageAreaRegistration.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageConfigurationExtensions.cs" />
+    <Compile Include="Areas\HelpPage\Models\HelpPageApiModel.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleKey.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ImageSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\InvalidSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ObjectGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
+    <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AuthenticationHelper.cs" />
+    <Compile Include="Controllers\BingController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\DataInfoController.cs" />
+    <Compile Include="Controllers\EMNController.cs" />
+    <Compile Include="Controllers\ExportController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImgController.cs" />
+    <Compile Include="Controllers\IprCourtController.cs" />
+    <Compile Include="Controllers\JiebaController.cs" />
+    <Compile Include="Controllers\KeywordController.cs" />
+    <Compile Include="Controllers\ProCategoryController.cs" />
+    <Compile Include="Controllers\ShareController.cs" />
+    <Compile Include="Controllers\SogouController.cs" />
+    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\WeiboController.cs" />
+    <Compile Include="Controllers\WXSourceController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\CommonHelper.cs" />
+    <Compile Include="Helpers\EmailHelper.cs" />
+    <Compile Include="Helpers\EncryptHelper.cs" />
+    <Compile Include="Helpers\Enums.cs" />
+    <Compile Include="Helpers\ExceptionHelper.cs" />
+    <Compile Include="Helpers\LogerHelper.cs" />
+    <Compile Include="Helpers\MongoDBClass.cs" />
+    <Compile Include="Helpers\MongoDBHelper.cs" />
+    <Compile Include="Helpers\MySqlDBHelper.cs" />
+    <Compile Include="Helpers\ResultInfo.cs" />
+    <Compile Include="Helpers\VerifyCode.aspx.cs">
+      <DependentUpon>VerifyCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Helpers\VerifyCode.aspx.designer.cs">
+      <DependentUpon>VerifyCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\VerifyCodeClass.cs" />
+    <Compile Include="Helpers\ZXingQrcodeHelper.cs" />
+    <Compile Include="Models\CasecauseDto.cs" />
+    <Compile Include="Models\Emarknow\FreeBotItem.cs" />
+    <Compile Include="Models\Emarknow\FreeBotItemDto.cs" />
+    <Compile Include="Models\Emarknow\FreeBotItemVo.cs" />
+    <Compile Include="Models\Emarknow\FreeBotShop.cs" />
+    <Compile Include="Models\Emarknow\FreeBotShopDto.cs" />
+    <Compile Include="Models\Emarknow\FreeKeywordGroup.cs" />
+    <Compile Include="Models\Emarknow\FreeTask.cs" />
+    <Compile Include="Models\Emarknow\FreeTaskDto.cs" />
+    <Compile Include="Models\Emarknow\FreeTaskRecord.cs" />
+    <Compile Include="Models\Emarknow\FreeTaskRecordDto.cs" />
+    <Compile Include="Models\Emarknow\FreeUser.cs" />
+    <Compile Include="Models\Emarknow\FreeUserDto.cs" />
+    <Compile Include="Models\Emarknow\FreeWebSite.cs" />
+    <Compile Include="Models\Emarknow\KeywordVO.cs" />
+    <Compile Include="Models\Emarknow\Kmeans\IDrawable.cs" />
+    <Compile Include="Models\Emarknow\Kmeans\K_Means.cs" />
+    <Compile Include="Models\Emarknow\Kmeans\Painter.cs" />
+    <Compile Include="Models\FreeShopTimeline.cs" />
+    <Compile Include="Models\FreeShopTimelineDto.cs" />
+    <Compile Include="Models\GroupTreeDto.cs" />
+    <Compile Include="Models\IDBoolDto.cs" />
+    <Compile Include="Models\KwywordLinksVO.cs" />
+    <Compile Include="Models\LawCodeEnum.cs" />
+    <Compile Include="Models\links.cs" />
+    <Compile Include="Models\linksdto.cs" />
+    <Compile Include="Models\nodes.cs" />
+    <Compile Include="Models\QueryResult.cs" />
+    <Compile Include="Models\RectangularTree.cs" />
+    <Compile Include="Models\ResultDto.cs" />
+    <Compile Include="Models\TimeLinkCountDto.cs" />
+    <Compile Include="post.ashx.cs">
+      <DependentUpon>post.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Controllers\JiebaLibs\JiebaNet.Analyser.dll" />
+    <Content Include="Controllers\JiebaLibs\JiebaNet.Analyser.pdb" />
+    <Content Include="Controllers\JiebaLibs\JiebaNet.Segmenter.dll" />
+    <Content Include="Controllers\JiebaLibs\JiebaNet.Segmenter.pdb" />
+    <Content Include="Controllers\JiebaLibs\Newtonsoft.Json.dll" />
+    <Content Include="Controllers\JiebaLibs\Newtonsoft.Json.xml" />
+    <Content Include="crossdomain.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Areas\HelpPage\Views\Web.config" />
+    <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Index.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Helpers\VerifyCode.aspx" />
+    <Content Include="Resources\article.txt" />
+    <Content Include="Resources\article_social.txt" />
+    <Content Include="Resources\article_sports.txt" />
+    <Content Include="Resources\stop_words_test.txt" />
+    <Content Include="Resources\test_dict.txt" />
+    <Content Include="Resources\围城.txt" />
+    <Content Include="Scripts\App.js" />
+    <Content Include="Scripts\app\data\RectangularTree.txt" />
+    <Content Include="Scripts\app\data\SogouGroupTree.txt" />
+    <Content Include="Scripts\app\data\AllGroupTree.txt" />
+    <Content Include="Scripts\app\data\miserables.txt" />
+    <Content Include="Scripts\app\data\wewe.txt" />
+    <Content Include="Scripts\app\images\2222.png" />
+    <Content Include="Scripts\app\images\3333.png" />
+    <Content Include="Scripts\app\images\ap1.gif" />
+    <Content Include="Scripts\app\images\ap2.jpg" />
+    <Content Include="Scripts\app\images\ap3.jpg" />
+    <Content Include="Scripts\app\images\Business.jpg" />
+    <Content Include="Scripts\app\images\favicon.png" />
+    <Content Include="Scripts\app\images\fenzhi.png" />
+    <Content Include="Scripts\app\images\icons.png" />
+    <Content Include="Scripts\app\images\jb51.png" />
+    <Content Include="Scripts\app\images\jcsuccess.jpg" />
+    <Content Include="Scripts\app\images\jiance.gif" />
+    <Content Include="Scripts\app\images\link.png" />
+    <Content Include="Scripts\app\images\logo.png" />
+    <Content Include="Scripts\app\images\NewHome\DLCould_b.png" />
+    <Content Include="Scripts\app\images\NewHome\DLCould_w.png" />
+    <Content Include="Scripts\app\images\pie.png" />
+    <Content Include="Scripts\app\images\products.png" />
+    <Content Include="Scripts\app\images\sales_mo.PNG" />
+    <Content Include="Scripts\app\images\sales_no.png" />
+    <Content Include="Scripts\app\images\square-image.png" />
+    <Content Include="Scripts\app\images\store.png" />
+    <Content Include="Scripts\app\images\story.jpg" />
+    <Content Include="Scripts\app\images\uploadpic.jpg" />
+    <Content Include="Scripts\app\images\wechat_code.png" />
+    <Content Include="Scripts\app\images\wx-logo.png" />
+    <Content Include="Scripts\app\scripts\controllers\bing\Bing_dashboard_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\bing\Bing_domaincategory_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\bing\Bing_keywordConstrast_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\bing\Bing_keywordMng_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\bing\Bing_keywordViews_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\bing\Bing_linkCollection_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\bing\Bing_showDesc_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\bing\iw2s_bing_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\computingResources_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\DiscoveryPage_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\eMarketNow\eMarketNowDashboard_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\eMarketNow\eMarketNowMng_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\eMarketNow\eMarketNow_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\eMarketNow\iw2s_eMarketNow_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\home\changepwd_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\Home_New\Home_New_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\Home_New\mian\main_1_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\keywords\baidu_share_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\keywords\iw2s_dashboard_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\keywords\iw2s_domaincategory_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\keywords\keywordConstrast_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\keywords\baidu_share_2_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\keywords\linkCollection_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\keywords\showDesc_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\modelSelect_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\picSearch\picSearch_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\picSearch\picSearch_sr_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\picSearch\picSearch_result_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\picSearch\picSearch_ShowDesc_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\rizhi_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\SogouNEW\sogouNEWDashboard_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\sogou\iw2s_sogou_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\sogou\sogouConstrast_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\SogouNEW\iw2s_sogouNEW_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\SogouNEW\picSearch_result_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\SogouNEW\picSearch_sr_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\SogouNEW\sogouNEWConstrast_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\SogouNEW\sogouNEWMng_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\SogouNEW\sogouNEWShowDesc_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\SogouNEW\sogouNEWViews_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\sogou\sogouDashboard_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\weibo\weiboConstrast_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\weibo\weiboDashboard_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\weibo\weiboMng_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\weibo\weiboViews_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\weibo\weibo_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\weibo\picSearch_result_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\weibo\weiboShowDesc_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\weibo\picSearch_sr_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\wordtree\d3.min.js" />
+    <Content Include="Scripts\app\scripts\controllers\wordtree\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\app\scripts\controllers\wordtree\wordtree.min.js" />
+    <Content Include="Scripts\app\scripts\controllers\sogou\sogouMng_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\sogou\sogouShowDesc_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\sogou\sogouViews_ctr.js" />
+    <Content Include="Scripts\app\scripts\modal\addElementGroupEMN_ctr.js" />
+    <Content Include="Scripts\app\scripts\modal\addElementGroupSogouNEW_ctr.js" />
+    <Content Include="Scripts\app\scripts\modal\addElementGroupSogou_ctr.js" />
+    <Content Include="Scripts\app\scripts\modal\addElementGroupWeibo_ctr.js" />
+    <Content Include="Scripts\app\scripts\modal\addkeywordFilterBing_ctr.js" />
+    <Content Include="Scripts\app\scripts\modal\addkeywordFiltersogou_ctr.js" />
+    <Content Include="Scripts\app\scripts\modal\addkeywordFilterWeibo_ctr.js" />
+    <Content Include="Scripts\app\scripts\modal\changeProject_ctr.js" />
+    <Content Include="Scripts\app\scripts\modal\inputKeywords_ctr.js" />
+    <Content Include="Scripts\app\scripts\modal\delProject_ctr.js" />
+    <Content Include="Scripts\app\scripts\modal\addProject_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\confirmation\picConfirmation_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\home\reset_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\home\signup_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\iw2s_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\jdOnline\dashboard_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\jdOnline\defendant_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\jdOnline\jdOnline_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\keywordMng\keywordSearch_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\keywordMng\resultList_ctr.js" />
+    <Content Include="Scripts\app\scripts\modal\addkeywordFilterZhisou_ctr.js" />
+    <Content Include="Scripts\app\scripts\modal\addkeywordFilterBaidu_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\keywords\keywordViews_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\keywords\keywordMng_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\project\picManage_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\project\project_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\project\upload_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\suspected\picSuspected_ctr.js" />
+    <Content Include="Scripts\app\scripts\js\dndTree.js" />
+    <Content Include="Scripts\app\scripts\js\iw2s.js" />
+    <Content Include="Scripts\app\scripts\modal\addElementGroup_ctr.js" />
+    <Content Include="Scripts\app\scripts\modal\addGroupModal_ctr.js" />
+    <Content Include="Scripts\app\scripts\modal\shareProject_ctr.js" />
+    <Content Include="Scripts\app\scripts\plu-in\angular-dragdrop.js" />
+    <Content Include="Scripts\app\scripts\plu-in\angular-dragdrop.min.js" />
+    <Content Include="Scripts\app\scripts\plu-in\china.js" />
+    <Content Include="Scripts\app\scripts\plu-in\countUp.min.js" />
+    <Content Include="Scripts\app\scripts\plu-in\echarts.min.js" />
+    <Content Include="Scripts\app\scripts\plu-in\jquery.awesomeCloud-0.2.js" />
+    <Content Include="Scripts\app\scripts\plu-in\jquery.goup.js" />
+    <Content Include="Scripts\app\scripts\plu-in\jquery.min.js" />
+    <Content Include="Scripts\app\scripts\plu-in\lobipanel.min.js" />
+    <Content Include="Scripts\app\scripts\plu-in\semantic.min.js" />
+    <Content Include="Scripts\app\scripts\plu-in\world.js" />
+    <Content Include="Scripts\app\scripts\plu-in\zTree_v3\jquery.ztree.all-3.5.js" />
+    <Content Include="Scripts\app\scripts\plu-in\zTree_v3\zTreeStyle\img\diy\1_close.png" />
+    <Content Include="Scripts\app\scripts\plu-in\zTree_v3\zTreeStyle\img\diy\1_open.png" />
+    <Content Include="Scripts\app\scripts\plu-in\zTree_v3\zTreeStyle\img\diy\2.png" />
+    <Content Include="Scripts\app\scripts\plu-in\zTree_v3\zTreeStyle\img\diy\3.png" />
+    <Content Include="Scripts\app\scripts\plu-in\zTree_v3\zTreeStyle\img\diy\4.png" />
+    <Content Include="Scripts\app\scripts\plu-in\zTree_v3\zTreeStyle\img\diy\5.png" />
+    <Content Include="Scripts\app\scripts\plu-in\zTree_v3\zTreeStyle\img\diy\6.png" />
+    <Content Include="Scripts\app\scripts\plu-in\zTree_v3\zTreeStyle\img\diy\7.png" />
+    <Content Include="Scripts\app\scripts\plu-in\zTree_v3\zTreeStyle\img\diy\8.png" />
+    <Content Include="Scripts\app\scripts\plu-in\zTree_v3\zTreeStyle\img\diy\9.png" />
+    <Content Include="Scripts\app\scripts\plu-in\zTree_v3\zTreeStyle\img\line_conn.gif" />
+    <Content Include="Scripts\app\scripts\plu-in\zTree_v3\zTreeStyle\img\loading.gif" />
+    <Content Include="Scripts\app\scripts\plu-in\zTree_v3\zTreeStyle\img\zTreeStandard.gif" />
+    <Content Include="Scripts\app\scripts\plu-in\zTree_v3\zTreeStyle\img\zTreeStandard.png" />
+    <Content Include="Scripts\app\scripts\plu-in\zTree_v3\zTreeStyle\zTreeStyle.css" />
+    <Content Include="Scripts\app\scripts\Service\rizhi_service.js" />
+    <Content Include="Scripts\app\styles\css\addStyle.css" />
+    <Content Include="Scripts\app\styles\css\animate.css" />
+    <Content Include="Scripts\app\styles\css\Home_New.css" />
+    <Content Include="Scripts\app\styles\css\imports\common\footer.css" />
+    <Content Include="Scripts\app\styles\css\imports\common\header.css" />
+    <Content Include="Scripts\app\styles\css\imports\common\modelSelect.css" />
+    <Content Include="Scripts\app\styles\css\loading-bar.css" />
+    <Content Include="Scripts\app\styles\css\nowMain.css" />
+    <Content Include="Scripts\app\styles\css\semantic.min.css" />
+    <Content Include="Scripts\app\styles\css\theme-style.css" />
+    <Content Include="Scripts\app\font\bb2711.jpg" />
+    <Content Include="Scripts\app\font\fontawesome-webfont.svg" />
+    <Content Include="Scripts\app\scripts\controllers\home\home_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\home\index_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\home\login_ctr.js" />
+    <Content Include="Scripts\app\scripts\Service\mainService.js" />
+    <Content Include="Scripts\app\styles\css\newStyle.css" />
+    <Content Include="Scripts\app\views\bing\baidu_dashboard\baidu_share_1.html" />
+    <Content Include="Scripts\app\views\bing\baidu_dashboard\baidu_share_2.html" />
+    <Content Include="Scripts\app\views\bing\baidu_dashboard\baidu_share_3.html" />
+    <Content Include="Scripts\app\views\bing\baidu_dashboard\baidu_share_4.html" />
+    <Content Include="Scripts\app\views\bing\baidu_dashboard\baidu_share_5.html" />
+    <Content Include="Scripts\app\views\bing\baidu_dashboard\baidu_share_6.html" />
+    <Content Include="Scripts\app\views\bing\baidu_dashboard\baidu_share_7.html" />
+    <Content Include="Scripts\app\views\bing\baidu_dashboard\baidu_share_8.html" />
+    <Content Include="Scripts\app\views\bing\iw2s.html" />
+    <Content Include="Scripts\app\views\bing\iw2s_dashboard.html" />
+    <Content Include="Scripts\app\views\bing\iw2s_domaincategory.html" />
+    <Content Include="Scripts\app\views\bing\keywordcConstrast.html" />
+    <Content Include="Scripts\app\views\bing\keywordMng.html" />
+    <Content Include="Scripts\app\views\bing\keywordViews.html" />
+    <Content Include="Scripts\app\views\bing\linkCollection.html" />
+    <Content Include="Scripts\app\views\bing\showDesc.html" />
+    <Content Include="Scripts\app\views\common\c_menu4.html" />
+    <Content Include="Scripts\app\views\common\c_menu3.html" />
+    <Content Include="Scripts\app\views\common\c_menu.html" />
+    <Content Include="Scripts\app\views\common\c_menu2.html" />
+    <Content Include="Scripts\app\views\common\footer-content.html" />
+    <Content Include="Scripts\app\views\common\header3.html" />
+    <Content Include="Scripts\app\views\common\header2.html" />
+    <Content Include="Scripts\app\views\common\alertNew.html" />
+    <Content Include="Scripts\app\views\computingResources.html" />
+    <Content Include="Scripts\app\views\eMarketNow\eMarketNow.html" />
+    <Content Include="Scripts\app\views\eMarketNow\eMarketNowDashboard.html" />
+    <Content Include="Scripts\app\views\eMarketNow\eMarketNowMng.html" />
+    <Content Include="Scripts\app\views\eMarketNow\iw2s_eMarketNow.html" />
+    <Content Include="Scripts\app\views\homepage\css\animate.min.css" />
+    <Content Include="Scripts\app\views\homepage\css\bootstrap.css" />
+    <Content Include="Scripts\app\views\homepage\css\et-line.css" />
+    <Content Include="Scripts\app\views\homepage\css\font-awesome.css" />
+    <Content Include="Scripts\app\views\homepage\css\rotator.css" />
+    <Content Include="Scripts\app\views\homepage\demos\team_01.png" />
+    <Content Include="Scripts\app\views\homepage\demos\team_02.png" />
+    <Content Include="Scripts\app\views\homepage\demos\team_03.png" />
+    <Content Include="Scripts\app\views\homepage\demos\team_04.png" />
+    <Content Include="Scripts\app\views\homepage\fonts\fontawesome-webfont.svg" />
+    <Content Include="Scripts\app\views\homepage\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Scripts\app\views\homepage\images\1.png" />
+    <Content Include="Scripts\app\views\homepage\images\2.png" />
+    <Content Include="Scripts\app\views\homepage\images\3.jpg" />
+    <Content Include="Scripts\app\views\homepage\images\38.png" />
+    <Content Include="Scripts\app\views\homepage\images\4.jpg" />
+    <Content Include="Scripts\app\views\homepage\images\5.jpg" />
+    <Content Include="Scripts\app\views\homepage\images\6.jpg" />
+    <Content Include="Scripts\app\views\homepage\images\bg.jpg" />
+    <Content Include="Scripts\app\views\homepage\images\error.gif" />
+    <Content Include="Scripts\app\views\homepage\images\Felony-Icon.png" />
+    <Content Include="Scripts\app\views\homepage\images\forecasting-icon.jpg" />
+    <Content Include="Scripts\app\views\homepage\images\header.jpg" />
+    <Content Include="Scripts\app\views\homepage\images\icon1.png" />
+    <Content Include="Scripts\app\views\homepage\images\icon2.png" />
+    <Content Include="Scripts\app\views\homepage\images\icon3.png" />
+    <Content Include="Scripts\app\views\homepage\images\LAW.png" />
+    <Content Include="Scripts\app\views\homepage\images\lawyer.jpg" />
+    <Content Include="Scripts\app\views\homepage\images\loading.gif" />
+    <Content Include="Scripts\app\views\homepage\images\logo.png" />
+    <Content Include="Scripts\app\views\homepage\images\partners-icon.png" />
+    <Content Include="Scripts\app\views\homepage\images\remove.png" />
+    <Content Include="Scripts\app\views\homepage\images\success.gif" />
+    <Content Include="Scripts\app\views\homepage\index.html" />
+    <Content Include="Scripts\app\views\homepage\js\bootstrap.js" />
+    <Content Include="Scripts\app\views\homepage\js\custom.js" />
+    <Content Include="Scripts\app\views\homepage\js\jquery.easypiechart.min.js" />
+    <Content Include="Scripts\app\views\homepage\js\jquery.js" />
+    <Content Include="Scripts\app\views\homepage\js\jquery.nav.js" />
+    <Content Include="Scripts\app\views\homepage\js\rotator.js" />
+    <Content Include="Scripts\app\views\homepage\js\wow.min.js" />
+    <Content Include="Scripts\app\views\homepage\style-portfolio.css" />
+    <Content Include="Scripts\app\views\homepage\style.css" />
+    <Content Include="Scripts\app\views\home\background_3\index.html" />
+    <Content Include="Scripts\app\views\home\background_3\three.min.js" />
+    <Content Include="Scripts\app\views\home\background_4\img\star.jpg" />
+    <Content Include="Scripts\app\views\home\background_4\index.html" />
+    <Content Include="Scripts\app\views\home\background_4\js\jquery.js" />
+    <Content Include="Scripts\app\views\home\background_4\js\jquery.MyFloatingBg.js" />
+    <Content Include="Scripts\app\views\home\changepwd.html" />
+    <Content Include="Scripts\app\views\home\sideshow\css\component.css" />
+    <Content Include="Scripts\app\views\home\sideshow\css\demo.css" />
+    <Content Include="Scripts\app\views\home\sideshow\css\normalize.css" />
+    <Content Include="Scripts\app\views\home\sideshow\fonts\codropsicons\codropsicons.svg" />
+    <Content Include="Scripts\app\views\home\sideshow\fonts\codropsicons\license.txt" />
+    <Content Include="Scripts\app\views\home\sideshow\index.html" />
+    <Content Include="Scripts\app\views\home\sideshow\js\demo-1.js" />
+    <Content Include="Scripts\app\views\home\sideshow\js\EasePack.min.js" />
+    <Content Include="Scripts\app\views\home\sideshow\js\html5.js" />
+    <Content Include="Scripts\app\views\home\sideshow\js\rAF.js" />
+    <Content Include="Scripts\app\views\home\sideshow\js\TweenLite.min.js" />
+    <Content Include="Scripts\app\views\home\background_t\demo\css\style.css" />
+    <Content Include="Scripts\app\views\home\background_t\demo\index.html" />
+    <Content Include="Scripts\app\views\home\background_t\demo\jquery.particleground.js" />
+    <Content Include="Scripts\app\views\home\background_t\demo\jquery.particleground.min.js" />
+    <Content Include="Scripts\app\views\home\background_t\demo\js\demo.js" />
+    <Content Include="Scripts\app\views\home\background_t\demo\js\jquery-1.11.1.min.js" />
+    <Content Include="Scripts\app\views\Home_New\footer\footer.html" />
+    <Content Include="Scripts\app\views\Home_New\header\header.html" />
+    <Content Include="Scripts\app\views\Home_New\Home_New.html" />
+    <Content Include="Scripts\app\views\Home_New\main\main_1.html" />
+    <Content Include="Scripts\app\views\Home_New\plu_in\sandian_dh\index.html" />
+    <Content Include="Scripts\app\views\Home_New\plu_in\sandian_dh\js\three.min.js" />
+    <Content Include="Scripts\app\views\keywords\baidu_dashboard\baidu_share_1.html" />
+    <Content Include="Scripts\app\views\keywords\baidu_dashboard\baidu_share_2.html" />
+    <Content Include="Scripts\app\views\keywords\baidu_dashboard\baidu_share_3.html" />
+    <Content Include="Scripts\app\views\keywords\baidu_dashboard\baidu_share_4.html" />
+    <Content Include="Scripts\app\views\keywords\baidu_dashboard\baidu_share_5.html" />
+    <Content Include="Scripts\app\views\keywords\baidu_dashboard\baidu_share_6.html" />
+    <Content Include="Scripts\app\views\keywords\baidu_dashboard\baidu_share_8.html" />
+    <Content Include="Scripts\app\views\keywords\baidu_dashboard\baidu_share_7.html" />
+    <Content Include="Scripts\app\views\DiscoveryPage.html" />
+    <Content Include="Scripts\app\views\keywords\iw2s_dashboard.html" />
+    <Content Include="Scripts\app\views\keywords\iw2s_domaincategory.html" />
+    <Content Include="Scripts\app\views\keywords\keywordcConstrast.html" />
+    <Content Include="Scripts\app\views\keywords\linkCollection.html" />
+    <Content Include="Scripts\app\views\modal\addkeywordFilterBing.html" />
+    <Content Include="Scripts\app\views\modal\shareProject.html" />
+    <Content Include="Scripts\app\views\modal\addElementGroupEMN.html" />
+    <Content Include="Scripts\app\views\modal\addElementGroupSogou.html" />
+    <Content Include="Scripts\app\views\modal\addElementGroupSogouNEW.html" />
+    <Content Include="Scripts\app\views\modal\addElementGroupWeibo.html" />
+    <Content Include="Scripts\app\views\modal\addkeywordFilterSogou.html" />
+    <Content Include="Scripts\app\views\modal\addkeywordFilterSogouNEW.html" />
+    <Content Include="Scripts\app\views\modal\addkeywordFilterWeibo.html" />
+    <Content Include="Scripts\app\views\modal\changeProject.html" />
+    <Content Include="Scripts\app\views\modal\inputKeywords.html" />
+    <Content Include="Scripts\app\views\modal\delProject.html" />
+    <Content Include="Scripts\app\views\modal\addProject.html" />
+    <Content Include="Scripts\app\views\common\alert.html" />
+    <Content Include="Scripts\app\views\common\footer.html" />
+    <Content Include="Scripts\app\views\common\header.html" />
+    <Content Include="Scripts\app\views\copy\header.html" />
+    <Content Include="Scripts\app\views\copy\main.html" />
+    <Content Include="Scripts\app\views\home\home.html" />
+    <Content Include="Scripts\app\views\home\login.html" />
+    <Content Include="Scripts\app\views\home\reset.html" />
+    <Content Include="Scripts\app\views\home\signup.html" />
+    <Content Include="Scripts\app\views\iw2s.html" />
+    <Content Include="Scripts\app\views\modal\addkeywordFilterBaidu.html" />
+    <Content Include="Scripts\app\views\modal\addkeywordFilterZhisou.html" />
+    <Content Include="Scripts\app\views\keywords\keywordMng.html" />
+    <Content Include="Scripts\app\views\keywords\keywordViews.html" />
+    <Content Include="Scripts\app\views\keywords\showDesc.html" />
+    <Content Include="Scripts\app\views\modal\addElementGroup.html" />
+    <Content Include="Scripts\app\views\modal\addGroupModal.html" />
+    <Content Include="Scripts\app\views\modelSelect.html" />
+    <Content Include="Scripts\app\scripts\controllers\wordtree\Libs\JiebaNet.Analyser.dll" />
+    <Content Include="Scripts\app\scripts\controllers\wordtree\Libs\JiebaNet.Analyser.pdb" />
+    <Content Include="Scripts\app\scripts\controllers\wordtree\Libs\JiebaNet.Segmenter.dll" />
+    <Content Include="Scripts\app\scripts\controllers\wordtree\Libs\JiebaNet.Segmenter.pdb" />
+    <Content Include="Resources\dict.txt" />
+    <Content Include="Resources\idf.txt" />
+    <Content Include="Resources\stopwords.txt" />
+    <Content Include="Scripts\app\views\picSearch\inputpic_2\control\css\zyUpload.css" />
+    <Content Include="Scripts\app\views\picSearch\inputpic_2\control\images\add_img.png" />
+    <Content Include="Scripts\app\views\picSearch\inputpic_2\control\images\bg.png" />
+    <Content Include="Scripts\app\views\picSearch\inputpic_2\control\images\delete_blue.png" />
+    <Content Include="Scripts\app\views\picSearch\inputpic_2\control\images\delete_white.png" />
+    <Content Include="Scripts\app\views\picSearch\inputpic_2\control\images\fileType\file.png" />
+    <Content Include="Scripts\app\views\picSearch\inputpic_2\control\images\fileType\rar.png" />
+    <Content Include="Scripts\app\views\picSearch\inputpic_2\control\images\fileType\txt.png" />
+    <Content Include="Scripts\app\views\picSearch\inputpic_2\control\images\fileType\zip.png" />
+    <Content Include="Scripts\app\views\picSearch\inputpic_2\control\images\success.png" />
+    <Content Include="Scripts\app\views\picSearch\inputpic_2\control\js\jquery-1.7.2.js" />
+    <Content Include="Scripts\app\views\picSearch\inputpic_2\control\js\zyUpload.js" />
+    <Content Include="Scripts\app\views\picSearch\inputpic_2\core\jq22.js" />
+    <Content Include="Scripts\app\views\picSearch\inputpic_2\core\zyFile.js" />
+    <Content Include="Scripts\app\views\picSearch\inputpic_2\index.html" />
+    <Content Include="Scripts\app\views\picSearch\picInput\css\default.css" />
+    <Content Include="Scripts\app\views\picSearch\picInput\css\fileinput.css" />
+    <Content Include="Scripts\app\views\picSearch\picInput\css\fileinput.min.css" />
+    <Content Include="Scripts\app\views\picSearch\picInput\fonts\icomoon.svg" />
+    <Content Include="Scripts\app\views\picSearch\picInput\img\loading-sm.gif" />
+    <Content Include="Scripts\app\views\picSearch\picInput\img\loading.gif" />
+    <Content Include="Scripts\app\views\picSearch\picInput\index.html" />
+    <Content Include="Scripts\app\views\picSearch\picInput\js\fileinput.js" />
+    <Content Include="Scripts\app\views\picSearch\picInput\js\fileinput.min.js" />
+    <Content Include="Scripts\app\views\picSearch\picInput\js\fileinput_locale_cz.js" />
+    <Content Include="Scripts\app\views\picSearch\picInput\js\fileinput_locale_de.js" />
+    <Content Include="Scripts\app\views\picSearch\picInput\js\fileinput_locale_es.js" />
+    <Content Include="Scripts\app\views\picSearch\picInput\js\fileinput_locale_fr.js" />
+    <Content Include="Scripts\app\views\picSearch\picInput\js\fileinput_locale_hu.js" />
+    <Content Include="Scripts\app\views\picSearch\picInput\js\fileinput_locale_it.js" />
+    <Content Include="Scripts\app\views\picSearch\picInput\js\fileinput_locale_LANG.js" />
+    <Content Include="Scripts\app\views\picSearch\picInput\js\fileinput_locale_nl.js" />
+    <Content Include="Scripts\app\views\picSearch\picInput\js\fileinput_locale_pl.js" />
+    <Content Include="Scripts\app\views\picSearch\picInput\js\fileinput_locale_pt.js" />
+    <Content Include="Scripts\app\views\picSearch\picInput\js\fileinput_locale_ru.js" />
+    <Content Include="Scripts\app\views\picSearch\picInput\js\fileinput_locale_sk.js" />
+    <Content Include="Scripts\app\views\picSearch\picInput\js\fileinput_locale_sr.js" />
+    <Content Include="Scripts\app\views\picSearch\picInput\js\fileinput_locale_th.js" />
+    <Content Include="Scripts\app\views\picSearch\picInput\js\fileinput_locale_tr.js" />
+    <Content Include="Scripts\app\views\picSearch\picInput\js\fileinput_locale_uk.js" />
+    <Content Include="Scripts\app\views\picSearch\picInput\js\fileinput_locale_zh.js" />
+    <Content Include="Scripts\app\views\picSearch\picSearch.html" />
+    <Content Include="Scripts\app\views\picSearch\picSearch_sr.html" />
+    <Content Include="Scripts\app\views\picSearch\picSearch_result.html" />
+    <Content Include="Scripts\app\views\picSearch\picSearch_ShowDesc.html" />
+    <Content Include="Scripts\publish_ctr.js" />
+    <Content Include="Scripts\app\views\rizhi.html" />
+    <Content Include="Scripts\app\views\SogouNEW\iw2s_sogouNEW.html" />
+    <Content Include="Scripts\app\views\SogouNEW\sogouNEWConstrast.html" />
+    <Content Include="Scripts\app\views\SogouNEW\sogouNEWDashboard.html" />
+    <Content Include="Scripts\app\views\SogouNEW\sogouNEWMng.html" />
+    <Content Include="Scripts\app\views\SogouNEW\sogouNEWShowDesc.html" />
+    <Content Include="Scripts\app\views\SogouNEW\sogouNEWViews.html" />
+    <Content Include="Scripts\app\views\sogou\sogouDashboard.html" />
+    <Content Include="Scripts\app\views\UserCenter\userCenter.html" />
+    <Content Include="Scripts\app\views\UserCenter\UserCenter_ctr.js" />
+    <Content Include="Scripts\app\views\weibo\weibo.html" />
+    <Content Include="Scripts\app\views\weibo\weiboConstrast.html" />
+    <Content Include="Scripts\app\views\weibo\weiboDashboard.html" />
+    <Content Include="Scripts\app\views\weibo\weiboMng.html" />
+    <Content Include="Scripts\app\views\weibo\weiboViews.html" />
+    <Content Include="Scripts\app\views\weibo\weiboShowDesc.html" />
+    <Content Include="Scripts\app\views\wordtree\wordtree.html" />
+    <Content Include="Scripts\app\views\wordtree\wordtree2.html" />
+    <Content Include="Scripts\app\views\sogou\iw2s_sogou.html" />
+    <Content Include="Scripts\app\views\sogou\sogouConstrast.html" />
+    <Content Include="Scripts\app\views\sogou\sogouMng.html" />
+    <Content Include="Scripts\app\views\sogou\sogouShowDesc.html" />
+    <Content Include="Scripts\app\views\sogou\sogouViews.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <Content Include="post.ashx" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Scripts\app\font\fontawesome-webfont.eot" />
+    <Content Include="Scripts\app\font\fontawesome-webfont.ttf" />
+    <Content Include="Scripts\app\font\fontawesome-webfont.woff" />
+    <Content Include="Scripts\app\font\fontawesome-webfont.woff2" />
+    <Content Include="Scripts\app\font\FontAwesome.otf" />
+    <Content Include="Scripts\app\font\Material-Design-Icons.eot" />
+    <Content Include="Scripts\app\font\Material-Design-Icons.ttf" />
+    <Content Include="Scripts\app\font\Material-Design-Icons.woff" />
+    <Content Include="Scripts\app\font\Material-Design-Icons.woff2" />
+    <Content Include="Scripts\app\font\Roboto\Roboto-Black.ttf" />
+    <Content Include="Scripts\app\font\Roboto\Roboto-BlackItalic.ttf" />
+    <Content Include="Scripts\app\font\Roboto\Roboto-Bold.ttf" />
+    <Content Include="Scripts\app\font\Roboto\Roboto-BoldCondensed.ttf" />
+    <Content Include="Scripts\app\font\Roboto\Roboto-BoldCondensedItalic.ttf" />
+    <Content Include="Scripts\app\font\Roboto\Roboto-BoldItalic.ttf" />
+    <Content Include="Scripts\app\font\Roboto\Roboto-Condensed.ttf" />
+    <Content Include="Scripts\app\font\Roboto\Roboto-CondensedItalic.ttf" />
+    <Content Include="Scripts\app\font\Roboto\Roboto-Italic.ttf" />
+    <Content Include="Scripts\app\font\Roboto\Roboto-Light.ttf" />
+    <Content Include="Scripts\app\font\Roboto\Roboto-LightItalic.ttf" />
+    <Content Include="Scripts\app\font\Roboto\Roboto-Medium.ttf" />
+    <Content Include="Scripts\app\font\Roboto\Roboto-MediumItalic.ttf" />
+    <Content Include="Scripts\app\font\Roboto\Roboto-Regular.ttf" />
+    <Content Include="Scripts\app\font\Roboto\Roboto-Thin.ttf" />
+    <Content Include="Scripts\app\font\Roboto\Roboto-ThinItalic.ttf" />
+    <Content Include="Scripts\app\styles\less\imports\common\footer.less" />
+    <Content Include="Scripts\app\styles\less\imports\common\header.less" />
+    <Content Include="Scripts\app\styles\less\imports\common\login.less" />
+    <Content Include="Scripts\app\styles\less\imports\common\main.less" />
+    <Content Include="Scripts\app\styles\less\imports\common\modelSelect.less" />
+    <Content Include="Scripts\app\styles\less\imports\_checkbox.less" />
+    <Content Include="Scripts\app\styles\less\imports\_layouts.less" />
+    <Content Include="Scripts\app\styles\less\imports\_main-panel.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\alerts.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\background-variant.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\border-radius.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\buttons.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\center-block.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\clearfix.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\forms.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\gradients.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\grid-framework.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\grid.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\hide-text.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\image.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\labels.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\list-group.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\nav-divider.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\nav-vertical-align.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\opacity.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\pagination.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\panels.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\progress-bar.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\reset-filter.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\reset-text.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\resize.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\responsive-visibility.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\size.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\tab-focus.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\table-row.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\text-emphasis.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\text-overflow.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\vendor-prefixes.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\_button.less" />
+    <Content Include="Scripts\app\styles\less\imports\_mixins\_utilities.less" />
+    <Content Include="Scripts\app\styles\less\imports\_radio.less" />
+    <Content Include="Scripts\app\styles\less\imports\_scrollbar.less" />
+    <Content Include="Scripts\app\styles\less\imports\_variables.less" />
+    <Content Include="Scripts\app\styles\less\Home_New\header.less" />
+    <Content Include="Scripts\app\styles\less\theme-style.less" />
+    <Content Include="Scripts\app\data\manyNodes.txt" />
+    <None Include="Properties\PublishProfiles\iw2s.pubxml" />
+    <Content Include="Resources\test_dict.json" />
+    <Content Include="Scripts\app\styles\less\Home_New.less" />
+    <Content Include="Scripts\app\styles\less\Home_New\mian_1.less" />
+    <Content Include="Scripts\app\styles\less\Home_New\UserCenter.less" />
+    <Content Include="Scripts\app\styles\less\Home_New\global.less" />
+    <Content Include="Scripts\app\styles\less\Home_New\footer.less" />
+    <None Include="Scripts\app\styles\less\newStyle.less" />
+    <Content Include="Scripts\app\views\homepage\fonts\bariol_bold-webfont.eot" />
+    <Content Include="Scripts\app\views\homepage\fonts\bariol_bold-webfont.ttf" />
+    <Content Include="Scripts\app\views\homepage\fonts\bariol_bold-webfont.woff" />
+    <Content Include="Scripts\app\views\homepage\fonts\bariol_bold-webfontd41d.eot" />
+    <Content Include="Scripts\app\views\homepage\fonts\et-line.eot" />
+    <Content Include="Scripts\app\views\homepage\fonts\et-line.ttf" />
+    <Content Include="Scripts\app\views\homepage\fonts\et-line.woff" />
+    <Content Include="Scripts\app\views\homepage\fonts\et-lined41d.eot" />
+    <Content Include="Scripts\app\views\homepage\fonts\fontawesome-webfont.eot" />
+    <Content Include="Scripts\app\views\homepage\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Scripts\app\views\homepage\fonts\fontawesome-webfont.woff" />
+    <Content Include="Scripts\app\views\homepage\fonts\fontawesome-webfont862f.eot" />
+    <Content Include="Scripts\app\views\homepage\fonts\fontawesome-webfont862f.ttf" />
+    <Content Include="Scripts\app\views\homepage\fonts\fontawesome-webfont862f.woff" />
+    <Content Include="Scripts\app\views\homepage\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="Scripts\app\views\homepage\fonts\FontAwesome.otf" />
+    <Content Include="Scripts\app\views\homepage\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Scripts\app\views\homepage\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Scripts\app\views\homepage\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Scripts\app\views\homepage\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="Scripts\app\views\homepage\fonts\quaversans.eot" />
+    <Content Include="Scripts\app\views\homepage\fonts\quaversans.ttf" />
+    <Content Include="Scripts\app\views\homepage\fonts\quaversans.woff" />
+    <Content Include="Scripts\app\views\homepage\fonts\quaversansd41d.eot" />
+    <Content Include="Scripts\app\views\homepage\fonts\quaverserif.eot" />
+    <Content Include="Scripts\app\views\homepage\fonts\quaverserif.ttf" />
+    <Content Include="Scripts\app\views\homepage\fonts\quaverserif.woff" />
+    <Content Include="Scripts\app\views\homepage\fonts\quaverserifd41d.eot" />
+    <Content Include="Scripts\app\views\homepage\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Scripts\app\views\homepage\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Resources\char_state_tab.json" />
+    <Content Include="Resources\pos_prob_emit.json" />
+    <Content Include="Resources\pos_prob_start.json" />
+    <Content Include="Resources\pos_prob_trans.json" />
+    <Content Include="Resources\prob_emit.json" />
+    <Content Include="Resources\prob_trans.json" />
+    <Content Include="Scripts\app\views\picSearch\picInput\.project" />
+    <Content Include="Scripts\app\views\picSearch\picInput\fonts\icomoon.eot" />
+    <Content Include="Scripts\app\views\picSearch\picInput\fonts\icomoon.ttf" />
+    <Content Include="Scripts\app\views\picSearch\picInput\fonts\icomoon.woff" />
+    <Content Include="Scripts\app\views\picSearch\picInput\nuget\build.bat" />
+    <Content Include="Scripts\app\views\picSearch\picInput\nuget\Package.nuspec" />
+    <Content Include="Scripts\app\views\picSearch\inputpic_2\.project" />
+    <Content Include="Scripts\app\views\home\sideshow\.project" />
+    <Content Include="Scripts\app\views\home\sideshow\fonts\codropsicons\codropsicons.eot" />
+    <Content Include="Scripts\app\views\home\sideshow\fonts\codropsicons\codropsicons.ttf" />
+    <Content Include="Scripts\app\views\home\sideshow\fonts\codropsicons\codropsicons.woff" />
+    <Content Include="Scripts\app\views\home\background_t\.project" />
+    <Content Include="Scripts\app\views\home\background_3\.project" />
+    <Content Include="Scripts\app\views\home\background_4\.project" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\IWSBot2\IWSData\IWSData.csproj">
+      <Project>{6969baf9-6ed1-4660-b4d4-a2403c55fdb4}</Project>
+      <Name>IWSData</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2007</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:2007/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

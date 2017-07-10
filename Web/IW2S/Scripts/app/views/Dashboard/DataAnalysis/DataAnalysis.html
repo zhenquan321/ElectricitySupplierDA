@@ -1,0 +1,9 @@
+﻿<div id="userID" style="display:none">{{$root.userID}}</div>
+<div id="projectID" style="display:none">{{$root.getProjectId}}</div>
+<iframe id="mainframe" name="mainframe" marginwidth="0" marginheight="0" src="pivottable-master/examples/c3.html" frameborder="0" width="100%" height="100%"></iframe>
+<script type="text/javascript">
+    $("#mainframe").load(function () {
+        var mainheight = $(this).contents().find("body").height() + 30;
+        $(this).height(mainheight);
+    });
+</script>

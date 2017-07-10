@@ -1,0 +1,406 @@
+﻿<div id="UserCenter">
+    <div ng-include="'Scripts/app/views/common/header.html'"></div>
+
+    <div id="caseInquiry" class="container wrapper" style="margin-top:70px;padding:0px">
+        <div class="panel" style="width:100%;box-shadow:0 2px 4px #ccc;border:0px;">
+            <div class="panel-header">
+                <table>
+                    <tbody>
+                        <tr>
+                            <th ng-class="{true:'active',false:''}[show_list==3]" ng-click="show_list_fun(3)"><div class="topselect"></div><a>我的服务</a></th>
+                            <th ng-class="{true:'active',false:''}[show_list==4]" ng-click="show_list_fun(4)"><div class="topselect"></div><a>服务账单</a></th>
+                            <th ng-class="{true:'active',false:''}[show_list==1]" ng-click="show_list_fun(1)"><div class="topselect"></div><a>个人信息</a></th>
+                            <th ng-class="{true:'active',false:''}[show_list==2]" ng-click="show_list_fun(2)"><div class="topselect"></div><a>修改密码</a></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="detailsTable" style="margin-bottom: 80px;">
+                <div id="PpMag" ng-show="show_list==1" style="padding:40px 5% 30px;">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="row" style="margin-top:45px;">
+                                <div class="col-sm-5 img_header">
+                                    <img ng-click="editImage()" src="Scripts/app/images/uploadpic.jpg" ng-if="!$root.uer_PictureSrc">
+                                    <img ng-click="editImage()" ng-src="{{$root.uer_PictureSrc}}" ng-if="$root.uer_PictureSrc">
+                                </div>
+                                <div class="col-sm-7" style="padding-top:35px;font-size: 14px;">
+                                    <span style="color: #6b6b6b;font-weight: 400;">{{$root.LoginName}}</span>
+                                </div>
+                            </div>
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group mt20">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">昵称</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" placeholder="请输入昵称" ng-model="$root.Gender">
+                                    </div>
+                                </div>
+                                <div class="form-group mt20">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">电话</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" placeholder="请输入电话" ng-model="$root.MobileNo">
+                                    </div>
+                                </div>
+                                <div class="form-group mt20">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">邮箱</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" placeholder="请输入邮箱" ng-model="$root.UsrEmail">
+                                    </div>
+                                </div>
+                                <div class="form-group mt20">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">公司</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" placeholder="请输入公司" ng-model="$root.Remarks">
+                                    </div>
+                                </div>
+                               
+                            </form>
+                        </div>
+                        <div class="col-sm-7">
+                            <div style="height: 420px; border: 1px dashed #989898; padding: 5px 15px; border-radius: 7px; background-color: #fff; ">
+                                <div id="flashEditorOut" style="height:400px;">
+                                    <div id="altContent">
+                                    </div>
+                                </div>
+                                <div style="background-color: #fff; height: 45px; width: 200px; margin-top: -35px; position: absolute;"> </div>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-sm-offset-2 col-sm-8 but_g " style="margin-top:30px">
+                                <input id="upload-code-submit" class="btn btn-blue " value="确认" type="submit" style="width:130px;" ng-click="changeXinxi()">
+                                <input id="form-cancel-ver" class="warning btn btn-white form-btn-cancel " value="取消" type="button" style="width:130px;" ng-click="no_changeXinxi()">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div id="ChangePws" ng-show="show_list==2">
+                    <div class="row" style="padding:50px 10% 30px;">
+                        <div style="font-size: 18px;padding-left: 7%; color: #a0a0a0; font-weight: 500;">
+                            当前用户：<span style="color:#4f83c3;">{{$root.LoginName}}</span>
+                        </div>
+                        <div style="margin-left: 153px; color: red; margin-top: 15px; margin-bottom: -16px;" ng-show="error">{{error}}</div>
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group mt20"ng-show="false">
+                                <label for="inputEmail3" class="col-sm-2 control-label">旧密码</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" id="inputqww2" placeholder="旧密码" ng-model="oldPw">
+                                </div>
+                            </div>
+                            <div class="form-group mt20">
+                                <label for="inputEmail3" class="col-sm-2 control-label">旧密码</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" id="inputqww2" placeholder="旧密码" ng-model="oldPw1">
+                                </div>
+                            </div>
+                            <div class="form-group mt20">
+                                <label for="inputPassword3" class="col-sm-2 control-label">新密码</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" id="inputqw" placeholder="新密码" ng-model="newPw">
+                                </div>
+                            </div>
+                            <div class="form-group mt20">
+                                <label for="inputPassword3" class="col-sm-2 control-label">确认密码</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" id="inputqww" placeholder="确认密码" ng-model="newPw_q">
+                                </div>
+                            </div>
+                            <div class="form-group mt20">
+                                <div class="col-sm-offset-2 col-sm-8 but_g">
+                                    <input id="upload-code-submit" class="btn btn-blue " value="确认" type="submit" style="width:130px;" ng-click="changepwd()">
+                                    <input id="form-cancel-ver" class="warning btn btn-white form-btn-cancel " value="取消" type="button" style="width:130px;" ng-click="no_changePW()">
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <div ng-show="show_list==3" class="MyServerPage">
+                    <div class="UserMag row">
+                        <div class="col-sm-6 UMCard pl20" >
+                            <div class="USPic">
+                                <img src="Scripts/app/images/uploadpic.jpg" ng-if="!$root.uer_PictureSrc" >
+                                <img ng-src="{{$root.uer_PictureSrc}}" ng-if="$root.uer_PictureSrc" >
+                            </div>
+                            <div class="USName">
+                                <span ng-show="$root.Gender" class="UName">{{$root.Gender}}<i class="fa fa-vcard ml15"></i></span>
+                                <span ng-show="!$root.Gender" class="UName">{{$root.LoginName}}<i class="fa fa-vcard ml15"></i></span> <br />
+                                <span class="ISVip" ng-show="GetUserInfoByIdList.UserType==Free">个人普通会员</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <button class="btn btn-default SJbBut" type="submit" ui-sref="PurchaseService">升级服务</button>
+                        </div>
+                    </div>
+                    <div class="ServerList">
+                        <div class="row">
+                            <div class="col-sm-2 SLCard">
+                                <div class="SLCIcon SLCIconActive">
+                                    <i class="fa fa-folder-open"></i>
+                                </div>
+                                <div class="SLCTitle">
+                                    创建项目数
+                                </div>
+                                <div class="SLCNum">
+                                    {{GetUserInfoByIdList.ProjectNum}}/{{GetUserInfoByIdList.MaxProjectNum}}
+                                </div>
+                                <a class="SLCDsm" ui-sref="PurchaseService">
+                                    升级服务
+                                </a>
+                            </div>
+                            <div class="col-sm-2 SLCard">
+                                <div class="SLCIcon SLCIconActive">
+                                    <i class="fa fa-link"></i>
+                                </div>
+                                <div class="SLCTitle">
+                                    搜索连接数
+                                </div>
+                                <div class="SLCNum">
+                                    {{GetUserInfoByIdList.LinkNum}}/{{GetUserInfoByIdList.MaxLinkNum}}
+                                </div>
+                                <a class="SLCDsm" ui-sref="PurchaseService">
+                                    升级服务
+                                </a>
+                            </div>
+                            <div class="col-sm-2 SLCard">
+                                <div class="SLCIcon SLCIconActive">
+                                    <i class="fa fa-file-word-o"></i>
+                                </div>
+                                <div class="SLCTitle">
+                                    创建报告数
+                                </div>
+                                <div class="SLCNum">
+                                    {{GetUserInfoByIdList.ReportNum}}/{{GetUserInfoByIdList.MaxReportNum}}
+                                </div>
+                                <a class="SLCDsm" ui-sref="PurchaseService">
+                                    升级服务
+                                </a>
+                            </div>
+                            <div class="col-sm-2 SLCard">
+                                <div class="SLCIcon ">
+                                    <i class="fa fa-handshake-o"></i>
+                                </div>
+                                <div class="SLCTitle">
+                                    我的合同
+                                </div>
+                                <div class="SLCNum">
+                                    {{GetUserInfoByIdList.ContractNum}}
+                                </div>
+                                <a class="SLCDsm" ui-sref="PurchaseService">
+                                    升级服务
+                                </a>
+                            </div>
+                            <div class="col-sm-2 SLCard">
+                                <div class="SLCIcon ">
+                                    <i class="fa fa-group"></i>
+                                </div>
+                                <div class="SLCTitle">
+                                    专业数据分析
+                                </div>
+                                <div class="SLCNum">
+                                    {{GetUserInfoByIdList.DataAnalysisNum}}/{{GetUserInfoByIdList.MaxDataAnalysisNum}}
+                                </div>
+                                <a class="SLCDsm" ui-sref="PurchaseService">
+                                    升级服务
+                                </a>
+                            </div>
+                            <div class="col-sm-2 SLCard">
+                                <div class="SLCIcon ">
+                                    <i class="fa fa-user-circle-o"></i>
+                                </div>
+                                <div class="SLCTitle">
+                                    优先技术支持
+                                </div>
+                                <div class="SLCNum">
+                                    {{GetUserInfoByIdList.SupportNum}}/{{GetUserInfoByIdList.MaxSupportNum}}
+                                </div>
+                                <a class="SLCDsm" ui-sref="PurchaseService">
+                                    升级服务
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="VipServer">
+                        <div>
+                            专业数据分析
+                        </div>
+                        <div class="VSCard">
+                            <div class="VSCms">
+                                您尚未开通专属行业支持
+                            </div>
+                            <div class="VSbut"> 
+                                <button class="btn btn-default VIPserverBut" type="submit">了解更多</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="VipServer">
+                        <div>
+                            有限技术支持
+                        </div>
+                        <div class="VSCard">
+                            <div class="VSCms">
+                                您尚未开通专属客户经理支持
+                            </div>
+                            <div class="VSbut">
+                                <button class="btn btn-default VIPserverBut" type="submit">了解更多</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-show="show_list==4" class="ServiceBill">
+                    <div class="payment row">
+                        <div class="col-sm-6  pl20">
+                            <div class="PMMonth">
+                                2017年5月账单 <br />
+                                <span class="mt5">平台数据服务</span> <br />
+                                <span>技术支持服务</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 PMdo mt20">
+                            <div class="PMDzhi">
+                                应支付：<span>0.00元</span>
+                            </div>
+                            <div class="PMDzhiZ">
+                                立即支付
+                            </div>
+                        </div>
+                    </div>
+                    <div class="VipServer">
+                        <div class="mb20">
+                            平台数据服务
+                        </div>
+                        <div class="serviceTableMain">
+                            <div class="row dTableRow dTableRowOne">
+                                <div class="col-md-6 dTableCol">
+                                    <table class="">
+                                        <tbody>
+                                            <tr class="tr1">
+                                                <td class="firstTd">国内下载流量<span> （0.5元/GB）</span></td>
+                                                <td>0.00 GB</td>
+                                                <!--<td v-text="arrTraffic.flowTotal - flowSPrice | toFixedStr '2' '￥' 'before'"></td>-->
+                                                <!--后台的值-->
+                                                <td>0.00 元</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="firstTd">实际用量</td>
+                                                <!--后台值-->
+                                                <td>0.12 GB</td>
+                                                <td>0.06 元</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="firstTd">免费用量<span style="margin-left:9px;">10GB</span></td>
+                                                <!--<td v-text="flowToTen | toFixedStr '2' ' GB' 'after'" class="dosage1"></td>-->
+                                                <td class="dosage1">0.12 GB</td>
+                                                <td>-0.06 元</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-6 dTableCol">
+                                    <table class="">
+                                        <tbody>
+                                            <tr class="tr1">
+                                                <td class="firstTd">文件存储<span>（0.15元/GB）</span></td>
+                                                <td>0.00 GB</td>
+                                                <!--后台的值-->
+                                                <td>0.00 元</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="firstTd">实际用量</td>
+                                                <!--后台值-->
+                                                <td>0.08 GB</td>
+                                                <td>0.01 元</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="firstTd">免费用量<span style="margin-left:9px;">10GB</span></td>
+                                                <td class="dosage1">0.08 GB</td>
+                                                <td>-0.01 元</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row dTableRow">
+                                <div class="col-md-6 dTableCol">
+                                    <table class="">
+                                        <tbody>
+                                            <tr class="tr1">
+                                                <td class="firstTd">数据云请求量<span>（0.5元/万次）</span></td>
+                                                <td>0.00 万次</td>
+                                                <!--后台的值-->
+                                                <td>0.00 元</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="firstTd">实际用量</td>
+                                                <!--后台值-->
+                                                <td>0.00 万次</td>
+                                                <td>0.00 元</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="firstTd">免费用量<span style="margin-left:9px;">100万次</span></td>
+                                                <td class="dosage1">0.00 万次</td>
+                                                <td>0.00 元</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-6 dTableCol">
+                                    <table class="">
+                                        <tbody>
+                                            <tr class="tr1">
+                                                <td class="firstTd">海外下载流量<span>（0.6元/GB）</span></td>
+                                                <td>0.00 GB</td>
+                                                <!--后台的值-->
+                                                <td>0.00 元</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="firstTd">实际用量</td>
+                                                <!--后台值-->
+                                                <td>0.00 GB</td>
+                                                <td>0.00 元</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="firstTd">免费用量<span style="margin-left:9px;">10GB</span></td>
+                                                <td class="dosage1">0.00 GB</td>
+                                                <td>0.00 元</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="VipServer">
+                        <div class="mb20">
+                            平台基础服务 
+                        </div>
+                        <div class="serviceTableMain">
+                            <div class="row dTableRow">
+                                <div class="col-md-6 dTableCol">
+                                    <table class="">
+                                        <tbody>
+                                            <tr class="tr1">
+                                                <td class="firstTd">平台基础服务<span>（240元/人）</span></td>
+                                                <td>0 人</td>
+                                                <td>0.00 元</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="instructions " style="display: block;">
+                        <p class="typeReminder colorababab">1.每月8日结算上月账单，请在每月28日前结清上月账单，逾期未缴将暂停提供所有云服务</p>
+                        <p class="typeReminder colorababab">2. “平台数据服务”指使用平台搜索的数据流量</p>
+                        <p class="typeReminder colorababab">3. “平台基础服务”指平台的基础使用费用</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div ng-include="'Scripts/app/views/common/alert.html'"></div>

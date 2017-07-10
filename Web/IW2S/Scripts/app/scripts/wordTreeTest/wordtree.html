@@ -1,0 +1,53 @@
+﻿
+
+<head>
+    <title>文字树测试</title>
+    <meta charset="UTF-8" />
+    <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="header">
+        <div class="wrapper">
+            <h1 id="logo"><a href=".">Word Tree</a></h1>
+
+            <form id="form">
+                <input type="text" id="keyword" placeholder="Keyword…">
+                <label for="reverse" style="font-size: small"><input id="reverse" type="checkbox"> reverse tree</label>
+                <label for="phrase-line" style="font-size: small"><input id="phrase-line" type="checkbox"> one phrase per line</label>
+            </form>
+        </div>
+    </div>
+    <div id="help-left">
+        Shift-click to make that word the root.
+    </div>
+
+    <div id="vis"></div>
+    <div id="text"></div>
+    <div id="heat"></div>
+
+    <div class="clear"></div>
+
+    <div id="help-window">
+
+        <div class="help-wrapper grey">
+            <div class="wrapper">
+                <h2>Paste Text</h2>
+                <p><textarea id="paste"></textarea>
+                <p><button id="paste-go" class="first last">Generate WordTree!</button>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+<script src="d3.min.js"></script>
+<script src="wordtree.min.js"></script>
+<script src="http://cdn.bootcss.com/angular.js/1.4.9/angular.min.js"></script>
+<script src="http://cdn.bootcss.com/angular.js/1.4.9/angular-cookies.min.js"></script>
+<script src="http://cdn.bootcss.com/angular-messages/1.4.9/angular-messages.min.js"></script>
+<script src="http://cdn.bootcss.com/angular-ui-router/0.2.14/angular-ui-router.min.js"></script>
+<script src="http://cdn.bootcss.com/angular-loading-bar/0.8.0/loading-bar.min.js"></script>
+<script src="http://cdn.bootcss.com/angular.js/1.4.9/angular-animate.min.js"></script>
+<script src="http://cdn.bootcss.com/angular-ui-bootstrap/0.11.2/ui-bootstrap-tpls.js"></script>
+<script src="~/Scripts/app/scripts/plu-in/angular-dragdrop.min.js"></script>

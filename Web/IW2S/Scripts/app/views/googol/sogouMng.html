@@ -1,0 +1,171 @@
+<div class="mt20 row">
+    <div class="col-lg-3">
+        <div class="main-panel">
+            <div class="main-panel-title">
+                <span class="main-panel-text active">词组</span>
+                <a href="" title=""><i class="fa fa-minus"></i></a>
+                <a href="" title=""><i class="fa fa-refresh" ng-click="RefreshGetBaiduKeyword()"></i></a>
+
+                <form role="form" class="search-content-from" style="right:40px;">
+                    <div class="form-group search-content-input">
+                        <input type="text" class="form-control search-content" id="name1" placeholder="请输入关键词">
+                        <i class="fa fa-search"></i>
+                    </div>
+                </form>
+            </div>
+            <div class="main-panel-content" style="min-height: 168px; max-height:168px; ">
+                <div class="keywords">
+                    <div class="items">
+                                <span ng-repeat="c in GetAllKeywordCategory">
+                                    <a ng-click="keywordMngClick(c._id)"
+                                       ng-class="{true: 'active', false: 'inactive'}[c._id == $root.keywordMngClicked]"
+                                       ui-sref="iw2s.showDesc">
+                                        <span class="fa fa-circle"
+                                              ng-class="{0: 'red', 1: 'orange', 2: 'green'}[c.BotStatus]"></span>
+                                        {{c.Name}}({{c.ValLinkCount}})
+                                        <!--<i ng-click="" style="display: none;" class="fa fa-close"></i>-->
+                                    </a>
+                                </span>
+                    </div>
+                </div>
+                <div class="loadMore" ng-click="GetMoreBaiduKeyword()" ng-show="isActiveLoadmore">
+                    加载更多...
+                </div>
+            </div>
+        </div>
+        <div class="main-panel">
+            <div class="main-panel-title">
+                <span class="main-panel-text active">微信搜索词</span>
+                <a href="" title=""><i class="fa fa-minus"></i></a>
+                <a href="" title=""><i class="fa fa-refresh" ng-click="RefreshGetBaiduKeyword()"></i></a>
+
+                <form role="form" class="search-content-from" style="right:40px;">
+                    <div class="form-group search-content-input">
+                        <input type="text" class="form-control search-content" id="name2" placeholder="请输入关键词"
+                               ng-model="historyBaidu">
+                        <i class="fa fa-search"></i>
+                    </div>
+                </form>
+            </div>
+            <div class="main-panel-content" style=" min-height: 180px; max-height:180px; ">
+                <div class="keywords">
+                    <div class="items">
+                                <span ng-repeat="x in keywordsListRecord | filter:historyBaidu">
+                                    <a onmouseover="$(this).children('i').show()"
+                                       onmouseout="$(this).children('i').hide()"
+                                       ng-click="getBaiduRecord(x._id,x.CommendKeywordId)"
+                                       ng-class="{true: 'active', false: 'inactive'}[ x._id == $root.getBaiduRecordId]"
+                                       ui-sref="iw2s.showDesc">
+                                        <span class="fa fa-circle"
+                                              ng-class="{0: 'red', 1: 'orange', 2: 'green'}[x.BotStatus]"></span>
+                                        {{x.ProjectName}}({{x.ValLinkCount}})<i ng-click="ExcludeBaiduKeyword(x._id)"
+                                                                                style="display: none;"
+                                                                                class="fa fa-close"></i>
+                                    </a>
+                                </span>
+                    </div>
+                </div>
+                <div class="loadMore" ng-click="GetMoreBaiduKeyword()" ng-show="isActiveLoadmore">
+                    加载更多...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-9" ng-show="keywordCisActive">
+        <div class="main-panel">
+            <div class="main-panel-title" style="color: #808080;">
+                <span class="main-panel-text active" style=" cursor: pointer">微信关键词分组</span>
+                <span class="main-panel-text " style=" margin-left:15px; cursor: pointer"
+                      ng-click="keywordControlIsActive()">树状图</span>
+                <a href="" title=""><i class="fa fa-minus"></i></a>
+                <a href="" title=""><i class="fa fa-refresh"></i></a>
+
+                <form role="form" class="search-content-from" style="right:40px;">
+                    <div class="form-group search-content-input">
+                        <input type="text" class="form-control search-content" id="name4" placeholder="请输入名称">
+                        <i class="fa fa-search"></i>
+
+                    </div>
+                </form>
+            </div>
+            <div class="main-panel-content" style="min-height:790px;max-height:790px;">
+                <table class="table table-bordered">
+                    <thead style="border:#808080">
+                    <tr>
+                        <th>词组名</th>
+                        <th>侵权类型</th>
+                        <th>组权重</th>
+                        <th>词数量</th>
+                        <th>父组名</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--<tr>
+                    <td>{{$root.getBaiduRecordName}}</td>
+                    <td> - </td>
+                    <td> - </td>
+                    <td>{{GetBaiduSearchKeywordLenght}}</td>
+                    <td>root</td>
+                    <td class="cogs">
+                        <a href="" title="新增分组" ng-click="kindGroup(null)" style="padding: 3px 6px;">&nbsp;<i class="fa fa-plus"></i>&nbsp; </a>
+                    </td>
+                </tr>-->
+                    <tr ng-repeat="x in GetBaiduKeywordCategory2">
+                        <td>{{x.Name}}</td>
+                        <td>{{x.InfriLawCodeStr}}</td>
+                        <td>{{x.Weight}}</td>
+                        <td>{{x.KeywordTotal}}</td>
+                        <td>{{x.ParentName}}</td>
+                        <td class="cogs">
+                            <a href="" title="分组" ng-click="kindGroup(x._id,x.InfriLawCodeStr,x.Weight)"><img
+                                src="Scripts/app/images/fenzhi.png" style="width:16px;"/></a>
+                            <a href="" ng-click="DelCategory(x._id)" title="删除分组"><i class="fa fa-trash"></i></a>
+                            <a href="" ng-click="EditKindGroup(x._id,x.ParentId,x.Name,x.InfriLawCode,x.Weight)"
+                               title="修改分组"><i class="fa fa-cog"></i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-9" ng-hide="keywordCisActive">
+        <div class="main-panel">
+            <div class="main-panel-title" style="color: #808080;">
+                <span class="main-panel-text" style=" cursor: pointer"
+                      ng-click="keywordControlIsActive()">微信关键词分组</span>
+                <span class="main-panel-text active" style=" margin-left: 15px;">树状图</span><span
+                style="font-size:10px;"> &nbsp;&nbsp; 本树状图显示的为关键词分组状况,点击节点可查看下一级关键词。</span>
+                <a href="" title=""><i class="fa fa-minus"></i></a>
+            </div>
+            <div class="main-panel-content" style="min-height:1200px;max-height:1200px;" id="treeBlock">
+                <div id="tree-container"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.fa-minus').click(function () {
+            var cardContent = $(this).parent().parent().parent('.main-panel').children('.main-panel-content');
+            if (cardContent.hasClass('active')) {
+                $(this).addClass('fa-minus');
+                $(this).removeClass('fa-plus');
+                $(cardContent).removeClass('active');
+            } else {
+                $(this).removeClass('fa-minus');
+                $(this).addClass('fa-plus');
+                $(cardContent).addClass('active');
+            }
+            cardContent.toggle(500);
+        });
+    })
+    $("[data-toggle='tooltip']").tooltip();
+
+</script>
+
+   

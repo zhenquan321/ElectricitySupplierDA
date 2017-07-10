@@ -1,0 +1,30 @@
+﻿<style>
+    .modal-lg {
+        margin-top: 9%;
+    }
+</style>
+<div  class="modal-body payPage">
+    <div class="close_but">
+        <i class="fa fa-remove" ng-click="cancel()"></i>
+    </div>
+    <div class="row pr0">
+        <div class="col-sm-5 left">
+            <h3 class="title">{{title}}</h3>
+            <h2 class="money">￥{{money}}</h2>
+            <p>如需转账支付或开具发票，<br />请联系<a href="">在线客服</a> </p>
+        </div>
+        <div class="col-sm-7 right" style="padding-top:65px;">
+            <div class="row">
+                <div class="col-sm-1"> </div>
+                <div class="col-sm-5 ">
+                    <img src="Scripts/app/images/wechat_code.png" />
+                    <p>微信扫描购买</p>
+                </div>
+                <div class="col-sm-5">
+                    <img src="Scripts/app/images/wechat_code.png" />
+                    <p>支付宝扫描购买</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

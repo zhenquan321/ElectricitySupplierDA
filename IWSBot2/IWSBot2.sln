@@ -1,0 +1,65 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IWSBot2", "IWSBot2\IWSBot2.csproj", "{78B51A31-DEB1-47A9-8C3B-8C24D59EE244}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IWSData", "IWSData\IWSData.csproj", "{6969BAF9-6ED1-4660-B4D4-A2403C55FDB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyLib", "ProxyLib\ProxyLib.csproj", "{ED979BD5-C863-4788-AB7D-1F0BF6EE84B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AISSystem", "..\Assemblies\AISSystem\AISSystem.csproj", "{0A8625B4-6491-4501-8E57-5EDAF44BC7B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IW2SBotReg", "..\Assemblies\IW2SBotRegister\IW2SBotReg.csproj", "{C304A247-5ED6-4E30-9AB2-E8C0C4A2230C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoV2", "..\Assemblies\MongoV2\MongoV2.csproj", "{6040650C-0D16-416F-BF42-BD6C250053D9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		NoDB|Any CPU = NoDB|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{78B51A31-DEB1-47A9-8C3B-8C24D59EE244}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78B51A31-DEB1-47A9-8C3B-8C24D59EE244}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78B51A31-DEB1-47A9-8C3B-8C24D59EE244}.NoDB|Any CPU.ActiveCfg = Release|Any CPU
+		{78B51A31-DEB1-47A9-8C3B-8C24D59EE244}.NoDB|Any CPU.Build.0 = Release|Any CPU
+		{78B51A31-DEB1-47A9-8C3B-8C24D59EE244}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78B51A31-DEB1-47A9-8C3B-8C24D59EE244}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6969BAF9-6ED1-4660-B4D4-A2403C55FDB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6969BAF9-6ED1-4660-B4D4-A2403C55FDB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6969BAF9-6ED1-4660-B4D4-A2403C55FDB4}.NoDB|Any CPU.ActiveCfg = Release|Any CPU
+		{6969BAF9-6ED1-4660-B4D4-A2403C55FDB4}.NoDB|Any CPU.Build.0 = Release|Any CPU
+		{6969BAF9-6ED1-4660-B4D4-A2403C55FDB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6969BAF9-6ED1-4660-B4D4-A2403C55FDB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED979BD5-C863-4788-AB7D-1F0BF6EE84B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED979BD5-C863-4788-AB7D-1F0BF6EE84B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED979BD5-C863-4788-AB7D-1F0BF6EE84B3}.NoDB|Any CPU.ActiveCfg = Release|Any CPU
+		{ED979BD5-C863-4788-AB7D-1F0BF6EE84B3}.NoDB|Any CPU.Build.0 = Release|Any CPU
+		{ED979BD5-C863-4788-AB7D-1F0BF6EE84B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED979BD5-C863-4788-AB7D-1F0BF6EE84B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A8625B4-6491-4501-8E57-5EDAF44BC7B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A8625B4-6491-4501-8E57-5EDAF44BC7B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A8625B4-6491-4501-8E57-5EDAF44BC7B4}.NoDB|Any CPU.ActiveCfg = NoDB|Any CPU
+		{0A8625B4-6491-4501-8E57-5EDAF44BC7B4}.NoDB|Any CPU.Build.0 = NoDB|Any CPU
+		{0A8625B4-6491-4501-8E57-5EDAF44BC7B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A8625B4-6491-4501-8E57-5EDAF44BC7B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C304A247-5ED6-4E30-9AB2-E8C0C4A2230C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C304A247-5ED6-4E30-9AB2-E8C0C4A2230C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C304A247-5ED6-4E30-9AB2-E8C0C4A2230C}.NoDB|Any CPU.ActiveCfg = Release|Any CPU
+		{C304A247-5ED6-4E30-9AB2-E8C0C4A2230C}.NoDB|Any CPU.Build.0 = Release|Any CPU
+		{C304A247-5ED6-4E30-9AB2-E8C0C4A2230C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C304A247-5ED6-4E30-9AB2-E8C0C4A2230C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6040650C-0D16-416F-BF42-BD6C250053D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6040650C-0D16-416F-BF42-BD6C250053D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6040650C-0D16-416F-BF42-BD6C250053D9}.NoDB|Any CPU.ActiveCfg = Release|Any CPU
+		{6040650C-0D16-416F-BF42-BD6C250053D9}.NoDB|Any CPU.Build.0 = Release|Any CPU
+		{6040650C-0D16-416F-BF42-BD6C250053D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6040650C-0D16-416F-BF42-BD6C250053D9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

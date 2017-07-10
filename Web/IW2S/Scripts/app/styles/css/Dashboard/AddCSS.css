@@ -1,0 +1,214 @@
+.cizu_list {
+  border: 1px dashed #ccc    ;
+  min-height: 30px;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+.cizu_list .cizu {
+  border-bottom: 1px solid #ccc;
+  font-size: 15px;
+  font-weight: 600;
+  color: #009999;
+}
+.cizu_list .ci_list {
+  padding: 7px 0px 0;
+  margin: 0 -3px;
+}
+.cizu_list .ci_list .ciNei {
+  display: inline-block;
+  background-color: #ffffff;
+  color: #808080;
+  padding: 2px 10px 1px;
+  margin: 2px 3px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.cizu_list .ci_list .ciNei:hover {
+  background-color: #099;
+  color: #fff;
+}
+.centerBut {
+  width: 6%;
+  float: left;
+  text-align: center;
+  padding-top: 50px;
+}
+.centerBut span {
+  display: inline-block;
+  width: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.centerBut span:hover {
+  background-color: #099;
+  color: #fff;
+  border: 1px solid #099;
+}
+.UtteranceExtraction {
+  min-height: 300px;
+}
+.UtteranceExtraction .project_titel .center {
+  color: #757575;
+  border: 1px solid #b9b9b9;
+  border-radius: 7px;
+  padding: 9px;
+  width: 16%;
+}
+.UtteranceExtraction .project_titel .left {
+  margin: 19px 11px;
+  background: -webkit-linear-gradient(left, #ecf0f1, #b9b9b9);
+  background: -o-linear-gradient(right, #ecf0f1, #b9b9b9);
+  background: -moz-linear-gradient(right, #ecf0f1, #b9b9b9);
+  background: linear-gradient(to right, #ecf0f1, #b9b9b9);
+}
+.UtteranceExtraction .project_titel .right {
+  margin: 19px 11px;
+  background: -webkit-linear-gradient(left, #b9b9b9, #ecf0f1);
+  background: -o-linear-gradient(right, #b9b9b9, #ecf0f1);
+  background: -moz-linear-gradient(right, #b9b9b9, #ecf0f1);
+  background: linear-gradient(to right, #b9b9b9, #ecf0f1);
+}
+.AddMMSTCard {
+  padding: 40px;
+}
+.AddMMSTCard .cizu_list .cizu {
+  padding-bottom: 5px;
+}
+.AddMMSTCard .centerBut {
+  padding-top: 120px;
+}
+.AddMMSTCard .centerBut span {
+  margin-top: 15px;
+  height: 26px;
+  line-height: 24px;
+  font-size: 18px;
+}
+.AddMMSTLoding {
+  padding: 82px 70px 70px;
+}
+.AddMMSTCard .EntityTreeList .entitylistCard span {
+  font-size: 14px;
+}
+.payPage {
+  padding: 0;
+  position: relative;
+}
+.payPage .close_but {
+  position: absolute;
+  right: 20px;
+  top: 16px;
+  color: #888;
+  cursor: pointer;
+  z-index: 2;
+  font-size: 18px;
+}
+.payPage .close_but i:hover {
+  cursor: pointer;
+  color: #158681;
+}
+.payPage .left {
+  height: 300px;
+  background-color: #ececec;
+  border-radius: 5px 0 0 5px;
+}
+.payPage .left h3 {
+  border-bottom: 0;
+  margin-top: 30px;
+  margin-left: 20px;
+  font-weight: 600;
+  color: #888;
+}
+.payPage .left h2 {
+  color: #099;
+  margin-left: 14px;
+  font-size: 36px;
+  margin-top: 80px;
+}
+.payPage .left p {
+  margin-left: 28px;
+  margin-top: 30px;
+  color: #777;
+}
+.payPage .right {
+  text-align: center;
+}
+.payPage .right img {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  width: 120px;
+}
+.payPage .right p {
+  color: #666;
+  font-size: 15px;
+}
+#PurchaseService .channel .attestExample .ser-time .applyCon-btn {
+  width: 190px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 16px;
+  margin: 0px auto 50px!important;
+}
+.wangGuanX2 h4 {
+  margin-bottom: 10px;
+  color: #2f7373;
+  margin-top: 20px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.wangGuanX2 p span {
+  font-weight: 600;
+}
+.wangGuanX2 .SLcard {
+  margin-top: 20px;
+  margin-right: 10px;
+  padding: 10px;
+  background-color: #f7f7f7;
+  box-shadow: 1px 1px 3px #ccc;
+}
+.wangGuanX2 .SLcard h4 {
+  margin-top: 0px;
+}
+.wangGuanX2 .SLcard div {
+  border: 1px dashed #ccc;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #fff;
+  text-align: justify;
+}
+.wangGuanX2 .SLcard div span {
+  font-weight: 600;
+}
+.shareTab {
+  margin-bottom: 15px;
+  background-color: #fff;
+  box-shadow: 1px 1px 4px #ccc;
+}
+.shareTab ol li {
+  margin: 0;
+  display: inline-block;
+  font-size: 18px;
+  color: #666;
+  padding: 20px 20px 16px 24px;
+  cursor: pointer;
+}
+.shareTab ol li:hover {
+  border-bottom: 2px solid #099;
+  color: #099;
+}
+.shareTab ol .active {
+  border-bottom: 2px solid #099;
+  color: #099;
+}
+.mainBut_i {
+  color: #666;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+}
+.mainBut_i:hover {
+  color: #158681;
+}

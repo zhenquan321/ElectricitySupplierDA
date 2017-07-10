@@ -1,0 +1,413 @@
+﻿<div ng-include="'Scripts/app/views/common/header.html'"></div>
+<div id="PurchaseService" class="container">
+
+    <section>
+        <ul class="vip-nav">
+            <li class="nav-item " data-name="fable-price" ng-class="{true:'active',false:''}[TabListShow===1]" ng-click="ChangeTabList(1)">
+                <a>VIP服务</a>
+            </li>
+            <li id="plan" class="nav-item" data-name="plan" ng-class="{true:'active',false:''}[TabListShow===2]" ng-click="ChangeTabList(2)">
+                <a>数据服务价格</a>
+            </li>
+            <li id="channel" class="nav-item" data-name="channel" ng-class="{true:'active',false:''}[TabListShow===3]" ng-click="ChangeTabList(3)">
+                <a>专业数据分析</a>
+            </li>
+            <li id="enterpEdition" class="nav-item" data-name="enterpEdition" ng-class="{true:'active',false:''}[TabListShow===4]" ng-click="ChangeTabList(4)">
+                <a>优先技术支持</a>
+            </li>
+            <li id="course" class="nav-item" data-name="course" ng-class="{true:'active',false:''}[TabListShow===5]" ng-click="ChangeTabList(5)">
+                <a>培训服务</a>
+            </li>
+        </ul>
+        <dl class="cont-box fable-price" ng-show="TabListShow==1">
+            <dt id="levelPrice">
+                <h3>VIP服务价格</h3>
+                <h4 class="colorff9000 basic-tit">选择最适合您的增值服务方案</h4>
+                <!-- <div class="service-titleDline titleDline"></div> -->
+                <h5 class="bas-title">为您提供更全面服务方案，满足不同团队的需求，助力团队成长。</h5>
+                <div class="serviceCase">
+                    <div class="serviceCase_title">
+                        <div class="none">
+                            <div class="none-fir"></div>
+                        </div>
+                        <div class="none personal">
+                            <div class="none-per">个人版</div>
+                            <div class="per-con bor-right">免费</div>
+                        </div>
+                        <div class="none enterprise">
+                            <div class="none-ent">企业版</div>
+                            <div class="ent-con bor-right">
+                                <p>
+                                    多套餐，<a href="">按需定制</a> <br />
+                                    以下为基础套餐
+                                </p>
+                            </div>
+                        </div>
+                        <div class="none major">
+                            <div class="none-maj">专业版</div>
+                            <div class="maj-con bor-right">
+                                <p>
+                                    基础费用<br />
+                                    按需使用，按量收费
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="serviceCase_tab">
+                        <tbody>
+                            <tr class="singular tr-first-active" style="">
+                                <td>开户费用</td>
+                                <td>￥0.00</td>
+                                <td>￥13,600</td>
+                                <td>￥258 + N</td>
+                            </tr>
+                            <tr class="dual">
+                                <td>监测项目</td>
+                                <td>2个</td>
+                                <td>4个</td>
+                                <td>￥500/个</td>
+                            </tr>
+                            <tr class="singular">
+                                <td>数据报告</td>
+                                <td>2份</td>
+                                <td>10份</td>
+                                <td>￥100/份</td>
+                            </tr>
+                            <tr class="dual">
+                                <td>搜索数据</td>
+                                <td>2000条</td>
+                                <td>20000条</td>
+                                <td>0.05元/条</td>
+                            </tr>
+                            <tr class="singular">
+                                <td>搜索关键词</td>
+                                <td>20个</td>
+                                <td>不限</td>
+                                <td>不限</td>
+                            </tr>
+                            <tr class="dual">
+                                <td>
+                                    优先技术支持
+                                </td>
+                                <td>-</td>
+                                <td>✔</td>
+                                <td>✔</td>
+                            </tr>
+                            <tr class="singular">
+                                <td>专业数据分析服务</td>
+                                <td>-</td>
+                                <td>5次<!-- (1个账号) --></td>
+                                <td>￥1000/次<!-- （10个账号） --></td>
+                            </tr>
+                            <tr class="singular">
+                                <td>培训服务</td>
+                                <td>-</td>
+                                <td>4次<!-- (1个账号) --></td>
+                                <td>￥1000/次<!-- （10个账号） --></td>
+                            </tr>
+                            <tr class="singular tab-last">
+                                <td class=""></td>
+                                <td class="border-bot"></td>
+                                <td class="border-bot enter-btn" data-level="1">
+                                    <span class="btn btn-warning enterprise-btn" data-type="3" data-forcebuy="0" ng-click="qiyePayPage()">立即开通</span>
+                                </td>
+                                <td class="border-maj profe-btn" data-level="2">
+                                    <span class="btn btn-warning professional-btn" data-type="3" data-forcebuy="0" ng-click="zhuanyepaypage()">立即开通</span>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </dt>
+            <div class="kplan Docker">
+                <h5>服务说明</h5>
+                <p class="mt15" style="color:#777">
+                    我们提供以专业的数据挖崛工具与数据分析台。力争在最短的时间为您需求挖崛最全的数据，做最专业的数据分析，并提供
+                    最优质的技术支持服务，以帮助广大用户解决市场分析业务，挖崛市场信息，解决问题。<br />
+                    DateWeco作为大数据服务平台，可免费提供数据服务。但因为运营需要成本，如果对您有帮助，还望支持一下。
+                </p>
+            </div>
+        </dl>
+        <dl class="cont-box plan" ng-show="TabListShow==2">
+            <dt>
+                <h3 class="plan-con1-title main-con-title">数据服务价格</h3>
+            </dt>
+            <dd class="cloudPrice">
+                <ul class="ser-priceUL clearfix">
+                    <li>
+                        <div class="titalMain">
+                            <i class="fa fa-users"></i>
+                            <p class="imgp">开户数量</p>
+                        </div>
+                        <p class="p1 color666">普通用户免费</p>
+                        <p class="p2 color999">付费用户按需收费</p>
+                        <div class="titalMain2">
+                            <div class="line"></div>
+                            <p>付费用户将获得更全面专业的服务于支持</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="titalMain">
+                            <i class="fa fa-object-ungroup"></i>
+                            <p class="imgp">创建项目数</p>
+                        </div>
+                        <p class="p1 color666"> 每月2个免费</p>
+                        <p class="p2 color999"> 专业版500元/个</p>
+                        <div class="titalMain2">
+                            <div class="line"></div>
+                            <p>套餐客户创建项目数量根据合同而定</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="titalMain">
+                            <i class="fa fa-laptop"></i>
+                            <p class="imgp">报告数量</p>
+                        </div>
+                        <p class="p1 color666">每月2个免费</p>
+                        <p class="p2 color999">超出100元/分</p>
+                        <div class="titalMain2">
+                            <div class="line"></div>
+                            <p>报告可客户自己编写，也可由我们专业数据经理提供支持</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="titalMain">
+                            <i class="fa fa-search" ></i>
+                            <p class="imgp">搜索数据</p>
+                        </div>
+                        <p class="p1 color666">每月2000条免费</p>
+                        <p class="p2 color999">超出后0.05元/条</p>
+                        <div class="titalMain2">
+                            <div class="line"></div>
+                            <p>套餐客户创建项目数量根据合同而定</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="titalMain">
+                            <i class="fa fa-tasks"></i>
+                            <p class="imgp">搜索关键词</p>
+                        </div>
+                        <p class="p1 colorf8a245 fontWeight">每月20个免费</p>
+                        <p class="p2 color999"><span class="sline">——</span></p>
+                        <div class="titalMain2">
+                            <div class="line"></div>
+                            <p>付费用户关键词搜索数量不限</p>
+                        </div>
+                    </li>
+                </ul>
+                <p class="endTitle color666"><span class="colorf8a245">* </span>每月5日出具上月账单，25日前结算</p>
+            </dd>
+            <!--其他服务 new end-->
+            <dt class="otherSer">
+                <h3 class="plan-con3-title main-con-title">其他服务</h3>
+                <!-- <div class="service-titleDline other-titleDline"></div> -->
+            </dt>
+            <dd class="otherService">
+                <div class="kplan">
+                    <h5>数据实时保护</h5>
+                    <p>
+                        DataWeco为您的数据提供实时保护服务，并提供版本保存与数据备份服务。
+                    </p>
+                </div>
+                <div class="kplan Docker">
+                    <h5>数据云储存</h5>
+                    <p>
+                        DataWeco将免费提供数据云储存服务，您可将您的相关数据，资料储存在我们的云服务器，用以保存您的数据，同时可用于DataWeco程序提取处理。
+                    </p>
+                </div>
+            </dd>
+        </dl>
+
+        <dl class="cont-box channel" ng-show="TabListShow==3">
+            <dt><h3 class="channel-con1-title main-con-title">专业数据分析，更快更精准，更省心</h3></dt>
+            <dd class="channel-list pb10">
+                <p class="info">DataWeco提供专业的数据分析服务，我们有从业十余年的专业数据分析团队与行业专家。<br>在我们专业的服务团队的支持下，您的数据分析将更快速，更简便，更精准，更省心！</p>
+            </dd>
+            <dd class="transparent buy-type" style="position:relative">
+                <div class="attestExample">
+                    <ul class="ser-time clearfix">
+                        <li class="col-md-4 vipactive" data-type="3">
+                            <a class="active-title"style="color:#099;">价格详情</a>
+                            <p class="num" data-num="12">
+                                <span style="color:#f99529;font-weight: normal;">￥</span><span class="applyCon-strong" style="color:#f99529;font-weight: normal;">1000</span> /单个项目每次
+                            </p>
+                            <span class="btn btn-warning applyCon-btn" style="border-color:#099;" ng-click="zhuanyepaypage()">立即开通</span>
+                        </li>
+                    </ul>
+                </div>
+            </dd>
+            <dt><h3 class="channel-con3-title main-con-title">我们的特色</h3></dt>
+            <dd class="cloud-compile">
+                <h4>专业数据分析师</h4>
+                <p class="info">十余年从业经验数据分析师，更专业快捷的分析数据，为您的市场分析测算无遗留！</p>
+            </dd>
+            <dd class="channel-stats">
+                <h4>精准的市场把握</h4>
+                <p class="info">我们有各行业专家进行市场分析支持，结合以专业的分析数据，对市场的变动与预见，<br>全面，精准，高效，从而能为您的规划做出最有力的支持！。</p>
+            </dd>
+        </dl>
+        <dl class="cont-box enterpEdition" ng-show="TabListShow==4">
+            <dt>
+                <h3 class="enterpEdition-con1-title main-con-title">为什么选择 “优先技术支持”</h3>
+            </dt>
+
+            <dd>
+                <p class="plan-info">
+                    在遇到时间紧急、难度较大的或专业度较高的数据分析时，<br>DataWeco专家团将为您提供最优质的技术支持服务，能够以最低的时间成本，将数据的够精准全面
+                </p>
+                <ul class="plan_des_box">
+                   <a class="plan_qq_btn" target="_blank"><span style="background-color: #fff; border: 1px solid #ccc; border-radius: 120px; padding: 50px;"><span> 服务咨询</span></span></a>  
+                    <ul class="plan_box_left">
+                        <li class="plan_box_item item1">
+                            <i class="plan_item_icon "></i>
+                            <h4>“30分钟” 快速响应</h4>
+                            <p >高效的响应机制<br>保证技术专家时刻处于服务状态<br>工作日30分钟内做出响应。</p>
+                        </li>
+                        <li class="plan_box_item item2">
+                            <i class="plan_item_icon item_icon2"></i>
+                            <h4>“专业” 在线解答</h4>
+                            <p>CTO亲自带队，APICloud<br>专家团均为深度开发专家，<br>保证服务质量。</p>
+                        </li>
+                        <li class="plan_box_item item3">
+                            <i class="plan_item_icon item_icon3"></i>
+                            <h4>“全方位” 支持</h4>
+                            <p>提供数据搜索，数据分析，市场咨询等全方位的支持服务</p>
+                        </li>
+                    </ul>
+                    <ul class="plan_box_right">
+                        <li class="plan_box_item item1">
+                            <i class="plan_item_icon item_icon4"></i>
+                            <h4>“一对一” 技术支持</h4>
+                            <p>专家团为用户提供一<br>对一技术支持，保证服务专一高<br>效。</p>
+                        </li>
+                        <li class="plan_box_item item2">
+                            <i class="plan_item_icon item_icon5"></i>
+                            <h4>“多帐号” 同时提问</h4>
+                            <p>优先技术支持可开通多个帐<br>号，均可获得使用权限。</p>
+                        </li>
+                        <li class="plan_box_item item3">
+                            <i class="plan_item_icon item_icon6"></i>
+                            <h4>问题状态 “追踪”</h4>
+                            <p>时时追踪问题解决状态</p>
+                        </li>
+                    </ul>
+                </ul>
+            </dd>
+            <dd class="transparent">
+                <h3 class="enterpEdition-con2-title main-con-title">价格详情</h3>
+                <ul class="service-type acty clearfix mb20">
+                    <li data-type="1">
+                        <i class="icon-acty icon-acty-1"></i>
+                        <p class="time-title"><span class="num">3</span>个月时限</p>
+                        <span class="line"></span>
+                        <p class="price">￥<b>3000</b></p>
+                        <p class="time-info"><span class="num">3</span>次支持服务</p>
+                        <div class="pop-box">
+                            <p class="price">￥<b>3000</b></p>
+                            <span class="btn btn-warning" ng-click="zhuanyepaypage()">立即开通</span>
+
+                            <p class="time-title mousehov"><span class="num">3</span>个月时限</p>
+                            <p class="time-info">包括<span class="num">3</span>次支持服务</p>
+                        </div>
+                    </li>
+                    <li data-type="2">
+                        <i class="icon-acty icon-acty-2"></i>
+                        <p class="time-title"><span class="num">6</span>个月时限</p>
+                        <span class="line"></span>
+                        <p class="price">￥<b>5000</b></p>
+                        <p class="time-info"><span class="num">6</span>次支持服务</p>
+                        <div class="pop-box">
+                            <p class="price">￥<b>5000</b></p>
+                            <span class="btn btn-warning" ng-click="zhuanyepaypage()">立即开通</span>
+                            <p class="time-title mousehov"><span class="num">6</span>个月时限</p>
+                            <p class="time-info">包括<span class="num">5</span>次支持服务</p>
+                        </div>
+                    </li>
+                    <li data-type="3">
+                        <i class="icon-acty icon-acty-3"></i>
+                        <p class="time-title"><span class="num">12</span>个月时限</p>
+                        <span class="line"></span>
+                        <p class="price">￥<b>10000</b></p>
+                        <p class="time-info"><span class="num">12</span>次支持服务</p>
+                        <div class="pop-box">
+                            <p class="price">￥<b>7600</b></p>
+                            <span class="btn btn-warning" ng-click="zhuanyepaypage()">立即开通</span>
+                            <p class="time-title  mousehov"><span class="num">12</span>个月时限</p>
+                            <p class="time-info">包括<span class="num">12</span>次支持服务</p>
+                        </div>
+                    </li>
+
+                </ul>
+            </dd>
+        </dl>
+     
+        <dl class="cont-box course" ng-show="TabListShow==5">
+            <dd class="seven-intro">
+                <p class="con-title1 main-con-title mb10">一天掌握DataWeco高效使用方式</p>
+                <p class="con-title2">技术专家亲自授课，手把手教你搜索数据</p>
+            </dd>
+            <!--学员须知-->
+            <dd class="student-notice">
+                <div class="text-box"style="background-color:#e0eaea">
+                    <p class="row1"><span class="col-title">学员须知: </span><span class="col-text">1. 课程学习时间：全天培训一天，后期技术支持，课程有效时间为一月。</span></p>
+                    <p class="row2"><span class="col-text">（自购买之日起计时，每月按照31天计算）</span></p>
+                    <p class="row3"><span class="col-title">学员福利: </span><span class="col-text">1. 案例项目解读。</span></p>
+                    <p class="row4"><span class="col-text">2.后期全天候，技术支持。</span></p>
+                </div>
+            </dd>
+            <!--我们这样讲-->
+            <dd class="course-list mt15" style="overflow: hidden;">
+                <ul style="margin-bottom:57px;">
+                    <li>
+                        <div class="col-md-4">第<b>1</b>讲</div>
+                        <div class="col-md-9">
+                            <b>数据模型</b>
+                            <p>数据的组成与原理，数据分析基础与操作方法。</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col-md-4">第<b>2</b>讲</div>
+                        <div class="col-md-9">
+                            <b>数据分析</b>
+                            <p>数据分析依据以及数据背后的秘密。</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col-md-4">第<b>3</b>讲</div>
+                        <div class="col-md-9">
+                            <b>数据分析</b>
+                            <p>数据分析依据以及数据背后的秘密。</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col-md-4">第<b>4</b>讲</div>
+                        <div class="col-md-9">
+                            <b>数据分析</b>
+                            <p>数据分析依据以及数据背后的秘密。</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="col-md-4">第<b>5</b>讲</div>
+                        <div class="col-md-9">
+                            <b>数据分析</b>
+                            <p>数据分析依据以及数据背后的秘密。</p>
+                        </div>
+                    </li>
+                </ul>
+                <div style=" text-align: center; margin-top: -20px; background-color: #fff;margin-bottom:35px;">
+                    <span class="btn btn-warning enterprise-btn" data-type="3" data-forcebuy="0">申请学习
+                    </span>
+                </div>
+            </dd>
+          
+        </dl>
+        
+      
+    </section>
+
+
+</div>
+<div ng-include="'Scripts/app/views/common/footer.html'" class="mt20"></div>
+

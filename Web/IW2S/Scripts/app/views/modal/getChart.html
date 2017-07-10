@@ -1,0 +1,36 @@
+﻿<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()">
+        &times;
+    </button>
+	<h4 class="modal-title" id="myModalLabel">
+        读取设置
+    </h4>
+</div>
+<div class="modal-body " style="min-height:100px;" ng-show="!isactive">
+	<div class="main-panel-title" style="color: #808080;">
+                        <span style="margin-left: 10px;"><input type="checkbox" ng-model="kwcheckedAll"
+                                                                ng-click="ChartConfigAllchk(kwcheckedAll)">全选</span>
+                    </div>
+	<div class="keywords pt20">
+		<div class="items">
+			<span ng-repeat="x in ChartList">
+                                        <label id="checkboxcancel" style="cursor: pointer;">
+                                            {{x.Name}}
+			<input type="checkbox" ng-checked="kwcheckedAll" class="checkedKeyword" ng-model="Chartxx" ng-click="ChartConfigChk(x._id,Chartxx)">
+			</label>
+			</span>
+		</div>
+	</div>
+
+</div>
+<div class="modal-footer " ng-show="!isactive">
+	<button type="button" class="btn btn-tea" ng-click="ShowChart()">
+        读取
+    </button>
+    <button type="button" class="btn btn-tea" ng-click="DelChartConfig()">
+        删除
+    </button>
+	<button type="button" class="btn btn-cancle" data-dismiss="modal" ng-click="cancel()">
+        取消
+    </button>
+</div>

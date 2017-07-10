@@ -1,0 +1,6 @@
+G:\git仓库\IWSBot2\IWSData\bin\Debug\IWSData.dll
+G:\git仓库\IWSBot2\IWSData\bin\Debug\IWSData.pdb
+G:\git仓库\IWSBot2\IWSData\obj\Debug\IWSData.dll
+G:\git仓库\IWSBot2\IWSData\obj\Debug\IWSData.pdb
+G:\git仓库\IWSBot2\IWSData\bin\Debug\MongoDB.Bson.dll
+G:\git仓库\IWSBot2\IWSData\obj\Debug\IWSData.csprojResolveAssemblyReference.cache

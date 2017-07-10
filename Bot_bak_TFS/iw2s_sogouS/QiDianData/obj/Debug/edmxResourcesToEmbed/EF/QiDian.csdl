@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QiDianSogouModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="NovelLibrary">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NovelName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="RealName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AuthorName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NovelType" Type="Int32" />
+    <Property Name="IsBot" Type="Int32" />
+    <Property Name="StartTime" Type="DateTime" Precision="3" />
+    <Property Name="EndTime" Type="DateTime" Precision="3" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ResultLiks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Rid" Type="Guid" />
+    <Property Name="NovelId" Type="Int32" />
+    <Property Name="NovelName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="RealName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="AuthorName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="LinkTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="LinkAbstract" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="LinkUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Keyword" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="BeiYong" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Domain" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TopDomain" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BlackId" Type="Int32" />
+    <Property Name="States" Type="Int32" />
+  </EntityType>
+  <EntityType Name="WhiteList">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AuthorizedName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="AuthorizedUrl1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="AuthorizedUrl2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="QiDianSogouEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="NovelLibrary" EntityType="Self.NovelLibrary" />
+    <EntitySet Name="ResultLiks" EntityType="Self.ResultLiks" />
+    <EntitySet Name="WhiteList" EntityType="Self.WhiteList" />
+    <EntitySet Name="BlackList" EntityType="QiDianSogouModel.BlackList" />
+  </EntityContainer>
+  <EntityType Name="BlackList">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Domain" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="DomainType" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

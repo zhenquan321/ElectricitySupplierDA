@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WolongWeibo", "WolongWeibo\WolongWeibo.csproj", "{461EB824-9B90-4084-82ED-1B04B8B10058}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBHelper", "DBHelper\DBHelper.csproj", "{A2BC1ECC-B84F-4B91-8194-E1ED9776B943}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoV2", "..\Assemblies\MongoV2\MongoV2.csproj", "{6040650C-0D16-416F-BF42-BD6C250053D9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{461EB824-9B90-4084-82ED-1B04B8B10058}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{461EB824-9B90-4084-82ED-1B04B8B10058}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{461EB824-9B90-4084-82ED-1B04B8B10058}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{461EB824-9B90-4084-82ED-1B04B8B10058}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2BC1ECC-B84F-4B91-8194-E1ED9776B943}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2BC1ECC-B84F-4B91-8194-E1ED9776B943}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2BC1ECC-B84F-4B91-8194-E1ED9776B943}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2BC1ECC-B84F-4B91-8194-E1ED9776B943}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6040650C-0D16-416F-BF42-BD6C250053D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6040650C-0D16-416F-BF42-BD6C250053D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6040650C-0D16-416F-BF42-BD6C250053D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6040650C-0D16-416F-BF42-BD6C250053D9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

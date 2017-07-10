@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QiDianSogouModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BlackList">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Domain" Type="nvarchar" MaxLength="200" />
+    <Property Name="DomainType" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="NovelLibrary">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NovelName" Type="nvarchar" MaxLength="200" />
+    <Property Name="RealName" Type="nvarchar" MaxLength="100" />
+    <Property Name="AuthorName" Type="nvarchar" MaxLength="100" />
+    <Property Name="NovelType" Type="int" />
+    <Property Name="IsBot" Type="int" />
+    <Property Name="StartTime" Type="datetime" />
+    <Property Name="EndTime" Type="datetime" />
+    <Property Name="CreatedAt" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ResultLiks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Rid" Type="uniqueidentifier" />
+    <Property Name="NovelId" Type="int" />
+    <Property Name="NovelName" Type="nvarchar" MaxLength="250" />
+    <Property Name="RealName" Type="nvarchar" MaxLength="200" />
+    <Property Name="AuthorName" Type="nvarchar" MaxLength="200" />
+    <Property Name="LinkTitle" Type="nvarchar" MaxLength="500" />
+    <Property Name="LinkAbstract" Type="nvarchar" MaxLength="2000" />
+    <Property Name="LinkUrl" Type="nvarchar" MaxLength="500" />
+    <Property Name="Keyword" Type="nvarchar" MaxLength="150" />
+    <Property Name="BeiYong" Type="nvarchar" MaxLength="500" />
+    <Property Name="Domain" Type="nvarchar" MaxLength="50" />
+    <Property Name="TopDomain" Type="nvarchar" MaxLength="50" />
+    <Property Name="BlackId" Type="int" />
+    <Property Name="States" Type="int" />
+  </EntityType>
+  <EntityType Name="WhiteList">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AuthorizedName" Type="nvarchar" MaxLength="200" />
+    <Property Name="AuthorizedUrl1" Type="nvarchar" MaxLength="500" />
+    <Property Name="AuthorizedUrl2" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityContainer Name="QiDianSogouModelStoreContainer">
+    <EntitySet Name="BlackList" EntityType="Self.BlackList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NovelLibrary" EntityType="Self.NovelLibrary" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ResultLiks" EntityType="Self.ResultLiks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WhiteList" EntityType="Self.WhiteList" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FBAEF304-CAD9-4C6F-B1F7-A8F3DA83B367}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Iw2sDataAnalysis</RootNamespace>
+    <AssemblyName>Iw2sDataAnalysis</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AISSystem">
+      <HintPath>..\iw2swcsserch\Libs\AISSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\iw2swcsserch\Libs\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="HTML">
+      <HintPath>..\..\Assemblies\Libs\HTML.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\Assemblies\Libs\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\..\Assemblies\Libs\MongoDBV2\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\..\Assemblies\Libs\MongoDBV2\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core">
+      <HintPath>..\..\Assemblies\Libs\MongoDBV2\MongoDB.Driver.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.GridFS">
+      <HintPath>..\..\Assemblies\Libs\MongoDBV2\MongoDB.Driver.GridFS.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Legacy">
+      <HintPath>..\..\Assemblies\Libs\MongoDBV2\MongoDB.Driver.Legacy.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoV2">
+      <HintPath>..\..\Assemblies\Libs\MongoDBV2\MongoV2.dll</HintPath>
+    </Reference>
+    <Reference Include="ProxyLib">
+      <HintPath>..\..\Assemblies\Libs\ProxyLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BotTask\BotTaskService.cs" />
+    <Compile Include="Helper\ExceptionHelper.cs" />
+    <Compile Include="Helper\LogHelper.cs" />
+    <Compile Include="Helper\MongoDBClass.cs" />
+    <Compile Include="Helper\MongoDBHelper.cs" />
+    <Compile Include="Helper\TaobaoWebHelper.cs" />
+    <Compile Include="Helper\WebHelperNoCookieProxy.cs" />
+    <Compile Include="Models\IW2SUser.cs" />
+    <Compile Include="Models\IW2S_BaiduCommend.cs" />
+    <Compile Include="Models\IW2S_BaiduKeyword.cs" />
+    <Compile Include="Models\IW2S_Data.cs" />
+    <Compile Include="Models\IW2S_KeywordFilter.cs" />
+    <Compile Include="Models\IW2S_KeywordGroup.cs" />
+    <Compile Include="Models\IW2S_level1link.cs" />
+    <Compile Include="Models\IW2S_Project.cs" />
+    <Compile Include="Models\IW2S_SearchKeyword.cs" />
+    <Compile Include="Models\IW2S_SG_BaiduCommend.cs" />
+    <Compile Include="Models\IW2S_SG_KeywordFilter.cs" />
+    <Compile Include="Models\IW2S_SG_KeywordGroup.cs" />
+    <Compile Include="Models\IW2S_SG_level1link.cs" />
+    <Compile Include="Models\IW2S_WX_BaiduCommend.cs" />
+    <Compile Include="Models\IW2S_WX_KeywordFilter.cs" />
+    <Compile Include="Models\IW2S_WX_KeywordGroup.cs" />
+    <Compile Include="Models\IW2S_WX_level1link.cs" />
+    <Compile Include="Models\Keyword\Dnl_Keyword.cs" />
+    <Compile Include="Models\Keyword\Dnl_KeywordMapping.cs" />
+    <Compile Include="Models\Keyword\Dnl_Link_Baidu.cs" />
+    <Compile Include="Models\links.cs" />
+    <Compile Include="Models\SocialMedia\MediaKeyword.cs" />
+    <Compile Include="Models\SocialMedia\MediaKeywordMapping.cs" />
+    <Compile Include="Models\SocialMedia\WeiXinLink.cs" />
+    <Compile Include="Models\SocialMedia\WeiXinLinkComment.cs" />
+    <Compile Include="Models\SocialMedia\WeiXinName.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Search\BotSearch.cs" />
+    <Compile Include="Template\WeChatQuery.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Libs\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

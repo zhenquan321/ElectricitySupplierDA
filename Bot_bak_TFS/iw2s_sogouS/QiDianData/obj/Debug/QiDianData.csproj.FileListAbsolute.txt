@@ -1,0 +1,8 @@
+D:\TFS\Workspaces\IPRSEE\iw2s_sogouS\QiDianData\bin\Debug\QiDianData.dll.config
+D:\TFS\Workspaces\IPRSEE\iw2s_sogouS\QiDianData\bin\Debug\QiDianData.dll
+D:\TFS\Workspaces\IPRSEE\iw2s_sogouS\QiDianData\bin\Debug\QiDianData.pdb
+D:\TFS\Workspaces\IPRSEE\iw2s_sogouS\QiDianData\bin\Debug\EntityFramework.dll
+D:\TFS\Workspaces\IPRSEE\iw2s_sogouS\QiDianData\bin\Debug\EntityFramework.xml
+D:\TFS\Workspaces\IPRSEE\iw2s_sogouS\QiDianData\obj\Debug\QiDianData.dll
+D:\TFS\Workspaces\IPRSEE\iw2s_sogouS\QiDianData\obj\Debug\QiDianData.pdb
+D:\TFS\Workspaces\IPRSEE\iw2s_sogouS\QiDianData\obj\Debug\QiDianData.csprojResolveAssemblyReference.cache

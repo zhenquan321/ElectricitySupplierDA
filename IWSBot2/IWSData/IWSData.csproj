@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6969BAF9-6ED1-4660-B4D4-A2403C55FDB4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IWSData</RootNamespace>
+    <AssemblyName>IWSData</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MongoDB.Bson, Version=1.7.0.4714, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Assemblies\Libs\MongoDBV2\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\Bing\IW2S_Bing_PrjAnalysisItem.cs" />
+    <Compile Include="Model\Bing\IW2S_Bing_BaiduCommend.cs" />
+    <Compile Include="Model\Bing\IW2S_Bing_BaiduKeyword.cs" />
+    <Compile Include="Model\Bing\IW2S_Bing_level1link.cs" />
+    <Compile Include="Model\Bing\IW2S_Bing_KeywordFilter.cs" />
+    <Compile Include="Model\Bing\IW2S_KeywordGroup.cs" />
+    <Compile Include="Model\PojectChart.cs" />
+    <Compile Include="Model\Dnl_EntityTree.cs" />
+    <Compile Include="Model\Dnl_EntityTreeMapping.cs" />
+    <Compile Include="Model\Dnl_File.cs" />
+    <Compile Include="Model\Dnl_StopWord.cs" />
+    <Compile Include="Model\Dnl_WordTree.cs" />
+    <Compile Include="Model\Enum.cs" />
+    <Compile Include="Model\Google\Dnl_Google_BaiduCommend.cs" />
+    <Compile Include="Model\Google\Dnl_Google_BaiduKeyword.cs" />
+    <Compile Include="Model\Google\Dnl_Google_KeywordFilter.cs" />
+    <Compile Include="Model\Google\Dnl_Google_level1link.cs" />
+    <Compile Include="Model\Google\Dnl_Google_PrjAnalysisItem.cs" />
+    <Compile Include="Model\Google\Dnl_KeywordGroup.cs" />
+    <Compile Include="Model\IW2SUser.cs" />
+    <Compile Include="Model\IW2SUserDto.cs" />
+    <Compile Include="Model\IW2S_AnalysisItem.cs" />
+    <Compile Include="Model\IW2S_ChartConfig.cs" />
+    <Compile Include="Model\IW2S_DomainCategory.cs" />
+    <Compile Include="Model\IW2S_ImgSearchTask.cs" />
+    <Compile Include="Model\IW2S_OperateComment.cs" />
+    <Compile Include="Model\IW2S_OperateLog.cs" />
+    <Compile Include="Model\Dnl_ProjectGroup.cs" />
+    <Compile Include="Model\IW2S_ProjectShare.cs" />
+    <Compile Include="Model\SearchEngine\Dnl_Keyword.cs" />
+    <Compile Include="Model\SearchEngine\Dnl_KeywordMapping.cs" />
+    <Compile Include="Model\SearchEngine\BaiduLink.cs" />
+    <Compile Include="Model\SearchEngine\Dnl_Link_Baidu.cs" />
+    <Compile Include="Model\Report\Dnl_Report.cs" />
+    <Compile Include="Model\Report\Dnl_ReportShare.cs" />
+    <Compile Include="Model\Report\Dnl_Report_Description.cs" />
+    <Compile Include="Model\Report\Dnl_Report_DomainChart.cs" />
+    <Compile Include="Model\Report\Dnl_Report_keywordChart.cs" />
+    <Compile Include="Model\Report\Dnl_Report_Keyword.cs" />
+    <Compile Include="Model\IW2S_SG_BaiduCommend.cs" />
+    <Compile Include="Model\IW2S_SG_BaiduKeyword.cs" />
+    <Compile Include="Model\IW2S_SG_KeywordFilter.cs" />
+    <Compile Include="Model\IW2S_SG_KeywordGroup.cs" />
+    <Compile Include="Model\IW2S_SG_level1link.cs" />
+    <Compile Include="Model\IW2S_SG_SearchKeyword.cs" />
+    <Compile Include="Model\IW2S_ShareOutComment.cs" />
+    <Compile Include="Model\IW2S_ShareToDiscover.cs" />
+    <Compile Include="Model\IW2S_UrlQRCode.cs" />
+    <Compile Include="Model\IW2S_WB_BaiduCommend.cs" />
+    <Compile Include="Model\IW2S_WB_KeywordFilter.cs" />
+    <Compile Include="Model\IW2S_WB_KeywordGroup.cs" />
+    <Compile Include="Model\IW2S_WB_level1link.cs" />
+    <Compile Include="Model\IW2S_WX_BaiduCommend.cs" />
+    <Compile Include="Model\IW2S_BaiduCommend.cs" />
+    <Compile Include="Model\IW2S_WX_BaiduKeyword.cs" />
+    <Compile Include="Model\IW2S_BaiduKeyword.cs" />
+    <Compile Include="Model\IW2S_BotData.cs" />
+    <Compile Include="Model\IW2S_BotRegister.cs" />
+    <Compile Include="Model\Dnl_IgnoreDomain.cs" />
+    <Compile Include="Model\IW2S_WX_KeywordFilter.cs" />
+    <Compile Include="Model\IW2S_KeywordFilter.cs" />
+    <Compile Include="Model\IW2S_WX_KeywordGroup.cs" />
+    <Compile Include="Model\IW2S_KeywordGroup.cs" />
+    <Compile Include="Model\IW2S_WX_level1link.cs" />
+    <Compile Include="Model\IW2S_level1link.cs" />
+    <Compile Include="Model\IW2S_Project.cs" />
+    <Compile Include="Model\IW2S_WX_SearchKeyword.cs" />
+    <Compile Include="Model\IW2S_SearchKeyword.cs" />
+    <Compile Include="Model\Keyword.cs" />
+    <Compile Include="Model\level1link.cs" />
+    <Compile Include="Model\Report\Dnl_Report_TimeLink.cs" />
+    <Compile Include="Model\Report\Dnl_Report_LinkChart.cs" />
+    <Compile Include="Model\Report\Dnl_Report_LinkChartCategory.cs" />
+    <Compile Include="Model\Report\Dnl_Report_Statistics.cs" />
+    <Compile Include="Model\Report\Dnl_Report_WordTree.cs" />
+    <Compile Include="Model\searchkeyword.cs" />
+    <Compile Include="Model\SocialMedia\MediaKeyword.cs" />
+    <Compile Include="Model\SocialMedia\MediaKeywordMapping.cs" />
+    <Compile Include="Model\SocialMedia\WeiXinName.cs" />
+    <Compile Include="Model\SocialMedia\WeiXinLinkComment.cs" />
+    <Compile Include="Model\SocialMedia\WeiXinLink.cs" />
+    <Compile Include="Model\website.cs" />
+    <Compile Include="Model\WL_Industry.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

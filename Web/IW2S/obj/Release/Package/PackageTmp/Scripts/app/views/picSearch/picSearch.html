@@ -1,0 +1,89 @@
+﻿<div ng-include="'Scripts/app/views/common/header.html'"></div>
+<link rel="stylesheet" href="Scripts/app/views/picSearch/inputpic_2/control/css/zyUpload.css" type="text/css">
+<div id="iw2s-main" style="margin-top:40px;">
+    <div class="header-box">
+        
+        <div class="header" id="header_iw2s">
+            <div class="searchbox mt10 mb15">
+                <a href="javascript:void(0)" class="logo"></a>
+                <form class="bs-example bs-example-form" role="form">
+                    <div class="row ">
+                        <div class="col-lg-12 " style="width:80%;margin-left:10%;">
+                            <div class="row changeSource">
+                                <ul style="display: inline; font-size: 14px; font-weight: 500; cursor: pointer; ">
+                                    <li ui-sref="DnL.DnL_dashboard" ng-class="{baidu:'activeSource',false:'' }[$root.isActiveModale]" ng-click="changeModel_baidu()">百度</li>
+                                    <li ui-sref="DnL_bing.Bing_showDesc" ng-class="{bing:'activeSource',false:'' }[$root.isActiveModale]" ng-click="changeModel_bing()">必应</li>
+                                    <li ui-sref="DnL_Google.Google_showDesc" ng-class="{googol:'activeSource',false:'' }[$root.isActiveModale]" ng-click="changeModel_googol()">谷歌</li>
+                                    <li ui-sref="DnL_sogouNEW.sogouNEWDashboard" ng-class="{sougo_new:'activeSource',false:'' }[$root.isActiveModale]" ng-click="changeModel_sougo_new()">搜狗</li>
+                                    <li ui-sref="DnL_sogou.sogouDashboard" ng-class="{sougou:'activeSource',false:'' }[$root.isActiveModale]" ng-click="changeModel_sougou()">微信</li>
+                                    <li ui-sref="weibo.weiboDashboard" ng-class="{weibo:'activeSource',false:'' }[$root.isActiveModale]" ng-click="changeModel_weibo()">微博</li>
+                                    <li ui-sref="DnL_eMarketNow.eMarketNow" ng-class="{eMarketNow:'activeSource',false:'' }[$root.isActiveModale]" ng-click="changeModel_eMN()">淘宝/天猫</li>
+                                    <li ui-sref="picSearch.picSearch_ShowDesc"  ng-class="{picSearch:'activeSource',false:'' }[$root.isActiveModale]" ng-click="changeModel_picS()">搜图</li>
+                                </ul>
+                            </div>
+                            <div class="row"style="margin-top:-10px">
+                                <div class="col-sm-10 pr0">
+                                    <div id="demo" class="demo " style="min-width: 100%!important; max-height: 50px;"></div>
+                                </div>
+                                <div class="col-sm-2 pl0">
+                                    <button class="btn btn-tea " type="button" ng-click="imageUpload()" style="width: 100%; border-radius: 0px 5px 5px 0; height: 84px; ">
+                                        搜索
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--<div style=" border-bottom: 1px solid #929292; width: 1180px; margin: 40px auto 0 auto;"></div>-->
+        <div class="row wpl" style="margin-top:73px;">
+            <div class="navbar-bg-top">
+                <div class="navbar-content-box">
+                   
+                    <ul class="nav-hd cl">
+                        <li>
+                            <a href="" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="projeict_show" title="{{$root.getProjectName}}">{{ $root.getProjectName.length>7? (($root.getProjectName  | limitTo:7)+"...") : $root.getProjectName  }}<span class="caret" style="margin-left:10px;"></span></a>
+                            <ul class="dropdown-menu  zone-switcher-select">
+                                <span ng-repeat="z in $root.projectsList">
+                                    <li class="projeict_showbut" ng-click="clickItem(z._id,z.Name)">
+                                        <a title="{{z.Name}}">{{ z.Name.length>7? ((z.Name  | limitTo:7)+"...") : z.Name  }}</a>
+                                    </li>
+                                </span>
+                            </ul>
+                        </li>
+                    </ul>
+                   
+                    <ul class="nav-hd cl" style="float:right;">
+                        <li>
+                            <a href="" class="" ui-sref="picSearch.picSearch_ShowDesc" ui-sref-active="active">已搜图片</a>
+                        </li>
+                        <li>
+                            <a href="" class="" ui-sref="picSearch.picSearch_sr" ui-sref-active="active">搜索详情</a>
+                        </li>
+                        <li>
+                            <a href="" class="" ui-sref="picSearch.picSearch_result" ui-sref-active="active">侵权图片</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+    </div>
+    <div class="wpl">
+        <div ui-view="" style="margin-bottom: 70px;"></div>
+    </div>
+</div>
+
+
+
+
+<div ng-include="'Scripts/app/views/common/alert.html'"></div>
+<div ng-include="'Scripts/app/views/common/footer.html'"></div>
+
+
+<script src="Scripts/app/views/picSearch/inputpic_2/core/zyFile.js"></script>
+<script src="Scripts/app/views/picSearch/inputpic_2/control/js/zyUpload.js"></script>
+<script src="Scripts/app/views/picSearch/inputpic_2/core/jq22.js"></script>

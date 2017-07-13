@@ -1,0 +1,46 @@
+﻿<style>
+    .modal-md {
+        margin-top: 9%;
+    }
+</style>
+<div class="modal-header">
+    <button type="button" class="close"
+            data-dismiss="modal" aria-hidden="true" ng-click="cancel()">
+        &times;
+    </button>
+    <h4 class="modal-title" id="myModalLabel">
+        分享报告
+    </h4>
+</div>
+<div class="modal-body">
+    <span style="color: red; font-size: 14px; margin-left:35%">{{error}}</span>
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1 ">
+            <div style="color: #7C7C7C; font-size: 18px; text-align:center">
+                分享报告：<span style="color: #12908B;">{{shareReportName}}</span>
+            </div>
+            <input type="text" class="form-control search-iws ng-pristine ng-valid ng-touched mt15"
+                   ng-model="usrEmails" style="padding-left:15px;" placeholder="请输入邀请用户邮箱,多个用户以“；”隔开">
+            <textarea class="form-control mt15 mb10" rows="6" placeholder="请输入邀请信息"
+                    ng-model="content"></textarea>
+            <div class="pic_pelfile"style="height:60px;">
+                <div style="color: #616161; font-size: 12px; font-weight: 600;"class="mt10">
+                    对方收到的您的用户信息：<br/><span style="color: #099;font-size:16px;">{{$root.UsrEmail}}</span>
+                    <br />
+                    <!--<i ng-click="changeEmail()" class="fa fa-pencil-square-o Modal_color" style="font-weight:600;cursor:pointer;" title="修改信息">修改信息</i>-->
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-tea" ng-click="SendShareEmailReport()">
+        确认分享
+    </button>
+    <button type="button" class="btn btn-cancle"
+            data-dismiss="modal" ng-click="cancel()">
+        取消
+    </button>
+
+</div>

@@ -857,9 +857,42 @@ namespace IW2S.Controllers
             catch
             {
                 result.IsSuccess = false;
-                result.Message = "服务器连接出错！";
+                result.Message = "网络打盹了，请稍后。。。！";
             }
             return result;
+        }
+
+        /// <summary>
+        /// 获取链接正文
+        /// </summary>
+        /// <param name="linkId">链接Id</param>
+        /// <returns></returns>
+        public string GetLinkContent(string linkId)
+        {
+            var builder = Builders<WXLinkContentMongo>.Filter;
+            var filter = builder.Eq(x => x.LinkId, new ObjectId(linkId));
+            var col = MongoDBHelper.Instance.GetWXLinkContent();
+            var wordTree = new TextTree();
+            string content = "";
+            try
+            {
+                var query = col.Find(filter).FirstOrDefault();
+                if (!string.IsNullOrEmpty(query.Content))
+                {
+                    wordTree.TreeValues = query.Content;
+                }
+                else
+                {
+                    wordTree.TreeValues = GetMainContentHelper.GetMainContent(query.Html);
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            JiebaController jieba = new JiebaController();
+            content = jieba.WordSegemete(wordTree).TreeValues;
+            return content;
         }
         #endregion
 
@@ -4874,7 +4907,6 @@ namespace IW2S.Controllers
                 }
                 //建立节点信息
                 var linkNodes = new List<LinkReferNode>();         //节点信息
-                int index = 0;
                 for (int i = 0; i < cpLinks.Count; i++)
                 {
                     //获取链接信息
@@ -4884,7 +4916,6 @@ namespace IW2S.Controllers
                         linkUrl = cpLinks[i].LinkUrl,
                         value = 1,
                         SortNum = cpLinks[i].LikeNum,
-                        Index = index++
                     };
                     if (cpLinks[i].Title != null && cpLinks[i].Title.Length > 20)
                         link.name = cpLinks[i].Title.Substring(0, 19) + "…";
@@ -4999,6 +5030,11 @@ namespace IW2S.Controllers
                 result.ReferList = new List<LinkReferDto>();
                 for (int i = 0; i < result.DateTimeList.Count; i++)
                 {
+                    //重标记结点的顺序
+                    for (int j = 0; j < timeLinkNodeList[i].Count; j++)
+                    {
+                        timeLinkNodeList[i][j].Index = j;
+                    }
                     var referData = ComputerLinkRefer(timeLinkNodeList[i], cateInfo,keyIds);
                     result.ReferList.Add(referData);
                 }
@@ -5330,7 +5366,7 @@ namespace IW2S.Controllers
         }
 
         /// <summary>
-        /// 获取链接关系图谱
+        /// 获取链接关系统计
         /// </summary>
         /// <param name="prjId">项目Id</param>
         /// <returns></returns>
@@ -5503,6 +5539,133 @@ namespace IW2S.Controllers
             result.SiteNum = cpLinks.Select(x => x.Name).Distinct().Count();
 
             return result;
+        }
+
+        /// <summary>
+        /// 插入描述信息
+        /// </summary>
+        /// <param name="post"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ResultDto InsertReferChartDesc(ReferChartPost post)
+        {
+            ResultDto result = new ResultDto();
+            ObjectId proObjId = new ObjectId(post.projectId);
+            var builder = Builders<ReferChartDescMongo>.Filter;
+            var filter = builder.Eq(x => x.ProjectId, proObjId);
+            filter &= builder.Eq(x => x.Type, SourceType.Media) & builder.Eq(x => x.IsDel, false);
+            var col = MongoDBHelper.Instance.GetReferChartDesc();
+            try
+            {
+                //检查是否已保存与该描述相同的记录
+                var query = col.Find(filter).FirstOrDefault();
+                if (query != null)
+                {
+                    result.Message = "该描述已存在！";
+                    return result;
+                }
+                var desc = new ReferChartDescMongo
+                {
+                    ProjectId = proObjId,
+                    CreatedAt = DateTime.Now.AddHours(8),
+                    DescList = post.descList,
+                    Type = SourceType.Media
+                };
+                col.InsertOne(desc);
+                result.IsSuccess = true;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+                return result;
+            }
+        }
+
+        /// <summary>
+        /// 修改描述
+        /// </summary>
+        /// <param name="post"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ResultDto UpdateReferChartDesc(ReferChartPost post)
+        {
+            ResultDto result = new ResultDto();
+            ObjectId proObjId = new ObjectId(post.projectId);
+            var builder = Builders<ReferChartDescMongo>.Filter;
+            var filter = builder.Eq(x => x._id, new ObjectId(post.descId));
+            filter &= builder.Eq(x => x.Type, SourceType.Media) & builder.Eq(x => x.IsDel, false);
+            var col = MongoDBHelper.Instance.GetReferChartDesc();
+            try
+            {
+                //删除原有记录，写入新记录
+                col.DeleteOne(filter);
+                InsertReferChartDesc(post);
+                result.IsSuccess = true;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+                return result;
+            }
+        }
+
+        /// <summary>
+        /// 获取描述信息
+        /// </summary>
+        /// <param name="projectId">项目ID</param>
+        /// <returns></returns>
+        [HttpGet]
+        public ReferChartDescDto GetReferChartDesc(string projectId)
+        {
+            ObjectId proObjId = new ObjectId(projectId);
+            var builder = Builders<ReferChartDescMongo>.Filter;
+            var filter = builder.Eq(x => x.ProjectId, proObjId);
+            filter &= builder.Eq(x => x.Type, SourceType.Media) & builder.Eq(x => x.IsDel, false);
+            var col = MongoDBHelper.Instance.GetReferChartDesc();
+            try
+            {
+                //检查是否已保存与该描述相同的记录
+                var query = col.Find(filter).Project(x => new ReferChartDescDto
+                {
+                    Id = x._id.ToString(),
+                    DescList = x.DescList
+                }).FirstOrDefault();
+                return query;
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 删除描述信息
+        /// </summary>
+        /// <param name="descId">描述Id</param>
+        /// <returns></returns>
+        [HttpGet]
+        public ResultDto DelReferChartDesc(string descId)
+        {
+            ResultDto result = new ResultDto();
+            var builder = Builders<ReferChartDescMongo>.Filter;
+            var filter = builder.Eq(x => x._id, new ObjectId(descId));
+            filter &= builder.Eq(x => x.Type, SourceType.Media) & builder.Eq(x => x.IsDel, false);
+            var col = MongoDBHelper.Instance.GetReferChartDesc();
+            try
+            {
+                var update = new UpdateDocument { { "$set", new QueryDocument { { "IsDel", true } } } };
+                col.UpdateOne(filter, update);
+                result.IsSuccess = true;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+                return result;
+            }
         }
         #endregion
 

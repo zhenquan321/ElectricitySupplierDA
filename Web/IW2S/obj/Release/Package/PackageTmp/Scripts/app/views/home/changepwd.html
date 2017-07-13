@@ -1,0 +1,109 @@
+﻿<div id="iw2s-main">
+    <div class="header-box">
+        <div class="row">
+            <div class="navbar-bg-top">
+                <div class="navbar-content-box">
+                    <span style="width:120px;float:left;padding-top:5px;">
+                        <a href="" class="" ui-sref-active="active" ui-sref="home">
+                        </a>
+                    </span>
+                    <ul class="nav-hd cl">
+                        <li><a href="" class="" ui-sref-active="active" ui-sref="home">首页</a></li>
+
+                    </ul>
+                    <ul class="nav-hd cl" style="float:right;">
+                        <li><a style="width:100%;height:100%" href="" class="" ui-sref-active="active">{{
+                            $root.LoginName}}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="loginPage" ng-hide="changeSucc">
+    <div class="log-content cl">
+        <div class="wpl pos cl">
+            <div class="log-row-cx cl">
+                <div class="login_left">
+                    <div class="lr_title_txt">
+                        <h2>修改密码</h2>
+                        <!--<span>已有账号？<a href="" ui-sref="login">立即登录</a></span>-->
+                    </div>
+                    <form class="form-horizontal log-mt" role="form">
+                        <span style="color:red;">{{error}}</span>
+
+                        <div class="form-group">
+
+                            <div class="col-sm-12 input-group-password">
+                                <i class="fa fa-lock"></i>
+                                <input type="password" class="form-control input-pr" id="inputPassword"
+                                       placeholder="原始密码" ng-model="uPwd0" ng-keypress="EnterPress(event)">
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-sm-12 input-group-password">
+                                <i class="fa fa-lock"></i>
+                                <input type="password" class="form-control input-pr" id="inputPassword"
+                                       placeholder="新密码" ng-model="uPwd1" ng-keypress="EnterPress(event)">
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-sm-12 input-group-password">
+                                <i class="fa fa-lock"></i>
+                                <input type="password" class="form-control input-pr" id="inputPassword"
+                                       placeholder="确认密码" ng-model="uPwd2" ng-keypress="EnterPress(event)">
+                            </div>
+                        </div>
+
+
+                        <button type="button" class="btn btn-tea" ng-click="changepwd()">修 改</button>
+                        <!--<div class="lr_title_txt">
+                    <div class="checkbox1 pt10">还没有账号？</div>
+                    <span class="pt10"><a href="">立即注册</a></span>
+                </div>-->
+                    </form>
+
+                </div>
+                <!--<div class="login-wrap-party z">
+                                <h2>第三方账号登录</h2>
+                                <div class="login-party cl">
+                                    <a href="http://ui.cn/oauth/sina/" class="log-sina">
+                                        <span><i class="fa fa-sina"></i><p>新浪登录</p></span>
+                                    </a>
+                                    <a href="http://ui.cn/oauth/qq/" class="log-qq">
+                                        <span><i class="fa fa-qq"></i><p>QQ登录</p></span>
+                                    </a>
+                                    <a href="http://ui.cn/oauth/mi/" class="log-mi">
+                                        <span><i class="fa fa-weixin"></i><p>微信登录</p></span>
+                                    </a>
+                                </div>
+                            </div>-->
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div class="row" style="margin-top:200px;" ng-show="changeSucc">
+    <div class="col-sm-4 col-sm-offset-4" style="height:250px;text-align:center;">
+        <h2 style="margin-top:20px;">恭喜您的操作已成功！</h2>
+
+        <p style="color:red">密码修改成功，请牢记您的密码，您可以使用新的密码登陆</p>
+        <span style="color:#bbb;">请立刻使用新密码登陆，以防时间过久忘记密码。<br/>注意：如果您连续多次修改密码，请已最新修改的密码登陆。</span><br/><br/>
+
+        <div class="row">
+            <div class="col-sm-2 col-sm-offset-4">
+                <a style="float:left;width:70px;height:30px; line-height:30px; color:#fff;background:#099;border-radius:5px;"
+                   ui-sref="home">返回首页</a>
+            </div>
+            <div class="col-sm-2">
+                <a style="float: left; width: 70px; height: 30px; line-height: 30px; color: #fff; background: #099; border-radius: 5px; "
+                   ui-sref="login">登陆</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-include="'Scripts/app/views/common/footer.html'"></div>

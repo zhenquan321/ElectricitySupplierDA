@@ -1,0 +1,18 @@
+﻿<div class="main-panel">
+    <div class="main-panel-title" style="color: #808080; ">
+        <span class="main-panel-text active">公众号分析</span>
+        <a href="" title=""><i class="fa fa-minus"></i></a>
+        <a href="" title=""><i class="fa fa-refresh" ng-click=""></i></a>
+    </div>
+    <div class="main-panel-content" style="overflow: hidden">
+        <div class="row">
+            <div style="margin: 10px auto 0 auto;">
+                <div style="height:480px;" id="WC_GetBubbleList"></div>
+            </div>
+        </div>
+    </div>
+    <div class="main-panel-footer" ng-mouseenter="$root.change_model(1014,0,'rizhi/WC_share_3')">
+        <div ng-include="'Scripts/app/views/common/c_menu2.html'"></div>
+        <div ng-include="'Scripts/app/views/common/footer-content.html'" ng-show="num==14"></div>
+    </div>
+</div>

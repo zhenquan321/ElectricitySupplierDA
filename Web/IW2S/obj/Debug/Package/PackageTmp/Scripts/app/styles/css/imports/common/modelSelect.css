@@ -1,0 +1,11 @@
+#modelSelect .modelSelectPanel {
+  min-height: 500px;
+  height: auto;
+  border-top: 2px solid #e4e9ee;
+  position: relative;
+}
+#modelSelect .modelSelectPanel .wpt {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+}

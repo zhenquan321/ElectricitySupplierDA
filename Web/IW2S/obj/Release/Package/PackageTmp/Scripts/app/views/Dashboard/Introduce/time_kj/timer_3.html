@@ -1,0 +1,79 @@
+﻿
+<div lang="zh">
+    <div>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="Scripts/app_pc/views/plu_in/time_kj/css/prettify-1.0.css" rel="stylesheet">
+        <link href="Scripts/app_pc/views/plu_in/time_kj/css/base.css" rel="stylesheet">
+        <link href="Scripts/app_pc/views/plu_in/time_kj/css/bootstrap-datetimepicker.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="Scripts/app_pc/views/plu_in/time_kj/css/default.css">
+        <!--<script type="text/javascript" src="Scripts/app_pc/views/plu_in/time_kj/js/jquery-2.1.1.min.js"></script>-->
+        <!--<script type="text/javascript" src="Scripts/app_pc/views/plu_in/time_kj/js/bootstrap.min.js"></script>-->
+        <script src="Scripts/app_pc/views/plu_in/time_kj/js/moment-with-locales.js"></script>
+        <script src="Scripts/app_pc/views/plu_in/time_kj/js/bootstrap-datetimepicker.js"></script>
+    </div>
+    <div>
+        <style>
+            .glyphicon {
+                top: 0 !important;
+                background-color: rgba(204, 204, 204, 0) !important;
+                color: #717171 !important;
+                border-color: #9aa8b9 !important;
+                width: 20px !important;
+                height: inherit !important;
+                float: none !important;
+            }
+            .cssse {
+                color: #fff !important;
+                font-size: 16px;
+                padding-top: 3px;
+            } 
+            body {
+                font-size: 14px;
+            }
+        </style>
+
+        <div style="margin-top:15px">
+            总监建议设置警戒线：
+            <div style="display: inline-block; height: 22px; width: 250px;" >
+                <div class="container">
+                    <div class="form-group">
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' id="zjtime" class="form-control" ng-model="time.zjtime" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar cssse"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        $('#datetimepicker1').datetimepicker();
+                    });
+                </script>
+            </div>
+        </div>
+        <div style="margin-top:25px">
+            审核确认警戒线：
+            <div style="display: inline-block; height: 22px; width: 250px;" >
+                <div class="container">
+                    <div class="form-group">
+                        <div class='input-group date' id='datetimepicker2'>
+                            <input type='text' id="shtime" class="form-control" ng-model="time.shtime" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar cssse"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        $('#datetimepicker2').datetimepicker();
+                    });
+                </script>
+            </div>
+        </div>
+        <script src="Scripts/app_pc/views/plu_in/time_kj/js/base.js"></script>
+    </div>
+</div>

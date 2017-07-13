@@ -1,0 +1,44 @@
+﻿<style>
+    .modal-lg {
+        margin-top: 9%;
+    }
+
+</style>
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()">
+        &times;
+    </button>
+    <h4 class="modal-title" id="myModalLabel">
+        <span style="color:#099;font-weight:600">{{GetNameInfoList.Nickname}}</span>详情<i class="fa fa-question-circle" title=""></i>
+    </h4>
+</div>
+<div class="modal-body">
+    <div class="row "style="margin:10px 50px">
+        <div class="col-sm-3">
+            <img src="{{GetNameInfoList.Qrcode}}" style="width:100%" alt="" />
+        </div>
+        <div class="col-sm-9 pl20">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2 class="pl0"style="font-weight:600">{{GetNameInfoList.Nickname}}</h2>
+                </div>
+                <div class="col-sm-6">
+                    <span style=" color: #777; margin-bottom: 10px; margin-bottom: 10px; display: inline-block;">微&nbsp;&nbsp;信&nbsp;&nbsp;号：</span><span>{{GetNameInfoList.Name}}</span><br />
+                    <span style=" color: #777; margin-bottom: 10px;">认证信息</span>：<span>{{GetNameInfoList.VipNote}}</span><br />
+                </div>
+                <div class="col-sm-6">
+                    <span style=" color: #777; margin-bottom: 10px; margin-bottom: 10px; display: inline-block;">是否认证：</span><span>{{GetNameInfoList.Vip}}</span><br />
+                    <span style=" color: #777; margin-bottom: 10px;">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;区：</span><span>{{GetNameInfoList.Province}}-{{GetNameInfoList.City}}-{{GetNameInfoList.District}}</span><br />
+                </div>
+                <div class="col-sm-12 mt10">
+                    <span style=" color: #777; margin-bottom: 10px;">功能介绍：</span><span></span><br />
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+

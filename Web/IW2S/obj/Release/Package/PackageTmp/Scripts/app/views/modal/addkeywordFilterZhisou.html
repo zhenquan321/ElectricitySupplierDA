@@ -1,0 +1,68 @@
+﻿<div class="modal-header">
+    <button type="button" class="close"
+            data-dismiss="modal" aria-hidden="true" ng-click="cancel()">
+        &times;
+    </button>
+    <h4 class="modal-title" id="myModalLabel">
+        直搜过滤内容管理
+    </h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1 " style=" margin-bottom: 20px; margin-top: 10px;">
+            <div class="input-group">
+                <input type="text" class="form-control search-iws ng-pristine ng-valid ng-touched"
+                       ng-model="searchInput" style="">
+                <span class="input-group-btn">
+                    <button class="btn btn-tea search-iws-button" type="button" ng-click="">
+                        添加
+                    </button>
+                </span>
+            </div>
+        </div>
+        <div class="col-sm-1"></div>
+
+        <div class="col-sm-10 col-sm-offset-1 ">
+            <div class="main-panel">
+                <div class="main-panel-title">
+                    <span class="main-panel-text active">百度推荐</span>
+                    <a href="" title=""><i class="fa fa-minus"></i></a>
+                    <a href="" title=""><i class="fa fa-refresh"
+                                           ng-click="RefreshgetBaiduRecord($root.getBaiduRecordId)"></i></a>
+                    <a href="" title="" ui-sref="DnL.keywordMng"><i class="fa fa-pencil-square-o"></i></a>
+
+                    <form role="form" class="search-content-from">
+                        <div class="form-group search-content-input">
+                            <input type="text" class="form-control search-content" id="name17" placeholder="请输入名称">
+                            <i class="fa fa-search"></i>
+                        </div>
+                    </form>
+                </div>
+                <div class="main-panel-content" style="min-height: 280px; max-height: 280px;">
+                    <div class="keywords">
+                        <div class="items">
+                            <span ng-repeat="y in allkeywords">
+                                <a href="" ng-click="GetBaiduLevelLinks(y._id)"
+                                   ng-class="{true: 'active', false: 'inactive'}[ y._id == $root.BaidukeywordId]">{{y.CommendKeyword}}</a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="loadMore">
+                        加载更多...
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-tea" ng-click="ok()">
+        保存
+    </button>
+    <button type="button" class="btn btn-cancle"
+            data-dismiss="modal" ng-click="cancel()">
+        取消
+    </button>
+
+</div>

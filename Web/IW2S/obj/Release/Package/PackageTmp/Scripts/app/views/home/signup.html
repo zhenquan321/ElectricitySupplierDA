@@ -1,0 +1,106 @@
+﻿<div id="iw2s-main">
+    <div class="header-box">
+        <div class="row">
+            <div class="navbar-bg-top">
+                <div class="navbar-content-box">
+                    <span style="width:150px;float:left;padding-top:5px;">
+                        <a href="" class="" ui-sref-active="active" ui-sref="home.main_1">
+                            <img src="Scripts/app/images/NewHome/DLCould_w.png" style=" width: 130px; height: 18px; margin-top: 7px;" />
+                        </a>
+                    </span>
+                    <ul class="nav-hd cl">
+                        <li><a href="" class="" ui-sref-active="active" ui-sref="home">首页</a></li>
+
+                    </ul>
+                    <ul class="nav-hd cl" style="float:right;">
+                        <li><a ui-sref-active="active" ui-sref="signup">注册</a></li>
+                        <li><a ui-sref-active="active" ui-sref="login">登录</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="loginPage">
+    <div class="log-content cl">
+        <div class="wpl pos cl">
+            <div class="log-row-cx cl">
+                <div class="login_left">
+                    <div class="lr_title_txt">
+                        <h2>欢迎注册</h2>
+                        <span>已有账号？<a href="" ui-sref="login">立即登录</a></span>
+                    </div>
+                    <form class="form-horizontal log-mt" role="form">
+                        <span style="color:red;">{{error}}</span>
+
+                        <div class="form-group">
+
+                            <div class="col-sm-12 input-group-password">
+                                <i class="fa fa-user"></i>
+                                <input type="text" class="form-control input-pr" id="inputPassword"
+                                       placeholder="用户名(不少于6位)" ng-model="uName" ng-keypress="EnterPress(event)"
+                                       autofocus>
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-sm-12 input-group-password">
+                                <i class="fa fa-lock"></i>
+                                <input type="password" class="form-control input-pr" id="inputPassword"
+                                       placeholder="设置密码" ng-model="uPwd1" ng-keypress="EnterPress(event)">
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-sm-12 input-group-password">
+                                <i class="fa fa-lock"></i>
+                                <input type="password" class="form-control input-pr" id="inputPassword"
+                                       placeholder="确认密码" ng-model="uPwd2" ng-keypress="EnterPress(event)">
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-sm-12 input-group-password">
+                                <i class="fa fa-envelope"></i>
+                                <input type="text" class="form-control input-pr" id="inputPassword" placeholder="设置邮箱"
+                                       ng-model="email" ng-keypress="EnterPress(event)">
+                            </div>
+                        </div>
+                        <div class="lr_title_txt">
+                            <div class="checkbox1">
+                                <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked">
+                                <label for="filled-in-box">我已阅读并接受<a href="">版权说明</a>和<a href="">隐私保护</a></label>
+                            </div>
+
+                        </div>
+
+                        <button type="button" class="btn btn-tea" ng-click="Regist()">注 册</button>
+                        <!--<div class="lr_title_txt">
+                    <div class="checkbox1 pt10">还没有账号？</div>
+                    <span class="pt10"><a href="">立即注册</a></span>
+                </div>-->
+                    </form>
+
+                </div>
+                <!--<div class="login-wrap-party z">
+                                <h2>第三方账号登录</h2>
+                                <div class="login-party cl">
+                                    <a href="http://ui.cn/oauth/sina/" class="log-sina">
+                                        <span><i class="fa fa-sina"></i><p>新浪登录</p></span>
+                                    </a>
+                                    <a href="http://ui.cn/oauth/qq/" class="log-qq">
+                                        <span><i class="fa fa-qq"></i><p>QQ登录</p></span>
+                                    </a>
+                                    <a href="http://ui.cn/oauth/mi/" class="log-mi">
+                                        <span><i class="fa fa-weixin"></i><p>微信登录</p></span>
+                                    </a>
+                                </div>
+                            </div>-->
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div ng-include="'Scripts/app/views/common/footer.html'"></div>

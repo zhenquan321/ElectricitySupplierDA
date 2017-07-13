@@ -1,0 +1,585 @@
+<style>
+    .main-panel-text {
+        cursor: pointer;
+    }
+
+    /*Radial Reingold–Tilford Tree*/
+    #Tilford-Tree .node circle {
+        fill: #fff;
+        stroke: steelblue;
+        stroke-width: 1.5px;
+    }
+
+    #Tilford-Tree .node {
+        font: 10px sans-serif;
+    }
+
+    #Tilford-Tree .link {
+        fill: none;
+        stroke: #ccc;
+        stroke-width: 1.5px;
+    }
+
+    /*关键词对比*/
+    #bd .background {
+        fill: #eee;
+    }
+
+    #bd line {
+        stroke: #fff;
+    }
+
+    #bd text.active {
+        fill: red;
+    }
+
+    .wordcloud {
+        margin: 0 auto;
+        padding: 0;
+        page-break-after: always;
+        page-break-inside: avoid;
+        width: 400px;
+        height: 305px;
+    }
+
+    #checkboxcancel {
+        color: rgba(112, 112, 112, 0.91);
+        background-color: rgba(1, 56, 53, 0.11);
+        float: left;
+        margin: 0 1% 1% 0;
+        padding: 0 8px;
+        text-decoration: none;
+        font-size: 12px;
+        height: 29px;
+        line-height: 29px;
+        overflow: hidden;
+        position: relative;
+        font-weight: normal;
+    }
+
+        #checkboxcancel input[type=checkbox] {
+            position: relative;
+            top: 3px;
+            right: -3px;
+        }
+
+    .pagination > li > input:focus, .pagination > li > input:hover {
+        z-index: 2;
+        color: #23527c;
+        border-color: #ddd;
+        outline: none;
+    }
+
+    .pagination > li > input {
+        position: relative;
+        float: left;
+        padding: 6px 12px;
+        margin-left: -1px;
+        line-height: 1.42857143;
+        color: #ddd;
+        text-decoration: none;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        width: 70px;
+    }
+
+    .pagination > li > a:focus, .pagination > li > a:hover {
+        color: #099;
+        outline: none;
+        background-color: #fff;
+    }
+
+    .pagination > li > a.active {
+        background-color: #eee;
+    }
+
+    .pagination > li > a {
+        color: #099;
+    }
+</style>
+<div class="mt20 row">
+    <div class="col-sm-3">
+        <div class="main-panel">
+            <div class="main-panel-title">
+                <span class="main-panel-text active">词组</span>
+                <a href="" title=""><i class="fa fa-minus"></i></a>
+                <a href="" title=""><i class="fa fa-refresh" ng-click="RefreshGetBaiduKeyword()"></i></a>
+
+                <form role="form" class="search-content-from" style="right:40px;">
+                    <div class="form-group search-content-input">
+                        <input type="text" class="form-control search-content" id="name1" placeholder="请输入关键词">
+                        <i class="fa fa-search"></i>
+                    </div>
+                </form>
+            </div>
+            <div class="main-panel-content" style="min-height: 168px; max-height:168px; ">
+                <div class="keywords">
+                    <div class="items">
+                        <span ng-repeat="c in GetAllKeywordCategory_list">
+                            <a ng-click="keywordMngClick(c._id)"
+                               ng-class="{true: 'active', false: 'inactive'}[c._id == $root.keywordMngClicked]"
+                               ui-sref="DnL.showDesc">
+                                <span class="fa fa-square"
+                                      ng-class="{0: 'red', 1: 'orange', 2: 'green'}[c.BotStatus]"></span>
+                                {{c.Name}}({{c.ValLinkCount}})
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <div class="loadMore" ng-click="GetMoreBaiduKeyword()" ng-show="isActiveLoadmore">
+                    加载更多...
+                </div>
+            </div>
+            <div class="main-panel-footer" ng-mouseenter="$root.change_model(48,0)">
+                <div ng-include="'Scripts/app/views/common/c_menu3.html'"></div>
+                <div ng-include="'Scripts/app/views/common/footer-content.html'" ng-show="num==48"></div>
+            </div>
+        </div>
+        <div class="main-panel">
+            <div class="main-panel-title">
+                <span class="main-panel-text active">百度搜索词</span>
+                <a href="" title=""><i class="fa fa-minus"></i></a>
+                <a href="" title=""><i class="fa fa-refresh" ng-click="RefreshGetBaiduKeyword()"></i></a>
+
+                <form role="form" class="search-content-from" style="right:40px;">
+                    <div class="form-group search-content-input">
+                        <input type="text" class="form-control search-content" id="name2" placeholder="请输入关键词"
+                               ng-model="historyBaidu">
+                        <i class="fa fa-search"></i>
+                    </div>
+                </form>
+            </div>
+            <div class="main-panel-content" style=" min-height: 180px; max-height:180px; ">
+                <div class="keywords">
+                    <div class="items">
+                        <span ng-repeat="x in keywordsListRecord | filter:historyBaidu">
+                            <a onmouseover="$(this).children('i').show()" onmouseout="$(this).children('i').hide()"
+                               ng-click="getBaiduRecord(x._id,x.CommendKeywordId)"
+                               ng-class="{true: 'active', false: 'inactive'}[ x._id == $root.getBaiduRecordId]"
+                               ui-sref="DnL.showDesc">
+                                <span class="fa fa-circle"
+                                      ng-class="{0: 'red', 1: 'orange', 2: 'green'}[x.BotStatus]"></span>
+                                {{x.ProjectName}}({{x.ValLinkCount}})<i ng-click="ExcludeBaiduKeyword(x._id)"
+                                                                        style="display: none;" class="fa fa-close"></i>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <div class="loadMore" ng-click="GetMoreBaiduKeyword()" ng-show="isActiveLoadmore">
+                    加载更多...
+                </div>
+
+
+            </div>
+
+            <div class="main-panel-footer" ng-mouseenter="$root.change_model(16,0)">
+                <div ng-include="'Scripts/app/views/common/c_menu.html'"></div>
+                <div ng-include="'Scripts/app/views/common/footer-content.html'" ng-show="num==16"></div>
+            </div>
+
+
+        </div>
+
+        <div class="main-panel">
+            <div class="main-panel-title">
+                <span class="main-panel-text active">百度推荐词</span>
+                <a href="" title=""><i class="fa fa-minus"></i></a>
+                <a href="" title="">
+                    <i class="fa fa-refresh"
+                       ng-click="RefreshgetBaiduRecord($root.getBaiduRecordId)"></i>
+                </a>
+
+                <form role="form" class="search-content-from" style="right:40px;">
+                    <div class="form-group search-content-input">
+                        <input type="text" ng-model="historyBaiduRecord" class="form-control search-content" id="name3"
+                               placeholder="请输入关键词">
+                        <i class="fa fa-search"></i>
+                    </div>
+                </form>
+            </div>
+            <div class="main-panel-content" id="demo" style="min-height: 300px; max-height: 300px;">
+                <div class="keywords">
+                    <div class="items">
+                        <span ng-repeat="y in keywordsListCommend | filter:historyBaiduRecord">
+                            <a title="词频数：{{y.Times}}" onmouseover="$(this).children('i').show()"
+                               onmouseout="$(this).children('i').hide()" ng-click="GetBaiduLevelLinks2(y._id)"
+                               ng-class="{true: 'active', false: 'inactive'}[ y._id == $root.BaidukeywordId]"
+                               ui-sref="DnL.showDesc">
+                                <span class="fa fa-circle"
+                                      ng-class="{0: 'red', 1: 'orange', 2: 'green'}[y.BotStatus]"></span>
+                                {{y.CommendKeyword}} ({{y.ValLinkCount}})<i ng-click="ExcludeKeyword(y._id)"
+                                                                            style="display: none;"
+                                                                            class="fa fa-close"></i>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="main-panel-footer" ng-mouseenter="$root.change_model(49,0)">
+                <div ng-include="'Scripts/app/views/common/c_menu3.html'"></div>
+                <div ng-include="'Scripts/app/views/common/footer-content.html'" ng-show="num==49"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-9" ng-show="keywordCisActive1">
+        <div class="main-panel">
+            <div class="main-panel-title" style="color: #808080;">
+                <span class="main-panel-text active" style=" cursor: pointer"
+                      ng-click="keywordControlIsActive1()">百度关键词分组</span>
+                <span class="main-panel-text " style=" margin-left:5px; cursor: pointer"
+                      ng-click="keywordControlIsActive2()">词组分层关系图</span>
+                <span class="main-panel-text " style=" margin-left:5px; cursor: pointer"
+                      ng-click="keywordControlIsActive3()" title="本树状图显示的为关键词分组状况,点击节点可查看下一级关键词">词组关系树状图</span>
+                <span class="main-panel-text " style=" margin-left:5px; cursor: pointer"
+                      ng-click="keywordControlIsActive4()">关键词对应关系图</span>
+                <span class="main-panel-text " style=" margin-left:5px; cursor: pointer"
+                      ng-click="keywordControlIsActive7()">关键词关系图eCharts</span>
+                <span class="main-panel-text " style=" margin-left:5px; cursor: pointer"
+                      ng-click="keywordControlIsActive5()">矩阵图</span>
+                <span class="main-panel-text" style=" margin-left: 5px;cursor: pointer"
+                      ng-click="keywordControlIsActive6()">分析指项管理</span>
+                <a href="" title=""><i class="fa fa-minus"></i></a>
+                <a href="" title=""><i class="fa fa-refresh"></i></a>
+            </div>
+            <div class="main-panel-content" style="min-height:initial;max-height:790px;">
+                <table class="table table-bordered">
+                    <thead style="border:#808080">
+                        <tr>
+                            <th>词组名</th>
+                            <th ng-hide="$root.GetPrjAnalysisItemName_list_name==''||$root.GetPrjAnalysisItemName_list_name==null">
+                                {{$root.GetPrjAnalysisItemName_list_name}}
+                            </th>
+                            <th ng-show="$root.GetPrjAnalysisItemName_list_name==''||$root.GetPrjAnalysisItemName_list_name==null">
+                                尚未选择分析指项
+                            </th>
+                            <th>权重</th>
+                            <th>词数量</th>
+                            <th>父组名</th>
+                            <th style="padding:3px 10px;width:275px;">
+                                <div class="mr20" style="display: inline-block; margin-top: 3px; float: left;">操作</div>
+                                <button class="btn btn-tea mr10" ng-click="inputKeyword_OT()"
+                                        style="float:left;padding:3px 6px;">
+                                    导入关系
+                                </button>
+                                <button class="btn btn-tea" ng-click=" ExportKeywordGroup()"
+                                        style="float: left; padding: 3px 6px;">
+                                    导出关系
+                                </button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="x in GetBaiduKeywordCategory2">
+                            <td>{{x.Name}}({{x.ValLinkCount}})</td>
+                            <td>{{InfriTypes1[x.InfriLawCode]}}</td>
+                            <td>{{x.Weight}}</td>
+                            <td>{{x.KeywordTotal}}</td>
+                            <td>
+                                <span ng-hide="x.ParentName">
+                                    <span ng-show="x.Name=='所有词'"></span>
+                                    <span ng-show="x.Name!='所有词'">所有词</span>
+                                </span>
+                                <span ng-show="x.ParentName">{{x.ParentName}}</span>
+                            </td>
+                            <td class="cogs" style="font-size:18px;">
+                                <a href="" title="分组"
+                                   ng-click="kindGroup(x._id,x.InfriLawCode,InfriTypes1[x.InfriLawCode],x.Weight,x.Name,x.ParentId)">
+                                    <img src="Scripts/app/images/fenzhi.png" style="width:16px;" />
+                                </a>
+                                <a href="" ng-click="DelCategory(x._id)" title="删除分组" ng-hide="x.Name=='所有词'">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                                <a href=""
+                                   ng-click="EditKindGroup(x._id,x.ParentId,x.Name,x.InfriLawCode,x.Weight,x.ParentName,x.ParentId)"
+                                   title="修改分组" ng-hide="x.Name=='所有词'"><i class="fa fa-cog"></i></a>
+                                <a href="" title="重新搜索分组下关键词" ng-click="searchCategoryAgain(x._id)">
+                                    <img src="Scripts/app/images/2222.png"
+                                         style="width:16px;" />
+                                </a>
+                                <a href="" title="重新搜索所有关键词" ng-show="x.Name=='所有词'" ng-click="searchAllKeywordAgain(x._id)">
+                                    <img src="Scripts/app/images/3333.png" style="width:16px;" />
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="main-panel-footer" ng-mouseenter="$root.change_model(4,0)">
+                <div ng-include="'Scripts/app/views/common/c_menu.html'"></div>
+                <div ng-include="'Scripts/app/views/common/footer-content.html'" ng-show="num==4"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-9" ng-show="keywordCisActive2">
+        <div ng-include="'Scripts/app/views/keywords/baidu_dashboard/baidu_share_4.html'"></div>
+    </div>
+
+    <div class="col-sm-9" ng-show="keywordCisActive3">
+        <div ng-include="'Scripts/app/views/keywords/baidu_dashboard/baidu_share_7.html'"></div>
+    </div>
+
+    <div class="col-sm-9" ng-show="keywordCisActive4">
+        <div ng-include="'Scripts/app/views/keywords/baidu_dashboard/baidu_share_5.html'"></div>
+    </div>
+
+    <div class="col-sm-9" ng-show="keywordCisActive5">
+        <div ng-include="'Scripts/app/views/keywords/baidu_dashboard/baidu_share_8.html'"></div>
+    </div>
+
+    <div class="col-sm-9" ng-show="keywordCisActive6">
+        <div ng-include="'Scripts/app/views/keywords/baidu_dashboard/baidu_share_8.html'"></div>
+    </div>
+
+    <div class="col-sm-9" ng-show="keywordCisActive7">
+        <div ng-include="'Scripts/app/views/keywords/baidu_dashboard/baidu_share_9.html'"></div>
+    </div>
+
+    <div class="col-sm-9" ng-show="keywordCisActive6">
+        <div class="main-panel">
+            <div class="main-panel-title" style="color: #808080;">
+                <span class="main-panel-text" style=" cursor: pointer"
+                      ng-click="keywordControlIsActive1()">百度关键词分组</span>
+                <span class="main-panel-text " style=" margin-left:5px; cursor: pointer"
+                      ng-click="keywordControlIsActive2()">词组分层关系图</span>
+                <span class="main-panel-text " style=" margin-left:5px; cursor: pointer"
+                      ng-click="keywordControlIsActive3()" title="本树状图显示的为关键词分组状况,点击节点可查看下一级关键词">词组关系树状图</span>
+                <span class="main-panel-text " style=" margin-left:5px; cursor: pointer"
+                      ng-click="keywordControlIsActive4()">关键词对应关系图</span>
+                <span class="main-panel-text " style=" margin-left:5px; cursor: pointer"
+                      ng-click="keywordControlIsActive7()">关键词关系图eCharts</span>
+                <span class="main-panel-text " style=" margin-left:5px; cursor: pointer"
+                      ng-click="keywordControlIsActive5()">矩阵图</span>
+                <span class="main-panel-text  active" style=" margin-left: 5px;cursor: pointer"
+                      ng-click="keywordControlIsActive6()">分析指项管理</span>
+                <a href="" title=""><i class="fa fa-minus"></i></a>
+                <a href="" title=""><i class="fa fa-refresh"></i></a>
+            </div>
+            <div class="main-panel-content" style="min-height:inherit;max-height:790px;" id="AnalysisZ">
+                <div class="row" style="margin-top:5px;">
+                    <div class="top_change">
+                        <a href="" class="fixed_time1 " ng-class="{true: 'active', false: ''}[isActive_AnalysisZ1]"
+                           ng-click="chang_AnalysisZ1()">
+                            已选择分析指项
+                        </a>
+                        <a href="" class="fixed_time1 " ng-class="{true: 'active', false: ''}[isActive_AnalysisZ2]"
+                           ng-click="chang_AnalysisZ2()">
+                            分析指项库
+                        </a>
+                        <a href="" class="fixed_time1 " ng-class="{true: 'active', false: ''}[isActive_AnalysisZ3]"
+                           ng-click="chang_AnalysisZ3()">
+                            自定义分析指项
+                        </a>
+                    </div>
+                </div>
+                <div class="modelSelectPanel" ng-show="isActive_AnalysisZ2">
+                    <div class="wpt">
+                        <div class="log-row-cx">
+                            <div class="contenMoel mb10 pb0 row mt20 pl10 pr10">
+                                <div class="col-sm-4 ">
+                                    <a ng-click="chang_AnalysisZ3()" style="cursor: pointer">
+                                        <div class="model-box waves-effect z">
+                                            <div class="desc"
+                                                 style="margin-top: 40px; color: #009999 !important; text-align: center;">
+                                                <div class="title ">
+                                                    <i class="fa fa-plus-square "
+                                                       style="font-size: 22px; color: #009999 !important;"></i>
+                                                </div>
+                                                <div class="subTitle ">
+                                                    自定义分析指项
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-sm-4 repectList " ng-repeat="x in Analysis_list"
+                                     style="color: #009999!important;">
+                                    <a>
+                                        <div class="model-box waves-effect z " onmouseover="$(this).find('i').show(); "
+                                             onmouseout="$(this).find('i').hide(); "
+                                             ng-class="{true: 'active', false: 'inactive'}[ x._id == $root.getBaiduRecordId]">
+                                            <div class="icnm_w">
+                                                <i ng-click="RemoveAnalysisItem(x._id)"
+                                                   class="fa fa-times-circle Modal_color"></i>
+                                                <i ng-click="changeAnalysisItem(x._id,x.Name,x.ItemValues)"
+                                                   class="fa fa-pencil-square-o Modal_color"></i>
+                                                <i title="分享—待卡发" ng-click=""
+                                                   class="fa fa-share-square Modal_color"></i>
+                                            </div>
+                                            <div class="desc">
+                                                <div class="title "
+                                                     ng-click="changeAnalysisItem(x._id,x.Name,x.ItemValues)">
+                                                    {{x.Name}}
+                                                </div>
+                                                <div class="title_desc " title="{{}}"
+                                                     ng-hide="x.UsrId=='000000000000000000000000'">
+                                                    用户自建
+                                                </div>
+                                                <div class="title_desc " title="{{}}"
+                                                     ng-show="x.UsrId=='000000000000000000000000'">
+                                                    系统推荐
+                                                </div>
+                                            </div>
+                                            <div class="describe_CA">
+                                                <div class="left">
+                                                    创建时间：{{x.CreatedAt|date:'yyyy-MM-dd'}}
+                                                </div>
+                                                <a class="subTitle_but right" ng-click="SetPrjAnalysisItem(x._id)">
+                                                    选择
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row text-center pr20">
+                                <pagination boundary-links="true" class="pagination-sm" total-items="projectsListlength"
+                                            items-per-page="pagesize4" ng-change="GetProjects()" ng-model="page4"
+                                            max-size="5"
+                                            previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;"
+                                            last-text="&raquo;">
+                                </pagination>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-show="isActive_AnalysisZ3">
+
+                    <form class="form_AS mb20">
+                        <div class="form-group">
+                            <div style="width: 600px; display: inline-block;">
+                                <label for="exampleInputPassword1" class="lable_fw"
+                                       style="float:left;">请输入“分类指项”名称</label><br />
+                            </div>
+                            <input type="text" class="form-control input_s input_gloup" style="max-width: 603px"
+                                   id="exampleInputEmaiaa" placeholder="类目名称如“侵权类型”" ng-model="Analysis_name">
+                        </div>
+                        <div class="form-group" id="form_add">
+                            <div style="width: 600px; display: inline-block;">
+                                <label for="exampleInputPassword1" class="lable_fw"
+                                       style="float:left;">请输入“分类指项”类目内容</label><br />
+                            </div>
+
+                            <div class="input_gloup " ng-repeat="p in ItemValues">
+                                <input class="form-control input_sm" ng-model="p.SeqNo" placeholder="序号：1、2...">
+                                <input class="form-control input_s" ng-model="p.Name" placeholder="类目内容：如商标侵权...">
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-tea" data-dismiss="modal" id="btn1" style="width:15%"
+                                ng-click="add()">
+                            继续添加
+                        </button>
+                        <button ng-show="isactriveChgSelIt" type="button" class="btn btn-tea" data-dismiss="modal"
+                                style="width:15%"
+                                ng-click="InsertAnalysisItem()">
+                            确认
+                        </button>
+                        <button ng-hide="isactriveChgSelIt" type="button" class="btn btn-tea" data-dismiss="modal"
+                                style="width:15%"
+                                ng-click="InsertAnalysisItem2()">
+                            确认
+                        </button>
+                        <button type="button" class="btn btn-cancle" data-dismiss="modal" ng-click="clearAnalysisItem()"
+                                style="width:15%">
+                            取消
+                        </button>
+                    </form>
+                </div>
+                <div ng-show="isActive_AnalysisZ1">
+                    <div ng-show="isActiveAnalysis_selected">
+                        <div class="modelSelectPanel " style="margin-top:50px;">
+                            <div class="wpt mt20">
+                                <div class="log-row-cx ">
+                                    <div class="contenMoel mb10 pb0 row mt20 pl10 pr10">
+                                        <div class="col-sm-4 ">
+                                        </div>
+                                        <div class="col-sm-4 repectList " style="color: #009999!important;">
+                                            <a>
+                                                <div class="model-box waves-effect z "
+                                                     onmouseover="$(this).find('i').show(); "
+                                                     onmouseout="$(this).find('i').hide(); "
+                                                     ng-class="{true: 'active', false: 'inactive'}[ x._id == $root.getBaiduRecordId]">
+                                                    <div class="icnm_w">
+                                                        <i ng-click="changeAnalysisItem2(GetPrjAnalysisItem_list._id,GetPrjAnalysisItem_list.Name,GetPrjAnalysisItemName_list)"
+                                                           class="fa fa-pencil-square-o Modal_color"></i>
+                                                        <i title="分享—待卡发" ng-click=""
+                                                           class="fa fa-share-square Modal_color"></i>
+                                                    </div>
+                                                    <div class="desc">
+                                                        <div class="title " title="{{}}">
+                                                            {{GetPrjAnalysisItem_list.Name}}
+                                                        </div>
+                                                        <div class="title_desc " title="{{}}">
+                                                            已选择的分析指项不能修改
+                                                        </div>
+                                                    </div>
+                                                    <div class="describe_CA">
+                                                        <div class="left">
+                                                            创建时间：{{GetPrjAnalysisItem_list.CreatedAt|date:'yyyy-MM-dd'}}
+                                                        </div>
+                                                        <a class="subTitle right">
+                                                            已选择
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <form class="form_AS mt20">
+                            <div class="form-group" id="form_add">
+                                <label for="exampleInputPassword1" class="lable_fw">分类指项类目内容</label><br />
+
+                                <div class="input_gloup " ng-repeat="p in GetPrjAnalysisItemName_list">
+                                    <input class="form-control input_sm" ng-model="p.SeqNo" placeholder="序号：1、2...">
+                                    <input class="form-control input_s" ng-model="p.Name" placeholder="类目内容：如商标侵权...">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div style="color: #099; text-align: center; " ng-hide="isActiveAnalysis_selected">
+                        <div style=" margin-top: 20%;margin-bottom:15px; font-size: 23px; font-weight: 600;">
+                            <i class="fa fa-exclamation-triangle Modal_color"></i>您尚未设置分析指项
+                        </div>
+                        <p>本产品支持自我订制分析指项,您可以根据你对业务的理解自行订制分析指项。</p>
+
+                        <p>如果您是新用户，并不深入了解业务，我们为您推荐了一些分析指项，请选择使用。</p>
+                        <button type="button" class="btn btn-tea" data-dismiss="modal" id="btn1" style="width:15%"
+                                ng-click="chang_AnalysisZ2()">
+                            设置分析指项
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="main-panel-footer" ng-mouseenter="$root.change_model(5,0)">
+                <div ng-include="'Scripts/app/views/common/c_menu.html'"></div>
+                <div ng-include="'Scripts/app/views/common/footer-content.html'" ng-show="num==5"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.fa-minus').click(function () {
+            var cardContent = $(this).parent().parent().parent('.main-panel').children('.main-panel-content');
+            if (cardContent.hasClass('active')) {
+                $(this).addClass('fa-minus');
+                $(this).removeClass('fa-plus');
+                $(cardContent).removeClass('active');
+            } else {
+                $(this).removeClass('fa-minus');
+                $(this).addClass('fa-plus');
+                $(cardContent).addClass('active');
+            }
+            cardContent.toggle(500);
+        });
+
+    })
+    $("[data-toggle='tooltip']").tooltip();
+
+</script>

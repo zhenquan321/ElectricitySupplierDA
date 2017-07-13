@@ -1,0 +1,40 @@
+﻿
+<div class="row" id="wordtreeH"style="position:relative">
+    <div class="duibiBut">
+        <button type="button" class="btn btn-primary queren" ng-click="duibiShowFun()" ng-show="!duibiShow">创建对比</button>
+        <button type="button" class="btn btn-primary queren" ng-click="duibiShowFun()" ng-show="duibiShow">取消对比</button>
+    </div>
+    <div style="display:none" id="userIDChuandi">{{$root.userID}}</div>
+    <div class="row">
+        <div  ng-class="{true:'col-lg-6',false:'col-lg-12'}[duibiShow]">
+            <iframe id="iframepage1" class="col-lg-12 " frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="width: 100%; margin-left: 0%; background-color: #fdfdfd; border: solid #ddd 1px; " src="../Scripts/app/views/wordtree/wordtree.html"></iframe>
+        </div>
+        <div class="col-lg-6" ng-if="duibiShow">
+            <iframe id="iframepage2" class="col-lg-12 " frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="width: 100%; margin-left: 0%; background-color: #fdfdfd; border: solid #ddd 1px; " src="../Scripts/app/views/wordtree/wordtree.html"></iframe>
+        </div>
+    </div>
+    
+
+
+
+
+    <!--<div ng-include="Scripts/app/views/wordtree/wordtree.html"> </div>-->
+</div>
+
+
+
+
+<script type="text/javascript">
+    var total = document.documentElement.clientHeight;
+    document.getElementById("iframepage1").style.height = total + "px";
+    document.getElementById("iframepage2").style.height = total + "px";
+</script>
+<script>
+    var total = document.documentElement.clientWidth;
+    document.getElementById("wordtreeH").style.width = (total-20) + "px";
+    var margin_left = total - 1180;
+    if (margin_left > 0) {
+        document.getElementById("wordtreeH").style.marginLeft = -(margin_left / 2 - 10) + "px";
+    }
+</script>
+

@@ -1,0 +1,160 @@
+﻿<style>
+    #map-header{
+        display:none;
+    }
+</style>
+<div id="header_z">
+    <header class="Mheadindex Lposa">
+        <div class="top">
+            <div class="inner Lposr">
+                <div class="userhelp">
+                    <i class="fa fa-phone-square" style="margin-right:5px;font-size:16px;"></i>
+                    <a><span class="text">998-3422888</span></a>
+                    <a class="ml10" style="display: inline-block; border-left: 1px solid #848484; padding-left: 13px;"><span class="text" ng-mouseover="wechart_s(1)" ng-mouseleave="wechart_s(2)">关注微信领福利</span></a>
+                </div>
+                <div class="downapp">
+                    <div class="Lcfx Lposa infobox " ng-class="{true:'',false:'Ldn'}[wechart_s_k]">
+                        <div class="info">
+                            <div class="Lflr wechat">
+                                <img src="http://ws-www.hantinghotels.com/hworld/NewWeb/img/wechat.jpg">关注微信福利社
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="useenter">
+                    <span id="loginBefore"ng-if="!$root.logined">
+                        <a ui-sref="login" class="login">登录</a>
+                        <a ui-sref="signup" class="register">注册</a>
+                    </span>
+                    <span  id="loginBefore"ng-if="$root.logined"ng-Mouseleave="hideamendpwd(1)">
+                        <div class="dropdown">
+                            <button ng-click="showamendpwd(1)" ng-Mouseenter="showamendpwd(1)"  class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"style="background-color: rgba(51, 51, 51, 0.96)!important;border: 0px;padding-top: 7px; padding-bottom: 3px; min-width: 175px;">
+                                <img src="{{$root.HeadIcon}}" alt="" style="margin-top: -4px; width: 30px; height: 30px; display: inline-block; border-radius: 15px;" ng-show="$root.HeadIcon" />
+                                <img src="Scripts/app/images/uploadpic.jpg" alt="" style="margin-top: -4px; width: 30px; height: 30px; display: inline-block; border-radius: 15px;" ng-show="!$root.HeadIcon" title="修改头像" />
+                                <span class="header_li_h" style="display:inline-block; margin-left: 5px; font-size: 15px;color: #fff;">{{$root.NickName}}</span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1"style="display: block;top: 96%; min-width: 175px; text-align: center;" ng-if="showAmendAndOff==1">
+                                <li class="mt5" style="font-size:16px;"><a ui-sref="TwoLevelPage.userCenter"><i class="fa fa-info-circle"></i>&nbsp;<span>用户信息</span></a></li>
+                                <li role="separator" class="divider" ng-if="$root.UsrRole==1"></li>
+                                <li class="" style="font-size:16px;" ng-if="$root.UsrRole==1"><a ui-sref="main.PublishArticles"><i class="fa fa-tachometer"></i>&nbsp;<span>控制台</span></a></li>
+                                <li role="separator" class="divider"></li>
+                                <li class="mb5" ng-click="signout()" style="font-size:16px;"><a href=""><i class="fa fa-sign-out"></i> <span>安全退出</span></a></li>
+                            </ul>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="nav">
+            <div class="inner Cwrap Ltac">
+                <img src="Scripts/app/images/iocin_p/new_logo.png" style="width:310px;" />
+                <nav class="navlinks mt20">
+                    <div class="navcont Lposr" ng-mouseleave="Onmouse(5)">
+                        <span class="navbg Lposa" ng-style="yundong"></span>
+                        <a ui-sref="home" class="active nav-1 Ldib item" ng-mouseover="Onmouse(1)">首页</a>
+                        <a ui-sref="TwoLevelPage.HotelFeatures" class="nav-2 Ldib item" ng-mouseover="Onmouse(2)">酒店特色</a>
+                        <a ui-sref="TwoLevelPage.LocalStyle" class="nav-4 Ldib item" ng-mouseover="Onmouse(3)">当地风情</a>
+                        <a ui-sref="TwoLevelPage.SharedFeeling" class=" nav-3 Ldib item" ng-mouseover="Onmouse(4)">同感共享</a>
+                        <a ui-sref="AboutUs" class=" nav-5 Ldib item" ng-mouseover="Onmouse(5)">关于皇冠</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="Mbannel Lposr home" style="height:650px;">
+        <div class="mask" style="display: none;"></div>
+        <ul class="bannelslides">
+            <li class="bannelitem bannelitem-1 animated active_c_h" >
+                <div class="img" style="background-image: url(&quot;Scripts/app/images/Handled/chang_8.jpg&quot;);"></div>
+            </li>
+        </ul>
+        <div class="bannelopacity Lposa"></div>
+        <div class="bannelgradient Lposa">
+        </div>
+        <ul class="banneltiplist Lposa">
+            <li class="banneltip-1 banneltip animated active_c_m mt20" >
+                <div class="card_h_c">
+                    <div class="h_c_h">
+                        <span class="h_left"></span>
+                        <span class="h_center">皇冠酒店</span>
+                        <span class="h_rignt"></span>
+                    </div>
+                    <div class="h_c_s">
+                        以提供更舒适为目的，为更舒适的旅途而生
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div style="width: 100%; height: 3px; background: url(Scripts/app/style/bg-img/changecolor.png) no-repeat; background-size: 100% 100%; "></div>
+
+<div class="Mhkhdesc Cwrap">
+    <div class="inner Ltac">
+        <h3 class="title mb15 mt10">关于皇冠大酒店</h3>
+        <p class="desc">皇冠大酒店是一个坚持以人为本，力图为每一个客户提供最佳旅途生活的酒店。本酒店可供住宿、出行、购物等优选服务，<br />并提供私人定制服务，以满足您的所有需求。</p>
+    </div>
+</div>
+<div class="Mhkhrights Cwrap Ltac">
+    <div class="inner">
+        <h3 class="title">专享住宿权益</h3>
+        <ul class="rightslist">
+            <li class="item right-1">
+                <span class="fa fa-credit-card"></span>
+                <p style="font-size:14px;">会员折扣</p>
+            </li>
+            <li class="item right-2">
+                <span class="fa fa-money"></span>
+                <p style="font-size:14px;">积分支付</p>
+            </li>
+            <li class="item right-3">
+                <span class="fa fa-history"></span>
+                <p style="font-size:14px;">延迟退房</p>
+            </li>
+            <li class="item right-4">
+                <span class="fa fa-circle-o"></span>
+                <p style="font-size:14px;">0秒退房</p>
+            </li>
+            <li class="item right-5">
+                <span class="fa fa-cny"></span>
+                <p style="font-size:14px;">时租立减</p>
+            </li>
+            <li class="item right-6">
+                <span class="fa fa-wifi"></span>
+                <p style="font-size:14px;">免费WIFI</p>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="Mhkhservice">
+    <div class="Cwrap">
+        <div class="inner Lcfx">
+            <div class="img Lfll"><img src="http://ws-www.hantinghotels.com/hworld/NewWeb/img/aboutHZ-service.jpg"></div>
+            <div class="serviceinfo Lfll">
+                <h3 class="title">专享增值服务 + 优惠福利</h3>
+                <ul class="servicelist Lcfx">
+                    <li class="item Lfll service-1"><span class="fa fa-car" ></span><span class="label">导游与车辆</span></li>
+                    <li class="item Lfll service-2"><span class="fa fa-subway"></span><span class="label">订票业务</span></li>
+                    <li class="item Lfll service-3"><span class="fa fa-users"></span><span class="label">徒步旅行</span></li>
+                    <li class="item Lfll service-4"><span class="fa fa-medium"></span><span class="label">登山旅行</span></li>
+                    <li class="item Lfll service-5"><span class=" fa fa-bus"></span><span class="label">外国车辆驶入及旅行</span></li>
+                    <li class="item Lfll service-6"><span class="fa fa-map"></span><span class="label">基本旅程</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="Mhkhrights Cwrap Ltac mb20 pb20">
+    <h3 class="title pb0 mb0">酒店所在地</h3>
+    <div class="inner"style="position:relative">
+        <div style="position:absolute;height:50px;background-color:#fff;width:100%">
+        </div>
+            <iframe frameborder=0 style="height:400px;width:100%;" marginheight=0 marginwidth=0 scrolling=no src='http://m.amap.com/navi/?dest=75.231204,37.771085&destName=皇冠酒店&hideRouteIcon=1&key=bfc7bb6b7e3845345340e0d46e2c2a74'></iframe>
+        <div style="position:absolute;height:25px;background-color:#fff;width:100%;bottom:0px;">
+        </div>
+    </div>
+</div>
+
+<div ng-include="'Scripts/app/view/comment/footer.html'"></div>

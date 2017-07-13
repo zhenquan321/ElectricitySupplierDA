@@ -194,9 +194,27 @@
             size: 'md'
         });
         frm.result.then(function (response, status) {
-
+            var url = "/UserCenter?tab=5";
+            $location.url(url);
         });
     };
+    //订单处支付
+    $scope.getPayPageAgein = function (x) {
+        var mag = {
+            order: x,
+            qrcode: '',
+            ifadd:true
+        }
+        var url = "/api/Pay/GetWxPayQcode?orderId=" + x.Id + "&tradeNo=" + x.TradeNo;
+        var q = $http.get(url);
+        q.success(function (response, status) {
+            mag.qrcode = response;
+            $scope.getPayPage(mag);
+        });
+        q.error(function (response) {
+            $scope.error = "网络打盹了，请稍后。。。";
+        });
+    }
     //专业服务
     $scope.zhuanyepaypage = function () {
         $scope.InsertOrder($rootScope.GetProductList[1])

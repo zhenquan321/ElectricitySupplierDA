@@ -1,0 +1,1039 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CC480ED5-8521-4DB3-A6C3-DE2BBF5D3CE4}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>kuerjiudian</RootNamespace>
+    <AssemblyName>kuerjiudian</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AISSystem, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libs\AISSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libs\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="ProxyLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libs\ProxyLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.0.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.0.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.1\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Scripts\app\scripts\ctr\dahboard\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
+    <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
+    <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageAreaRegistration.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageConfigurationExtensions.cs" />
+    <Compile Include="Areas\HelpPage\Models\HelpPageApiModel.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleKey.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ImageSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\InvalidSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ObjectGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
+    <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ShareController.cs" />
+    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="DAL\Huangguan.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Huangguan.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Huangguan.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Huangguan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Huangguan.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Huangguan.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\huangguan_category.cs">
+      <DependentUpon>Huangguan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\huangguan_roles.cs">
+      <DependentUpon>Huangguan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\huangguan_share.cs">
+      <DependentUpon>Huangguan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\huangguan_sharereply.cs">
+      <DependentUpon>Huangguan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\huangguan_shareusers.cs">
+      <DependentUpon>Huangguan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\huangguan_user.cs">
+      <DependentUpon>Huangguan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\ipfiles.cs">
+      <DependentUpon>Huangguan.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\AuthenticationHelper.cs" />
+    <Compile Include="Helper\DALFactory.cs" />
+    <Compile Include="Helper\EmailHelper.cs" />
+    <Compile Include="Helper\EncryptHelper.cs" />
+    <Compile Include="Helper\Enums.cs" />
+    <Compile Include="Helper\MySqlDbHelper.cs" />
+    <Compile Include="Helper\VerifyCode.aspx.cs">
+      <DependentUpon>VerifyCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Helper\VerifyCode.aspx.designer.cs">
+      <DependentUpon>VerifyCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\VerifyCodeClass.cs" />
+    <Compile Include="Models\CategoryDto.cs" />
+    <Compile Include="Models\QueryResult.cs" />
+    <Compile Include="Models\ResultInfo.cs" />
+    <Compile Include="Models\Roles.cs" />
+    <Compile Include="Models\Share.cs" />
+    <Compile Include="Models\ShareReply.cs" />
+    <Compile Include="Models\ShareUsers.cs" />
+    <Compile Include="Models\UserNum.cs" />
+    <Compile Include="Models\UsrDto.cs" />
+    <Compile Include="post.ashx.cs">
+      <DependentUpon>post.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="crossdomain.xml" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Areas\HelpPage\Views\Web.config" />
+    <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Index.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Helper\VerifyCode.aspx" />
+    <Content Include="Libs\AISSystem.dll" />
+    <Content Include="Libs\EntityFramework.dll" />
+    <Content Include="Libs\ICSharpCode.SharpZipLib.dll" />
+    <Content Include="Libs\LitJson.dll" />
+    <Content Include="Libs\log4net.dll" />
+    <Content Include="Libs\MongoDB.Bson.dll" />
+    <Content Include="Libs\MySql.Data.dll" />
+    <Content Include="Libs\MySql.Data.Entity.EF5.dll" />
+    <Content Include="Libs\MySql.Data.Entity.EF6.dll" />
+    <Content Include="Libs\NPOI.dll" />
+    <Content Include="Libs\NPOI.OOXML.dll" />
+    <Content Include="Libs\NPOI.OpenXml4Net.dll" />
+    <Content Include="Libs\ProxyLib.dll" />
+    <Content Include="Libs\ThoughtWorks.QRCode.dll" />
+    <Content Include="Libs\zxing.dll" />
+    <Content Include="logo_w.ioc.ico" />
+    <Content Include="Scripts\App.js" />
+    <Content Include="Scripts\app\images\Handled\A.jpg" />
+    <Content Include="Scripts\app\images\Handled\chang_1.jpg" />
+    <Content Include="Scripts\app\images\Handled\chang_2.jpg" />
+    <Content Include="Scripts\app\images\Handled\chang_3.jpg" />
+    <Content Include="Scripts\app\images\Handled\chang_4.jpg" />
+    <Content Include="Scripts\app\images\Handled\chang_5.jpg" />
+    <Content Include="Scripts\app\images\Handled\chang_6.jpg" />
+    <Content Include="Scripts\app\images\Handled\chang_8.jpg" />
+    <Content Include="Scripts\app\images\Handled\chang_9.jpg" />
+    <Content Include="Scripts\app\images\Handled\xiao_1.jpg" />
+    <Content Include="Scripts\app\images\Handled\xiao_2.jpg" />
+    <Content Include="Scripts\app\images\Handled\xiao_3.jpg" />
+    <Content Include="Scripts\app\images\Handled\xiao_4.jpg" />
+    <Content Include="Scripts\app\images\Handled\xiao_5.jpg" />
+    <Content Include="Scripts\app\images\Handled\xiao_6.jpg" />
+    <Content Include="Scripts\app\images\hotal\hotal_1.jpg" />
+    <Content Include="Scripts\app\images\hotal\hotal_2.jpeg" />
+    <Content Include="Scripts\app\images\hotal\hotal_3.jpg" />
+    <Content Include="Scripts\app\images\Icon_home\IconHome_0000_TourPlanning.png.png" />
+    <Content Include="Scripts\app\images\Icon_home\IconHome_0001_TimeCharter.png.png" />
+    <Content Include="Scripts\app\images\Icon_home\IconHome_0002_PrivatePanquet.png.png" />
+    <Content Include="Scripts\app\images\Icon_home\IconHome_0003_MemberDiscount.png.png" />
+    <Content Include="Scripts\app\images\Icon_home\IconHome_0004_IntegralPayment.png.png" />
+    <Content Include="Scripts\app\images\Icon_home\IconHome_0005_Hike.png.png" />
+    <Content Include="Scripts\app\images\Icon_home\IconHome_0006_FreeWifi.png.png" />
+    <Content Include="Scripts\app\images\Icon_home\IconHome_0007_CheckOutLater.png.png" />
+    <Content Include="Scripts\app\images\Icon_home\IconHome_0008_0SecondsCheckOut.png.png" />
+    <Content Include="Scripts\app\images\iocin_p\crowninntashkorg.jpeg" />
+    <Content Include="Scripts\app\images\iocin_p\new_logo.png" />
+    <Content Include="Scripts\app\style\bg-img\iconlist%401x.png" />
+    <Content Include="Scripts\app\images\iocin_p\xin_230.png" />
+    <Content Include="Scripts\app\images\iocin_p\xin_250.png" />
+    <Content Include="Scripts\app\images\iocin_p\xin_250_b.png" />
+    <Content Include="Scripts\app\images\iocin_p\xin_250_h.png" />
+    <Content Include="Scripts\app\images\iocin_p\xin_60_b.png" />
+    <Content Include="Scripts\app\images\iocin_p\xin_61.png" />
+    <Content Include="Scripts\app\images\iocin_p\xin_920.png" />
+    <Content Include="Scripts\app\images\iocin_p\xin_da.jpg" />
+    <Content Include="Scripts\app\images\iocin_p\xin_da.png" />
+    <Content Include="Scripts\app\images\iocin_p\yuan_160.png" />
+    <Content Include="Scripts\app\images\iocin_p\yuan_320.jpg" />
+    <Content Include="Scripts\app\images\iocin_p\yuan_640_p.png" />
+    <Content Include="Scripts\app\images\iocin_p\yuan_800.jpg" />
+    <Content Include="Scripts\app\images\uploadpic.jpg" />
+    <Content Include="Scripts\app\images\xuan_picture\bg2.JPG" />
+    <Content Include="Scripts\app\images\xuan_picture\bg21.JPG" />
+    <Content Include="Scripts\app\images\xuan_picture\bg23.JPG" />
+    <Content Include="Scripts\app\images\xuan_picture\bg42.JPG" />
+    <Content Include="Scripts\app\publicFun_ctr.js" />
+    <Content Include="Scripts\app\scripts\ctr\home\home_ctr.js" />
+    <Content Include="Scripts\app\scripts\plug-in\angular-dragdrop.js" />
+    <Content Include="Scripts\app\scripts\plug-in\angular-dragdrop.min.js" />
+    <Content Include="Scripts\app\scripts\plug-in\china.js" />
+    <Content Include="Scripts\app\scripts\plug-in\countUp.min.js" />
+    <Content Include="Scripts\app\scripts\plug-in\echarts.min.js" />
+    <Content Include="Scripts\app\scripts\plug-in\jquery.goup.js" />
+    <Content Include="Scripts\app\scripts\plug-in\jquery.min.js" />
+    <Content Include="Scripts\app\scripts\plug-in\lobipanel.min.js" />
+    <Content Include="Scripts\app\scripts\Service\mainService.js" />
+    <Content Include="Scripts\app\style\addstyle.css" />
+    <Content Include="Scripts\app\style\animate.css" />
+    <Content Include="Scripts\app\style\bg-img\changecolor.png" />
+    <Content Include="Scripts\app\style\header_2.css" />
+    <Content Include="Scripts\app\style\homeUserCenter.css" />
+    <Content Include="Scripts\app\view\comment\alert.html" />
+    <Content Include="Scripts\app\view\comment\editer.html" />
+    <Content Include="Scripts\app\view\comment\editer2.html" />
+    <Content Include="Scripts\app\view\comment\footer.html" />
+    <Content Include="Scripts\app\view\comment\header.html" />
+    <Content Include="Scripts\app\view\comment\header_ls.html" />
+    <Content Include="Scripts\app\view\comment\liuyan_im.html" />
+    <Content Include="Scripts\app\view\dashboard\articles\PArticlesCun.html" />
+    <Content Include="Scripts\app\view\dashboard\articles\Published_Articles.html" />
+    <Content Include="Scripts\app\view\dashboard\articles\PublishArticles.html" />
+    <Content Include="Scripts\app\view\dashboard\articles\PArticlesCun_ctr.js" />
+    <Content Include="Scripts\app\view\dashboard\articles\Published_Articles_ctr.js" />
+    <Content Include="Scripts\app\view\dashboard\articles\PublishArticles_ctr.js" />
+    <Content Include="Scripts\app\view\dashboard\main.html" />
+    <Content Include="Scripts\app\view\dashboard\main_ctr.js" />
+    <Content Include="Scripts\app\view\dashboard\userService\UserShare.html" />
+    <Content Include="Scripts\app\view\dashboard\userService\UserShare_ctr.js" />
+    <Content Include="Scripts\app\view\dashboard\userService\OptimalEvaluation.html" />
+    <Content Include="Scripts\app\view\dashboard\userService\OptimalEvaluation_ctr.js" />
+    <Content Include="Scripts\app\view\home\header.html" />
+    <Content Include="Scripts\app\view\home\header_2.html" />
+    <Content Include="Scripts\app\view\home\home.html" />
+    <Content Include="Scripts\app\view\home_ls\login.html" />
+    <Content Include="Scripts\app\view\home_ls\login_ctr.js" />
+    <Content Include="Scripts\app\view\home_ls\reset.html" />
+    <Content Include="Scripts\app\view\home_ls\reset_ctr.js" />
+    <Content Include="Scripts\app\view\home_ls\signup.html" />
+    <Content Include="Scripts\app\view\home_ls\signup_ctr.js" />
+    <Content Include="Scripts\app\view\plu_in\editer\index.html" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\afraid.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\amorous.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\angel.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\angry.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\bathing.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\beer.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\bored.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\boy.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\camera.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\chilli.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\cigarette.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\cinema.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\coffee.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\cold.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\confused.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\console.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\cross.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\crying.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\devil.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\disappointed.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\dont-know.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\drool.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\embarrassed.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\excited.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\excruciating.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\eyeroll.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\girl.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\grumpy.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\happy.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\hot.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\hug-left.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\hug-right.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\hungry.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\internet.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\invincible.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\in_love.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\kiss.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\lamp.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\lying.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\meeting.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\mobile.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\mrgreen.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\music.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\musical-note.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\nerdy.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\neutral.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\party.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\phone.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\pirate.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\pissed-off.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\plate.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\question.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\restroom.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\rose.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\sad.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\search.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\shame.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\shocked.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\shopping.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\shut-mouth.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\sick.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\silent.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\sleeping.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\sleepy.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\star.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\stressed.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\studying.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\suit.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\surfing.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\thinking.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\thunder.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\tongue.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\tv.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\typing.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\uhm-yeah.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\wink.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\working.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\smiley\writing.png" />
+    <Content Include="Scripts\app\view\plu_in\editer\src\wysiwyg-editor.css" />
+    <Content Include="Scripts\app\view\plu_in\editer\src\wysiwyg-editor.js" />
+    <Content Include="Scripts\app\view\plu_in\editer\src\wysiwyg.js" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\css\trumbowyg.css" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons-2x-s9034954e6d.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons-2x\attachement.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons-2x\barre.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons-2x\bold.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons-2x\center-align.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons-2x\close.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons-2x\formatting.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons-2x\fullscreen-exit.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons-2x\fullscreen.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons-2x\gras.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons-2x\horizontal-rule.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons-2x\image.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons-2x\italic.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons-2x\justify-align.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons-2x\left-align.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons-2x\link.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons-2x\ordered-list.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons-2x\right-align.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons-2x\souligne.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons-2x\strikethrough.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons-2x\underline.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons-2x\unordered-list.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons-2x\video.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons-2x\view-html.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons-sa75ce98b2b.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons\attachement.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons\barre.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons\bold.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons\center-align.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons\close.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons\formatting.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons\fullscreen-exit.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons\fullscreen.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons\gras.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons\horizontal-rule.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons\image.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons\italic.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons\justify-align.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons\left-align.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons\link.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons\ordered-list.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons\right-align.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons\souligne.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons\strikethrough.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons\underline.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons\unordered-list.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons\video.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\images\icons\view-html.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\jquery-v1.10.2.min.js" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\jquery.min.js" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\langs\ca.js" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\langs\de.js" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\langs\en.js" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\langs\es_ar.js" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\langs\fa.js" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\langs\fi.js" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\langs\fr.js" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\langs\ko.js" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\langs\pt.js" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\langs\ru.js" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\langs\zh_cn.js" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\pic\cz.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\pic\fd.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\pic\sc.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\pic\sx.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\pic\tj.png" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\plugins\base64\trumbowyg.base64.js" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\plugins\base64\trumbowyg.base64.min.js" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\plugins\upload\trumbowyg.upload.js" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\plugins\upload\trumbowyg.upload.min.js" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\trumbowyg.js" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\index.html" />
+    <Content Include="Scripts\app\view\plu_in\liuyan_im\css\main.css" />
+    <Content Include="Scripts\app\view\plu_in\liuyan_im\css\sinaFaceAndEffec.css" />
+    <Content Include="Scripts\app\view\plu_in\liuyan_im\images\1.jpg" />
+    <Content Include="Scripts\app\view\plu_in\liuyan_im\js\main.js" />
+    <Content Include="Scripts\app\view\plu_in\liuyan_im\js\sinaFaceAndEffec.js" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\about.html" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\blog.html" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\contact.html" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\css\animate.css" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\css\bootstrap.css" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\css\icomoon.css" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\css\style.css" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\css\superfish.css" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\fonts\bootstrap\glyphicons-halflings-regular.svg" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\fonts\icomoon\icomoon.svg" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\fonts\icomoon\icomoon\demo-files\demo.css" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\fonts\icomoon\icomoon\demo-files\demo.js" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\fonts\icomoon\icomoon\demo.html" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\fonts\icomoon\icomoon\fonts\icomoon.svg" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\fonts\icomoon\icomoon\Read Me.txt" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\fonts\icomoon\icomoon\style.css" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\images\about-image.jpg" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\images\blog-1.jpg" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\images\blog-2.jpg" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\images\blog-3.jpg" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\images\home-image.jpg" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\images\loc.png" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\images\user-1.jpg" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\images\work-1.jpg" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\images\work-2.jpg" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\images\work-3.jpg" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\images\work-4.jpg" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\images\work-5.jpg" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\images\work-6.jpg" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\index.html" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\js\bootstrap.min.js" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\js\google_map.js" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\js\hoverIntent.js" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\js\jquery.easing.1.3.js" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\js\jquery.min.js" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\js\jquery.stellar.min.js" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\js\jquery.waypoints.min.js" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\js\magnific-popup-options.js" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\js\main.js" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\js\modernizr-2.6.2.min.js" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\js\respond.min.js" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\js\superfish.js" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\portfolio.html" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\services.html" />
+    <Content Include="Scripts\app\view\TwoLevelPage\AboutUs.html" />
+    <Content Include="Scripts\app\view\TwoLevelPage\AboutUs_ctr.js" />
+    <Content Include="Scripts\app\view\TwoLevelPage\HotelFeatures.html" />
+    <Content Include="Scripts\app\view\TwoLevelPage\HotelFeatures_ctr.js" />
+    <Content Include="Scripts\app\view\TwoLevelPage\LocalStyle.html" />
+    <Content Include="Scripts\app\view\TwoLevelPage\LocalStyle_ctr.js" />
+    <Content Include="Scripts\app\view\TwoLevelPage\SharedFeeling.html" />
+    <Content Include="Scripts\app\view\TwoLevelPage\TwoLevelPage_ctr.js" />
+    <Content Include="Scripts\app\view\TwoLevelPage\SharedFeeling_ctr.js" />
+    <Content Include="Scripts\app\view\TwoLevelPage\TwoLevelPage.html" />
+    <Content Include="Scripts\app\view\TwoLevelPage\userCenter.html" />
+    <Content Include="Scripts\app\view\TwoLevelPage\UserCenter_ctr.js" />
+    <Content Include="UploadFile\XiuXiuUpload\XiuXiu2017281327257.jpg" />
+    <Content Include="UploadFile\XiuXiuUpload\XiuXiu201728137300.jpg" />
+    <Content Include="UploadFile\XiuXiuUpload\XiuXiu201728138532.jpg" />
+    <Content Include="UploadFile\XiuXiuUpload\XiuXiu2017281389638.jpg" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <EntityDeploy Include="DAL\Huangguan.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Huangguan.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EntityDeploy>
+    <Content Include="DAL\Huangguan.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Huangguan.edmx</DependentUpon>
+      <LastGenOutput>Huangguan.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DAL\Huangguan.edmx.diagram">
+      <DependentUpon>Huangguan.edmx</DependentUpon>
+    </Content>
+    <Content Include="DAL\Huangguan.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Huangguan.edmx</DependentUpon>
+      <LastGenOutput>Huangguan.cs</LastGenOutput>
+    </Content>
+    <Content Include="post.ashx" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_alerts.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_background-variant.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_border-radius.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_buttons.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_center-block.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_clearfix.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_forms.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_gradients.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_grid-framework.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_grid.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_hide-text.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_image.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_labels.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_list-group.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_nav-divider.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_nav-vertical-align.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_opacity.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_pagination.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_panels.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_progress-bar.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_reset-filter.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_reset-text.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_resize.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_responsive-visibility.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_size.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_tab-focus.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_table-row.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_text-emphasis.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_text-overflow.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\0efe9c0d43cd3369b8a31ab2ab7a2f7d0b588fb2\_vendor-prefixes.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1423d675aaf96a3f2f5caf148a483d447d5204a6\bootstrap.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1423d675aaf96a3f2f5caf148a483d447d5204a6\style.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_alerts.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_badges.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_breadcrumbs.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_button-groups.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_buttons.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_carousel.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_close.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_code.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_component-animations.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_dropdowns.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_forms.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_glyphicons.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_grid.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_input-groups.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_jumbotron.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_labels.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_list-group.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_media.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_mixins.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_modals.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_navbar.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_navs.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_normalize.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_pager.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_pagination.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_panels.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_popovers.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_print.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_progress-bars.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_responsive-embed.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_responsive-utilities.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_scaffolding.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_tables.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_thumbnails.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_tooltip.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_type.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_utilities.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_variables.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\1fa06d15f86e9e60152eaa720882ceb4266f97b5\_wells.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_alerts.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_badges.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_breadcrumbs.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_button-groups.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_buttons.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_carousel.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_close.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_code.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_component-animations.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_dropdowns.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_forms.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_glyphicons.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_grid.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_input-groups.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_jumbotron.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_labels.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_list-group.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_media.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_mixins.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_modals.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_navbar.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_navs.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_normalize.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_pager.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_pagination.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_panels.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_popovers.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_print.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_progress-bars.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_responsive-embed.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_responsive-utilities.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_scaffolding.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_tables.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_thumbnails.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_tooltip.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_type.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_utilities.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_variables.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\316a4cd3d23dbd7408af7d50657fdcf34e92ecda\_wells.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5e654351ecc4d1287a0d40f7c39f666b5d343379\bootstrap.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5e654351ecc4d1287a0d40f7c39f666b5d343379\style.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_alerts.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_badges.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_breadcrumbs.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_button-groups.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_buttons.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_carousel.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_close.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_code.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_component-animations.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_dropdowns.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_forms.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_glyphicons.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_grid.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_input-groups.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_jumbotron.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_labels.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_list-group.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_media.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_mixins.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_modals.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_navbar.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_navs.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_normalize.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_pager.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_pagination.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_panels.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_popovers.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_print.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_progress-bars.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_responsive-embed.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_responsive-utilities.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_scaffolding.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_tables.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_thumbnails.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_tooltip.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_type.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_utilities.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_variables.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\5f6e4b778b0f967bfa250de46613cbcf2376ac8f\_wells.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_alerts.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_badges.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_breadcrumbs.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_button-groups.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_buttons.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_carousel.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_close.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_code.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_component-animations.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_dropdowns.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_forms.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_glyphicons.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_grid.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_input-groups.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_jumbotron.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_labels.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_list-group.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_media.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_mixins.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_modals.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_navbar.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_navs.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_normalize.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_pager.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_pagination.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_panels.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_popovers.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_print.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_progress-bars.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_responsive-embed.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_responsive-utilities.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_scaffolding.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_tables.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_thumbnails.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_tooltip.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_type.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_utilities.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_variables.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\7a59ed7b360fc82a7bc01e6553ea2fb1d8427249\_wells.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_alerts.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_background-variant.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_border-radius.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_buttons.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_center-block.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_clearfix.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_forms.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_gradients.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_grid-framework.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_grid.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_hide-text.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_image.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_labels.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_list-group.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_nav-divider.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_nav-vertical-align.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_opacity.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_pagination.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_panels.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_progress-bar.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_reset-filter.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_reset-text.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_resize.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_responsive-visibility.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_size.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_tab-focus.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_table-row.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_text-emphasis.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_text-overflow.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\818f456e6a99bebf49e96d30f25fca0c2868fd7f\_vendor-prefixes.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_alerts.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_background-variant.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_border-radius.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_buttons.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_center-block.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_clearfix.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_forms.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_gradients.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_grid-framework.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_grid.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_hide-text.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_image.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_labels.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_list-group.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_nav-divider.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_nav-vertical-align.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_opacity.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_pagination.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_panels.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_progress-bar.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_reset-filter.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_reset-text.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_resize.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_responsive-visibility.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_size.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_tab-focus.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_table-row.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_text-emphasis.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_text-overflow.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\8f0c60d1050a277d7ef032497931e69f6bc447fb\_vendor-prefixes.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\9c715010237f35bd828660bd9732d4dfe7f2e7a9\bootstrap.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\9c715010237f35bd828660bd9732d4dfe7f2e7a9\style.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\ccdad4ce49e6d4d92abc4674df5baf129fed6e48\bootstrap.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\ccdad4ce49e6d4d92abc4674df5baf129fed6e48\style.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_alerts.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_background-variant.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_border-radius.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_buttons.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_center-block.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_clearfix.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_forms.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_gradients.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_grid-framework.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_grid.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_hide-text.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_image.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_labels.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_list-group.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_nav-divider.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_nav-vertical-align.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_opacity.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_pagination.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_panels.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_progress-bar.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_reset-filter.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_reset-text.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_resize.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_responsive-visibility.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_size.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_tab-focus.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_table-row.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_text-emphasis.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_text-overflow.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\.sass-cache\d4f304f89325e99f88401f585edf3c7ff6240f89\_vendor-prefixes.scssc" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\css\bootstrap.css.map" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\css\style.css.map" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\fonts\bootstrap\glyphicons-halflings-regular.eot" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\fonts\bootstrap\glyphicons-halflings-regular.ttf" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\fonts\bootstrap\glyphicons-halflings-regular.woff" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\fonts\bootstrap\glyphicons-halflings-regular.woff2" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\fonts\icomoon\icomoon.eot" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\fonts\icomoon\icomoon.ttf" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\fonts\icomoon\icomoon.woff" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\fonts\icomoon\icomoon\fonts\icomoon.eot" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\fonts\icomoon\icomoon\fonts\icomoon.ttf" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\fonts\icomoon\icomoon\fonts\icomoon.woff" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\fonts\icomoon\icomoon\selection.json" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_alerts.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_background-variant.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_border-radius.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_buttons.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_center-block.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_clearfix.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_forms.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_gradients.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_grid-framework.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_grid.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_hide-text.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_image.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_labels.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_list-group.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_nav-divider.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_nav-vertical-align.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_opacity.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_pagination.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_panels.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_progress-bar.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_reset-filter.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_reset-text.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_resize.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_responsive-visibility.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_size.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_tab-focus.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_table-row.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_text-emphasis.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_text-overflow.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\mixins\_vendor-prefixes.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_alerts.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_badges.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_breadcrumbs.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_button-groups.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_buttons.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_carousel.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_close.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_code.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_component-animations.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_dropdowns.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_forms.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_glyphicons.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_grid.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_input-groups.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_jumbotron.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_labels.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_list-group.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_media.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_mixins.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_modals.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_navbar.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_navs.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_normalize.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_pager.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_pagination.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_panels.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_popovers.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_print.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_progress-bars.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_responsive-embed.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_responsive-utilities.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_scaffolding.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_tables.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_theme.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_thumbnails.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_tooltip.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_type.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_utilities.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_variables.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\bootstrap\_wells.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\style.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\_bootstrap-compass.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\_bootstrap-mincer.scss" />
+    <Content Include="Scripts\app\view\plu_in\muban_1\sass\_bootstrap-sprockets.scss" />
+    <Content Include="Scripts\app\style\homeUserCenter.less" />
+    <Content Include="Scripts\app\style\addstyle.less" />
+    <None Include="Properties\PublishProfiles\huangguanHG.pubxml" />
+    <None Include="Properties\PublishProfiles\HuangguanHotal.pubxml" />
+    <Content Include="Scripts\app\view\plu_in\editer\.project" />
+    <Content Include="Scripts\app\view\plu_in\liuyan_im\.project" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\.project" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\config.rb" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\design\sass\trumbowyg.scss" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\pic\sc.psd" />
+    <Content Include="Scripts\app\view\plu_in\jQuery-edit\assets\plugins\upload\trumbowyg.upload.php" />
+    <Content Include="Scripts\app\images\Handled\chang_7.webp" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>27940</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:27940/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

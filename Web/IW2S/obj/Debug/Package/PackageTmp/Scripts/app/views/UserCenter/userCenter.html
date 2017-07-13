@@ -417,10 +417,10 @@
                             </thead>
                             <tbody style="border-bottom:1px solid #ccc">
                                 <tr ng-repeat="x in NoCompletedGetOrderList">
-                                    <td>{{}}</td>
+                                    <td>{{x.TradeNo}}</td>
                                     <td>{{x.ProductList[0].Name}}</td>
                                     <td>￥{{x.TotalPrice}}</td>
-                                    <td>立即支付</td>
+                                    <td><a ng-click="getPayPageAgein(x)"style="cursor:pointer">立即支付</a></td>
                                     <td><i class="fa fa-trash-o" ng-click="DelOrder(x.Id)"style="font-size: 16px; cursor: pointer;"></i></td>
                                 </tr>
                             </tbody>
@@ -451,7 +451,7 @@
                             </thead>
                             <tbody style="border-bottom:1px solid #ccc">
                                 <tr ng-repeat="x in CompletedGetOrderList">
-                                    <td>{{}}</td>
+                                    <td>{{x.TradeNo}}</td>
                                     <td>{{x.ProductList[0].Name}}</td>
                                     <td>{{x.TotalPrice}}</td>
                                     <td>微信支付</td>

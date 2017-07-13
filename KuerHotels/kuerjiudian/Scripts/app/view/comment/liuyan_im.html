@@ -1,0 +1,93 @@
+﻿<style>
+    .input_but {
+        height: 28px !important;
+        color: #fff !important;
+    }
+        .input_but:hover {
+            background-color: #7d9a09 !important;
+        }
+</style>
+<link rel="stylesheet" href="/Scripts/app/view/plu_in/liuyan_im/css/main.css" />
+<link rel="stylesheet" type="text/css" href="/Scripts/app/view/plu_in/liuyan_im/css/sinaFaceAndEffec.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+<title></title>
+<div id="content" style="width:100%; height: auto;">
+        <div class="wrap">
+            <div class="comment">
+                <div class="content">
+                    <div style=" margin-top: -5px; margin-bottom: 3px; font-size: 15px;">我来评论几句
+                    <div class="tianzishu" style=""><span><i class="fa fa-commenting-o"></i>评论数：{{GetReplyer}}</span><span><i class="fa fa-thumbs-o-up"></i>点赞数：{{GetLove}}</span></div>
+                    </div>
+                    <div class="cont-box">
+                        <textarea class="text" placeholder="请输入..."style="font-size: 14px;" ng-model="editer_nei"></textarea>
+                    </div>
+                    <div class="tools-box">
+                        <div class="operator-box-btn"><span class="face-icon"style="margin-top: -4px;">☺</span><!--<span class="img-icon" ng-click="addpicture()"><i class="fa fa-picture-o" style="font-size:20px"></i></span>--></div>
+                        <div class="submit-btn" ng-if="$root.logined"><input type="button" class="input_but" ng-click="SaveShareReply()" value="提交评论" /></div><!--onclick="out()"-->
+                        <div class="submit-btn" ng-if="!$root.logined"ui-sref="login"><input type="button" class="input_but" value="提交评论" /></div>
+                    </div>
+                </div>
+            </div>
+            <div id="info-show">
+                <ul></ul>
+            </div>
+        </div>
+    </div>
+
+<script type="text/javascript" src="/Scripts/app/view/plu_in/liuyan_im/js/sinaFaceAndEffec.js"></script>
+<script type="text/javascript">
+    (function ($) {
+        $.fn.extend({
+            insertContent: function (myValue, t) {
+                var $t = $(this)[0];
+                if (document.selection) { //ie
+                    this.focus();
+                    var sel = document.selection.createRange();
+                    sel.text = myValue;
+                    this.focus();
+                    sel.moveStart('character', -l);
+                    var wee = sel.text.length;
+                    if (arguments.length == 2) {
+                        var l = $t.value.length;
+                        sel.moveEnd("character", wee + t);
+                        t <= 0 ? sel.moveStart("character", wee - 2 * t - myValue.length) : sel.moveStart("character", wee - t - myValue.length);
+
+                        sel.select();
+                    }
+                } else if ($t.selectionStart || $t.selectionStart == '0') {
+                    var startPos = $t.selectionStart;
+                    var endPos = $t.selectionEnd;
+                    var scrollTop = $t.scrollTop;
+                    $t.value = $t.value.substring(0, startPos) + myValue + $t.value.substring(endPos, $t.value.length);
+                    this.focus();
+                    $t.selectionStart = startPos + myValue.length;
+                    $t.selectionEnd = startPos + myValue.length;
+                    $t.scrollTop = scrollTop;
+                    if (arguments.length == 2) {
+                        $t.setSelectionRange(startPos - t, $t.selectionEnd + t);
+                        this.focus();
+                    }
+                }
+                else {
+                    this.value += myValue;
+                    this.focus();
+                }
+            }
+        })
+    })(jQuery);
+    // 绑定表情
+    $('.face-icon').SinaEmotion($('.text'));
+    // 测试本地解析
+    function out() {
+        var inputText = $('.text').val();
+        $('#info-show ul').append(reply(AnalyticEmotion(inputText)));
+    }
+   
+    var html;
+    function reply(content) {
+        html += '<p class="comment-body">' + content + '</p>';
+        return html;
+    }
+
+</script>
+

@@ -246,7 +246,7 @@ namespace IWSBot.Queries
                     }
                 }
             }
-            //去除前缀
+            //去除前缀并计算域名收录量
             Regex regDomain = new Regex("http://|https://");
             long collectionNum = 0;
             if (!string.IsNullOrEmpty(domain))

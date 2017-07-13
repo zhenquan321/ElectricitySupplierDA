@@ -1280,12 +1280,9 @@
     //文章数据分析
 	$scope.discourseAnalysis = function (id) {
 	    $rootScope.discAId = id;
-	    var url = "/DnL/wordtree/?" + $rootScope.discAId;
-	    $location.path(url).replace();
+	    var url = "/DnL/wordtree?id=" + $rootScope.discAId + "&score=1";
+	    $location.url(url);
 	}
-
-
-
 
 
 

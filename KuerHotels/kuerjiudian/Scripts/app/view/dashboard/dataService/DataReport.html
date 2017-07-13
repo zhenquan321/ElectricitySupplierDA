@@ -1,0 +1,1024 @@
+﻿<link rel="stylesheet" href="Scripts/iprfree/app/views/demo/assets/css/xenon-components.css">
+<style>
+    #ppt5 {
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-image: url(Scripts/iprfree/app/images/PPT5.jpg);
+    }
+    .ppt5 {
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-image: url(Scripts/iprfree/app/images/PPT5.jpg);
+    }
+
+
+    #ppt1 {
+        background-position:97% 6px;
+        background-size: 163px 46px;
+        background-repeat: no-repeat;
+        background-image: url(Scripts/iprfree/app/images/iprsee-logo.png);
+    }
+
+    #ppt4 {
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-image: url(Scripts/iprfree/app/images/PPT4%20k.jpg);
+        top: -20px;
+    }
+
+    #ppt6 {
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-image: url(Scripts/iprfree/app/images/PPT%203%20k.jpg);
+        top: -20px;
+    }
+
+
+</style>
+<div id="dataReport">
+    <div class="animated slideInRight">
+        <div class="wrapper">
+            <div class="panel panel-cert">
+                <div id="DataImport">
+                    <div class="title_header">
+                        <div class="pull-left" style="font-size: 16px; height: 50px;" ng-mouseleave="select_b_fun(0)">
+                            <span class="seleted_sd">{{BrandName}}</span>监测报告
+                            <i class="fa fa-chevron-circle-left xiala" ng-show="!baogao_show" ng-mousemove="select_b_fun(1)"></i>
+                            <i class="fa fa-chevron-circle-down xiala" ng-show="baogao_show"></i>
+                            <div class="input-group-btn " ng-show="baogao_show">
+                                <ul class="dropdown-menu" role="menu" style="display:block">
+                                    <li><a href="">欧莱雅监测报告</a></li>
+                                    <li><a href="">香奈儿监测报告</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="button_2g  pull-right clearfix btn-group btn-group-location-config">
+                            <i class="fa fa-reply" style=" font-size: 30px; cursor: pointer; color: #28a789; margin-right: 10px;" ng-show="ing_report_nei" ng-click="ing_report_nei_fun()"></i> <i class="fa fa-cog" style=" font-size: 31px;cursor:pointer"></i>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row" style=" margin: 0px; margin-top: 20px;" ng-show="!ing_report_nei">
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 pl10 pr10" ng-repeat="x in chineseList" ng-show="x.PublishDate">
+                    <a class="report_card">
+                        <div class="xe-widget xe-progress-counter xe-progress-counter-pink ppt5 " id="report_list_1" style="height: 250px; background-size: 100% 100%; background-repeat: no-repeat; background-image: url(Scripts/iprfree/app/images/PPT5.jpg); box-shadow: 1px 1px 4px #bbb; " data-count=".num" data-from="0" data-to="12425" data-duration="2">
+                            <div>
+                                <div class="xe-background">
+                                    <i class="fa fa-pencil-square-o"></i>
+                                </div>
+
+                                <div class="xe-upper" style="margin-top: 4px; padding-bottom: 0px;">
+                                    <div class="xe-icon" style="padding-right:0px;padding-left:10px;">
+                                        <i class="fa fa-pencil-square-o" style=" height: 40px; font-size: 32px; margin-right: 5px;"></i>
+                                    </div>
+                                    <div class="xe-label">
+                                        <span style="padding-bottom: 0px; color: #6b6b6b; ">{{x.ReportTime}}月报告</span>
+                                        <span><strong class="num">{{BrandName}}{{HeadTitle}}</strong></span>
+                                    </div>
+                                </div>
+
+                                <div class="xe-progress" style="margin-top: 5px;">
+                                    <span class="xe-progress-fill" data-fill-from="0" data-fill-to="62" data-fill-unit="%" data-fill-property="width" data-fill-duration="2" data-fill-easing="true" style="width: 62%;"></span>
+                                </div>
+
+                                <div class="xe-lower" style="padding-top: 10px; padding-right: 0px; line-height: 18px;">
+                                    <strong style="color: #555; ">报告对象：</strong><span style="color: #555;">{{BrandName}}</span><br />
+                                    <strong style="color: #555; ">报告发布人：</strong><span style="color: #555;">{{CompanyName}}</span><br />
+                                    <strong style="color: #555; ">报告监测月份：</strong><span style="color: #555;">{{x.ReportTime}}</span><br />
+                                    <span ng-show="x.PublishDate"><strong style="color: #555;">报告发布时间：</strong><span style="color: #555;">{{x.PublishDate|date:'yyyy-MM-dd'}}</span><br /></span>
+                                    <span ng-hide="x.PublishDate"><strong style="color: #555;">报告发布时间：</strong><span style="color: #555;">尚未发布</span><br /></span>
+                                    <strong style="color: #555;">监测源：</strong><span style="color: #555;">{{ x.SiteName.length>25? ((x.SiteName | limitTo:25)+"...") : x.SiteName }}</span>
+                                </div>
+                            </div>
+
+                            <div id="in_report" style="">
+                                <button type="button" class="btn btn-default but_c_c" ng-click="changeMonth(x.ReportTime,x.SiteName)">查看报告内容</button>
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="cart_shu" class="row" style="padding:0px;margin:0px;" ng-show="ing_report_nei">
+                <div style="max-width: 1236px;min-width:1000px;" id="cart_shu">
+                    <div ng-show="ing_report_nei">
+                        <div style="padding:10px;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active" ng-class="{true: 'active', false: 'no_active'}[$root.tab==1]">
+                                            <a href="" data-toggle="tab" ng-click="changeTab(1)">
+                                                <span class="visible-xs"><i class="fa fa-home"></i></span>
+                                                <span class="hidden-xs">首页</span>
+                                            </a>
+                                        </li>
+                                        <li class="" ng-class="{true: 'active', false: 'no_active'}[$root.tab==2]">
+                                            <a href="" data-toggle="tab" ng-click="changeTab(2)">
+                                                <span class="visible-xs"><i class="fa fa-user"></i></span>
+                                                <span class="hidden-xs">声明</span>
+                                            </a>
+                                        </li>
+                                        <li class="" ng-class="{true: 'active', false: 'no_active'}[$root.tab==3]">
+                                            <a href="" data-toggle="tab" ng-click="changeTab(3)">
+                                                <span class="visible-xs"><i class="fa fa-envelope-o"></i></span>
+                                                <span class="hidden-xs">IPRSEE介绍</span>
+                                            </a>
+                                        </li>
+                                        <li style="float:right">
+                                            <span id="set">
+                                                <span class="panel-options">
+                                                    <a data-toggle="panel" style="margin-right:8px">
+                                                        <span class="collapse-icon" ng-show="tab_display" ng-click="tab_display_fun()">–</span>
+                                                        <span class="expand-icon" ng-hide="tab_display" ng-click="tab_display_fun()">+</span>
+                                                    </a>
+                                                    <a data-toggle="reload" style="margin-right:8px">
+                                                        <i class="fa fa-rotate-right"></i>
+                                                    </a>
+                                                </span>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content " style="min-height: 600px; box-shadow: 0 2px 4px #ccc;" ng-show="tab_display">
+                                        <div class=" active" id="home" ng-show="$root.tab==1">
+                                            <div class="xe-widget xe-progress-counter xe-progress-counter-pink " id="ppt5" data-count=".num" data-from="0" data-to="12425" data-duration="2" style="height: 560px; padding-top: 130px; padding-left: 6%; padding-right: 6%; margin-bottom: 0px;">
+                                                <div class="xe-background">
+                                                    <i class="fa fa-pencil-square-o" style="font-size:250px;"></i>
+                                                </div>
+
+                                                <div class="xe-upper pb15">
+                                                    <div class="xe-icon" style="padding-top:25px">
+                                                        <i class="fa fa-pencil-square-o" style="font-size:55px;"></i>
+                                                    </div>
+                                                    <div class="xe-label">
+                                                        <span style="font-size:14px;">月报告</span>
+                                                        <a><strong class="num" style="font-size:28px">{{BrandName}}{{HeadTitle}}</strong></a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="xe-progress">
+                                                    <span class="xe-progress-fill" data-fill-from="0" data-fill-to="56" data-fill-unit="%" data-fill-property="width" data-fill-duration="2" data-fill-easing="true" style="width: 56%;"></span>
+                                                </div>
+
+                                                <div class="xe-lower">
+                                                    <strong style="font-size: 16px !important; color: rgba(125, 127, 127, 1);">报告对象：</strong><span style="font-size: 16px !important; color: rgba(130, 130, 130, 1);">{{BrandName}}</span><br />
+                                                    <strong style="font-size: 16px !important; color: rgba(125, 127, 127, 1);">报告发布人：</strong><span style="font-size: 16px !important; color: rgba(130, 130, 130, 1);">{{CompanyName}}</span><br />
+                                                    <strong style="font-size: 16px !important; color: rgba(125, 127, 127, 1);">报告监测月份：</strong><span style="font-size: 16px !important; color: rgba(130, 130, 130, 1);">{{ReportTime}}</span><br />
+                                                    <strong style="font-size: 16px !important; color: rgba(125, 127, 127, 1);">报告发布时间：</strong><span style="font-size: 16px !important; color: rgba(130, 130, 130, 1);">{{PublishDate|date:'yyyy-MM-dd HH:mm:ss'}}</span><br />
+                                                    <strong style="font-size: 16px !important; color: rgba(125, 127, 127, 1);">监测源：</strong><span style="font-size: 16px !important; color: rgba(130, 130, 130, 1);">{{ $root.SiteName_List1}}</span>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="" ng-show="$root.tab==2">
+                                            <div class="col-sm-12 " style="padding-top:55px;min-height:570px;" id="ppt1">
+                                                <div class="xe-widget xe-conversations">
+                                                    <div class="xe-bg-icon">
+                                                        <i class="linecons-comment"></i>
+                                                    </div>
+                                                    <div class="xe-header">
+                                                        <div class="xe-icon">
+                                                            <i class="linecons-comment"></i>
+                                                        </div>
+                                                        <div class="xe-label">
+                                                            <h3>
+                                                                声明
+                                                                <small>The statement</small>
+                                                            </h3>
+                                                        </div>
+                                                    </div>
+                                                    <div class="xe-body">
+                                                        <div style="margin:25px 25px 25px 25px;font-size:16px;">
+                                                            <p class="ps" style="margin-top:10px;">
+                                                                <div ng-bind-html="Statement|htmlContent"></div>
+                                                            </p>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="" ng-show="$root.tab==3">
+                                            <div class="col-sm-12 " style="padding:0 30px 0 30px; min-height: 570px;" id="ppt1">
+                                                <div>
+                                                    <h2>IPRSEE介绍</h2>
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <div class="row" style="height:220px;">
+                                                        <h3 class="bg-info">{{Title1}}</h3>
+                                                        <p class="ps">
+                                                            {{Title1Content}}
+                                                        </p>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <h3 class="bg-primary">{{Title2}}</h3>
+
+                                                        <p class="ps">
+                                                            {{Title2Content}}
+                                                        </p>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-xs-4" style="text-align:center">
+                                                    <img src="Scripts/iprfree/app/images/iprsee-logo.png" style="width: 250px; margin: 175px 0px" alt="" />
+                                                </div>
+
+                                                <div class="col-xs-4">
+                                                    <div class="row" style="height:220px;">
+                                                        <h3 class="bg-warning">{{Title3}}</h3>
+
+                                                        <p class="ps">
+                                                            {{Title3Content}}
+                                                        </p>
+                                                    </div>
+                                                    <div class="row">
+                                                        <h3 class="bg-danger">{{Title4}}</h3>
+                                                        <p class="ps">
+                                                            {{Title4Content}}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="height: 10px; background-color: #fff; margin-bottom: 30px;" ng-hide="tab_display">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mt15">
+                                <div class="col-md-12">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active" ng-class="{true: 'active', false: 'no_active'}[tab2==11]">
+                                            <a href="" data-toggle="tab" ng-click="changeTab2(11)">
+                                                <span class="visible-xs"><i class="fa fa-home"></i></span>
+                                                <span class="hidden-xs">1.{{  Outline.length>8? ((Outline | limitTo:8)+"...") : Outline}}</span>
+                                            </a>
+                                        </li>
+                                        <li class="" ng-click="onclick_1()" ng-class="{true: 'active', false: 'no_active'}[tab2==22]">
+                                            <a href="" data-toggle="tab" ng-click="changeTab2(22)">
+                                                <span class="visible-xs"><i class="fa fa-user"></i></span>
+                                                <span class="hidden-xs">1.1{{ DataOutline.length>8? ((DataOutline | limitTo:8)+"...") : DataOutline}}</span>
+                                            </a>
+                                        </li>
+                                        <li class="" ng-click="onclick_12()" ng-class="{true: 'active', false: 'no_active'}[tab2==33]">
+                                            <a href="" data-toggle="tab" ng-click="changeTab2(33)">
+                                                <span class="visible-xs"><i class="fa fa-envelope-o"></i></span>
+                                                <span class="hidden-xs">1.2{{ DataChangeTrend.length>8? ((DataChangeTrend | limitTo:8)+"...") : DataChangeTrend}}</span>
+                                            </a>
+                                        </li>
+                                        <li class="" ng-click="onclick_13()" ng-class="{true: 'active', false: 'no_active'}[tab2==44]">
+                                            <a href="" data-toggle="tab" ng-click="changeTab2(44)">
+                                                <span class="visible-xs"><i class="fa fa-envelope-o"></i></span>
+                                                <span class="hidden-xs">1.3{{ AuthorizedShopRatio.length>8? ((AuthorizedShopRatio | limitTo:8)+"...") : AuthorizedShopRatio}}</span>
+                                            </a>
+                                        </li>
+                                        <li class="" ng-click="onclick_14()" ng-class="{true: 'active', false: 'no_active'}[tab2==55]">
+                                            <a href="" data-toggle="tab" ng-click="changeTab2(55)">
+                                                <span class="visible-xs"><i class="fa fa-envelope-o"></i></span>
+                                                <span class="hidden-xs">1.4{{ AuthorizedShopTrend.length>8? ((AuthorizedShopTrend | limitTo:8)+"...") : AuthorizedShopTrend}}</span>
+                                            </a>
+                                        </li>
+                                        <li style="float:right">
+                                            <span id="set">
+                                                <a class="panel-options">
+                                                    <a data-toggle="panel" style="margin-right:8px">
+                                                        <span class="collapse-icon" ng-show="tab_display2" ng-click="tab_display_fun2()">–</span>
+                                                        <span class="expand-icon" ng-hide="tab_display2" ng-click="tab_display_fun2()">+</span>
+                                                    </a>
+                                                    <a data-toggle="reload" style="margin-right:8px">
+                                                        <i class="fa fa-rotate-right"></i>
+                                                    </a>
+                                                </a>
+                                            </span>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content " style="min-height:600px" ng-show="tab_display2">
+                                        <div class=" active" id="home" ng-show="tab2==11">
+                                            <div class="col-sm-12" style="padding-top: 125px; min-height: 580px;" id="ppt1">
+                                                <div class="xe-widget xe-vertical-counter xe-vertical-counter-white" data-count=".num" data-from="0" data-to="128" data-duration="4">
+                                                    <div class="xe-icon" style="font-size: 120px; padding-bottom: 0px; ">
+                                                        <i class="fa fa-th-large"></i>
+                                                    </div>
+
+                                                    <div class="xe-label" style="padding-top: 0px; ">
+                                                        <strong class="num" style="font-size:32px">1.{{Outline}}</strong>
+                                                        <!--<span style="font-size:18px;">一句话描述数据展示</span>-->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="" ng-show="tab2==22">
+                                            <div class="col-sm-12" style="padding-top: 20px; min-height: 580px;" id="ppt1">
+                                                <div style="min-height:370px;">
+                                                    <h3 style="margin-top:5px;margin-bottom:25px;">{{DataOutline}}</h3>
+                                                    <div class="row">
+                                                        <div class="col-xs-4">
+                                                            <div style="height:330px;width:100%;" id="pieChart1"></div>
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                            <div style="height: 330px; width: 100%;" id="pieChart2"></div>
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                            <div style="height: 330px; width: 100%;" id="pieChart3"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <blockquote class="blockquote blockquote-warning">
+                                                    <p>
+                                                        <strong>分析</strong>
+                                                    </p>
+                                                    <p>
+                                                        <span style="font-size: 13px;color: #777777;">{{TrendDesc}}</span>
+                                                    </p>
+                                                </blockquote>
+                                            </div>
+                                        </div>
+                                        <div class="" ng-show="tab2==33">
+                                            <div class="col-sm-12" style="padding-top: 20px; min-height: 580px;" id="ppt1">
+                                                <h3 style="margin-top:5px;margin-bottom:5px;">{{DataChangeTrend}}</h3>
+                                                <div class="row">
+                                                    <div class="col-xs-4" style="padding:0px 5px">
+                                                        <div style="height:350px;width:100%;padding:5px;" id="Histogram"></div>
+                                                    </div>
+                                                    <div class="col-xs-4" style="padding:0px 5px">
+                                                        <div style="height: 350px; width: 100%; padding: 5px;" id="Linegraph"></div>
+                                                    </div>
+                                                    <div class="col-xs-4" style="padding:0px 5px">
+                                                        <div style="height: 350px; width: 100%; padding: 5px;" id="shopgraph"></div>
+                                                    </div>
+                                                </div>
+                                                <blockquote class="blockquote blockquote-warning" style="margin-top:10px;">
+                                                    <p>
+                                                        <strong>分析</strong>
+                                                    </p>
+                                                    <p>
+                                                        <span style="font-size: 13px;color: #777777;">{{OutlineDesc}}</span>
+                                                    </p>
+                                                </blockquote>
+                                            </div>
+                                        </div>
+                                        <div class="" ng-show="tab2==44">
+                                            <div class="col-sm-12" style="padding-top: 20px; min-height: 580px;" id="ppt1">
+                                                <h3 style="margin-top:5px;margin-bottom:25px;">{{AuthorizedShopRatio}}</h3>
+                                                <div class="row">
+                                                    <div class="col-xs-4">
+                                                        <div style="height:330px;width:100%;" id="pieChart131"></div>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <div style="height: 330px; width: 100%;" id="pieChart132"></div>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <div style="height:330px;width:100%;" id="pieChart133"></div>
+                                                    </div>
+                                                </div>
+                                                <blockquote class="blockquote blockquote-warning">
+                                                    <p>
+                                                        <strong>分析</strong>
+                                                    </p>
+                                                    <p>
+                                                        <span style="font-size: 13px;color: #777777;">{{AuthorizedShopRatioDesc}}</span>
+                                                    </p>
+                                                </blockquote>
+                                            </div>
+                                        </div>
+                                        <div class="" ng-show="tab2==55">
+                                            <div class="col-sm-12" style="padding-top: 20px; min-height: 580px;" id="ppt1">
+                                                <h3 style="margin-top:5px;margin-bottom:5px;">{{AuthorizedShopTrend}}</h3>
+                                                <div class="row">
+                                                    <div class="col-xs-4" style="padding:0 3px;">
+                                                        <div style="height:350px;width:100%;padding:5px;" id="Histogram141"></div>
+                                                    </div>
+                                                    <div class="col-xs-4" style="padding:0 3px;">
+                                                        <div style="height: 350px; width: 100%; padding: 5px;" id="Linegraph142"></div>
+                                                    </div>
+                                                    <div class="col-xs-4" style="padding:0 3px;">
+                                                        <div style="height: 350px; width: 100%; padding: 5px;" id="shopgraph143"></div>
+                                                    </div>
+                                                </div>
+                                                <blockquote class="blockquote blockquote-warning" style="margin-top:0px;">
+                                                    <p>
+                                                        <strong>分析</strong>
+                                                    </p>
+                                                    <p>
+                                                        <span style="font-size: 13px;color: #777777;">{{AuthorizedShopTrendDesc}}</span>
+                                                    </p>
+                                                </blockquote>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="height: 10px; background-color: #fff; margin-bottom: 30px;" ng-hide="tab_display2">
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row mt15">
+                                <div class="col-md-12">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active" ng-class="{true: 'active', false: 'no_active'}[tab3==1]">
+                                            <a href="" data-toggle="tab" ng-click="changeTab3(1)">
+                                                <span class="visible-xs"><i class="fa fa-home"></i></span>
+                                                <span class="hidden-xs">2.{{ DataDisplay.length>8? ((DataDisplay | limitTo:8)+"...") : DataDisplay }}</span>
+                                            </a>
+                                        </li>
+                                        <li class="" ng-click="onclick_21()" ng-class="{true: 'active', false: 'no_active'}[tab3==2]">
+                                            <a href="" data-toggle="tab" ng-click="changeTab3(2)">
+                                                <span class="visible-xs"><i class="fa fa-user"></i></span>
+                                                <span class="hidden-xs">2.1{{DistrictSaleRank.length>8? ((DistrictSaleRank | limitTo:8)+"...") : DistrictSaleRank}}</span>
+                                            </a>
+                                        </li>
+                                        <li class="" ng-click="onclick_22()" ng-class="{true: 'active', false: 'no_active'}[tab3==3]">
+                                            <a href="" data-toggle="tab" ng-click="changeTab3(3)">
+                                                <span class="visible-xs"><i class="fa fa-envelope-o"></i></span>
+                                                <span class="hidden-xs">2.2{{ShopSaleRank.length>8? ((ShopSaleRank | limitTo:8)+"...") : ShopSaleRank}}</span>
+                                            </a>
+                                        </li>
+                                        <li ng-click="onclick_23()" ng-class="{true: 'active', false: 'no_active'}[tab3==4]">
+                                            <a href="" data-toggle="tab" ng-click="changeTab3(4)">
+                                                <span class="visible-xs"><i class="fa fa-cog"></i></span>
+                                                <span class="hidden-xs">2.3{{ ItemSaleRank.length>8? ((ItemSaleRank | limitTo:8)+"...") : ItemSaleRank}}</span>
+                                            </a>
+                                        </li>
+                                        <li ng-click="onclick_24()" ng-class="{true: 'active', false: 'no_active'}[tab3==5]">
+                                            <a href="" data-toggle="tab" ng-click="changeTab3(5)">
+                                                <span class="visible-xs"><i class="fa fa-cog"></i></span>
+                                                <span class="hidden-xs">2.4{{ ProductSaleRank.length>8? ((ProductSaleRank | limitTo:8)+"...") : ProductSaleRank}}</span>
+                                            </a>
+                                        </li>
+                                        <li style="float:right">
+                                            <span id="set">
+                                                <a class="panel-options">
+
+                                                    <a data-toggle="panel" style="margin-right:8px">
+                                                        <span class="collapse-icon" ng-show="tab_display3" ng-click="tab_display_fun3()">–</span>
+                                                        <span class="expand-icon" ng-hide="tab_display3" ng-click="tab_display_fun3()">+</span>
+                                                    </a>
+                                                    <a data-toggle="reload" style="margin-right:8px">
+                                                        <i class="fa fa-rotate-right"></i>
+                                                    </a>
+                                                </a>
+                                            </span>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content " style="min-height:600px" ng-show="tab_display3">
+                                        <div class=" active" id="home" ng-show="tab3==1">
+                                            <div class="col-sm-12" style="padding-top: 80px; min-height: 580px;" id="ppt1">
+                                                <div class="col-sm-12" style="top:25px;">
+                                                    <div class="xe-widget xe-vertical-counter xe-vertical-counter-white" data-count=".num" data-from="0" data-to="128" data-duration="4">
+                                                        <div class="xe-icon" style="font-size:120px;padding-bottom:0px;">
+                                                            <i class="fa fa-line-chart"></i>
+                                                        </div>
+
+                                                        <div class="xe-label" style="padding-top:0px;">
+                                                            <strong class="num" style="font-size:32px">2.{{DataDisplay}}</strong>
+                                                            <!--<span style="font-size:18px;">一句话描述数据展示</span>-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="" ng-show="tab3==2">
+                                            <div class="col-sm-12" style="padding-top: 30px; min-height: 580px;" id="ppt1">
+                                                <h3 style="margin-top:5px;margin-bottom:15px;">{{DistrictSaleRank}}</h3>
+                                                <div class="row">
+                                                    <div class="col-sm-1">
+                                                        <button class="btn btn-secondary btn-icon btn-icon-standalone" style="width: 150%; height: 40px;" ng-click="select_Map('市')" ng-class="{true: 'select_map', false: 'noselect_map'}[select_map=='市']">
+                                                            <span style="padding: 0px; font-size: 16px;">市级分布</span>
+                                                        </button>
+                                                        <button class="btn btn-secondary btn-icon btn-icon-standalone" style="width: 150%; height: 40px;margin-left:0px" ng-click="select_Map('省')" ng-class="{true: 'select_map', false: 'noselect_map'}[select_map=='省']">
+                                                            <span style="padding: 0px; font-size: 16px;">省级分布</span>
+                                                        </button>
+                                                        <button class="btn btn-secondary btn-icon btn-icon-standalone" style="width: 150%; height: 40px;margin-left:0px" ng-click="select_Map('国际')" ng-class="{true: 'select_map', false: 'noselect_map'}[select_map=='国际']">
+                                                            <span style="padding: 0px; font-size: 16px;">国际分布</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-sm-11">
+                                                        <div class="xe-widget xe-map-stats" style="height:360px;">
+                                                            <div class="xe-map">
+                                                                <div id="sample-map-widget" style="left: 0px; top: 0px; width: 100%; height: 360px; overflow: hidden; position: relative;">
+                                                                    <div ng-show="select_map=='市'">
+                                                                        <div id="Mapchart" style="width: 100%; height: 360px; position: relative; overflow: hidden; background-color: rgba(0, 0, 0, 0); ">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div ng-show="select_map=='省'">
+                                                                        <div id="Mapchart2" style="width: 100%; height: 360px; position: relative; overflow: hidden; background-color: rgba(0, 0, 0, 0); ">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div ng-show="select_map=='国际'">
+                                                                        <div id="Mapchart3" style="width: 100%; height: 360px; position: relative; overflow: hidden; background-color: rgba(0, 0, 0, 0); ">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="xe-details" style="padding: 15px 25px 10px">
+                                                                <div class="xe-label">
+                                                                    <h3 style="color: #fff; font-size: 22px; ">前十地区</h3>
+                                                                    <p style="font-size: 12px; color: #ccc !important; margin-top: 0px; text-indent: 0px;">一个月为周期</p>
+                                                                </div>
+                                                                <ul class="list-unstyled" style=" margin-top: 8px; margin-bottom: 0px;" ng-show="select_map=='市'">
+                                                                    <li ng-repeat="x in date" style="padding:0px 5px;">
+                                                                        <div class="xe-map-data" style="font-size: 14px;">
+                                                                            <span class="label label-secondary">{{$index+1}}</span>
+                                                                            <span class="xe-label" style="min-width:120px;">{{x.name}}</span>
+                                                                            <span class="xe-label">￥{{x.value|number:2}}</span>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul class="list-unstyled" style=" margin-top: 8px; margin-bottom: 0px;" ng-show="select_map=='省'">
+                                                                    <li ng-repeat="x in date_sheng" style="padding:0px 5px;">
+                                                                        <div class="xe-map-data" style="font-size: 14px;">
+                                                                            <span class="label label-secondary">{{$index+1}}</span>
+                                                                            <span class="xe-label" style="min-width:120px;">{{x.name}}</span>
+                                                                            <span class="xe-label">￥{{x.value|number:2}}</span>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                                <ul class="list-unstyled" style=" margin-top: 8px; margin-bottom: 0px;" ng-show="select_map=='国际'">
+                                                                    <li ng-repeat="x in date_quanqiu" style="padding:0px 5px;">
+                                                                        <div class="xe-map-data" style="font-size: 14px;">
+                                                                            <span class="label label-secondary">{{$index+1}}</span>
+                                                                            <span class="xe-label" style="min-width:120px;">{{x.name}}</span>
+                                                                            <span class="xe-label">￥{{x.value|number:2}}</span>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <blockquote class="blockquote blockquote-warning" style="margin-bottom:0px;">
+                                                    <p>
+                                                        <strong>分析</strong>
+                                                    </p>
+                                                    <p>
+                                                        <span style="font-size: 13px;color: #777777;">{{DistrictSoldDesc}}</span>
+                                                    </p>
+                                                </blockquote>
+                                            </div>
+                                        </div>
+                                        <div class="" ng-show="tab3==3">
+                                            <div class="col-sm-12" style="padding-top: 30px; min-height: 580px;" id="ppt1">
+                                                <h3 style="margin-top:5px;margin-bottom:15px;">{{ShopSaleRank}}</h3>
+                                                <div class="row">
+                                                    <div class="col-sm-8">
+                                                        <table class="table table-bordered table-striped  table-hover">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>本月排名</th>
+                                                                    <th>上月排名</th>
+                                                                    <th>店铺名称</th>
+                                                                    <th style="width: 112px; padding-right: 6px;">
+                                                                        <div class="dropdown">
+                                                                            <span ng-show="isAuthorized_h==3">所有店铺</span>
+                                                                            <span ng-show="isAuthorized_h==true">授权店铺</span>
+                                                                            <span ng-show="isAuthorized_h==false">非授权店铺</span>
+                                                                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" style=" padding: 0 4px 0 4px; float: right; margin: 0px; display: inline-block; height: 16px; line-height: 0px; font-size: 35px;">
+                                                                                <span class="caret" style=" border-top: 7px solid; border-right: 6px solid transparent; border-left: 6px solid transparent;"></span>
+                                                                            </button>
+                                                                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" style="top: 115%; left: -16px; min-width: 113px;">
+                                                                                <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="GetMDMDashboardShopSummary_is(true)">授权店铺</a></li>
+                                                                                <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="GetMDMDashboardShopSummary_is(false)">非授权店铺</a></li>
+                                                                                <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="GetMDMDashboardShopSummary()">所有店铺</a></li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </th>
+                                                                    <th>销售额（元）</th>
+                                                                    <th>宝贝数</th>
+                                                                    <th>销售量</th>
+                                                                </tr>
+                                                            </thead>
+
+                                                            <tbody>
+                                                                <tr ng-repeat="x in ShopSummary">
+                                                                    <td>Top{{$index+1}}</td>
+                                                                    <td>Top{{x.LastRankNo}}</td>
+                                                                    <td><a href="{{x.ShopLink}}" target="_blank">{{ x.ShopName.length>8? ((x.ShopName | limitTo:8)+"...") : x.ShopName }}</a></td>
+                                                                    <td style="width:112px;">
+                                                                        <span ng-show="x.IsAuthorized==true" style="color: #3e8e5a;">已授权</span>
+                                                                        <span ng-show="x.IsAuthorized!=true" style="color: #c23531;">未授权</span>
+                                                                    </td>
+                                                                    <td>￥{{x.SoldVol | number:2}}</td>
+                                                                    <td>{{x.Listings}}</td>
+                                                                    <td>{{x.SoldNum}}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-sm-4" style="padding:0px">
+                                                        <div style="width:355px;height:360px" id="ShopSalePie"></div>
+                                                    </div>
+                                                </div>
+                                                <blockquote class="blockquote blockquote-warning">
+                                                    <p>
+                                                        <strong>分析</strong>
+                                                    </p>
+                                                    <p>
+                                                        <span style="font-size: 13px;color: #777777;">{{ShopSoldDesc}}</span>
+                                                    </p>
+                                                </blockquote>
+                                            </div>
+                                        </div>
+                                        <div ng-show="tab3==4">
+                                            <div class="col-sm-12" style="padding-top: 30px; min-height: 580px;" id="ppt1">
+                                                <h3 style="margin-top:5px;margin-bottom:15px;">{{ItemSaleRank}}</h3>
+                                                <div class="row">
+                                                    <div class="col-sm-8">
+                                                        <table class="table table-bordered table-striped  table-hover">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>本月排名</th>
+                                                                    <th>上月排名</th>
+                                                                    <th>宝贝名称</th>
+                                                                    <th>店铺名称</th>
+                                                                    <th>销售额（元）</th>
+                                                                    <th>销售量</th>
+                                                                </tr>
+                                                            </thead>
+
+                                                            <tbody>
+                                                                <tr ng-repeat="x in ItemSummary">
+                                                                    <td>Top{{$index+1}}</td>
+                                                                    <td>Top{{x.LastRankNo}}</td>
+                                                                    <td> <a href="{{x.ItemLink}}" target="_blank"><span title="{{x.ItemName}}">{{ x.ItemName.length>12? ((x.ItemName | limitTo:12)+"...") : x.ItemName }}</span></a></td>
+                                                                    <td><a href="{{x.ShopLink}}" target="_blank"><span title="{{x.ShopName}}">{{ x.ShopName.length>10? ((x.ShopName | limitTo:10)+"...") : x.ShopName }}</span></a></td>
+                                                                    <td>￥{{x.SoldVol | number:2}}</td>
+                                                                    <td>{{x.SoldNum}}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div style="width:355px;height:360px" id="ItemPie"></div>
+
+                                                    </div>
+                                                </div>
+                                                <blockquote class="blockquote blockquote-warning">
+                                                    <p>
+                                                        <strong>分析</strong>
+                                                    </p>
+                                                    <p>
+                                                        <span style="font-size: 13px;color: #777777;">{{ItemSoldDesc}}</span>
+                                                    </p>
+                                                </blockquote>
+                                            </div>
+                                        </div>
+                                        <div ng-show="tab3==5">
+                                            <div class="col-sm-12" style="padding-top: 30px; min-height: 580px;" id="ppt1">
+                                                <h3 style="margin-top:5px;margin-bottom:15px;">{{ProductSaleRank}}</h3>
+                                                <div class="row">
+                                                    <div class="col-sm-8">
+                                                        <table class="table  table-bordered table-striped  table-hover">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>本月排名</th>
+                                                                    <th>上月排名</th>
+                                                                    <th>产品</th>
+                                                                    <th>产品系列</th>
+                                                                    <th>总销售额（元）</th>
+                                                                    <th>销售量</th>
+                                                                </tr>
+                                                            </thead>
+
+                                                            <tbody>
+                                                                <tr ng-repeat="x in ProductSummary">
+                                                                    <td>Top{{$index+1}}</td>
+                                                                    <td>Top{{x.LastRankNo}}</td>
+                                                                    <td>{{ x.Product.length>20? ((x.Product | limitTo:20)+"...") : x.Product }}</td>
+                                                                    <td>{{x.Series}}</td>
+                                                                    <td>￥{{x.TotalSoldVol | number:2}}</td>
+                                                                    <td>{{x.SoldNum}}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div style="width:355px;height:360px" id="ProductPie"></div>
+                                                    </div>
+                                                </div>
+                                                <blockquote class="blockquote blockquote-warning">
+                                                    <p>
+                                                        <strong>分析</strong>
+                                                    </p>
+                                                    <p>
+                                                        <span style="font-size: 13px;color: #777777;">{{ProductSoldDesc}}</span>
+                                                    </p>
+                                                </blockquote>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="height: 10px; background-color: #fff; margin-bottom: 30px;" ng-hide="tab_display3">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt15">
+                                <div class="col-md-12">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active" ng-class="{true: 'active', false: 'no_active'}[tab4==1]">
+                                            <a href="" data-toggle="tab" ng-click="changeTab4(1)">
+                                                <span class="visible-xs"><i class="fa fa-home"></i></span>
+                                                <span class="hidden-xs">3.{{Deduce.length>8? ((Deduce | limitTo:8)+"...") : Deduce}}</span>
+                                            </a>
+                                        </li>
+                                        <li class="" ng-click="onclick_31()" ng-class="{true: 'active', false: 'no_active'}[tab4==2]">
+                                            <a href="" data-toggle="tab" ng-click="changeTab4(2)">
+
+                                                <span class="visible-xs"><i class="fa fa-user"></i></span>
+                                                <span class="hidden-xs">3.1{{  FakeShop.length>8? ((FakeShop | limitTo:8)+"...") : FakeShop}}</span>
+                                            </a>
+                                        </li>
+                                        <li class="" ng-click="onclick_32()" ng-click="onclick_31()" ng-class="{true: 'active', false: 'no_active'}[tab4==3]">
+                                            <a href="" data-toggle="tab" ng-click="changeTab4(3)">
+                                                <span class="visible-xs"><i class="fa fa-envelope-o"></i></span>
+                                                <span class="hidden-xs">3.2{{  FakeItem.length>8? ((FakeItem | limitTo:8)+"...") : FakeItem}}</span>
+                                            </a>
+                                        </li>
+                                        <li ng-click="onclick_31()" ng-class="{true: 'active', false: 'no_active'}[tab4==4]">
+                                            <a href="" data-toggle="tab" ng-click="changeTab4(4)">
+                                                <span class="visible-xs"><i class="fa fa-cog"></i></span>
+                                                <span class="hidden-xs">3.3{{  Conclusion.length>8? ((Conclusion | limitTo:8)+"...") : Conclusion}}</span>
+                                            </a>
+                                        </li>
+                                        <li style="float:right">
+                                            <span id="set">
+                                                <a class="panel-options">
+                                                    <a data-toggle="panel" style="margin-right:8px">
+                                                        <span class="collapse-icon" ng-show="tab_display4" ng-click="tab_display_fun4()">–</span>
+                                                        <span class="expand-icon" ng-hide="tab_display4" ng-click="tab_display_fun4()">+</span>
+                                                    </a>
+                                                    <a data-toggle="reload" style="margin-right:8px">
+                                                        <i class="fa fa-rotate-right"></i>
+                                                    </a>
+                                                </a>
+                                            </span>
+                                        </li>
+
+                                    </ul>
+
+                                    <div class="tab-content " style="min-height:600px;" ng-show="tab_display4">
+                                        <div class=" active" id="home" ng-show="tab4==1">
+                                            <div class="col-sm-12" style="padding-top: 80px; min-height: 580px;" id="ppt1">
+                                                <div class="col-sm-12" style="top:25px;">
+                                                    <div class="xe-widget xe-vertical-counter xe-vertical-counter-white" data-count=".num" data-from="0" data-to="128" data-duration="4">
+                                                        <div class="xe-icon" style="font-size:120px;padding-bottom:0px;">
+                                                            <i class="fa fa-file-text-o"></i>
+                                                        </div>
+
+                                                        <div class="xe-label" style="padding-top:0px;">
+                                                            <strong class="num" style="font-size:32px">3.{{Deduce}}</strong>
+                                                            <!--<span style="font-size:18px;">一句话描述推论</span>-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--<img src="Scripts/iprfree/app/images/3.png" style=" width:100%;height:540px;" />-->
+                                            </div>
+                                        </div>
+                                        <div class="" ng-show="tab4==2">
+                                            <div class="col-sm-12" style="padding-top: 30px; min-height: 580px;" id="ppt1">
+                                                <h3 style="margin-top:5px;margin-bottom:25px;">{{FakeShop}}</h3>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div id="qipao" style="height:355px;width:100%;"></div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div style="min-height:350px;">
+                                                            <table class="table table-hover">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>排名</th>
+                                                                        <th>店铺名称</th>
+                                                                        <th>销售额（元）</th>
+                                                                        <th>宝贝</th>
+                                                                        <th>评论数</th>
+                                                                    </tr>
+                                                                </thead>
+
+                                                                <tbody>
+                                                                    <tr ng-repeat="x in SuspectShopSummary">
+                                                                        <td>Top{{$index+1}}</td>
+                                                                        <td><a href="{{x.ShopLink}}" target="_blank">{{x.ShopName.length>8? ((x.ShopName | limitTo:8)+"...") : x.ShopName}}</a></td>
+                                                                        <td>￥{{x.SoldVol | number:2}}</td>
+                                                                        <td>{{x.Listings}}</td>
+                                                                        <td>{{x.TotalComments}}</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <blockquote class="blockquote blockquote-warning">
+                                                    <p>
+                                                        <strong>分析</strong>
+                                                    </p>
+                                                    <p>
+                                                        <span style="font-size: 13px;color: #777777;">{{FakeShopDesc}}</span>
+                                                    </p>
+                                                </blockquote>
+                                            </div>
+                                        </div>
+                                        <div class="" ng-show="tab4==3">
+                                            <div class="col-sm-12" style="padding-top: 30px; min-height: 580px;" id="ppt1">
+                                                <h3 style="margin-top:5px;margin-bottom:25px;">{{FakeItem}}</h3>
+
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div style="min-height:350px;">
+                                                            <div>差评店铺前十</div>
+                                                            <table class="table table-hover">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>排名</th>
+                                                                        <th>店铺名称</th>
+                                                                        <th>风险等级</th>
+                                                                    </tr>
+                                                                </thead>
+
+                                                                <tbody>
+                                                                    <tr ng-repeat="x in GetTopRiskStore_list">
+                                                                        <td>Top{{$index+1}}</td>
+                                                                        <td> <a href="{{x.Name2}}" target="_blank"><span title=" {{x.Name1}}">{{ x.Name1.length>12? ((x.Name1 | limitTo:12)+"...") : x.Name1 }}</span></a></td>
+                                                                        <td>{{x.Value}}</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div style="min-height:350px;">
+                                                            <div>差评产品前十</div>
+                                                            <table class="table table-hover">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>排名</th>
+                                                                        <th>产品名称</th>
+                                                                        <th>风险等级</th>
+                                                                    </tr>
+                                                                </thead>
+
+                                                                <tbody>
+                                                                    <tr ng-repeat="x in GetTopRiskProduct_list">
+                                                                        <td>Top{{$index+1}}</td>
+                                                                        <td><span title=" {{x.Name1}}">{{ x.Name1.length>12? ((x.Name1 | limitTo:12)+"...") : x.Name1 }}</span></td>
+                                                                        <td>{{x.Value}}</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div style="min-height:350px;">
+                                                            <div>差评宝贝前十</div>
+                                                            <table class="table table-hover">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>排名</th>
+                                                                        <th>宝贝名称</th>
+                                                                        <th>风险等级</th>
+                                                                    </tr>
+                                                                </thead>
+
+                                                                <tbody>
+                                                                    <tr ng-repeat="x in GetTopRiskItem_list">
+                                                                        <td>Top{{$index+1}}</td>
+                                                                        <td> <a href="{{x.Name2}}" target="_blank"><span title=" {{x.Name1}}">{{ x.Name1.length>12? ((x.Name1 | limitTo:12)+"...") : x.Name1 }}</span></a></td>
+                                                                        <td>{{x.Value}}</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <blockquote class="blockquote blockquote-warning">
+                                                    <p>
+                                                        <strong>分析</strong>
+                                                    </p>
+                                                    <p>
+                                                        <span style="font-size: 13px;color: #777777;">{{FakeItemDesc}}</span>
+                                                    </p>
+                                                </blockquote>
+                                            </div>
+                                        </div>
+                                        <div class="" ng-show="tab4==4">
+                                            <div class="col-sm-12" style="padding-top: 30px; min-height: 580px;" id="ppt1">
+                                                <div class="col-sm-12">
+                                                    <h3 style="margin-top:5px;margin-bottom:25px;">{{Conclusion}}</h3>
+                                                    <div class="col-sm-12 overflow_T4">
+                                                        <div ng-bind-html="ConclusionDesc|htmlContent"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="height: 10px; background-color: #fff; margin-bottom: 30px;" ng-hide="tab_display4">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row mt15" style="margin-bottom:50px">
+                                <div class="col-md-12">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active" >
+                                            <a href="" data-toggle="tab" ng-click="">
+                                                <span class="visible-xs"><i class="fa-cog"></i></span>
+                                                <span class="hidden-xs">结束语</span>
+                                            </a>
+                                        </li>
+                                        <li style="float:right">
+                                            <span id="set">
+                                                <a class="panel-options">
+                                                    <a data-toggle="panel" style="margin-right:8px">
+                                                        <span class="collapse-icon" ng-show="tab_display5" ng-click="tab_display_fun5()">–</span>
+                                                        <span class="expand-icon" ng-hide="tab_display5" ng-click="tab_display_fun5()">+</span>
+                                                    </a>
+                                                    <a data-toggle="reload" style="margin-right:8px">
+                                                        <i class="fa fa-rotate-right"></i>
+                                                    </a>
+                                                </a>
+                                            </span>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content " style="min-height:600px" ng-show="tab_display5">
+                                        <div class="" ng-show="true">
+                                            <div class="col-sm-12" style="padding-top: 30px; min-height: 580px;" id="ppt1">
+                                                <div class="col-sm-12" style="margin-top:100px;">
+                                                    <div class="xe-widget xe-conversations">
+                                                        <div class="xe-bg-icon">
+                                                            <i class="linecons-comment"></i>
+                                                        </div>
+                                                        <div class="xe-header">
+                                                            <div class="xe-icon">
+                                                                <i class="linecons-comment"></i>
+                                                            </div>
+                                                            <div class="xe-label">
+                                                                <h3>
+                                                                    结束语
+                                                                    <small>Concluding remarks</small>
+                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                        <div class="xe-body">
+                                                            <div style="margin:25px 25px 25px 25px;font-size:16px;">
+                                                                <p class="ps">
+                                                                    <div ng-bind-html="Ending|htmlContent"></div>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="height: 10px; background-color: #fff; margin-bottom: 30px;" ng-hide="tab_display5">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+
+                    </div>
+                    <!--<div class="row"style="">
+                <div class="col-lg-9 col-md-10"style="padding:20px;">
+                    <div style="background-color: #28a789; height: 600px; width: 100%; ">
+
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-2" style=" padding: 20px; ">
+                    <div style="background-color: #28a789; height: 600px;width:100%">
+
+                    </div>
+                </div>
+            </div>-->
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="fixed_left" ng-style="fixed_left" ng-show="ing_report_nei&&weith_s">
+        <div class="nei">
+            <div class="list ppt5" ng-repeat="x in chineseList" ng-show="x.PublishDate">
+                <div class="mengceng" ng-class="{true:'mengceng_active',false:''}[x.ReportTime==reportTime]" ng-click="changeMonth(x.ReportTime,x.SiteName)">
+                    <span>
+                        {{x.ReportTime}}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

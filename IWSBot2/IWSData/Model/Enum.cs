@@ -177,4 +177,15 @@ namespace IWSData.Model
         /// </summary>
         Media
     }
+
+    /// <summary>
+    /// 支付方式
+    /// </summary>
+    public enum PayType
+    {
+        /// <summary>
+        /// 微信
+        /// </summary>
+        WeiXin,
+    }
 }

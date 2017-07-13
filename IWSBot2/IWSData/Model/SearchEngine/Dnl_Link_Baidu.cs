@@ -142,6 +142,7 @@ namespace IWSData.Model
 
     public class IW2S_Timelevel1linkDto
     {
+        public string Id { get; set; }
         public string LinkUrl { get; set; }
 
         public string Title { get; set; }

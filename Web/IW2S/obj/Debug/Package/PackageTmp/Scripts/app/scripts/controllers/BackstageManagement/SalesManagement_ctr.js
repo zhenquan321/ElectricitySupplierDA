@@ -102,7 +102,7 @@
         } else if ($scope.InsertProduct.price == "" || $scope.InsertProduct.price == null) {
             $scope.alert_fun('waring', '请输入价格');
         } else {
-            $scope.InsertProduct.price = parseInt($scope.InsertProduct.price)
+            $scope.InsertProduct.price = parseFloat($scope.InsertProduct.price)
             $scope.paramsList = {
                 id: $scope.UpdateProductId,
                 name: $scope.InsertProduct.name,

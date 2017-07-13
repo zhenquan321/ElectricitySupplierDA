@@ -1,0 +1,189 @@
+﻿<style>
+    #home_page header a.logo {
+        margin-left: 0px;
+    }
+</style>
+<div id="dashboard" ng-show="list_show" class="wrapper" style=" padding: 15px 0px 0; margin: 0 15px 0 25px; box-shadow: 1px 2px 2px #ccc;">
+    <div class="row" id="app-info" style="z-index:1000">
+        <div class="col-md-4 section">
+            <section class="hot-user useropt">
+                <span class="title" style="font-size:14px;color:#777">总文章数</span>
+                <span class="pull-right">
+                    <a href="" class="code">
+                    </a>
+                </span>
+                <div class="count" style="margin-top:5px;">
+                    <div id="qingxibi_pie" style=" height: 130px; width: 130px; margin: auto; border: 2px solid #ff7233; border-radius: 70px; margin-top: 11px;"></div>
+                    <div class="pie_s_s" style="color: #ff7233">{{GetCount}}篇</div>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-4 section last">
+            <section class="all-user">
+                <ul>
+                    <li>
+                        <span style="font-size:14px;color:#777">最近24小时新增文章数</span>
+                        <div class="bold " style="color: #ff7233; font-size: 21px; font-weight: 600;margin-top:7px; ">
+                            <i class="fa fa-line-chart mr10" style="font-size:24px"></i>{{GetYesterdayCount}}篇
+                        </div>
+                    </li>
+                    <li class="push">
+                        <span style="font-size:14px;color:#777">最近一月新增注册用户数</span>
+                        <div class="bold " style="color: #808080; font-size: 21px; font-weight: 600; margin-top: 5px; ">
+                            <i class="fa fa-bar-chart mr10" style="font-size:24px"></i>{{GetUserNum_list.MonthNum }}位
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </div>
+        <div class="col-md-4 section">
+            <section class="new-user useropt">
+                <span class="title">总用户数</span>
+                <span class="pull-right">
+                    <a href="" class="code">
+                    </a>
+                </span>
+                <div class="count" style="margin-top:5px;">
+                    <div id="pipeichanpin_pie" style="height: 130px; width: 130px; margin: auto; border: 2px solid #808080; border-radius: 70px; margin-top: 11px;"></div>
+                    <div class="pie_s_s" style="color: #808080; padding-top: 35px;">
+                        <span style="font-size:30px;">{{GetUserNum_list.TotalNum}}位</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<div id="ShareDiscussion" style="margin:15px 15px 15px 25px;">
+    <div class=" pr0 pl0 " ng-show="list_show">
+        <div class="row ">
+            <div class="col-sm-12 col-lg-12">
+                <div class="box_sd">
+                    <div class="row title_sd">
+                        <div class="title_sd_l">
+                            文章列表
+                        </div>
+                        <div class="title_sd_r">
+                            <div class="input-group">
+                                <input type="text" class="form-control" aria-label="..." placeholder="有问题，先搜一搜" ng-model="editer.titlelabel" style="width:246px">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default " ng-click="searchGetShare()" style="background-color: #d29a25 !important; border-color: #d29a25 !important">搜索</button>
+                                </div><!-- /btn-group -->
+                            </div><!-- /input-group -->
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="list_show_s">
+                        <div class="modal_sd_a" ng-repeat="x in GetShare_list">
+                            <div class="row">
+                                <div class="col-sm-2 col-lg-2 pr0 pl20" style="text-align:center;">
+                                    <div style="padding-top:2%;">
+                                        <img ng-if="x.SenderHead" style="height:55px;" ng-src='{{x.SenderHead}}' class="img-circle" alt="用户头像" /><br ng-if="x.SenderHead" />
+                                        <img ng-if="!x.SenderHead" src='Scripts/app/images/uploadpic.jpg' style="height:55px;" class="img-circle" alt="用户头像" /><br ng-if="!x.SenderHead" />
+                                        <span style="font-size: 14px; font-weight: 600; color: #8A8A8A;">{{x.SenderName}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-10 col-lg-10">
+                                    <div style="position: absolute; right: 16px;" title="删除分享帖" ng-click="DelShare(x.ID)" ng-show="x.Sender==$root.userID">
+                                        <i class="fa fa-trash shanchu_91" style="color: #818A60; cursor: pointer; font-size: 20px;"></i>
+                                    </div>
+                                    <div class="modal_sd">
+                                        <a ng-click="GetShareReply(x)" title="{{x.Title}}">{{ x.Title.length>35? ((x.Title | limitTo:35)+"...") : x.Title }}</a>
+                                        <p>{{ x.Abstract.length>90? ((x.Abstract | limitTo:90)+"...") : x.Abstract }}</p>
+                                        <div class="tianzishu" style=""><span><i class="fa fa-commenting-o"></i>评论数：{{x.ReplyerCount}}</span><span><i class="fa fa-thumbs-o-up"></i>点赞数：{{x.LoveCount}}</span></div>
+                                        <div>
+                                            <span ng-repeat="y in x.LabelList track by $index"style="padding: 3px 10px; border-radius: 23px; background-color: #dedede;"><i class="fa fa-tags"></i>{{y}}</span>
+                                            <span class="ml20"><i class="fa fa-calendar"></i>{{x.CreatedAt|date:'yyyy-MM-dd'}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="float:right;">
+                        <pagination boundary-links="true" class="pagination-sm" total-items="GetShare_count"
+                                    items-per-page="pagesize_11" ng-change="GetShare()"
+                                    ng-model="page_11" max-size="5"
+                                    previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+                        </pagination>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="" ng-show="wen_xq" style=" margin: 0px 1px 15px 15px;">
+        <div class="row pr0 pl0">
+            <div class="col-sm-9  pl0">
+                <div class="box_sd pt10" style="padding:40px;">
+                    <div>
+                        <div style=" padding: 10px 0; border-bottom: 1px dashed #ccc;">
+                            <h3 class="mb10">
+                                {{wenzhang.Title}}
+                            </h3>
+                            <div style="color: #777777" class="mt5"><span ng-repeat="y in wenzhang.LabelList track by $index" class="mr20" style="padding: 3px 10px; border-radius: 23px; background-color: #dedede;"><i class="fa fa-tags mr5"></i>{{y}}</span></div>
+                            <div style="color: #777777"><i class="fa fa-calendar " style="margin-right: 5px;"></i>发布时间：{{wenzhang.CreatedAt|date:'yyyy-MM-dd'}} <span class="ml20"><i class="fa fa-user " style="margin-right: 5px;"></i>发布者：{{wenzhang.SenderName}}</span></div>
+                        </div>
+                        <div class="mt20">
+                            <div ng-bind-html="wenzhang.Description|htmlContent" style="overflow: auto"></div>
+                        </div>
+                    </div>
+                    <div style="text-align: center; height: 120px; padding: 30px 0 10px;">
+                        <i class="fa fa-thumbs-up dianzan" ng-class="{true: 'active_dianzan', false: ''}[dainzan]" ng-click="dianzan_fun()"></i>
+                    </div>
+                    <!--<div class="mb15 fenxiang" style="">分享：<i class="fa fa-weixin mr15"></i><i class="fa fa-weibo mr15"></i></div>-->
+                    <div>
+                        <div ng-include="'Scripts/app/view/comment/liuyan_im.html?v=20170104'" style="width: 100%"></div>
+                    </div>
+                    <div>
+                        <div class="modal_sd_a" ng-repeat="x in GetShareReply_fun_list">
+                            <div class="row">
+                                <div class="col-sm-2 col-lg-2 pr0 " style="text-align:center;padding-top:1px;">
+                                    <div>
+                                        <img ng-if="x.ReplyerHead" style="height:55px;" ng-src='{{x.ReplyerHead}}' class="img-circle" alt="用户头像" />
+                                        <img ng-if="!x.ReplyerHead" src='Scripts/app/images/uploadpic.jpg' style="height:55px;" class="img-circle" alt="用户头像" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-10 col-lg-10 pl0">
+                                    <div style="position: absolute; right: 16px;" title="删除评论" ng-click="delShareReply(x)" ng-show="x.Replyer==$root.userID">
+                                        <i class="fa fa-trash shanchu_91" style="color: #818A60; cursor: pointer; font-size: 20px;"></i>
+                                    </div>
+                                    <div class="modal_sd">
+                                        <a title="{{x.Title}}" style="font-size:16px;font-weight:600;">{{ x.ReplyerName}}<span style="font-size:12px"><i class="fa fa-calendar ml20" style="font-size:12px"></i>{{x.CreatedAt|date:'yyyy-MM-dd hh:mm:ss'}}</span></a>
+                                        <div ng-bind-html="x.Description|htmlContent"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-12 col-lg-3   pl0">
+                <div class="box_sd ">
+                    <div class="row title_sd_s">
+                        <div class="title_sd_l" ng-click="list_show_fun()">
+                            返回文章列表
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="modal_sd_a" ng-repeat="x in GetShare_list2">
+                        <div class="row">
+                            <div class="col-lg-12" style="padding: 0 30px 0 30px;">
+                                <div class="modal_sd">
+                                    <div style="position: absolute; right: 27px;" title="删除分享帖" ng-click="DelShare(x.ID)" ng-show="x.Sender==$root.userID">
+                                        <i class="fa fa-trash shanchu_91" style="color: #818A60; cursor: pointer; font-size: 18px;"></i>
+                                    </div>
+                                    <a ng-click="GetShareReply(x)" title="{{x.Title}}" style="font-size: 16px;">{{ x.Title.length>10? ((x.Title | limitTo:10)+"...") : x.Title }}</a>
+                                    <p style="font-size:13px;">{{ x.Abstract.length>30? ((x.Abstract | limitTo:30)+"...") : x.Abstract }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

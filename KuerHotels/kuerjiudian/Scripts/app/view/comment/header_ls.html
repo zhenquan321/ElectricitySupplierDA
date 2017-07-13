@@ -1,0 +1,114 @@
+﻿<header class="light" style="top:0px;">
+    <div class="err-top">
+        <i class="err-close">
+            <i class="icon-remove">
+            </i>
+        </i>
+        <div class="err-out">
+            <div class="err-switch">
+                <i class="err-switch-i icon-smile">
+                </i>
+                <i class="err-switch-i icon-frown">
+                </i>
+                <span class="err-content">
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="nav-left">
+        <a href="/" class="logo mt0 mb0 ml0" title="塔县皇冠大酒店" >
+            <img src="Scripts/app/images/iocin_p/new_logo.png" style=" padding-bottom: 3px; height: 68px;"/><!--<span style="font-size: 20px; margin-left: 11px;">塔县皇冠大酒店</span>-->
+        </a>
+    </div>
+    <div class="nav-right mw-8">
+        <div class="nav-right">
+            <div class="authenticated" id="ifSigned" ng-if="$root.logined">
+                <div class="profile toConsole">
+                    <img src="Scripts/app/images/uploadpic.jpg" ng-if="!$root.HeadIcon">
+                    <img ng-src="{{$root.HeadIcon}}" ng-if="$root.HeadIcon">
+                    <span>
+                    </span>
+                    <span class="arr-b">
+                        {{$root.NickName}}
+                    </span>
+                </div>
+                <ul class="nav-list single" style="top:75px;">
+                    <li class="nav-list-item">
+                        <a class="nav-link-single" ui-sref="TwoLevelPage.userCenter">
+                            <i class="fa fa-television">
+                            </i>
+                            <span>
+                                用户信息
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-list-item" ng-if="$root.UsrRole==1">
+                        <a class="nav-link-single" ui-sref="main.PublishArticles">
+                            <i class="fa fa-tachometer">
+                            </i>
+                            <span>
+                                控制台
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-list-item" id="sign_out">
+                        <a class="nav-link-single" ng-click="signout()">
+                            <i class="fa fa-sign-out">
+                            </i>
+                            <span>
+                                安全退出
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="unauthenticated link-group" ng-if="!$root.logined">
+                <a ui-sref="login" class="login_but">
+                    登录
+                </a>
+                <a ui-sref="signup">
+                    注册
+                </a>
+            </div>
+        </div>
+        <ul class="nav nav-right">
+            <li id="nav_point" style="width: 100px; ">
+                <a ui-sref="home">
+                    首页
+                </a>
+                <span></span>
+            </li>
+            <li id="nav_point" style="width: 100px; ">
+                <a ui-sref="TwoLevelPage.HotelFeatures" ui-sref-active="active_s">
+                    酒店特色
+                </a>
+            </li>
+            <li id="nav_point" style="width: 100px; ">
+                <a ui-sref="TwoLevelPage.LocalStyle"ui-sref-active="active_s">
+                    当地风情
+                </a>
+            </li>
+            <li id="nav_point" style="width: 100px; ">
+                <a ui-sref="TwoLevelPage.SharedFeeling"ui-sref-active="active_s">
+                    同感共享
+                </a>
+            </li>
+            <li id="nav_point" style="width: 100px; ">
+                <a ui-sref="AboutUs"ui-sref-active="active_s">
+                    关于皇冠
+                </a>
+            </li>
+        </ul>
+    </div>
+</header>
+
+
+
+
+
+
+
+
+
+
+

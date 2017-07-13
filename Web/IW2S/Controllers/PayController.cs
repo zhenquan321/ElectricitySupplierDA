@@ -203,13 +203,15 @@ namespace IW2S.Controllers
                     };
                     proDtoList.Add(proDto);
                 }
-
+                var ran = new Random();
+                string tradeNo = string.Format("DT{0}{1}", DateTime.Now.ToString("yyyyMMddHHmmss"), ran.Next(9999));
                 var order = new OrderMongo
                 {
-                    _id=ObjectId.GenerateNewId(),
+                    _id = ObjectId.GenerateNewId(),
                     CreatedAt = DateTime.Now.AddHours(8),
                     ProductList = productList,
-                    UserId = userObjId
+                    UserId = userObjId,
+                    TradeNo = tradeNo
                 };
                 order.TotalPrice = productList.Select(x => x.Num * x.Price).Sum();
                 colOrder.InsertOne(order);
@@ -219,12 +221,14 @@ namespace IW2S.Controllers
                 {
                     Id = order._id.ToString(),
                     ProductList = proDtoList,
-                    TotalPrice = order.TotalPrice
+                    TotalPrice = order.TotalPrice,
+                    CreatedAt = order.CreatedAt,
+                    TradeNo = order.TradeNo
                 };
                 result.order = orderDto;
 
                 //获取二维码
-                result.qrcode = GetWxPayQcode(order._id.ToString());
+                result.qrcode = "/api/Pay/GetWxPayQcode?orderId={0}&tradeNo={1}".FormatStr(orderDto.Id, tradeNo);
                 return result;
             }
             catch
@@ -281,7 +285,8 @@ namespace IW2S.Controllers
                         Id = x._id.ToString(),
                         IsPay = x.IsPay,
                         PayAt = x.PayAt,
-                        TotalPrice = x.TotalPrice
+                        TotalPrice = x.TotalPrice,
+                        TradeNo = x.TradeNo
                     };
                     var productList = new List<ProductInOrderDto>();
                     foreach (var y in x.ProductList)
@@ -353,9 +358,10 @@ namespace IW2S.Controllers
         /// <summary>
         /// 获取微信支付二维码
         /// </summary>
-        /// <param name="orderId"></param>
+        /// <param name="orderId">订单Id</param>
+        /// <param name="tradeNo">订单编号</param>
         [HttpGet]
-        public HttpResponseMessage GetWxPayQcode(string orderId)
+        public HttpResponseMessage GetWxPayQcode(string orderId,string tradeNo)
         {
 
             //获取订单信息及总价
@@ -369,8 +375,6 @@ namespace IW2S.Controllers
             }
 
             //生成微信支付链接
-            string tradeNo = WxPayApi.GenerateOutTradeNo();     //微信订单号
-
             Log.Info(this.GetType().ToString(), "Native pay mode 2 url is producing...");
 
             double fee = order.TotalPrice * 100;

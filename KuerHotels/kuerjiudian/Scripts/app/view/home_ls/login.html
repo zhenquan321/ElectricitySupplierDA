@@ -1,0 +1,42 @@
+﻿<div id="home_page">
+    <div ng-include="'Scripts/app/view/comment/header_ls.html?v=20170104'"></div>
+    <div class="login_style">
+        <div style=" background: url(Scripts/app/images/Handled/chang_9.jpg) center left; background-size: cover; height: 350px;">
+            <div class="container">
+                <div class="row " style="margin-top: 200px;">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="neirong">
+                                    <div>
+                                        <p style="margin-bottom: 0px; margin-top: -28px; float: left; margin-left: 0px; color: red !important; font-size: 16px; height: 30px;">{{error}}</p>
+                                    </div>
+                                    <input type="text" class="form-control " style="margin-bottom:15px" aria-label="请输入手机号码" placeholder="请输入用户名或手机号码" ng-model="phonenum">
+                                    <input type="password" class="form-control " style="margin-bottom:15px" aria-label="请输入密码" placeholder="请输入密码" ng-model="uPwd1" onkeydown='if (event.keyCode == 13) { login.click() }'>
+                                    <div style="text-align:center" ng-hide="get_msa_st">
+                                        <a id="login" class="btn btn-primary btn-md mt10 mb10 btn-form-common" style="width: 100%; font-size: 22px; padding-top: 10px; padding-bottom: 10px; " ng-click="login()">登录</a>
+                                    </div>
+                                    <div style="float:left;">
+                                        <a ui-sref="signup"class="link_sl">立即注册</a>
+                                    </div>
+                                    <div style="float:right;">
+                                        <a ui-sref="reset" class="link_sl">忘记密码>></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="col-sm-3">
+                                <img src="Scripts/app_pc/images/1.png" style=" height: 125px; margin-top: 95px; box-shadow: 0 1px 2px #ccc; margin-left: 20px;" />
+                                <div style="text-align: center; text-align: center; margin-left: 12px; font-size: 12px; line-height: 16px; margin-top: 8px;">
+                                    关注官方微信 <br />
+                                    掌握最新活动与优惠
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                    <div class="col-sm-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="kuerhotelsModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="huangguan_category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="huangguan_roles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="huangguan_share">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="guid" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="500" />
+          <Property Name="Description" Type="longtext" />
+          <Property Name="Sender" Type="guid" />
+          <Property Name="Label" Type="longtext" />
+          <Property Name="CreatedAt" Type="datetime" Precision="0" />
+          <Property Name="IsDel" Type="bit" />
+          <Property Name="IsReaded" Type="bit" />
+          <Property Name="Abstract" Type="longtext" />
+          <Property Name="CategoryId" Type="int" />
+        </EntityType>
+        <EntityType Name="huangguan_sharereply">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="guid" Nullable="false" />
+          <Property Name="ShareId" Type="guid" Nullable="false" />
+          <Property Name="Replyer" Type="guid" />
+          <Property Name="Description" Type="longtext" />
+          <Property Name="CreatedAt" Type="datetime" Precision="0" />
+          <Property Name="IsDel" Type="bit" />
+          <Property Name=" Love" Type="int" />
+        </EntityType>
+        <EntityType Name="huangguan_shareusers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="guid" Nullable="false" />
+          <Property Name="SharedUser" Type="guid" />
+          <Property Name="ShareId" Type="guid" />
+          <Property Name="CreatedAt" Type="datetime" Precision="0" />
+          <Property Name="IsReaded" Type="bit" />
+        </EntityType>
+        <EntityType Name="huangguan_user">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="guid" Nullable="false" />
+          <Property Name="LoginName" Type="varchar" MaxLength="200" />
+          <Property Name="LoginPwd" Type="guid" />
+          <Property Name="NickName" Type="varchar" MaxLength="500" />
+          <Property Name="UserPhone" Type="varchar" MaxLength="500" />
+          <Property Name="HeadIcon" Type="varchar" MaxLength="500" />
+          <Property Name="RoleId" Type="varchar" MaxLength="500" />
+          <Property Name="UserEmail" Type="varchar" MaxLength="500" />
+          <Property Name="status" Type="int" />
+          <Property Name="Error" Type="varchar" MaxLength="500" />
+          <Property Name="CreatedAt" Type="datetime" Precision="0" />
+          <Property Name="Token" Type="varchar" MaxLength="500" />
+          <Property Name="YZM" Type="varchar" MaxLength="500" />
+          <Property Name="Gender" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“def.kuerhotels.ipfiles”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="ipfiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="guid" Nullable="false" />
+          <Property Name="bytes" Type="longblob" />
+          <Property Name="content_type" Type="longtext" />
+          <Property Name="size" Type="int" />
+          <Property Name="file_name" Type="longtext" />
+        </EntityType>
+        <EntityContainer Name="kuerhotelsModelStoreContainer">
+          <EntitySet Name="huangguan_category" EntityType="Self.huangguan_category" Schema="kuerhotels" store:Type="Tables" />
+          <EntitySet Name="huangguan_roles" EntityType="Self.huangguan_roles" Schema="kuerhotels" store:Type="Tables" />
+          <EntitySet Name="huangguan_share" EntityType="Self.huangguan_share" Schema="kuerhotels" store:Type="Tables" />
+          <EntitySet Name="huangguan_sharereply" EntityType="Self.huangguan_sharereply" Schema="kuerhotels" store:Type="Tables" />
+          <EntitySet Name="huangguan_shareusers" EntityType="Self.huangguan_shareusers" Schema="kuerhotels" store:Type="Tables" />
+          <EntitySet Name="huangguan_user" EntityType="Self.huangguan_user" Schema="kuerhotels" store:Type="Tables" />
+          <EntitySet Name="ipfiles" EntityType="Self.ipfiles" store:Type="Tables" store:Schema="kuerhotels">
+            <DefiningQuery>SELECT
+`ipfiles`.`Id`, 
+`ipfiles`.`bytes`, 
+`ipfiles`.`content_type`, 
+`ipfiles`.`size`, 
+`ipfiles`.`file_name`
+FROM `ipfiles` AS `ipfiles`</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="kuerhotelsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="huangguan_roles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="RoleName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="huangguan_share">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="Sender" Type="Guid" />
+          <Property Name="Label" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" />
+          <Property Name="IsDel" Type="Boolean" />
+          <Property Name="IsReaded" Type="Boolean" />
+          <Property Name="Abstract" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="huangguan_sharereply">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="ShareId" Type="Guid" Nullable="false" />
+          <Property Name="Replyer" Type="Guid" />
+          <Property Name="Description" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" />
+          <Property Name="IsDel" Type="Boolean" />
+          <Property Name="C_Love" Type="Int32" />
+        </EntityType>
+        <EntityType Name="huangguan_shareusers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="SharedUser" Type="Guid" />
+          <Property Name="ShareId" Type="Guid" />
+          <Property Name="CreatedAt" Type="DateTime" />
+          <Property Name="IsReaded" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="huangguan_user">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="LoginName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LoginPwd" Type="Guid" />
+          <Property Name="NickName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UserPhone" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="HeadIcon" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="RoleId" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UserEmail" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="Error" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" />
+          <Property Name="Token" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="YZM" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="kuerhotelsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="huangguan_roles" EntityType="Self.huangguan_roles" />
+          <EntitySet Name="huangguan_share" EntityType="Self.huangguan_share" />
+          <EntitySet Name="huangguan_sharereply" EntityType="Self.huangguan_sharereply" />
+          <EntitySet Name="huangguan_shareusers" EntityType="Self.huangguan_shareusers" />
+          <EntitySet Name="huangguan_user" EntityType="Self.huangguan_user" />
+          <EntitySet Name="huangguan_category" EntityType="kuerhotelsModel.huangguan_category" />
+          <EntitySet Name="ipfiles" EntityType="kuerhotelsModel.ipfiles" />
+        </EntityContainer>
+        <EntityType Name="huangguan_category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ipfiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="bytes" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="content_type" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="size" Type="Int32" />
+          <Property Name="file_name" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="kuerhotelsModelStoreContainer" CdmEntityContainer="kuerhotelsEntities">
+          <EntitySetMapping Name="huangguan_roles">
+            <EntityTypeMapping TypeName="kuerhotelsModel.huangguan_roles">
+              <MappingFragment StoreEntitySet="huangguan_roles">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="huangguan_share">
+            <EntityTypeMapping TypeName="kuerhotelsModel.huangguan_share">
+              <MappingFragment StoreEntitySet="huangguan_share">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Sender" ColumnName="Sender" />
+                <ScalarProperty Name="Label" ColumnName="Label" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="IsReaded" ColumnName="IsReaded" />
+                <ScalarProperty Name="Abstract" ColumnName="Abstract" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="huangguan_sharereply">
+            <EntityTypeMapping TypeName="kuerhotelsModel.huangguan_sharereply">
+              <MappingFragment StoreEntitySet="huangguan_sharereply">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ShareId" ColumnName="ShareId" />
+                <ScalarProperty Name="Replyer" ColumnName="Replyer" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+                <ScalarProperty Name="C_Love" ColumnName=" Love" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="huangguan_shareusers">
+            <EntityTypeMapping TypeName="kuerhotelsModel.huangguan_shareusers">
+              <MappingFragment StoreEntitySet="huangguan_shareusers">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SharedUser" ColumnName="SharedUser" />
+                <ScalarProperty Name="ShareId" ColumnName="ShareId" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="IsReaded" ColumnName="IsReaded" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="huangguan_user">
+            <EntityTypeMapping TypeName="kuerhotelsModel.huangguan_user">
+              <MappingFragment StoreEntitySet="huangguan_user">
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="LoginPwd" ColumnName="LoginPwd" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
+                <ScalarProperty Name="HeadIcon" ColumnName="HeadIcon" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="Error" ColumnName="Error" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="YZM" ColumnName="YZM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="huangguan_category">
+            <EntityTypeMapping TypeName="kuerhotelsModel.huangguan_category">
+              <MappingFragment StoreEntitySet="huangguan_category">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ipfiles">
+            <EntityTypeMapping TypeName="kuerhotelsModel.ipfiles">
+              <MappingFragment StoreEntitySet="ipfiles">
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="content_type" ColumnName="content_type" />
+                <ScalarProperty Name="bytes" ColumnName="bytes" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

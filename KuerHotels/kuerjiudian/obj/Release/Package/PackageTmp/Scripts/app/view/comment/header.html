@@ -1,0 +1,37 @@
+<div class="navbar navbar-inverse "style="border-radius:0px;border:0px;height:70px;">
+  <div style="padding:0 20px;">
+      <div class="shousuo" ng-click="side_bar_fun()">
+          <i class="fa fa-outdent" ng-if="side_bar_show"></i>
+          <i class="fa fa-indent" ng-if="!side_bar_show"></i>
+      </div>
+    <div class="collapse navbar-collapse" id="myc">
+      <ul class="nav navbar-nav navbar-right">
+          <li class="mr5">
+              <a href="" ui-sref="home" class="header_li_h">首页</a>
+          </li>
+          <li class="mr5">
+              <a ui-sref="main.dashboard" class="header_li_h" ng-class="{true:'active_s',false:''}[selected_w=='main']">用户控制中心</a>
+          </li>
+          <li id="accountName" ng-click="showamendpwd(1)" ng-Mouseenter="showamendpwd(1)" ng-Mouseleave="hideamendpwd(1)"style="margin-left: 30px; margin-right: 30px; height: 70px;">
+                <img src="{{$root.HeadIcon}}" alt="" style="margin-top: -4px; width: 30px; height: 30px; display: inline-block; border-radius: 15px;" ng-show="$root.HeadIcon" />
+                <img src="Scripts/app/images/uploadpic.jpg" alt=""style="margin-top: -4px; width: 30px; height: 30px; display: inline-block; border-radius: 15px;" ng-show="!$root.HeadIcon" title="修改头像"/>
+                <span   class="header_li_h"style="display:inline-block; margin-top: 20px; font-size: 17px; margin-right: 30px;">{{$root.NickName}}</span>
+              <ul id="amendpwd" ng-if="showAmendAndOff==1">
+                  <li ui-sref="TwoLevelPage.userCenter">
+                      <i class="fa fa-info-circle"></i>&nbsp;<span>用户信息</span>
+                  </li>
+                  <li ui-sref="main.PublishArticles" ng-if="$root.UsrRole==1">
+                      <i class="fa fa-tachometer"></i>&nbsp;<span>控制台</span>
+                  </li>
+                  <li ng-click="signout()">
+                      <i class="fa fa-sign-out"></i> <span>安全退出</span>
+                  </li>
+              </ul>
+            </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+

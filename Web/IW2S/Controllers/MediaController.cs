@@ -2719,12 +2719,12 @@ namespace IW2S.Controllers
 
                     nodesList.Add(v);
                 }
-                var builder2 = Builders<Dnl_MappingCoPresent>.Filter;
+                var builder2 = Builders<MediaMappingCoPresent>.Filter;
                 var filter2 = builder2.Eq(x => x.ProjectId, new ObjectId(projectId));
                 filter2 &= builder2.Lte(x => x.source, 59);
                 filter2 &= builder2.Lte(x => x.target, 59);
                 filter2 &= builder2.In(x => x.KeywordMappingId, lobj);
-                var TaskList2 = MongoDBHelper.Instance.GetDnl_MappingCoPresent().Find(filter2).SortByDescending(x => x.value).Limit(1000).ToList();
+                var TaskList2 = MongoDBHelper.Instance.GetMediaMappingCoPresent().Find(filter2).SortByDescending(x => x.value).Limit(1000).ToList();
                 foreach (var item in TaskList2)
                 {
                     linksdto lk = new linksdto();
@@ -2777,7 +2777,7 @@ namespace IW2S.Controllers
 
         //创建临时json文件
         string CreFile(string folder, string value, string tmp)
-        {
+        { 
             // string tmp = "dk_maps_file.txt";
             int sd = value.Length - 2;
             value = value.Substring(1, sd);

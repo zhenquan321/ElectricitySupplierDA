@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="kuerhotelsModelStoreContainer" CdmEntityContainer="kuerhotelsEntities">
+    <EntitySetMapping Name="huangguan_roles">
+      <EntityTypeMapping TypeName="kuerhotelsModel.huangguan_roles">
+        <MappingFragment StoreEntitySet="huangguan_roles">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="huangguan_share">
+      <EntityTypeMapping TypeName="kuerhotelsModel.huangguan_share">
+        <MappingFragment StoreEntitySet="huangguan_share">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Sender" ColumnName="Sender" />
+          <ScalarProperty Name="Label" ColumnName="Label" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="IsReaded" ColumnName="IsReaded" />
+          <ScalarProperty Name="Abstract" ColumnName="Abstract" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="huangguan_sharereply">
+      <EntityTypeMapping TypeName="kuerhotelsModel.huangguan_sharereply">
+        <MappingFragment StoreEntitySet="huangguan_sharereply">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ShareId" ColumnName="ShareId" />
+          <ScalarProperty Name="Replyer" ColumnName="Replyer" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="C_Love" ColumnName=" Love" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="huangguan_shareusers">
+      <EntityTypeMapping TypeName="kuerhotelsModel.huangguan_shareusers">
+        <MappingFragment StoreEntitySet="huangguan_shareusers">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SharedUser" ColumnName="SharedUser" />
+          <ScalarProperty Name="ShareId" ColumnName="ShareId" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="IsReaded" ColumnName="IsReaded" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="huangguan_user">
+      <EntityTypeMapping TypeName="kuerhotelsModel.huangguan_user">
+        <MappingFragment StoreEntitySet="huangguan_user">
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="LoginPwd" ColumnName="LoginPwd" />
+          <ScalarProperty Name="NickName" ColumnName="NickName" />
+          <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
+          <ScalarProperty Name="HeadIcon" ColumnName="HeadIcon" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="Error" ColumnName="Error" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="YZM" ColumnName="YZM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="huangguan_category">
+      <EntityTypeMapping TypeName="kuerhotelsModel.huangguan_category">
+        <MappingFragment StoreEntitySet="huangguan_category">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ipfiles">
+      <EntityTypeMapping TypeName="kuerhotelsModel.ipfiles">
+        <MappingFragment StoreEntitySet="ipfiles">
+          <ScalarProperty Name="file_name" ColumnName="file_name" />
+          <ScalarProperty Name="size" ColumnName="size" />
+          <ScalarProperty Name="content_type" ColumnName="content_type" />
+          <ScalarProperty Name="bytes" ColumnName="bytes" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

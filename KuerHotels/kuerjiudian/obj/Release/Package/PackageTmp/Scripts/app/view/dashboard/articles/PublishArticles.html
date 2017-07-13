@@ -1,0 +1,93 @@
+﻿<style>
+    #home_page header a.logo {
+        margin-left: 0px;
+    }
+</style>
+
+<div id="ShareDiscussion"class="mt20"style="margin-left: 40px; margin-right: 15px; " >
+    <div class="" style=" margin-top: -6px;" >
+        <div class="row pr0 pl0">
+            <div class="col-sm-12 col-lg-9 pl0 " style="margin-bottom:30px;">
+                <div class="box_sd  pb20">
+                    <div class="row title_sd">
+                        <div class="title_sd_l">
+                            发起讨论
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="bianjiqu pt10">
+                        <div class="button_bj" ng-show="fabu">
+                            <button class="btn button_fabu" type="submit" ng-click="fabu_fun()">发布</button>
+                            <button class="btn btn-default button_cuncg" type="submit">存草稿</button>
+                        </div>
+                        <div class="button_bj" ng-show="allfabu">
+                            <button class="btn button_fabu" type="submit" ng-click="allfabu_fun()">发布</button>
+                            <button class="btn btn-default button_cuncg" type="submit">存草稿</button>
+                        </div>
+                        <div class="button_bj" ng-show="Noallfabu">
+                            <button class="btn button_fabu" type="submit" ng-click="allfabu_fun()">发布</button>
+                            <button class="btn btn-default button_cuncg" type="submit">存草稿</button>
+                        </div>
+                        <form class="form-horizontal mt10">
+                            <div class="form-group form_bb">
+                                <label for="inputEmail3" class="col-sm-1 control-label label_bb test1_ld" style="">标题：</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control input_db" id="inpu14tEmail3" ng-model="editer.Title" placeholder="请输入标题" style="height: 40px!important;">
+                                </div>
+                            </div>
+                            <div class="form-group form_bb">
+                                <label for="inputEmail3" class="col-sm-1 control-label label_bb test1_ld" style="">标签：</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control input_db" id="inpu14tEmail3" ng-model="editer.Label" placeholder="请输入标签，以“;”隔开" style="height: 40px!important;">
+                                </div>
+                            </div>
+                            <!--文本编辑器-->
+                            <div ng-include="'Scripts/app/view/comment/editer2.html?v=201612212913.4'"></div>
+                            <!--文本编辑器end-->
+                        </form>
+                        <div class="button_bj" ng-show="fabu">
+                            <button class="btn button_fabu" type="submit" ng-click="fabu_fun()">发布</button>
+                            <button class="btn btn-default button_cuncg" type="submit">存草稿</button>
+                        </div>
+                        <div class="button_bj" ng-show="allfabu">
+                            <button class="btn button_fabu" type="submit" ng-click="allfabu_fun()">发布</button>
+                            <button class="btn btn-default button_cuncg" type="submit">存草稿</button>
+                        </div>
+                        <div class="button_bj" ng-show="Noallfabu">
+                            <button class="btn button_fabu" type="submit" ng-click="allfabu_fun()">发布</button>
+                            <button class="btn btn-default button_cuncg" type="submit">存草稿</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-3 pl0">
+                <div class="box_sd">
+                    <div class="row title_sd_s">
+                        <div class="title_sd_l">
+                            最近发起
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="modal_sd_a" ng-repeat="x in GetMyShareList">
+                        <div class="row">
+                            <div class="col-sm-12" style="padding: 0 30px 0 30px;">
+                                <div class="modal_sd">
+                                    <div class="modal_sd">
+                                        <div style="position: absolute; right: 27px;" title="删除讨论帖" ng-click="DelShare(x.ID)" ng-show="x.Sender==$root.userID">
+                                            <i class="fa fa-trash shanchu_91" style="color: #818A60; cursor: pointer; font-size: 18px;"></i>
+                                        </div>
+                                        <a ng-click="GetShareReply(x)" title="{{x.Title}}" style="font-size: 16px;">{{ x.Title.length>10? ((x.Title | limitTo:10)+"...") : x.Title }}</a>
+                                        <p style="font-size:13px;">{{ x.Abstract.length>30? ((x.Abstract | limitTo:30)+"...") : x.Abstract }}</p>
+                                        <div>
+                                            <span ng-repeat="y in x.LabelList track by $index" style="font-size:12px;"><i class="fa fa-tags" style="font-size:13px;"></i>{{y}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

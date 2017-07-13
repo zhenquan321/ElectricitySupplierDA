@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="kuerhotelsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="huangguan_roles">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="RoleName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="huangguan_share">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="Sender" Type="Guid" />
+    <Property Name="Label" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedAt" Type="DateTime" />
+    <Property Name="IsDel" Type="Boolean" />
+    <Property Name="IsReaded" Type="Boolean" />
+    <Property Name="Abstract" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="huangguan_sharereply">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ShareId" Type="Guid" Nullable="false" />
+    <Property Name="Replyer" Type="Guid" />
+    <Property Name="Description" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedAt" Type="DateTime" />
+    <Property Name="IsDel" Type="Boolean" />
+    <Property Name="C_Love" Type="Int32" />
+  </EntityType>
+  <EntityType Name="huangguan_shareusers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="SharedUser" Type="Guid" />
+    <Property Name="ShareId" Type="Guid" />
+    <Property Name="CreatedAt" Type="DateTime" />
+    <Property Name="IsReaded" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="huangguan_user">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="LoginName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LoginPwd" Type="Guid" />
+    <Property Name="NickName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="UserPhone" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="HeadIcon" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="RoleId" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="UserEmail" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="Error" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedAt" Type="DateTime" />
+    <Property Name="Token" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="YZM" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="kuerhotelsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="huangguan_roles" EntityType="Self.huangguan_roles" />
+    <EntitySet Name="huangguan_share" EntityType="Self.huangguan_share" />
+    <EntitySet Name="huangguan_sharereply" EntityType="Self.huangguan_sharereply" />
+    <EntitySet Name="huangguan_shareusers" EntityType="Self.huangguan_shareusers" />
+    <EntitySet Name="huangguan_user" EntityType="Self.huangguan_user" />
+    <EntitySet Name="huangguan_category" EntityType="kuerhotelsModel.huangguan_category" />
+    <EntitySet Name="ipfiles" EntityType="kuerhotelsModel.ipfiles" />
+  </EntityContainer>
+  <EntityType Name="huangguan_category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ipfiles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="bytes" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="content_type" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+    <Property Name="size" Type="Int32" />
+    <Property Name="file_name" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

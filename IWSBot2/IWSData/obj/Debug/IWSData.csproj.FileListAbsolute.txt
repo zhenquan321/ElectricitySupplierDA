@@ -1,6 +1,10 @@
-G:\git仓库\IWSBot2\IWSData\bin\Debug\IWSData.dll
-G:\git仓库\IWSBot2\IWSData\bin\Debug\IWSData.pdb
-G:\git仓库\IWSBot2\IWSData\obj\Debug\IWSData.dll
-G:\git仓库\IWSBot2\IWSData\obj\Debug\IWSData.pdb
-G:\git仓库\IWSBot2\IWSData\bin\Debug\MongoDB.Bson.dll
-G:\git仓库\IWSBot2\IWSData\obj\Debug\IWSData.csprojResolveAssemblyReference.cache
+F:\Dnl_Copy\IWSBot2\IWSData\bin\Debug\IWSData.dll
+F:\Dnl_Copy\IWSBot2\IWSData\bin\Debug\IWSData.pdb
+F:\Dnl_Copy\IWSBot2\IWSData\bin\Debug\MongoDB.Bson.dll
+F:\Dnl_Copy\IWSBot2\IWSData\obj\Debug\IWSData.dll
+F:\Dnl_Copy\IWSBot2\IWSData\obj\Debug\IWSData.pdb
+D:\SVN\IWSBot2\IWSData\bin\Debug\IWSData.dll
+D:\SVN\IWSBot2\IWSData\bin\Debug\IWSData.pdb
+D:\SVN\IWSBot2\IWSData\bin\Debug\MongoDB.Bson.dll
+D:\SVN\IWSBot2\IWSData\obj\Debug\IWSData.dll
+D:\SVN\IWSBot2\IWSData\obj\Debug\IWSData.pdb

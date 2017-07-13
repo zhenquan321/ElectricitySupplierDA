@@ -2235,7 +2235,7 @@ namespace IW2S.Controllers
             /* 判断是否有分组
              * 有则使用原有分组信息
              * 无则仅建立所有词一组数据 */
-            if (!cateIsRoot)
+            if (!cateIsRoot) 
             {
                 //去除根结点
                 cateIds.Remove(ObjectId.Empty);
@@ -2258,6 +2258,7 @@ namespace IW2S.Controllers
             allTimeFilter &= builder.Nin(x => x._id, exLinkObjIds);
             var allQueryDatas = MongoDBHelper.Instance.GetDnl_Link_Baidu().Find(allTimeFilter).Project(x => new
             {
+                Id = x._id.ToString(),
                 PublishTime = x.PublishTime,
                 Title = x.Title,
                 LinkUrl = x.LinkUrl,
@@ -2276,6 +2277,7 @@ namespace IW2S.Controllers
                     continue;
                 }
                 IW2S_Timelevel1linkDto data = new IW2S_Timelevel1linkDto();
+                data.Id = gr.Id;
                 data.PublishTime = tpTime;
                 data.Title = gr.Title;
                 data.LinkUrl = gr.LinkUrl;

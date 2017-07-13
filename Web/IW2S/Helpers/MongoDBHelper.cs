@@ -577,6 +577,14 @@ namespace IW2S.Helpers
         {
             return base.GetCollection<OrderMongo>("Order");
         }
+<<<<<<< HEAD
+=======
+
+        public IMongoCollection<MediaMappingCoPresent> GetMediaMappingCoPresent()
+        {
+            return base.GetCollection<MediaMappingCoPresent>("MediaMappingCoPresent");
+        }
+>>>>>>> c26f92d240a523a1903a8e87db204683ad299860
     }
 
     public static class MongoExtension

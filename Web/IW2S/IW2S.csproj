@@ -532,6 +532,10 @@
     <Content Include="Scripts\app\scripts\controllers\Dashboard\modal\getKWSArticle_ctr.js" />
     <Content Include="Scripts\app\scripts\controllers\Dashboard\modal\GetGZHInfo_ctr.js" />
     <Content Include="Scripts\app\scripts\controllers\Dashboard\modal\getShareArticle_ctr.js" />
+<<<<<<< HEAD
+=======
+    <Content Include="Scripts\app\scripts\controllers\Dashboard\modal\payPage_ctr.js" />
+>>>>>>> c26f92d240a523a1903a8e87db204683ad299860
     <Content Include="Scripts\app\scripts\controllers\Dashboard\modal\SelectKws_ctr.js" />
     <Content Include="Scripts\app\scripts\controllers\Dashboard\projectGroup\PGDashboard_ctr.js" />
     <Content Include="Scripts\app\scripts\controllers\Dashboard\Dashboard_ctr.js" />

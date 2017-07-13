@@ -9,15 +9,40 @@
     $scope.NCOpage = 1;
     $scope.NCOpagesize = 10;
     chk_global_vars($cookieStore, $rootScope, null, $location, $http, myApplocalStorage);
+
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var str = location.href;
+        var num = str.indexOf("?")
+        str = str.substr(num + 1);
+        var r = str.match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+
     $scope.show_list_fun = function (num) {
+<<<<<<< HEAD
         $scope.show_list = num;
         if (num == 1) {
 
         } else if (num == 5) {
             $scope.CompletedGetOrder();
             $scope.NoCompletedGetOrder();
+=======
+        if (num) {
+            $scope.show_list = num;
+            if (num == 1) {
+
+            } else if (num == 5) {
+                $scope.CompletedGetOrder();
+                $scope.NoCompletedGetOrder();
+            }
+        } else {
+            $scope.show_list = 3;
+>>>>>>> c26f92d240a523a1903a8e87db204683ad299860
         }
     }
+
+    $scope.show_list_fun(GetQueryString('tab'));
     //修改 用户信息
     var pattern = /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/;
     $scope.changeXinxi = function () {

@@ -1,0 +1,120 @@
+﻿<div id="UserCenter"style="margin-top:100px;min-height:600px;">
+    <div id="caseInquiry" class="container wrapper" style="margin-top:70px;padding:0px">
+        <div class="panel" style="width:100%;box-shadow:0 2px 4px #ccc;border:0px;">
+            <div class="panel-header">
+                <table style="  width: 66%;">
+                    <tbody>
+                        <tr>
+                            <th ng-class="{true:'active',false:''}[show_list==1]" ng-click="show_list_fun(1)"><div class="topselect"></div><a>个人信息</a></th>
+                            <th ng-class="{true:'active',false:''}[show_list==2]" ng-click="show_list_fun(2)"><div class="topselect"></div><a>修改密码</a></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="detailsTable" style="margin-bottom: 80px;">
+                <div id="PpMag" ng-show="show_list==1" style="padding:40px 5% 30px;">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="row" style="margin-top:45px;">
+                                <div class="col-sm-5 img_header">
+                                    <img ng-click="editImage()" src="Scripts/app/images/uploadpic.jpg" ng-if="!$root.HeadIcon">
+                                    <img ng-click="editImage()" ng-src="{{$root.HeadIcon}}" ng-if="$root.HeadIcon">
+                                </div>
+                                <div class="col-sm-7" style="padding-top:10px;font-size: 14px;">
+                                    <span style="color: #e2a82f; font-weight: 600; font-size: 20px;">{{$root.LoginName}}</span>
+                                </div>
+                            </div>
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group mt20">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">昵称</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" placeholder="请输入昵称" ng-model="$root.NickName">
+                                    </div>
+                                </div>
+                                <div class="form-group mt20">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">邮箱</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" placeholder="请输入邮箱" ng-model="$root.UserEmail">
+                                    </div>
+                                </div>
+                                <div class="form-group mt20">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">电话</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" placeholder="请输入电话" ng-model="$root.UserPhone">
+                                    </div>
+                                </div>
+                                <div class="form-group mt20">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">注册时间</label>
+                                    <div class="col-sm-9"style=" font-size: 16px; font-weight: 600; padding-top: 6px; text-indent: 9px; color: #b99b5c;">
+                                       <span>{{$root.CreatedAt_user | date:'yyyy-MM-dd hh:mm:ss'}}</span> 
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-7">
+                            <div style="height: 420px; border: 1px dashed #989898; padding: 5px 15px; border-radius: 7px; background-color: #fff; ">
+                                <div id="flashEditorOut" style="height:400px;">
+                                    <div id="altContent">
+                                    </div>
+                                </div>
+                                <div style="background-color: #fff; height: 45px; width: 200px; margin-top: -35px; position: absolute;"> </div>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-sm-offset-2 col-sm-8 but_g " style="margin-top:30px">
+                                <input id="upload-code-submit" class="btn btn-blue " value="确认" type="submit" style="width:130px;height: 40px;" ng-click="changeXinxi()">
+                                <input id="form-cancel-ver" class="warning btn btn-white form-btn-cancel " value="取消" type="button" style="width:130px; height: 40px;" ng-click="no_changeXinxi()">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div id="ChangePws" ng-show="show_list==2">
+                    <div class="row" style="padding:50px 10% 30px;">
+                        <div style="font-size: 18px;padding-left: 7%; color: #a0a0a0; font-weight: 500;">
+                            当前用户：<span style="color:#4f83c3;">{{$root.LoginName}}</span>
+                        </div>
+                        <div style="margin-left: 153px; color: red; margin-top: 15px; margin-bottom: -16px;" ng-show="error">{{error}}</div>
+                        <form class="form-horizontal" role="form"style="width:680px;">
+                            <div class="form-group mt20"ng-show="false">
+                                <label for="inputEmail3" class="col-sm-2 control-label">旧密码</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" id="inputqww2" placeholder="旧密码" ng-model="oldPw">
+                                </div>
+                            </div>
+                            <div class="form-group mt20">
+                                <label for="inputEmail3" class="col-sm-2 control-label">旧密码</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" id="inputqww2" placeholder="旧密码" ng-model="oldPw1">
+                                </div>
+                            </div>
+                            <div class="form-group mt20">
+                                <label for="inputPassword3" class="col-sm-2 control-label">新密码</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" id="inputqw" placeholder="新密码" ng-model="newPw">
+                                </div>
+                            </div>
+                            <div class="form-group mt20">
+                                <label for="inputPassword3" class="col-sm-2 control-label">确认密码</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" id="inputqww" placeholder="确认密码" ng-model="newPw_q">
+                                </div>
+                            </div>
+                            <div class="form-group mt20">
+                                <div class="col-sm-offset-2 col-sm-8 but_g">
+                                    <input id="upload-code-submit" class="btn btn-blue " value="确认" type="submit" style="width: 130px; font-size: 15px; background-color: #e2a82f;padding:0px!important;" ng-click="changepwd()">
+                                    <input id="form-cancel-ver" class="warning btn btn-white form-btn-cancel " value="取消" type="button" style="width:130px;padding:0px!important;" ng-click="no_changePW()">
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <div ng-show="show_list==3" style="padding:0;">
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

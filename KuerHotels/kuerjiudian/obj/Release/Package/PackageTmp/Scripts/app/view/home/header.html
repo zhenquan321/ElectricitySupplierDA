@@ -1,0 +1,122 @@
+﻿<div id="header_z">
+    <header class="Mheadindex Lposa">
+        <div class="top">
+            <div class="inner Lposr">
+                <div class="userhelp">
+                    <i class="fa fa-phone-square"style="margin-right:5px;font-size:16px;"></i>
+                    <a ><span class="text">998-3422888</span></a>
+                    <a class="ml10"style="display: inline-block; border-left: 1px solid #848484; padding-left: 13px;"><span class="text" ng-mouseover="wechart_s(1)" ng-mouseleave="wechart_s(2)">关注微信领福利</span></a>
+                </div>
+                <div class="downapp">
+                    <div class="Lcfx Lposa infobox " ng-class="{true:'',false:'Ldn'}[wechart_s_k]">
+                        <div class="info">
+                            <div class="Lflr wechat">
+                                <img src="http://ws-www.hantinghotels.com/hworld/NewWeb/img/wechat.jpg">关注微信福利社
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="useenter">
+                    <span id="loginBefore" ng-if="!$root.logined">
+                        <a ui-sref="login" class="login">登录</a>
+                        <a ui-sref="signup" class="register">注册</a>
+                    </span>
+                    <span id="loginBefore" ng-if="$root.logined" ng-Mouseleave="hideamendpwd(1)">
+                        <div class="dropdown">
+                            <button ng-click="showamendpwd(1)" ng-Mouseenter="showamendpwd(1)" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="background-color: rgba(51, 51, 51, 0.96)!important;border: 0px;padding-top: 7px; padding-bottom: 3px; min-width: 175px;">
+                                <img src="{{$root.HeadIcon}}" alt="" style="margin-top: -4px; width: 30px; height: 30px; display: inline-block; border-radius: 15px;" ng-show="$root.HeadIcon" />
+                                <img src="Scripts/app/images/uploadpic.jpg" alt="" style="margin-top: -4px; width: 30px; height: 30px; display: inline-block; border-radius: 15px;" ng-show="!$root.HeadIcon" title="修改头像" />
+                                <span class="header_li_h" style="display:inline-block; margin-left: 5px; font-size: 15px;color: #fff;">{{$root.NickName}}</span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="display: block;top: 96%; min-width: 175px; text-align: center;" ng-if="showAmendAndOff==1">
+                                <li class="mt5" style="font-size:16px;"><a ui-sref="TwoLevelPage.userCenter"><i class="fa fa-info-circle"></i>&nbsp;<span>用户信息</span></a></li>
+                                <li role="separator" class="divider" ng-if="$root.UsrRole==1"></li>
+                                <li class="" style="font-size:16px;" ng-if="$root.UsrRole==1"><a ui-sref="main.PublishArticles"><i class="fa fa-tachometer"></i>&nbsp;<span>控制台</span></a></li>
+                                <li role="separator" class="divider"></li>
+                                <li class="mb5" ng-click="signout()" style="font-size:16px;"><a href=""><i class="fa fa-sign-out"></i> <span>安全退出</span></a></li>
+                            </ul>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="nav">
+            <div class="inner Cwrap Ltac">
+                <img src="Scripts/app/images/iocin_p/new_logo.png"style="width:310px;" />
+                <!--<h3 class="title_h mt10 mb10">塔县皇冠大酒店</h3>-->
+                <nav class="navlinks mt20">
+                    <div class="navcont Lposr" ng-mouseleave="Onmouse(1)">
+                        <span class="navbg Lposa" ng-style="yundong"></span>
+                        <a ui-sref="home" class="active nav-1 Ldib item" ng-mouseover="Onmouse(1)">首页</a>
+                        <a ui-sref="TwoLevelPage.HotelFeatures" class="nav-2 Ldib item" ng-mouseover="Onmouse(2)">酒店特色</a>
+                        <a ui-sref="TwoLevelPage.LocalStyle" class="nav-4 Ldib item" ng-mouseover="Onmouse(3)">当地风情</a>
+                        <a ui-sref="TwoLevelPage.SharedFeeling" class=" nav-3 Ldib item" ng-mouseover="Onmouse(4)">同感共享</a>
+                        <a ui-sref="AboutUs" class=" nav-5 Ldib item" ng-mouseover="Onmouse(5)">关于皇冠</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="Mbannel Lposr home" style="height:650px;">
+        <div class="mask" style="display: none;"></div>
+        <ul class="bannelslides">
+            <li class="bannelitem bannelitem-1 animated active_c_h " ng-class="{true:'fadeIn',false:'fadeOut'}[card_show==1]" ng-show="card_show==1">
+                <div class="img" style="background-image: url(&quot;Scripts/app/images/Handled/chang_2.jpg&quot;);"></div>
+            </li>
+            <li class="bannelitem bannelitem-2  animated active_c_h " ng-class="{true:'fadeIn',false:'fadeOut'}[card_show==2]" ng-show="card_show==2">
+                <div class="img" style="background-image: url(&quot;Scripts/app/images/Handled/chang_3.jpg&quot;);"></div>
+            </li>
+            <li class="bannelitem bannelitem-3 animated  active_c_h" ng-class="{true:'fadeIn',false:'fadeOut'}[card_show==3]" ng-show="card_show==3">
+                <div class="img" style="background-image: url(&quot;Scripts/app/images/Handled/chang_1.jpg&quot;); "></div>
+            </li>
+        </ul>
+        <div class="bannelopacity Lposa"></div>
+        <div class="bannelgradient Lposa">
+        </div>
+        <ul class="banneltiplist Lposa">
+            <li class="banneltip-1 banneltip animated active_c_m" ng-class="{true:'fadeIn',false:'fadeOut'}[card_show==1]" ng-show="card_show==1">
+                <div class="card_h_c">
+                    <div class="h_c_h">
+                        <span class="h_left"></span>
+                        <span class="h_center">舒适惬意</span>
+                        <span class="h_rignt"></span>
+                    </div>
+                    <div class="h_c_s">
+                        皇冠为您的丝路之旅提供独一无二的舒适环境
+                    </div>
+                </div>
+            </li>
+            <li class="banneltip-2 banneltip animated active_c_m" ng-class="{true:'fadeIn',false:'fadeOut'}[card_show==2]" ng-show="card_show==2">
+                <div class="card_h_c">
+                    <div class="h_c_h">
+                        <span class="h_left"></span>
+                        <span class="h_center">悠闲放松</span>
+                        <span class="h_rignt"></span>
+                    </div>
+                    <div class="h_c_s">
+                        白天欣赏塔什库尔干美景，晚上舒舒服服泡澡
+                    </div>
+                </div>
+            </li>
+            <li class="banneltip-3 banneltip animated active_c_m" ng-class="{true:'fadeIn',false:'fadeOut'}[card_show==3]" ng-show="card_show==3">
+                <div class="card_h_c">
+                    <div class="h_c_h">
+                        <span class="h_left"></span>
+                        <span class="h_center">中外佳肴</span>
+                        <span class="h_rignt"></span>
+                    </div>
+                    <div class="h_c_s">
+                        国际盛餐，品种齐全，口味宜人，任你品尝
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+        <div class="change_but">
+            <span ng-class="{true:'active_h',false:''}[card_show==1]" ng-click="chang_cards(1,true)"></span>
+            <span ng-class="{true:'active_h',false:''}[card_show==2]" ng-click="chang_cards(2,true)"></span>
+            <span ng-class="{true:'active_h',false:''}[card_show==3]" ng-click="chang_cards(3,true)"></span>
+        </div>
+    </div>
+</div>
+<div style="width: 100%; height: 3px; background: url(Scripts/app/style/bg-img/changecolor.png) no-repeat; background-size: 100% 100%; "></div>

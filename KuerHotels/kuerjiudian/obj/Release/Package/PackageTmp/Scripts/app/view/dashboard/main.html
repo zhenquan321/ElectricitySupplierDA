@@ -1,0 +1,78 @@
+﻿<style>
+    body {
+        background-color: #ecf0ef !important;
+    }
+</style>
+<div id="homeUserCenter">
+    <div id="OMD_1_main" class="row " ng-if="side_bar_show">
+        <div class="left_part">
+            <div class="logo_s "style="padding-left:30px;">
+                <a class="navbar-brand" style="padding: 0; height: 70px; line-height: 70px; color: #fff; font-size: 22px;" ui-sref="home"><img style=" height: 40px; display: inline-block; margin-right: 10px; padding-bottom: 3px;" src="Scripts/app/images/iocin_p/yuan_160.png" alt="logo" />皇冠大酒店</a>
+            </div>
+            <div class="sidebar">
+                <dl>
+                    <dt><i class="fa fa-th-large mr5"></i>文章发布</dt>
+                    <dd style="border-bottom:0px;">
+                        <ul>
+                            <li class="" ui-sref="main.PublishArticles" ui-sref-active="li_active"><div><a class="set"><div class="ioic"><i class="fa fa-edit"></i></div><div class="wenzi">发布文章</div></a></div></li>
+                            <li class="" ui-sref="main.Published_Articles" ui-sref-active="li_active"><div><a class="set"><div class="ioic"><i class="fa fa-file-word-o"></i></div><div class="wenzi">已发布文章</div></a></div></li>
+                            <li class="" ui-sref="main.PArticlesCun" ui-sref-active="li_active"><div><a class="set"><div class="ioic"><i class="fa fa-tasks"></i></div><div class="wenzi">设置边栏</div></a></div></li>
+                        </ul>
+                    </dd>
+                    <!--<dt><i class="fa fa-th-large mr5"></i>用户分享</dt>
+                    <dd style="border-bottom:0px;">
+                        <ul>
+                            <li class="" ui-sref="main.UserShare" ui-sref-active="li_active"><div><a class="set" href=""><div class="ioic"><i class="fa fa-group"></i></div><div class="wenzi">用户分享</div></a></div></li>
+                            <li class="" ui-sref="main.OptimalEvaluation" ui-sref-active="li_active"><div><a class="set" href=""><div class="ioic"><i class="fa fa-thumbs-up"></i></div><div class="wenzi">优选评价</div></a></div></li>
+                        </ul>
+                    </dd>-->
+                </dl>
+            </div>
+        </div>
+        <div class="right_part">
+            <div class="main_body">
+                <div ng-include="'Scripts/app/view/comment/header.html?v=20161223'" style="z-index:1000"></div>
+            </div>
+        </div>
+    </div>
+    <div id="OMD_1_main" class="row " ng-show="!side_bar_show">
+        <div class="left_part" style="width:80px;">
+            <div class="logo_s " style="padding-left:20px;">
+                <a class="navbar-brand" style="padding:0" ui-sref="home"><img style=" height: 40px; display: inline-block; margin-right: 10px; margin-top: 15px;" src="Scripts/app/images/iocin_p/yuan_160.png" alt="logo" /></a>
+            </div>
+            <div class="sidebar">
+               
+                <dl>
+                   
+                    <dt class="pl32" data-toggle="tooltip" data-placement="right" title="文章发布"><i class="fa fa-th-large mr5"></i></dt>
+                    <dd style="border-bottom:0px;">
+                        <ul>
+                            <li class="pl24" data-toggle="tooltip" data-placement="right" title="发布文章" ui-sref="main.PublishArticles" ui-sref-active="li_active"><div><a class="set"><div class="ioic"><i class="fa fa-edit"></i></div></a></div></li>
+                            <li class="pl24" data-toggle="tooltip" data-placement="right" title="已发布文章" ui-sref="main.Published_Articles" ui-sref-active="li_active"><div><a class="set"><div class="ioic"><i class="fa fa-file-word-o"></i></div></a></div></li>
+                            <li class="pl24" data-toggle="tooltip" data-placement="right" title="设置边栏" ui-sref="main.PArticlesCun" ui-sref-active="li_active"><div><a class="set"><div class="ioic"><i class="fa fa-tasks"></i></div></a></div></li>
+                        </ul>
+                    </dd>
+                    <!--<dt class="pl32" data-toggle="tooltip" data-placement="right" title="用户分享"><i class="fa fa-th-large mr5"></i></dt>
+                    <dd style="border-bottom:0px;">
+                        <ul>
+                            <li class="pl24" data-toggle="tooltip" data-placement="right" title="用户分享" ui-sref="main.UserShare" ui-sref-active="li_active"><div><a class="set"><div class="ioic"><i class="fa fa-group"></i></div></a></div></li>
+                            <li class="pl24" data-toggle="tooltip" data-placement="right" title="优选评价" ui-sref="home.OptimalEvaluation" ui-sref-active="li_active"><div><a class="set"><div class="ioic"><i class="fa fa-thumbs-up"></i></div></a></div></li>
+                        </ul>
+                    </dd>-->
+                </dl>
+            </div>
+         
+        </div>
+        <div class="right_part">
+            <div class="main_body" style="margin-left:80px;">
+                <div ng-include="'Scripts/app/view/comment/header.html?v=20161223'" style="z-index:1000"></div>
+            </div>
+        </div>
+        <!--<script>
+            $(function () { $("[data-toggle='tooltip']").tooltip(); });
+        </script>-->
+    </div>
+    <div ui-view ng-class="{true:'qiehuan_da',false:'qiehuan_xiao'}[side_bar_show]"style="padding-top:5px;"></div>
+   
+</div>
+

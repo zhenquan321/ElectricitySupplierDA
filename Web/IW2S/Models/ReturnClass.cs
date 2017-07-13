@@ -508,6 +508,10 @@ namespace IW2S.Models
         /// <summary>
         /// 二维码
         /// </summary>
+<<<<<<< HEAD
         public System.Net.Http.HttpResponseMessage qrcode { get; set; }
+=======
+        public string qrcode { get; set; }
+>>>>>>> c26f92d240a523a1903a8e87db204683ad299860
     }
 }

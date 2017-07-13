@@ -64,4 +64,18 @@ namespace IWSData.Model
         /// </summary>
         public DateTime CreatedAt { get; set; }
     }
+
+    /// <summary>
+    /// 关键词共现类
+    /// </summary>
+    public class MediaMappingCoPresent
+    {
+        public ObjectId _id { get; set; }
+        public int source { get; set; }
+        public int target { get; set; }
+        public int value { get; set; }
+        public ObjectId KeywordMappingId { get; set; }
+        public ObjectId CategoryId { get; set; }
+        public ObjectId ProjectId { get; set; }
+    }
 }

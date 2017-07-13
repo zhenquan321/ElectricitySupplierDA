@@ -1367,6 +1367,14 @@
 	        //$rootScope.GetBaiduSearchKeyword2();
 	    });
 	};
+
+    //文章数据分析
+	$scope.discourseAnalysis = function (id) {
+	    $rootScope.discAId = id;
+	    var url = "/WeChat/wordtree?id=" + $rootScope.discAId + "&score=2";
+	    $location.url(url);
+	}
+
 	//自动加载________________________________________________________
 
 	//折叠文件夹

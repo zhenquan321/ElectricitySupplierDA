@@ -59,6 +59,8 @@
     <Compile Include="Model\Bing\IW2S_Bing_level1link.cs" />
     <Compile Include="Model\Bing\IW2S_Bing_KeywordFilter.cs" />
     <Compile Include="Model\Bing\IW2S_KeywordGroup.cs" />
+    <Compile Include="Model\Pay\Order.cs" />
+    <Compile Include="Model\Pay\Product.cs" />
     <Compile Include="Model\PojectChart.cs" />
     <Compile Include="Model\Dnl_EntityTree.cs" />
     <Compile Include="Model\Dnl_EntityTreeMapping.cs" />
@@ -82,6 +84,7 @@
     <Compile Include="Model\IW2S_OperateLog.cs" />
     <Compile Include="Model\Dnl_ProjectGroup.cs" />
     <Compile Include="Model\IW2S_ProjectShare.cs" />
+    <Compile Include="Model\ReferChartDesc.cs" />
     <Compile Include="Model\SearchEngine\Dnl_Keyword.cs" />
     <Compile Include="Model\SearchEngine\Dnl_KeywordMapping.cs" />
     <Compile Include="Model\SearchEngine\BaiduLink.cs" />

@@ -1280,15 +1280,23 @@
     //文章数据分析
 	$scope.discourseAnalysis = function (id) {
 	    $rootScope.discAId = id;
+<<<<<<< HEAD
 	    var url = "/DnL/wordtree/?" + $rootScope.discAId;
 	    $location.path(url).replace();
+=======
+	    var url = "/DnL/wordtree?id=" + $rootScope.discAId + "&score=1";
+	    $location.url(url);
+>>>>>>> c26f92d240a523a1903a8e87db204683ad299860
 	}
 
 
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> c26f92d240a523a1903a8e87db204683ad299860
 	//自动加载________________________________________________________
 
 	//折叠文件夹

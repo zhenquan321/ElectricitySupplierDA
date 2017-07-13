@@ -1,0 +1,130 @@
+﻿<div class="mt20 row">
+    <div class="col-sm-3" ng-show="isActiveCollection2">
+        <div class="main-panel">
+            <div class="main-panel-title">
+                <span class="main-panel-text active">原图</span>
+                <a href="" title=""><i class="fa fa-minus"></i></a>
+                <a href="" title=""><i class="fa fa-refresh" ng-click="RefreshGetBaiduKeyword()"></i></a>
+                <form role="form" class="search-content-from" style="right:40px;">
+                    <div class="form-group search-content-input">
+                        <input type="text" class="form-control search-content" id="name6" placeholder="请输入关键词">
+                        <i class="fa fa-search"></i>
+                    </div>
+                </form>
+            </div>
+                <div class="main-panel-content" style="min-height:790px;max-height:790px;" id="picshow">
+                    <div class="modelSelectPanel">
+                        <div class="wpt">
+                            <div class="log-row-cx">
+                                <div class="contenMoel mb10 pb0 row mt20 pl10 pr10">
+                                    <div class="repectList mr20" style="color: #009999!important;" ng-repeat="x in $root.searchPic" >
+                                        <a >
+                                            <div ng-class="{true: 'select_pic', false: ''}[ x._id == $root.picRs_id]" ng-click="GetImgSearchLinks(x._id,x.Src)" class="model-box waves-effect z "style="margin:0 10px 10px 0px!important;font-size:12px!important;" onmouseover="$(this).find('i').show(); " onmouseout="$(this).find('i').hide(); " ng-class="{true: 'active', false: 'inactive'}[ x._id == $root.getBaiduRecordId]">
+                                                <div class="icnm_w">
+                                                </div>
+                                                <div class="desc">
+                                                    <img src="{{x.Src}}" style="height: 75px; min-width: 75px; max-width: 120px" />
+                                                </div>
+                                                <div class=" describe_Cc "style="height:24px;padding-top:2px">
+                                                    原图{{(page_picS-1)*pagesize_picS+$index+1}}
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-9" ng-show="isActiveCollection2">
+        <div class="main-panel">
+            <div class="main-panel-title">
+                <span class="main-panel-text active">百度搜索图片</span>
+                <a href="" title=""><i class="fa fa-minus"></i></a>
+                <a href="" title=""><i class="fa fa-refresh" ng-click="RefreshGetBaiduLevelLinks($root.BaidukeywordId)"></i></a>
+                <!--<a href="" title=""><i class="fa fa-filter" ng-click="addkeywordFilterBaidu()"></i></a>
+                <a href="" title="已收藏链接" ng-click="showbaiduCollectionLinks()"><i ng-class="{false: 'fa fa-star', true: 'fa fa-star-o'}[isActiveCollection2]"></i></a>-->
+                <form role="form" class="search-content-from" style="right:75px;">
+                    <div class="form-group search-content-input">
+                        <input type="text" class="form-control search-content" id="name7" placeholder="请输入关键词" ng-model="BaiduLevelLinks">
+                        <i class="fa fa-search"></i>
+                    </div>
+                </form>
+            </div>
+            <div class="main-panel-content" style="min-height:790px;max-height:none; " id="picshow">
+                <div class="modelSelectPanel">
+                    <div class="wpt">
+                        <div class="log-row-cx">
+                            <div class="contenMoel mb10 pb0 row mt20 pl10 pr10">
+                                <div class="repectList " style="color: #009999!important;" ng-repeat="x in $root.GetImgSearchLinks_list">
+                                    <a>
+                                        <div class="model-box waves-effect z " ng-class="{true: 'active', false: 'inactive'}[ x._id == $root.getBaiduRecordId]">
+                                            <div onmouseover="$(this).find('i').show(); " onmouseout="$(this).find('i').hide(); ">
+                                                <div class="icnm_w">
+                                                    <i title="排除" ng-click="SetLinkStatus(x._id,2)" class="fa fa-times-circle Modal_color"></i>
+                                                </div>
+                                                <div class="desc">
+                                                    <img src="{{x.Src}}" style="height: 130px; min-width: 150px; max-width: 260px" />
+                                                </div>
+                                            </div>
+                                            <div class="describe_Cb" ng-show="true">
+                                                <a href="{{x.LinkUrl}}" title="{{x.Description}}" target="_blank" style="font-weight:700;color:#009999;">{{ x.Description.length>8? ((x.Description | limitTo:8)+"...") : x.Description}}</a>
+                                                <br>
+                                                <a href="{{'http://'+x.Domain}}" title="{{x.Domain}}" target="_blank"> <span style="font-weight: 600; color: #808080;">{{x.Domain.length>18? ((x.Domain | limitTo:18)+"...") : x.Domain }}</span></a>
+                                            </div>
+                                            <div class="describe_CA">
+                                                <div class="left">
+                                                    搜图{{(page_picSr-1)*pagesize_picSr+$index+1}}
+                                                </div>
+                                                <span class="subTitle_but right" ng-click="SetLinkStatus(x._id,1)">
+                                                    设为侵权
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row text-center pr20">
+                                <pagination boundary-links="true" class="pagination-sm" total-items="count_psr" items-per-page="pagesize_picSr" ng-change="GetImgSearchLinks_fun(page_picSr)" ng-model="page_picSr" max-size="5" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+                                </pagination>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+<div ng-include="'Scripts/app/views/common/alert.html'"></div>
+<script>
+    $(function () {
+        $('.fa-minus').click(function () {
+            var cardContent = $(this).parent().parent().parent('.main-panel').children('.main-panel-content');
+            if (cardContent.hasClass('active')) {
+                $(this).addClass('fa-minus');
+                $(this).removeClass('fa-plus');
+                $(cardContent).removeClass('active');
+            } else {
+                $(this).removeClass('fa-minus');
+                $(this).addClass('fa-plus');
+                $(cardContent).addClass('active');
+            }
+            cardContent.toggle(500);
+        });
+        //收藏
+    })
+</script>

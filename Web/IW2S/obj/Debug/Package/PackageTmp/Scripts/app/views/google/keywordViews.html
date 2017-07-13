@@ -1,0 +1,342 @@
+﻿<style>
+    /*跟其他文位置冲突样式*/
+    #keywordViews1 .list-group a:hover {
+        background-color: #009999;
+        color: #fff;
+        border: 1px solid #009999;
+    }
+</style>
+<div class="mt20 row" id="keywordViews1">
+    <div class="col-sm-3" ng-show="setUpIsactive">
+        <div class="main-panel">
+            <div class="main-panel-title" style="color: #808080;">
+                <span class="main-panel-text active" style="cursor: pointer">监测结果</span>
+                <a href="" title=""><i class="fa fa-minus"></i></a>
+                <a href="" title=""><i class="fa fa-refresh"
+                                       ng-click=""></i></a>
+                <a href="" title="导出监测结果" ng-click="ExportLevelLinks()"><i class="fa fa-download"></i></a>
+                <a href="" title="设置" ng-click="changesetUp()"><i class=" fa fa-cog"></i></a>
+            </div>
+            <div class="main-panel-content" id="demo" style="min-height:700px;max-height:700px">
+                <div class="keywords">
+                    <div class="list-group">
+                        <a href="" ng-class="{false: '', true: 'active'}[activeId==allIdArr1]" class="list-group-item "
+                           style="padding-left:20px;font-size:15px;"
+                           ng-click="ChangeInfriType('hasChoose')">
+                            {{GetPrjAnalysisItemName_list_name}}
+                        </a>
+                        <a href="" ng-repeat="x in $root.PrjAnalysisItemName_list"
+                           ng-class="{false: '', true: 'active'}[activeId==x._id]" class="list-group-item"
+                           title="{{x.Name}}" ng-click="ChangeInfriType(x._id)">
+                            {{x.Name.length>13? ((x.Name | limitTo:13)+"...") : x.Name }}
+                        </a>
+                        <a href="" ng-class="{false: '', true: 'active'}[activeId=='000000000000000000000000']"
+                           class="list-group-item" style="padding-left:20px;font-size:15px;"
+                           ng-click="ChangeInfriType('000000000000000000000000')">未选择链接标签
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="main-panel-footer" ng-mouseenter="$root.change_model(25,0)">
+                <div ng-include="'Scripts/app/views/common/c_menu3.html'"></div>
+                <div ng-include="'Scripts/app/views/common/footer-content.html'" ng-show="num==25"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3" ng-hide="setUpIsactive">
+        <div class="main-panel">
+            <div class="main-panel-title" style="color: #808080;">
+                <span class="main-panel-text " style="cursor: pointer" ng-click="changesetUp()">监测结果</span>
+                <a href="" title=""><i class="fa fa-minus"></i></a>
+                <a href="" title=""><i class="fa fa-refresh"
+                                       ng-click=""></i></a>
+                <a href="" title="导出监测结果" ng-click="ExportLevelLinks()"><i class="fa fa-download"></i></a>
+                <a href="" title="设置"><i class=" fa fa-cog"></i></a>
+            </div>
+            <div class="main-panel-content" id="demo" style="min-height:800px;max-height:800px">
+                <div class="keywords">
+                    <div class="main-panel mt10 mb10">
+                        <div class="main-panel-title">
+                            <span class="main-panel-text active">词组</span>
+                            <a href="" title=""><i class="fa fa-minus"></i></a>
+                            <a href="" title=""><i class="fa fa-refresh" ng-click=""></i></a>
+                        </div>
+                        <div class="main-panel-content" style="min-height: 250px; max-height:250px; ">
+                            <ul id="treeDemo" class="ztree"></ul>
+                        </div>
+                    </div>
+                    <div class="main-panel  mt10 mb10">
+                        <div class="main-panel-title">
+                            <span class="main-panel-text active">搜索词</span>
+                            <label style="float:right; font-weight:normal">
+                                <input type="checkbox" ng-model="ifCheckedKw" ng-click="allIdKw(ifCheckedKw)">全选
+                            </label>
+                        </div>
+                        <div class="main-panel-content" style=" min-height: 350px; max-height:350px; ">
+                            <div class="keywords">
+                                <div class="items">
+                                    <span ng-repeat="x in GetAllKeywordCategory_list">
+                                                    <label>
+                                                    <span class=" fa fa-circle"
+                                                          ng-class="{0: 'red', 1: 'orange', 2: 'green'}[x.BotStatus]">
+
+                                                    </span>
+                                                        {{x.name}}({{x.ValLinkCount}})
+                                                        <input type="checkbox" id={{x.id}} ng-model="isChkKw"
+                                                               ng-checked="ifCheckedKw"
+                                                               ng-click="pushIdKw(x.id,isChkKw)"
+                                                               style="position:relative;top:3px"/></label>
+                                        </span>
+
+                                </div>
+                            </div>
+                            <!--<div class="loadMore" ng-click="GetBaiduCommendKeywordPageMore()"-->
+                            <!--ng-show="isActiveLoadmore2">-->
+                            <!--加载更多...-->
+                            <!--</div>-->
+                        </div>
+                    </div>
+                    <!--<div class="main-panel">-->
+                    <!--<div class="main-panel-title">-->
+                    <!--<label style="font-weight:normal">-->
+                    <!--<input type="checkbox" ng-model="ischeckCollection">-->
+                    <!--<span class="main-panel-text active">从收藏链接中选择</span>-->
+                    <!--</label>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                </div>
+                <button type="button" class="btn btn-tea" style="width:100%;outline:none;" ng-click="cancelChange()">
+                    清除
+                </button>
+            </div>
+            <div class="main-panel-footer" ng-mouseenter="$root.change_model(26,0)">
+                <div ng-include="'Scripts/app/views/common/c_menu3.html'"></div>
+                <div ng-include="'Scripts/app/views/common/footer-content.html'" ng-show="num==26"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-9" ng-show="setUpIsactive">
+        <div class="main-panel">
+            <div class="main-panel-title">
+                <span class="main-panel-text active">监测结果链接详情</span>
+                <a href="" title=""><i class="fa fa-minus"></i></a>
+                <a href="" title=""><i class="fa fa-refresh"
+                                       ng-click=""></i></a>
+                <a href="" title=""><i class="fa fa-filter" ng-click="addkeywordFilterBaidu()"></i></a>
+                <a href="" title="已收藏链接" ng-click="showbaiduCollectionLinksView()"><i
+                    ng-class="{false: 'fa fa-star', true: 'fa fa-star-o'}[isActiveCollection2]"></i></a>
+
+                <form role="form" class="search-content-from" style="right:75px;">
+                    <div class="form-group search-content-input">
+                        <input type="text" class="form-control search-content" placeholder="请输入关键词"
+                               ng-model="BaiduLevelCollectionLinks1">
+                        <i class="fa fa-search"></i>
+                    </div>
+                </form>
+            </div>
+
+            <div class="main-panel-content" style="min-height:900px;max-height:none;">
+
+                <table class="table">
+                    <tr>
+                        <td style="border-top:none;"><a>链接标签</a></td>
+                        <td style="border-top:none;padding-left:22px;"><a>链接详情</a></td>
+                    </tr>
+                    <tr ng-repeat="z in resultList |filter:BaiduLevelCollectionLinks1">
+                        <td style="width:10%">
+                            <a title={{z.InfriLawCodeStr==null?'未选择标签':z.InfriLawCodeStr}} style="color:#099">{{(z.InfriLawCodeStr==null?
+                                '未选择标签' : z.InfriLawCodeStr).length>10? (((z.InfriLawCodeStr==null? '未选择标签' :
+                                z.InfriLawCodeStr) | limitTo:10)+"...") : (z.InfriLawCodeStr==null? '未选择标签' :
+                                z.InfriLawCodeStr) }}</a>
+                        </td>
+                        <td>
+                            <div class="baidu-cards" style="margin-bottom:0;">
+                                <div class="baidu-cards-title">
+                                    <a href={{z.LinkUrl}} target="_blank">
+                                        {{z.Title.length>50? ((z.Title | limitTo:50)+"...") : z.Title }}
+                                    </a><!--<em>保定市</em>-->
+                                    <a href="" class="collection">
+                                        <i ng-click="SetLinkStatus(z._id,'save')" class={{z._id}}
+                                           ng-class="{true: 'fa fa-star', false: 'fa fa-star-o'}[z.DataCleanStatus==1]"></i>&nbsp;<i
+                                        class="fa fa-trash-o" ng-click="SetLinkStatus(z._id,'delete')"></i>
+                                    </a>
+                                </div>
+                                <div class="baidu-cards-abstract" data-toggle="tooltip" data-placement="top"
+                                     title={{z.Description}}>
+                            <span class="baidu-cards-title-time">
+                                <!--{{z.CreatedAt| date:'yyyy-MM-dd'}} --->
+                                {{z.PublishTime| date:'yyyy-MM-dd'}}
+                            </span>{{z.Description.length>150? ((z.Description | limitTo:150)+"...") : z.Description }}
+                                </div>
+                                <div class="baidu-cards-footer">
+                                    <a href="" class="domain">{{z.Domain}}</a>
+                            <span class="domain-v" ng-show="z.BaiduVStar==1"
+                                  style="background-position: -888px -185px;"></span>
+                            <span class="domain-v" ng-show="z.BaiduVStar==2"
+                                  style="background-position: -910px -185px;"></span>
+                            <span class="domain-v" ng-show="z.BaiduVStar==3"
+                                  style="background-position: -932px -185px;"></span>
+                                    <a ng-show="z.IsMarket" href="" class=""> - 推广</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="row text-right pr20">
+                    <pagination boundary-links="true" class="pagination-sm" total-items="CollectionCount"
+                                items-per-page="pagesize11" ng-change="GetBaiduLevelLinksView()" ng-model="page11"
+                                max-size="5"
+                                previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+                    </pagination>
+                </div>
+            </div>
+
+            <div class="main-panel-footer" ng-mouseenter="$root.change_model(6,0)">
+                <div ng-include="'Scripts/app/views/common/c_menu.html'"></div>
+                <div ng-include="'Scripts/app/views/common/footer-content.html'" ng-show="num==6"></div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-sm-9" ng-hide="setUpIsactive">
+        <div class="main-panel">
+            <div class="main-panel-title">
+                <span class="main-panel-text active">监测结果链接详情 <a style="font-size:11px;color:#666;">&nbsp;设置链接标签可选择左侧过滤条件</a></span>
+                <a href="" title=""><i class="fa fa-minus"></i></a>
+                <a href="" title=""><i class="fa fa-refresh"
+                                       ng-click=""></i></a>
+                <a href="" title=""><i class="fa fa-filter" ng-click="addkeywordFilterBaidu()"></i></a>
+                <a href="" title="已收藏链接" ng-click="showbaiduCollectionLinksView()"><i
+                    ng-class="{false: 'fa fa-star', true: 'fa fa-star-o'}[isActiveCollection2]"></i></a>
+
+                <form role="form" class="search-content-from" style="right:75px;">
+                    <div class="form-group search-content-input">
+                        <input type="text" class="form-control search-content" placeholder="请输入关键词"
+                               ng-model="BaiduLevelCollectionLinks2">
+                        <i class="fa fa-search"></i>
+                    </div>
+                </form>
+            </div>
+
+            <div class="main-panel-content" style="min-height:900px;max-height:none;">
+                <table class="table">
+                    <tr>
+                        <td style="width:10%"></td>
+                        <td><span style="margin-left:15px;">更换链接标签:</span>
+                            <a style="margin-right:10px;" class="btn btn-tea btn-xs"
+                               ng-click="ChangeInfriType('000000000000000000000000')">未选择链接标签
+                            </a>
+                            <a style="margin-right:10px;" class="btn btn-tea btn-xs"
+                               ng-repeat="x in $root.PrjAnalysisItemName_list" title="{{x.Name}}"
+                               ng-click="ChangeInfriType(x._id)">
+                                {{x.Name.length>13? ((x.Name | limitTo:13)+"...") : x.Name }}
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border-top:none;">
+                            <label style="font-weight:normal">
+                                <input type="checkbox" ng-model="ifChecked" ng-click="allId(ifChecked)"/> 全选
+                            </label>
+                        </td>
+                        <td style="border-top:none;">
+                            <span style="margin-left:15px;">设置链接标签:</span>
+                            <select name="InfriType" ng-model="z.InfriLawCode"
+                                    ng-options="x.Key as x.Value for x in InfriTypes"
+                                    class="selectOption"
+                                    style="height: 25px;">
+                                <option value="">-- 请选择链接标签 --</option>
+                            </select>
+                            <a class="btn btn-tea btn-xs" style="margin:-3px 0 0 5px"
+                               ng-click="SetLinkInfriType(z.InfriLawCode)">确认</a>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="z in resultList |filter:BaiduLevelCollectionLinks2">
+                        <td>
+                            <input type="checkbox" ng-model="isChk" ng-checked="ifChecked"
+                                   ng-click="pushId(z._id,isChk,ifChecked)"/>
+                            <a title={{z.InfriLawCodeStr==null?'未选择标签':z.InfriLawCodeStr}} style="color:#099">{{(z.InfriLawCodeStr==null?
+                                '未选择标签' : z.InfriLawCodeStr).length>10? (((z.InfriLawCodeStr==null? '未选择标签' :
+                                z.InfriLawCodeStr) | limitTo:10)+"...") : (z.InfriLawCodeStr==null? '未选择标签' :
+                                z.InfriLawCodeStr) }}</a>
+                        </td>
+                        <td>
+                            <div class="baidu-cards" style="margin-bottom:0;">
+                                <div class="baidu-cards-title">
+                                    <a href={{z.LinkUrl}} target="_blank">
+                                        {{z.Title.length>50? ((z.Title | limitTo:50)+"...") : z.Title }}
+                                    </a><!--<em>保定市</em>-->
+                                    <a href="" class="collection">
+                                        <i ng-click="SetLinkStatus(z._id,'save')" class={{z._id}}
+                                           ng-class="{true: 'fa fa-star', false: 'fa fa-star-o'}[z.DataCleanStatus==1]"></i>&nbsp;<i
+                                        class="fa fa-trash-o" ng-click="SetLinkStatus(z._id,'delete')"></i>
+                                    </a>
+                                </div>
+                                <div class="baidu-cards-abstract" data-toggle="tooltip" data-placement="top"
+                                     title={{z.Description}}>
+                            <span class="baidu-cards-title-time">
+                                <!--{{z.CreatedAt| date:'yyyy-MM-dd'}} --->
+                                {{z.PublishTime| date:'yyyy-MM-dd'}}
+                            </span>{{z.Description.length>150? ((z.Description | limitTo:150)+"...") : z.Description }}
+                                </div>
+                                <div class="baidu-cards-footer">
+                                    <a href="" class="domain">{{z.Domain}}</a>
+                            <span class="domain-v" ng-show="z.BaiduVStar==1"
+                                  style="background-position: -888px -185px;"></span>
+                            <span class="domain-v" ng-show="z.BaiduVStar==2"
+                                  style="background-position: -910px -185px;"></span>
+                            <span class="domain-v" ng-show="z.BaiduVStar==3"
+                                  style="background-position: -932px -185px;"></span>
+                                    <a ng-show="z.IsMarket" href="" class=""> - 推广</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="row text-right pr20">
+                <pagination boundary-links="true" class="pagination-sm" total-items="CollectionCount"
+                            items-per-page="pagesize11" ng-change="GetBaiduLevelLinksView()" ng-model="page11"
+                            max-size="5"
+                            previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+                </pagination>
+            </div>
+
+            <div class="main-panel-footer" ng-mouseenter="$root.change_model(7,0)">
+                <div ng-include="'Scripts/app/views/common/c_menu.html'"></div>
+                <div ng-include="'Scripts/app/views/common/footer-content.html'" ng-show="num==7"></div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+<script>
+    $(function () {
+        $('.fa-minus').click(function () {
+            var cardContent = $(this).parent().parent().parent('.main-panel').children('.main-panel-content');
+            if (cardContent.hasClass('active')) {
+                $(this).addClass('fa-minus');
+                $(this).removeClass('fa-plus');
+                $(cardContent).removeClass('active');
+            } else {
+                $(this).removeClass('fa-minus');
+                $(this).addClass('fa-plus');
+                $(cardContent).addClass('active');
+            }
+            cardContent.toggle(500);
+        });
+        $("[data-toggle='tooltip']").tooltip();
+
+
+    })
+
+
+</script>
+<!--<script src="Scripts/app/scripts/js/dndTree.js"></script>-->
+

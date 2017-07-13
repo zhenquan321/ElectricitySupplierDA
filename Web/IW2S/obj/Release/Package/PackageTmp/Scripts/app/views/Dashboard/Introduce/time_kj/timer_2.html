@@ -1,0 +1,77 @@
+﻿
+<div lang="zh">
+    <div>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="Scripts/app_pc/views/plu_in/time_kj/css/prettify-1.0.css" rel="stylesheet">
+        <link href="Scripts/app_pc/views/plu_in/time_kj/css/base.css" rel="stylesheet">
+        <link href="Scripts/app_pc/views/plu_in/time_kj/css/bootstrap-datetimepicker.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="Scripts/app_pc/views/plu_in/time_kj/css/default.css">
+        <!--<script type="text/javascript" src="Scripts/app_pc/views/plu_in/time_kj/js/jquery-2.1.1.min.js"></script>-->
+        <!--<script type="text/javascript" src="Scripts/app_pc/views/plu_in/time_kj/js/bootstrap.min.js"></script>-->
+        <script src="Scripts/app_pc/views/plu_in/time_kj/js/moment-with-locales.js"></script>
+        <script src="Scripts/app_pc/views/plu_in/time_kj/js/bootstrap-datetimepicker.js"></script>
+    </div>
+<div>
+    <style>
+        .glyphicon {
+            top: 0 !important;
+            background-color: rgba(204, 204, 204, 0) !important;
+            color: #717171 !important;
+            border-color: #9aa8b9 !important;
+            width: 20px !important;
+            height: inherit !important;
+            float: none !important;
+        }
+        body{
+            font-size:14px;
+        }
+    </style>
+    <div class=""style="width:100%;">
+        <div class='row mt20 ml15'>
+            <div class="col-md-1" style=" line-height: 32px; font-size: 16px;">
+                从
+            </div>
+            <div class="col-md-10">
+                <div class="form-group">
+                    <div class='input-group date' id='datetimepicker6' style="width:200px;">
+                        <input type='text' class="form-control" style="width:200px;" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='row mt15 ml15'>
+            <div class="col-md-1"style=" line-height: 32px; font-size: 16px;">
+                到
+            </div>
+            <div class="col-md-10">
+                <div class="form-group">
+                    <div class='input-group date' id='datetimepicker7' style="width:200px;">
+                        <input type='text' class="form-control" style="width:200px;" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker6').datetimepicker();
+            $('#datetimepicker7').datetimepicker();
+            $("#datetimepicker6").on("dp.change", function (e) {
+                $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+            });
+            $("#datetimepicker7").on("dp.change", function (e) {
+                $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+            });
+        });
+    </script>
+    <script src="Scripts/app_pc/views/plu_in/time_kj/js/base.js"></script>
+    </div>
+</div>

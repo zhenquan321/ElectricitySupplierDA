@@ -1,0 +1,123 @@
+﻿<div ng-include="'Scripts/app/views/common/header2.html'"></div>
+<div class="wpl"style="margin-top:60px;">
+    <div class="=row">
+        <div class="col-md-9">
+            <div class="row" >
+                <div class="col-md-2">
+                    <div style="text-align:center;max-width:80px;float:right">
+                        <img src="Scripts/app/images/uploadpic.jpg" ng-if="!x.PictureSrc" style="display: inline-block; width: 100%; margin-bottom: 5px; border-radius: 50%; border: 1px solid #73a5a5; background: #fff; padding: 5px; box-shadow: 1px 1px 3px #b3b3b3; ">
+                        <img ng-src="{{x.PictureSrc}}" ng-if="x.PictureSrc" style="display: inline-block; width: 100%; margin-bottom: 5px; border-radius: 50%; border: 1px solid #73a5a5; background: #fff; padding: 5px; box-shadow: 1px 1px 3px #b3b3b3; ">
+                        <span style="font-weight:600;font-size:16px;color:#808080" ng-show="!x.Gender">{{x.UserName}}</span>
+                        <span style="font-weight:600;font-size:16px;color:#808080" ng-show="x.Gender">{{x.Gender}}</span>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <div class="main-panel">
+                        <div style="font-size: 15px; margin: 15px; margin-bottom: -8px;">
+                            来自外网<span style="font-weight:600;color:#009999;">酷推</span>
+                            <a class="del_share_m" title="删除分享" ng-show="x.UserId==$root.userID"><i class="fa fa-trash" ng-click="$root.DelShareToDiscover(x._id,x.ProjectId,x.UserId)"></i></a>
+                        </div>
+                        <div class="row" style="border: 1px solid #ccc; margin: 15px;">
+                            <div class="col-md-4" style="padding: 0px;">
+                                <img src="http://img1.tuicool.com/F3MFZ3i.jpg!web" style="width:100%;height:120px;" alt="描述" />
+                            </div>
+                            <div class="col-md-8" style="position: relative; color: #808080;">
+                                <div style="margin: 15px 20px;">
+                                    <a href="http://www.tuicool.com/articles/2yAJnyF" style="cursor:pointer">
+                                        <h4 style="margin-bottom:5px;">IBM：量子计算现在跟1940年代电脑差不多</h4>
+                                    </a>
+                                    <p style="height:60px;color:#525252">上周，IBM宣布通用量子计算机开始商用，许多人认为此举标志着项目已经从“IBM Research”移交给“IBM Systems”，之前只是研究项目...</p>
+                                </div>
+                                <div style="float: right; position: absolute; top: 97px; left: 215px; ">
+                                    ——分享时间：2017-02-03 08:21:11
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="main-panel-footer" ><!--ng-mouseenter="$root.change_model(x.ShareOperateType,x.SiteSource,x.ProjectId)" onmouseout="$(this).children('div').next('div').css('display','none');"-->
+                            <div ng-include="'Scripts/app/views/common/c_menu4.html'" onmouseover="$(this).next('div').css('display','block');"></div>
+                            <div style="display:none;" ng-include="'Scripts/app/views/common/footer-content2.html'" onmouseover="$(this).css('display','block');"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-repeat="x in $root.ShareToDiscover_list">
+                <div class="col-md-2">
+                    <div style="text-align:center;max-width:80px;float:right">
+                        <img src="Scripts/app/images/uploadpic.jpg" ng-if="!x.PictureSrc" style="display: inline-block; width: 100%; margin-bottom: 5px; border-radius: 50%; border: 1px solid #73a5a5; background: #fff; padding: 5px; box-shadow: 1px 1px 3px #b3b3b3; ">
+                        <img ng-src="{{x.PictureSrc}}" ng-if="x.PictureSrc" style="display: inline-block; width: 100%; margin-bottom: 5px; border-radius: 50%; border: 1px solid #73a5a5; background: #fff; padding: 5px; box-shadow: 1px 1px 3px #b3b3b3; ">
+                        <span style="font-weight:600;font-size:16px;color:#808080" ng-show="!x.Gender">{{x.UserName}}</span>
+                        <span style="font-weight:600;font-size:16px;color:#808080" ng-show="x.Gender">{{x.Gender}}</span>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <div class="main-panel">
+                        <div style="font-size: 15px; margin: 15px; margin-bottom: -8px;">来自项目<span style="font-weight:600;color:#009999;">{{x.ProjectName}}</span>
+                            <a class="del_share_m" title="删除分享" ng-show="x.UserId==$root.userID"><i class="fa fa-trash" ng-click="$root.DelShareToDiscover(x._id,x.ProjectId,x.UserId)"></i></a> </div>
+                             <div class="row" style="border: 1px solid #ccc; margin: 15px;">
+                                <div class="col-md-4" style="padding: 0px;">
+                                    <img src="Scripts/app/images/square-image.png" style="width:100%;height:120px;" alt="描述" />
+                                </div>
+                                <div class="col-md-8" style="position: relative; color: #808080;">
+                                    <div style="margin: 15px 20px;">
+                                        <a href="{{x.modelUrl+'?'+x.ProjectId}}" style="cursor:pointer">
+                                            <h4 style="margin-bottom:5px;">{{x.ProjectName}}<span style="color:#808080">——{{x.title_a}}</span></h4>
+                                        </a>
+                                            <p style="height:60px;color:#525252">{{ x.Content.length>80? ((x.Content | limitTo:80)+"...") : x.Content }}</p>
+                                        </div>
+                                    <div style="float: right; position: absolute; top: 97px; left: 215px; ">
+                                        ——分享时间：{{x.CreatedAt|date:'yyyy-MM-dd hh:mm:ss' }}
+                                    </div>
+                                </div>
+                            
+                        </div>
+                        <div class="main-panel-footer" ng-mouseenter="$root.change_model(x.ShareOperateType,x.SiteSource,x.ProjectId)"  ><!--onmouseout="$(this).children('div').next('div').css('display','none');"-->
+                            <div ng-include="'Scripts/app/views/common/c_menu4.html'" ></div><!--onmouseover="$(this).next('div').css('display','block');"-->
+                            <div  ng-include="'Scripts/app/views/common/footer-content2.html'" ></div><!--onmouseover="$(this).css('display','block');"-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb20" ng-show="active_more">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-10">
+                    <button type="button" class="btn btn-default" style="width: 100%; box-shadow: 0 3px 0 0 #d4d4d5 ,0 0 0 1px #d4d4d5; border: 0px; outline: #FFF;font-size:15px; " ng-click="$root.GetShareToDiscover_more()">加载更多</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div>
+                <div class="row"style="padding:0 8px 8px;">
+                    <div class="input-group">
+                        <input type="text" class="form-control search-iws ng-pristine ng-untouched ng-valid" ng-model="prjusrname" style="padding-left: 15px;height:36px;" placeholder="请输入搜索关键词">
+                        <span class="input-group-btn">
+                            <button class="btn btn-tea search-iws-button" type="button" ng-click="$root.GetShareToDiscover()" style="padding:7px 15px;">
+                                搜索
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="main-panel pb5">
+                <div style="font-size:13px;color:#808080;margin:10px;margin-bottom:5px;">猜您感兴趣</div>
+                <div class="row"style="margin: 0px 10px; cursor: pointer; border-bottom: 1px solid #d6d6d6;"ng-repeat="x in $root.ShareToDiscover_list_2">
+                    <div class="col-md-3" style="padding:7px">
+                        <img src="Scripts/app/images/uploadpic.jpg" ng-if="!x.PictureSrc" style="display: inline-block; width: 90%;  border-radius: 50%; border: 1px solid #73a5a5; background: #fff; padding: 0px; box-shadow: 1px 1px 3px #b3b3b3; ">
+                        <img ng-src="{{x.PictureSrc}}" ng-if="x.PictureSrc" style="display: inline-block; width: 90%; border-radius: 50%; border: 1px solid #73a5a5; background: #fff; padding: 0px; box-shadow: 1px 1px 3px #b3b3b3; ">
+                    </div>
+                    <div class="col-md-9"style="padding:5px">
+                        <div style="" ><a href="{{x.modelUrl+'?'+x.ProjectId}}"><span style="font-weight:600;color:#009999;" title="{{x.ProjectName}}">{{ x.ProjectName.length>13? ((x.ProjectName | limitTo:13)+"...") : x.ProjectName }}</span></a></div>
+                        <div style="font-size:12px;"><span style="height:60px;color:#525252">{{ x.Content.length>30? ((x.Content | limitTo:30)+"...") : x.Content }}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+</div>
+
+<div ng-include="'Scripts/app/views/common/alert.html'"></div>
+
+

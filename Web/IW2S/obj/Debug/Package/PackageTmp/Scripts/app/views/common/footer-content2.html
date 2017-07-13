@@ -1,0 +1,144 @@
+﻿<div class="footer-content">
+    <div ng-show="$root.isActive_change==1+$index*100" class="content1">
+        <div class="row mt10 mb10 rizhi" ng-repeat="y in $root.OperateLog_list">
+            <div class="col-sm-1 col-sm-2 col-md-2 img_u " style=" padding: 0px !important; margin-left:10px !important;">
+                <div>
+                    <img src="Scripts/app/images/pie.png" style="width:70%" alt="用户头像" />
+                </div>
+            </div>
+            <div class="col-sm-10 col-sm-10 col-md-10 content_u">
+                <h4 style="color:#808080;margin-bottom:0px">{{y.UserName}}</h4>
+                <p>
+                    用户{{y.UserName}}进行了{{y.ShareOperateType}}操作。
+                </p>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="publish_time">操作于：{{y.CreatedAt|date:'yyyy-MM-dd hh:mm:ss' }}</div>
+                    </div>
+                    <div class="col-sm-0">
+                        <div style="float:right" class="mr10">
+                            <!--<a href=""><i class="fa fa-thumbs-up">{{12}}</i></a>-->
+                            <!--<a href=""><i class="fa fa-commenting"></i></a>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-show="$root.isActive_change==2+$index*100">
+        <div class="content1">
+            <div class="row mt10 mb10 rizhi" ng-repeat="x in $root.OperateComment_list">
+                <div class="col-lg-1 col-sm-3 col-md-3 img_u" style=" padding: 0px !important; margin-left: 10px !important;">
+                    <div>
+                        <img src="Scripts/app/images/pie.png" style="" alt="用户头像" />
+                    </div>
+                </div>
+                <div class="col-lg-10 col-sm-9 col-md-9  content_u">
+                    <h4 style="color:#808080;margin-bottom:0px">{{x.UserName}}</h4>
+                    <p>
+                        {{x.Comment}}
+                    </p>
+                    <div class="row">
+                        <div class="col-sm-9" style="padding:0 0 0 8px;">
+                            <div class="publish_time">留言于：{{x.CreatedAt|date:'yyyy-MM-dd hh:mm:ss' }}</div>
+                        </div>
+                        <div class="col-sm-3" style="padding:0px;">
+                            <div style="float:right" class="mr10">
+                                <!--<a href=""><i class="fa fa-thumbs-up" title="赞">{{12}}</i></a>-->
+                                <a href=""><i class="fa fa-commenting" title="回复" ng-click="$root.huifu()" style="margin-left:5px;"></i></a>
+                                <a href=""><i class="fa fa-trash" title="删除留言" ng-click="$root.DelComment(x._id)" style="margin-left:5px;"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="border-top: 1px solid #EFEFEF; background-color: #fff; padding: 10px;" ng-if="!$root.pinglun&&$root.isActive_change==2">
+            <input type="text" class="form-control" placeholder="添加留言" ng-click="$root.huifu()">
+        </div>
+        <div class="row" style="border-top: 1px solid #EFEFEF; background-color: #fff; padding: 10px 10px 0;" ng-if="$root.pinglun">
+            <textarea id="textarea_ping" class="form-control" rows="2" placeholder="输入留言内容" ng-model="$root.Comment" onmouseover="$(this).focus();"></textarea>
+            <div>
+                <button type="button" class="btn btn-tea" ng-click="$root.InsertComment()" style="margin: 5px 0px 8px;padding:3px 12px;">留 言</button>
+                <button type="button" class="btn btn-cancle" ng-click="$root.huifu_close()" style="margin: 5px 0px 8px;padding:3px 12px;">取 消</button>
+            </div>
+        </div>
+    </div>
+    <div ng-show="$root.isActive_change==4+$index*100">
+        <div class="content1">
+            <div class="row mt10 mb10 rizhi" ng-repeat="x in $root.ShareOutComment_list">
+                <div class="col-lg-1 col-sm-2 col-md-2 img_u" style=" padding: 0px !important; margin-left: 10px !important;">
+                    <div>
+                        <img src="Scripts/app/images/pie.png" style="width:70%" alt="用户头像" />
+                    </div>
+                </div>
+                <div class="col-lg-10 col-sm-10 col-md-10  content_u">
+                    <h4 style="color:#808080;margin-bottom:0px">{{x.UserName}}</h4>
+                    <p>
+                        {{x.Comment}}
+                    </p>
+                    <div class="row">
+                        <div class="col-sm-9" style="padding:0 0 0 8px;">
+                            <div class=" publish_time">评论于：{{x.CreatedAt|date:'yyyy-MM-dd hh:mm:ss' }}</div>
+                        </div>
+                        <div class="col-sm-3" style="padding:0px;">
+                            <div style="float:right" class="mr10">
+                                <!--<a href=""><i class="fa fa-thumbs-up" title="赞">{{12}}</i></a>-->
+                                <a href=""><i class="fa fa-commenting" title="回复" ng-click="$root.huifu()" style="margin-left:5px;"></i></a>
+                                <a href="" ng-show="x.UserId==$root.userID"><i class="fa fa-trash" title="删除评论" ng-click="$root.DelShareOutComment(x._id)" style="margin-left:5px;"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="border-top: 1px solid #EFEFEF; background-color: #fff; padding: 10px;" ng-if="!$root.pinglun&&$root.isActive_change==4+$index*100">
+            <input type="text" class="form-control" placeholder="添加评论" ng-click="$root.huifu()">
+        </div>
+        <div class="row" style="border-top: 1px solid #EFEFEF; background-color: #fff; padding: 10px 10px 0;" ng-if="$root.pinglun">
+            <textarea id="textarea_ping" class="form-control" rows="2" placeholder="输入评论内容" ng-model="$root.ShareOutComment" onmouseover="$(this).focus();"></textarea>
+            <div>
+                <button type="button" class="btn btn-tea" ng-click="$root.InsertShareOutComment()" style="margin: 5px 0px 8px;padding:3px 12px;">评 论</button>
+                <button type="button" class="btn btn-cancle" ng-click="$root.huifu_close()" style="margin: 5px 0px 8px;padding:3px 12px;">取 消</button>
+            </div>
+        </div>
+    </div>
+    <div ng-show="$root.isActive_change==3+$index*100">
+        <div class="content1">
+            <div class="row">
+                <div class="header_share">
+                    <ul>
+                        <li title="分享到微信" ng-click="$root.GetQRCode()"><i ng-class="{true: 'select_wenxin', false: ''}[$root.erweima !=''&&$root.erweima!=undefined]" class="fa fa-weixin " onmouseover="$(this).css('color', '#5FCA7E')" onmouseout="$(this).css('color', '#808080')"></i></li>
+                        <li title="分享到微博"><i class="fa fa-weibo" onmouseover="$(this).css('color', '#F95B4F')" onmouseout="$(this).css('color', '#808080')"></i></li>
+                        <li title="分享到QQ"><i class="fa fa-qq" onmouseover="$(this).css('color', '#4FC9F8')" onmouseout="$(this).css('color', '#808080')"></i></li>
+                        <li title="分享到腾讯微博"><i class="fa fa-tencent-weibo" onmouseover="$(this).css('color', '#22AEE8')" onmouseout="$(this).css('color', '#808080')"></i></li>
+                        <li title="分享到人人网"><i class="fa fa-renren" onmouseover="$(this).css('color', '#437DC8')" onmouseout="$(this).css('color', '#808080')"></i></li>
+                    </ul>
+                </div>
+            </div>
+            <div ng-show="$root.erweima">
+                <hr style="margin: 0px; border-top: 1px solid #B5B5B5; " />
+                <div class="weixin_erwema">
+                    <img src="{{$root.erweima}}" alt="微信二维码" />
+                    <div class="shuoming">
+                        请用微信扫描上图二维码！
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-show="$root.isActive_change==5+$index*100" class="share_out">
+        <div class="title">
+            <div class="title_1" ng-class="{true: 'active_22', false: ''}[$root.share_out]" ng-click="$root.chang_shareout(1)">分享到发现</div>
+            <!--<div class="title_1" ng-class="{true: 'active_22', false: ''}[!$root.share_out]" ng-click="$root.chang_shareout(2)">分享指定用户</div>-->
+        </div>
+        <div ng-show="$root.share_out">
+            <textarea id="textarea_ping" class="form-control" rows="2" placeholder="添加描述" ng-model="$root.ShareOutContent" onmouseover="$(this).focus();"></textarea>
+            <button type="button" class="btn btn-tea" ng-click="$root.InsertShareToDiscover()" style="margin: 5px 0px 8px;padding:3px 12px;">分 享</button>
+            <button type="button" class="btn btn-cancle" ng-click="$root" style="margin: 5px 0px 8px;padding:3px 12px;">取 消</button>
+        </div>
+        <div ng-hide="$root.share_out">
+
+        </div>
+    </div>
+</div>

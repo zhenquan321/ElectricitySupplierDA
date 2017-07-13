@@ -1,0 +1,47 @@
+﻿<style>
+    .modal-lg {
+        margin-top: 9%;
+    }
+</style>
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()">
+        &times;
+    </button>
+    <h4 class="modal-title" id="myModalLabel">
+        <span style="color:#099;font-weight:600">{{gzhname}}</span>发布的文章<i class="fa fa-question-circle" title=""></i>
+    </h4>
+</div>
+<div class="modal-body">
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th style="text-align:center">序号</th>
+                <th>标题</th>
+                <th style="text-align:center">命中关键词数</th>
+                <th style="text-align:center">阅读量</th>
+                <th style="text-align:center">点赞数</th>
+                <th style="text-align:center">评论数</th>
+                <th style="text-align:center">影响力指数</th>
+            </tr>
+        </thead>
+        <tbody style=" border-bottom: 1px solid #ccc;">
+            <tr ng-repeat="x in SAlist">
+                <th style="text-align:center">{{$index+1+(page-1)*pagesize}}</th>
+                <td style="max-width:400px"><a href="{{x.Url}}" target="_blank">{{x.Title}}</a></td>
+                <td style="text-align:center">{{x.KeywordNum}}</td>
+                <td style="text-align:center">{{x.ReadNum}}</td>
+                <td style="text-align:center">{{x.LikeNum}}</td>
+                <td style="text-align:center">{{x.CommentNum}}</td>
+                <td style="text-align:center">{{x.InfluenceNum}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="row text-right pr20">
+    <pagination boundary-links="true" class="pagination-sm" total-items="SAlistCount"
+                items-per-page="pagesize" ng-change="GetLinkInfoByName()" ng-model="page"
+                max-size="5" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;"
+                last-text="&raquo;">
+    </pagination>
+</div>

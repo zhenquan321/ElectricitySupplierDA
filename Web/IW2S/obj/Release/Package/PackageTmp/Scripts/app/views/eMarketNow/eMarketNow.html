@@ -1,0 +1,798 @@
+﻿<!--监测效果-->
+<style>
+    .form .item {
+        margin: 0px 0;
+    }
+
+    .ui.menu .red.active.item, .ui.red.menu .active.item {
+        border-color: #099 !important;
+        color: #099 !important;
+    }
+
+    .gray {
+        color: rgba(112, 112, 112, 0.91);
+    }
+
+    i.active515 {
+        color: #099 !important;
+    }
+
+    .ui.compact.table td {
+        padding: .4em .7em;
+    }
+
+    .ui.dropdown .menu > .item {
+        text-align: center !important;
+    }
+</style>
+
+
+<div class="ui jiance dimmer modals page transition" id="qidong">
+    <div class="ui standard test modal transition visible active" style="margin-top: -242px;height:420px;">
+        <div class="header">
+            监测详情
+            <i id="closeModal" class="fa fa-close" style="float:right;"></i>
+        </div>
+        <div class="row content">
+            <div class="ui grid">
+                <div class="ui medium image  six wide column" style="display: inline-block;">
+                    <img ng-src={{imglinks}}>
+                </div>
+                <div class="description ten wide column" style="display: inline-block;padding-right:45px;">
+                    <div class="ui success message"
+                         style=" padding-left: 0px; box-shadow: 0 0 0 0px rgba(34,36,38,.22) inset,0 0 0 0 transparent; background-color: #fff; height: 100px;">
+                        <div class="header" style="padding-bottom: 8px; ">
+                            <span ng-show="showStart">启动成功！</span>
+                            <span ng-hide="showStart">监测完成！</span>
+                        </div>
+                        <p style="color:#333" ng-show="showStart">
+                            您提交的关键词<b style="color:red">“{{keywords111}}”</b>已进入监测列队！<br/>
+                            小e即刻为您执行搜索...
+                        </p>
+
+                        <p style="color:#333" ng-hide="showStart">
+                            监测已完成,点击<a ng-click="chakan()" style="cursor:pointer;">查看结果</a>！
+                        </p>
+                    </div>
+
+                    <div class="ui form">
+                        <div class="field">
+                            <label style=" font-size: 1.14285714em;">监测日志:</label>
+                            <textarea id="txt22" style="font-size: 10px; resize: none;border:0"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="ui grid keywordHtml transition " id="KeyMenu" ng-style="KeyMenu" style="margin-top:20px">
+
+    <div class="ui col-sm-3">
+        <div id="fixedDiv">
+            <div class="main-panel" style="height:550px !important;">
+                <div class="main-panel-title">
+                    <span class="main-panel-text active">历史搜索</span>
+                    <a class="gray" href="" title=""><i class="fa fa-minus fa-minus1"></i></a>
+                    <a class="gray" href="" title=""><i class="fa fa-refresh" ng-click=""></i></a>
+
+                    <form role="form" class="search-content-from" style="right:40px;">
+                        <div class="form-group search-content-input">
+                            <input type="text" class="form-control search-content" id="name9" placeholder="请输入关键词"
+                                   ng-model="historyBaidu1">
+                            <i class="fa fa-search"></i>
+                        </div>
+                    </form>
+                </div>
+                <div class="main-panel-content collapse111" style="max-height:880px !important;">
+                    <div class="ui  inverted mini  dimmer" ng-class="{true: 'active', false: ''}[isActiveAdd50]">
+                        <div class="ui text loader">加载中...</div>
+                    </div>
+                    <div class="keywords">
+                        <div class="items">
+                                <span ng-repeat="x in keywordList | filter:historyBaidu1">
+                                    <a href="" onmouseover="$(this).children('i').show()"
+                                       onmouseout="$(this).children('i').hide()" ng-click="details(x._id,x.TaskName)"
+                                       ng-class="{true: 'active', false: 'inactive'}[$root.keyName==x.TaskName]">
+                                        <!--<span class=" fa fa-circle" ng-class="{0: 'red', 1: 'orange', 2: 'green'}[x.BotStatus]"></span>-->
+                                        {{x.TaskName}}<i ng-click="removeKeyword(x._id)" style="display: none;"
+                                                         class="fa fa-close"></i>
+                                    </a>
+                                </span>
+                        </div>
+                    </div>
+                    <div class="loadMore" ng-click="GetMoreTaobaoKeyword()"
+                         ng-show="isActiveLoadmore">
+                        加载更多...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui col-sm-9 " id="qy_name" style="margin-bottom:70px!important;">
+        <!--<div class="sixteen wide column">
+            <div class="ui segment">
+
+                <br />
+                <div class="ui secondary pointing menu" style="margin-top:-25px;">
+                    <a class="item red" ng-class="{true: 'active', false: ''}[isActive]" ng-click="changeSUK()">货号SKU </a>
+                    <a class="item red" ng-class="{true: 'active', false: ''}[!isActive]" ng-click="changeName()">名称 </a>
+                </div>
+                <br />
+
+
+
+                <div class="ui form" ng-hide="isActive">
+                    <div class="inline fields">
+                        <div class="eight wide field">
+                            <label style="width:34px;">品牌</label>
+                            <input type="text" ng-model="pinpai" placeholder="香奈儿，耐克..." ng-keypress="EnterPress(event)">
+                        </div>
+                        <div class="eight wide field">
+                            <label style="width:34px;">类别</label>
+                            <input type="text" ng-model="liebie" placeholder="香水，鞋子..." ng-keypress="EnterPress(event)">
+                        </div>
+
+                    </div>
+                    <div class="inline fields">
+                        <div class="eight wide field">
+                            <label style="width:34px;">型号</label>
+                            <input type="text" ng-model="xinghao" placeholder="NikeAirHuaracheiD..." ng-keypress="EnterPress(event)">
+                        </div>
+                        <div class="eight wide field">
+                            <label style="width:34px;">价格</label>
+                            <input type="text" ng-model="junjia" placeholder="￥120.00..." ng-keypress="EnterPress(event)">
+                        </div>
+
+                    </div>
+                    <br />
+
+                    <div style="text-align:center">
+                        <a class="ui  right  label label2" style=" border: 1px solid #c5c5c5; margin-top: 10px;">
+                            <div class="ui dropdown">
+                                <div class="text ">每日一次</div>
+                                <i class="dropdown icon"></i>
+                                <div class="menu" style="position:absolute;top:23px;left:-10px; z-index:1000 !important;">
+                                    <div class="item" ng-click="changeTimes(24)">每日一次</div>
+                                    <div class="divider"></div>
+                                    <div class="item" ng-click="changeTimes(24*7)">每周一次</div>
+                                    <div class="divider"></div>
+                                    <div class="item" ng-click="changeTimes(24*30)">每月一次</div>
+                                </div>
+                            </div>
+                        </a>
+                        <button class="ui big teal button" ng-click="insertKeyword()">启动监测</button>
+
+                    </div>
+                </div>
+
+
+
+                <div class="ui form" ng-show="isActive">
+                    <div class="inline fields">
+                        <div class="eight wide field">
+                            <label style="width:70px;">货号SKU</label>
+                            <input type="text" ng-model="SKU" placeholder="642821-401,..." ng-keypress="EnterPress(event)">
+                        </div>
+                        <div class="eight wide field">
+                            <label style="width:34px;">价格</label>
+                            <input type="text" ng-model="jiage" placeholder="￥120.00..." ng-keypress="EnterPress(event)">
+                        </div>
+                    </div>
+                    <br />
+                    <div style="text-align:center">
+                        <a class="ui  right  label label2" style=" border: 1px solid #c5c5c5; margin-top: 10px;">
+                            <div class="ui dropdown">
+                                <div class="text ">每日一次</div>
+                                <i class="dropdown icon"></i>
+                                <div class="menu" style="position:absolute;top:23px;left:-10px; z-index:1000 !important;">
+                                    <div class="item" ng-click="changeTimes(24)">每日一次</div>
+                                    <div class="divider"></div>
+                                    <div class="item" ng-click="changeTimes(24*7)">每周一次</div>
+                                    <div class="divider"></div>
+                                    <div class="item" ng-click="changeTimes(24*30)">每月一次</div>
+                                </div>
+                            </div>
+                        </a>
+                        <button class="ui big teal button" ng-click="insertKeyword()">启动监测</button>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>-->
+        <div class="ui segment" id="qy_name4">
+            <div class="ui special cards">
+                <div style="width:100%;margin:12px 10px 18px 10px;">
+                    <!--<a class="ui red right ribbon label">概况</a>-->
+                    <div class="ui secondary pointing menu">
+                        <a class="item red active">市场概况</a><span class="item_remark">系统默认搜索淘宝前20页商铺链接</span>
+                        <a class="gray" style="position:absolute; top:22px;right:20px;" href="" title=""><i
+                            class="fa fa-minus fa-minus2"></i></a>
+                        <a class="gray" style="position:absolute; top:22px;right:40px;" href="" title=""><i
+                            class="fa fa-refresh"
+                            ng-click="AllAccount()"></i></a>
+                    </div>
+
+                    <div class="ui grid collapse222">
+                        <div class="two column row">
+                            <div class="col-sm-4 pl20">
+                                <div class="ui special cards" style="padding-bottom: 7px;">
+                                    <div class="card">
+                                        <div class="ui inverted mini"
+                                             ng-class="{true: 'active', false: ''}[isActiveImg]">
+                                            <div class="ui text loader">加载中...</div>
+                                        </div>
+                                        <div class="image disabled " style="min-height:230px;">
+                                            <img title="产品名" ng-src="{{GetImgLink}}">
+                                        </div>
+                                        <div class="content"
+                                             style="line-height:30px;padding-bottom: 4px;padding-top: 10px;">
+                                                    <span class="header">{{$root.keyName.length>13 ? (($root.keyName  | limitTo:13)+"...") : $root.keyName}} 
+                                                         <a class="picShow_Fright"
+                                                            ng-click="changePic_show()">查看更多图片</a>
+                                                    </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8" ng-show="isActive_pic">
+
+                                <div>
+                                    <i class="fa fa-remove picShow_idel" ng-click="changePic_hide()"></i>
+                                </div>
+                                <div class="ui special cards">
+                                    <div class="card" style="width:100px;height:100px;margin-bottom:20px"
+                                         ng-repeat="x in GetImgLink_all">
+                                        <div class="dimmable image">
+                                            <img ng-src="{{x}}">
+                                        </div>
+                                        <div class="ui bottom attached button picShow_but" ng-click="changePic_d(x)">
+                                            更换
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8" ng-show="!isActive_pic">
+                                <div class="ui comments">
+                                    <div class="ui  inverted mini  dimmer"
+                                         ng-class="{true: 'active', false: ''}[isActiveFive]">
+                                        <div class="ui text loader">加载中...</div>
+                                    </div>
+                                    <div class="ui grid">
+                                        <div class="two column row" id="overview">
+                                            <div class="col-sm-6" id="overview_left">
+                                                <div class="comment">
+                                                    <a class="avatar " id="avatar_img">
+                                                        <img src="Scripts/app/images/link.png"/>
+                                                    </a>
+
+                                                    <div class="content">
+                                                        <a class="author">在售链接数</a>
+
+                                                        <div class="ui text teal value value_1" id="content_value1">0
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="comment">
+                                                    <a class="avatar " id="avatar_img">
+                                                        <img src="Scripts/app/images/sales_mo.PNG"/>
+                                                    </a>
+
+                                                    <div class="content">
+                                                        <a class="author">30天付款人数</a>
+
+                                                        <div class="ui text teal value value_3" id="content_value3">0
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="comment">
+                                                    <a class="avatar " id="avatar_img">
+                                                        <img src="Scripts/app/images/store.png"/>
+                                                    </a>
+
+                                                    <div class="content">
+                                                        <a class="author">在售店铺数</a>
+
+                                                        <div class="ui text teal value value_2" id="content_value2">0
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <div class="comment">
+                                                    <a class="avatar " id="avatar_img">
+                                                        <img src="Scripts/app/images/pie.png"/>
+                                                    </a>
+
+                                                    <div class="content">
+                                                        <a class="author">有销量链接占比</a>
+
+                                                        <div class="ui text teal value value_6"><span
+                                                            id="content_value6">0</span><i
+                                                            class="fa fa-percent" style="font-size: 18px;"></i></div>
+                                                    </div>
+                                                </div>
+                                                <div class="comment">
+                                                    <a class="avatar " id="avatar_img">
+                                                        <img src="Scripts/app/images/sales_no.png"/>
+                                                    </a>
+
+                                                    <div class="content">
+                                                        <a class="author">30天销售额(元）</a>
+
+                                                        <div class="ui text teal value value_4"><i
+                                                            class=" rmbf fa fa-cny"></i><span
+                                                            id="content_value4">0</span></div>
+                                                    </div>
+                                                </div>
+                                                <div class="comment">
+                                                    <a class="avatar " id="avatar_img">
+                                                        <img src="Scripts/app/images/products.png"/>
+                                                    </a>
+
+                                                    <div class="content">
+                                                        <a class="author">30天销售均价(元)</a>
+
+                                                        <div class="ui text teal value value_5"><i
+                                                            class=" rmbf fa fa-cny"></i><span
+                                                            id="content_value5">0</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui segment">
+            <a class="ui  right  label label2"
+               style=" border: 1px solid #c5c5c5; margin-bottom: -25px; position: absolute; top: 14px; right: 60px;">
+                <div class="ui dropdown">
+                    <div class="text ">TOP10店铺</div>
+                    <i class="dropdown icon"></i>
+
+                    <div class="menu" style="position:absolute;top:23px;left:-10px; z-index:1000 !important;">
+                        <div class="item" ng-click="GetBubbleList(10)">TOP10店铺</div>
+                        <div class="item" ng-click="GetBubbleList(20)">TOP20店铺</div>
+                        <div class="item" ng-click="GetBubbleList(50)">TOP50店铺</div>
+                        <div class="item" ng-click="GetBubbleList(100)">TOP100店铺</div>
+                        <div class="divider"></div>
+                        <div class="item" ng-click="GetBubbleList()">所有店铺</div>
+                    </div>
+                </div>
+            </a>
+            <a class="gray" style="position:absolute; top:22px;right:20px;" href="" title=""><i
+                class="fa fa-minus fa-minus3"></i></a>
+            <a class="gray" style="position:absolute; top:22px;right:40px;" href="" title=""><i class="fa fa-refresh"
+                                                                                                ng-click="RefreshGetBubbleList()"></i></a>
+
+            <div class="ui secondary pointing menu" style="margin-top:5px;">
+                <a class="item red active">在售店铺详情</a>
+
+            </div>
+            <div id="GetBubbleList" class="collapse333" style="width: 810px; height:450px;"></div>
+
+        </div>
+
+        <div class="ui segment" ng-show="isActiveditu">
+            <a class="ui  right  label label2"
+               style="border: 1px solid #c5c5c5; margin-bottom: -25px; position: absolute; top: 14px; right: 60px; ">
+                <div class="ui dropdown">
+                    <div class="text ">TOP10地区</div>
+                    <i class="dropdown icon"></i>
+
+                    <div class="menu" style="position:absolute;top:23px;left:-10px; z-index:1000 !important;">
+                        <div class="item" ng-click="chainMap(10)">TOP10地区</div>
+                        <div class="item" ng-click="chainMap(20)">TOP20地区</div>
+                        <div class="item" ng-click="chainMap(50)">TOP50地区</div>
+                        <div class="item" ng-click="chainMap(100)">TOP100地区</div>
+                        <div class="divider"></div>
+                        <div class="item" ng-click="chainMap()">所有地区</div>
+                    </div>
+                </div>
+            </a>
+            <a class="gray" style="position:absolute; top:22px;right:20px;" href="" title=""><i
+                class="fa fa-minus fa-minus4"></i></a>
+            <a class="gray" style="position:absolute; top:22px;right:40px;" href="" title=""><i class="fa fa-refresh"
+                                                                                                ng-click="RefreshchainMap()"></i></a>
+
+            <div class="ui secondary pointing menu" style="margin-top:5px;">
+                <a class="item red active" ng-click="changeMap_show()">国内地区销售额</a>
+                <a class="item red " ng-click="changeMap_hide()">世界地区销售额</a>
+            </div>
+            <div class="ui grid collapse444 row">
+                <div class="col-sm-7">
+                    <div id="chainMap" style="width:510px;height:400px;"></div>
+                </div>
+                <div class="col-sm-5 table_tu ">
+                    <div style="height: 370px; overflow-y: auto; ">
+                        <table class="ui very basic compact  table" style="padding-right: 20px;padding:15px 0;">
+                            <thead>
+                            <tr>
+                                <th>序号</th>
+
+                                <th style="position:relative">
+                                    地区
+                                    <i class="fa fa-search" ng-click="isActiveDDFun()"
+                                       style="margin-left: 5px; cursor:pointer"
+                                       ng-class="{true: 'active515', false: ''}[isActiveDD]"></i>
+
+                                    <form role="form" class="search-content-from"
+                                          style="position: absolute; top: 20px; left: 9px; z-index: 1200; width: 100px;"
+                                          ng-show="isActiveDD">
+                                        <div class="form-group search-content-input">
+                                            <input type="text" class="form-control search-content2" id="name9e"
+                                                   ng-model="historyBaidu2"
+                                                   style="height:24px;">
+                                            <i class="fa fa-search" style="top:5px;"></i>
+                                        </div>
+                                    </form>
+                                </th>
+
+                                <th style="position:relative">
+                                    销售额
+                                    <!--<i class="fa fa-search" ng-click="isActiveSSFun()" style="margin-left: 5px; cursor:pointer" ng-class="{true: 'active515', false: ''}[isActiveSS]"></i>
+                                    <form role="form" class="search-content-from" style="position: absolute; top: 20px; left: 9px; z-index: 1200; width: 100px;" ng-show="isActiveSS">
+                                        <div class="form-group search-content-input">
+                                            <input type="text" class="form-control search-content2" id="name9e" ng-model="historyBaidu3" style="height:24px;">
+                                            <i class="fa fa-search" style="top:5px;"></i>
+                                        </div>
+                                    </form>-->
+                                </th>
+
+                            </tr>
+                            </thead>
+                            <tbody ng-repeat="x in GetciteLists | filter:historyBaidu2 | filter:historyBaidu3">
+                            <tr>
+                                <td>
+                                    {{$index+1}}
+                                </td>
+                                <td>
+                                    {{x.Location }}
+                                </td>
+                                <td>
+                                    {{x.SalesVolume}}
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui segment" ng-hide="isActiveditu">
+            <a class="ui  right  label label2"
+               style="border: 1px solid #c5c5c5; margin-bottom: -25px; position: absolute; top: 14px; right: 60px; ">
+                <div class="ui dropdown">
+                    <div class="text ">TOP10地区</div>
+                    <i class="dropdown icon"></i>
+
+                    <div class="menu" style="position:absolute;top:23px;left:-10px; z-index:1000 !important;">
+                        <div class="item" ng-click="chainMap(10)">TOP10地区</div>
+                        <div class="item" ng-click="chainMap(20)">TOP20地区</div>
+                        <div class="item" ng-click="chainMap(50)">TOP50地区</div>
+                        <div class="item" ng-click="chainMap(100)">TOP100地区</div>
+                        <div class="divider"></div>
+                        <div class="item" ng-click="chainMap()">所有地区</div>
+                    </div>
+                </div>
+            </a>
+            <a class="gray" style="position:absolute; top:22px;right:20px;" href="" title=""><i
+                class="fa fa-minus fa-minus4"></i></a>
+            <a class="gray" style="position:absolute; top:22px;right:40px;" href="" title=""><i class="fa fa-refresh"
+                                                                                                ng-click="RefreshchainMap()"></i></a>
+
+            <div class="ui secondary pointing menu" style="margin-top:5px;">
+                <a class="item red" ng-click="changeMap_show()">国内地区销售额</a>
+                <a class="item red active" ng-click="changeMap_hide()">世界地区销售额</a>
+            </div>
+            <div class="ui grid collapse444 row">
+                <div class="col-sm-7">
+                    <div id="worldMap" style="width:510px;height:400px;"></div>
+                </div>
+                <div class="col-sm-5 table_tu ">
+                    <div style="height: 370px; overflow-y: auto; ">
+                        <table class="ui very basic compact  table" style="padding-right: 20px;padding:15px 0;">
+                            <thead>
+                            <tr>
+                                <th>序号</th>
+
+                                <th style="position:relative">
+                                    地区
+                                    <i class="fa fa-search" ng-click="isActiveDDFun()"
+                                       style="margin-left: 5px; cursor:pointer"
+                                       ng-class="{true: 'active515', false: ''}[isActiveDD]"></i>
+
+                                    <form role="form" class="search-content-from"
+                                          style="position: absolute; top: 20px; left: 9px; z-index: 1200; width: 100px;"
+                                          ng-show="isActiveDD">
+                                        <div class="form-group search-content-input">
+                                            <input type="text" class="form-control search-content2" id="name9e"
+                                                   ng-model="historyBaidu2"
+                                                   style="height:24px;">
+                                            <i class="fa fa-search" style="top:5px;"></i>
+                                        </div>
+                                    </form>
+                                </th>
+
+                                <th style="position:relative">
+                                    销售额
+                                    <!--<i class="fa fa-search" ng-click="isActiveSSFun()" style="margin-left: 5px; cursor:pointer" ng-class="{true: 'active515', false: ''}[isActiveSS]"></i>
+                        <form role="form" class="search-content-from" style="position: absolute; top: 20px; left: 9px; z-index: 1200; width: 100px;" ng-show="isActiveSS">
+                            <div class="form-group search-content-input">
+                                <input type="text" class="form-control search-content2" id="name9e" ng-model="historyBaidu3" style="height:24px;">
+                                <i class="fa fa-search" style="top:5px;"></i>
+                            </div>
+                        </form>-->
+                                </th>
+
+                            </tr>
+                            </thead>
+                            <tbody ng-repeat="x in GetciteLists | filter:historyBaidu2 | filter:historyBaidu3">
+                            <tr>
+                                <td>
+                                    {{$index+1}}
+                                </td>
+                                <td>
+                                    {{x.Location }}
+                                </td>
+                                <td>
+                                    {{x.SalesVolume}}
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui segment ">
+            <a class="ui  right  label label2"
+               style=" border: 1px solid #c5c5c5; margin-bottom: -25px; position: absolute; top: 14px; right: 60px; ">
+                <div class="ui dropdown">
+                    <div class="text ">TOP10链接</div>
+                    <i class="dropdown icon"></i>
+
+                    <div class="menu" style="position:absolute;top:23px;left:-10px; z-index:1000 !important;">
+                        <div class="item active" ng-click="GetShopList(10)">TOP10链接</div>
+                        <div class="item" ng-click="GetShopList(20)">TOP20链接</div>
+                        <div class="item" ng-click="GetShopList(50)">TOP50链接</div>
+                        <div class="item" ng-click="GetShopList(100)">TOP100链接</div>
+                        <div class="divider"></div>
+                        <div class="item" ng-click="GetShopList()">所有链接</div>
+                    </div>
+                </div>
+            </a>
+            <a class="gray" style="position:absolute; top:22px;right:20px;" href="" title=""><i
+                class="fa fa-minus fa-minus5"></i></a>
+            <a class="gray" style="position:absolute; top:22px;right:40px;" href="" title=""><i class="fa fa-refresh"
+                                                                                                ng-click="RefreshGetShopList()"></i></a>
+
+            <div class="ui secondary pointing menu" style="margin-top:5px;">
+                <a class="item active red">宝贝30天销售额排行</a>
+            </div>
+            <table class="ui  compact table collapse555">
+                <thead>
+                <tr style="position:relative;">
+                    <th>序号</th>
+                    <th style="position:relative">
+                        链接名称
+                        <i class="fa fa-search" ng-click="isActiveLinkfun()" style="margin-left: 5px;cursor:pointer;"
+                           ng-class="{true: 'active515', false: ''}[isActiveLink]"></i>
+
+                        <form role="form" class="search-content-from"
+                              style="position: absolute; top: 35px; left: 9px; z-index: 1400; width: 120px; "
+                              ng-show="isActiveLink">
+                            <div class="form-group search-content-input">
+                                <input type="text" class="form-control search-content2" id="name9c"
+                                       ng-model="historyBaidu4"
+                                       style="height:24px;">
+                                <i class="fa fa-search" style="top:5px;"></i>
+                            </div>
+                        </form>
+                    </th>
+                    <th style="position:relative">
+                        销售单价
+                        <!--<i class="fa fa-search" ng-click="isActiveJiafun()" style="margin-left: 5px; cursor:pointer" ng-class="{true: 'active515', false: ''}[isActiveJia]"></i>
+                        <form role="form" class="search-content-from" style="position: absolute; top: 35px; left: 9px; z-index: 1300; width: 90px;" ng-show="isActiveJia">
+                            <div class="form-group search-content-input">
+                                <input type="text" class="form-control search-content2" id="name9d" ng-model="historyBaidu5" style="height:24px;">
+                                <i class="fa fa-search" style="top:5px;"></i>
+                            </div>
+                        </form>-->
+                    </th>
+
+                    <th style="position:relative">
+                        30天销售额<!--<i class="fa fa-search" ng-click="isActiveShouFun()" style="margin-left: 5px; cursor:pointer" ng-class="{true: 'active515', false: ''}[isActiveShou]"></i>
+                                    <form role="form" class="search-content-from" style="position: absolute; top: 35px; left: 9px; z-index: 1200; width: 120px;" ng-show="isActiveShou">
+                                        <div class="form-group search-content-input">
+                                            <input type="text" class="form-control search-content2" id="name9e" ng-model="historyBaidu6" style="height:24px;">
+                                            <i class="fa fa-search" style="top:5px;"></i>
+                                        </div>
+                                    </form>-->
+                    </th>
+
+                    <th style="position:relative">
+                        地区<i class="fa fa-search" ng-click="isActiveDifun()" style="margin-left: 5px; cursor:pointer"
+                             ng-class="{true: 'active515', false: ''}[isActiveDi]"></i>
+
+                        <form role="form" class="search-content-from"
+                              style="position: absolute; top: 35px; left: 9px; z-index: 1100; width: 90px;"
+                              ng-show="isActiveDi">
+                            <div class="form-group search-content-input">
+                                <input type="text" class="form-control search-content2" id="name9f"
+                                       ng-model="historyBaidu7"
+                                       style="height:24px;">
+                                <i class="fa fa-search" style="top:5px;"></i>
+                            </div>
+                        </form>
+                    </th>
+
+                    <th style="position:relative">
+                        所属店铺
+                        <i class="fa fa-search" ng-click="isActiveSuofun()" style="margin-left: 5px;cursor:pointer"
+                           ng-class="{true: 'active515', false: ''}[isActiveSuo]"></i>
+
+                        <form role="form" class="search-content-from"
+                              style="position: absolute; top: 35px; left: 9px; z-index: 1000; width: 120px; "
+                              ng-show="isActiveSuo">
+                            <div class="form-group search-content-input">
+                                <input type="text" class="form-control search-content2" id="name9g"
+                                       ng-model="historyBaidu8"
+                                       style="height:24px;">
+                                <i class="fa fa-search" style="top:5px;"></i>
+                            </div>
+                        </form>
+                    </th>
+                </tr>
+                </thead>
+                <tbody
+                    ng-repeat="x in GetShopLists | filter:historyBaidu4 | filter:historyBaidu5|  filter:historyBaidu6 | filter:historyBaidu7 | filter:historyBaidu8">
+                <tr>
+                    <td>
+                        {{$index+1}}
+                    </td>
+                    <td title="{{x.ItemName}}">
+                        <a ng-href="{{x.DetailUrl}}" target="_blank">{{x.ItemName.length>13 ? ((x.ItemName |
+                            limitTo:13)+"...") :
+                            x.ItemName}}</a>
+                    </td>
+                    <td title="{{x.Price2}}">
+                        {{x.Price2.length>13 ? ((x.Price2 | limitTo:13)+"...") : x.Price2}}
+                    </td>
+                    <td title="{{x.SalesVolume}}">
+                        {{x.SalesVolume.length>13 ? ((x.SalesVolume | limitTo:13)+"...") : x.SalesVolume}}
+                    </td>
+                    <td title="{{x.Location}}">
+                        {{x.Location.length>13 ? ((x.Location | limitTo:13)+"...") : x.Location}}
+                    </td>
+                    <td title="{{x.ShopName}}">
+                        {{x.ShopName.length>13 ? ((x.ShopName | limitTo:13)+"...") : x.ShopName}}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+    $(function () {
+
+        $('.ui.dropdown ').dropdown({
+            on: 'hover'
+        });
+
+        //左侧div滑动到顶部让其固定 采用防抖函数
+
+        function debounce(func, wait) {
+            var timeout;
+            return function () {
+                clearTimeout(timeout);
+                timeout = setTimeout(func, wait);
+            };
+        };
+
+        function realFunc() {
+            console.log($('#fixedDiv').offset().top);
+            console.log($(window).scrollTop());
+            if ($(window).scrollTop() > 160) {
+                $('#fixedDiv').animate({marginTop: $(window).scrollTop()-200 + 'px'}, 500);
+            } else {
+                $('#fixedDiv').animate({marginTop: 0}, 500);
+            }
+        }
+
+        $(window).bind('scroll', debounce(realFunc, 300));
+
+        $('.fa-minus1').click(function () {
+            var cardContent = $('.collapse111');
+            if (cardContent.hasClass('active')) {
+                $(this).addClass('fa-minus');
+                $(this).removeClass('fa-plus');
+                $(cardContent).removeClass('active');
+            } else {
+                $(this).removeClass('fa-minus');
+                $(this).addClass('fa-plus');
+                $(cardContent).addClass('active');
+            }
+            cardContent.toggle(500);
+        });
+
+        $('.fa-minus2').click(function () {
+            var cardContent = $('.collapse222');
+            if (cardContent.hasClass('active')) {
+                $(this).addClass('fa-minus');
+                $(this).removeClass('fa-plus');
+                $(cardContent).removeClass('active');
+            } else {
+                $(this).removeClass('fa-minus');
+                $(this).addClass('fa-plus');
+                $(cardContent).addClass('active');
+            }
+            cardContent.toggle(500);
+        });
+
+        $('.fa-minus3').click(function () {
+            var cardContent = $('.collapse333');
+            if (cardContent.hasClass('active')) {
+                $(this).addClass('fa-minus');
+                $(this).removeClass('fa-plus');
+                $(cardContent).removeClass('active');
+            } else {
+                $(this).removeClass('fa-minus');
+                $(this).addClass('fa-plus');
+                $(cardContent).addClass('active');
+            }
+            cardContent.toggle(500);
+        });
+
+        $('.fa-minus4').click(function () {
+            var cardContent = $('.collapse444');
+            if (cardContent.hasClass('active')) {
+                $(this).addClass('fa-minus');
+                $(this).removeClass('fa-plus');
+                $(cardContent).removeClass('active');
+            } else {
+                $(this).removeClass('fa-minus');
+                $(this).addClass('fa-plus');
+                $(cardContent).addClass('active');
+            }
+            cardContent.toggle(500);
+        });
+
+        $('.fa-minus5').click(function () {
+            var cardContent = $('.collapse555');
+            if (cardContent.hasClass('active')) {
+                $(this).addClass('fa-minus');
+                $(this).removeClass('fa-plus');
+                $(cardContent).removeClass('active');
+            } else {
+                $(this).removeClass('fa-minus');
+                $(this).addClass('fa-plus');
+                $(cardContent).addClass('active');
+            }
+            cardContent.toggle(500);
+        });
+    })
+
+</script>
+
+<div ng-include="'Scripts/app/views/common/alert.html'"></div>
+<div ng-include="'Scripts/app/views/common/footer.html'"></div>

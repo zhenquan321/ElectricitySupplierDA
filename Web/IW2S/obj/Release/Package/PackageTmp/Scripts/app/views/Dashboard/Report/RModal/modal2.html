@@ -1,0 +1,21 @@
+﻿<div id="modal2">
+    <div class="M2_nei HoverActiveYu" ng-class="{true:'HoverActive',false:''}[MouseOn==21&&keXiuGai]" ng-mouseover="MouseOnShow(21)" ng-mouseleave="MouseOnShow(0)">
+        <div class="caozuo">
+            <i class="fa fa-refresh" ng-click="model2_getKeyword(true)"></i>
+            <i class="fa fa-low-vision"> </i>
+        </div>
+        <h4>
+            搜索使用关键词展示
+        </h4>
+        <div class="row">
+            <div class="col-sm-6" ng-repeat="x in model2_getKeywordList">
+                <div class="cizu_list">
+                    <div class="cizu">{{x.Name}}</div>
+                    <div class="ci_list">
+                        <span class="ciNei" ng-repeat="y in x.KewordList">{{y.CommendKeyword}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

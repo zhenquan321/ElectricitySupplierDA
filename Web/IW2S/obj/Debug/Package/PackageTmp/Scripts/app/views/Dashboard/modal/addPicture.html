@@ -1,0 +1,35 @@
+﻿<style>
+    .modal-lg {
+        margin-top: 9%;
+    }
+</style>
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()">
+        &times;
+    </button>
+    <h4 class="modal-title" id="myModalLabel">
+        上传封面图片<i class="fa fa-question-circle" title=""></i>
+    </h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-sm-8">
+            <div style="height: 410px; border: 1px dashed #989898; padding: 5px 15px; border-radius: 7px; background-color: #f1f1f1;overflow:hidden;">
+                <div id="flashEditorOut" style="height: 400px;">
+                    <div id="altContent">
+                    </div>
+                </div>
+                <div style="background-color: #f1f1f1; height: 37px; width: 200px; margin-top: -35px; position: absolute;"> </div>
+            </div>
+        </div>
+        <div class="col-sm-4"style="padding-top:65px;">
+            <h4 style="font-size: 16px; color: #099; font-weight: 600;">温馨提示：</h4>
+            <p style=" text-indent: 2em; color: #555;">为了更好的显示，请您将图片剪切成16：9的格式。</p>
+            <div class="shili mt20"style="text-align:center">
+                <img src="Scripts/app/images/shiliPicture.jpg"style=" width: 85%;" /><br />
+                <span class="mt5"style="display: inline-block; font-weight: 600;color:#555 ">示例</span>
+            </div>
+        </div>
+    </div>
+</div>

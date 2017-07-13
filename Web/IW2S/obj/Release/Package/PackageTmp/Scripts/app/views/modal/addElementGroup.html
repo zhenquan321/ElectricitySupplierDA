@@ -1,0 +1,126 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()">
+        &times;
+    </button>
+    <h4 class="modal-title" id="myModalLabel">
+        {{operate_W}}<i class="fa fa-question-circle" title="拖拽进行操作！"></i>
+    </h4>
+</div>
+<div class="modal-body">
+
+    <ul>
+
+        <li>
+
+            <div class="col-sm-6">
+                <div class="main-panel">
+                    <div class="main-panel-title modal-title" style="margin: 8px 15px 0px;">
+
+                        <span class="main-panel-text active ">{{ParentName_s}}</span>
+                        <span ng-show="Judgment">
+                        <i class="fa fa-pencil-square aaa" title="修改分组！" ng-show="change_f_group"
+                           ng-click="changGroup()"></i>
+                        <div class="dropdown" style="display: inline-block;" ng-hide="change_f_group">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                    style="padding:2px 10px; margin-bottom: 2px;">
+                                {{ParentName_s}}
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <li ng-repeat="x in GetBaiduKeywordCategory2" ng-click="select_gName(x._id,x.Name)"
+                                    ng-hide="x.Name==groupName"><a>{{x.Name}}</a></li>
+                            </ul>
+                        </div>
+                        </span>
+                       
+                        <form role="form" class="search-content-from" style="right: 80px">
+                            <div class="form-group search-content-input">
+                                <input type="text" class="form-control search-content" ng-mo id="name"
+                                       ng-model="searchKeyword" placeholder="搜索关键词">
+                                <i class="fa fa-search"></i>
+                            </div>
+                        </form>
+                        <button type="button" class="btn btn-tea" style=" height: 28px; padding: 0px 7px; margin-top: 1px; float: right; cursor:pointer;" ng-click="selectAll()">
+                            全部添加
+                        </button>
+                    </div>
+
+                    <div class="thumbnail" data-drop="true" ng-model='list5' data-jqyoui-options="optionsList1"
+                         jqyoui-droppable="{multiple:true}">
+                        <div class="caption">
+                            <div class="btn btn-draggable" ng-repeat="item in list5 | filter:searchKeyword"
+                                 ng-show="item.CommendKeyword" data-drag="{{item.drag}}"
+                                 data-jqyoui-options="{revert: 'invalid'}" ng-model="list5"
+                                 jqyoui-draggable="{index: {{$index}},animate:true}">{{item.CommendKeyword}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li name="userForm">
+            <div class="col-sm-6">
+                <div class="main-panel">
+                    <div class="main-panel-title" style="margin: 8px 15px 0px;">
+                        <form role="form" class="title-edit">
+                            <div class="form-group">
+                                <input type="text" ng-model="groupName" name="groupName"
+                                       class="form-control search-content" id="name" required ng-minlength="1"
+                                       placeholder="请输入词组名称">
+                                <!--<button style="position: relative;left:155px;top:-33px;cursor:pointer" type="button"-->
+                                        <!--class="btn btn-tea btn-sm" ng-click="amendKeywordGroupName()">修改-->
+                                <!--</button>-->
+                            </div>
+                        </form>
+                        <form role="form" class="search-content-from" style="right: 0px">
+                            <div class="form-group search-content-input">
+                                <input type="text" class="form-control search-content" id="name14"
+                                       ng-model="addSearchKeyword" placeholder="搜索关键词">
+                                <i class="fa fa-search"></i>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="thumbnail" data-drop="true" ng-model='list1' data-jqyoui-options="optionsList1"
+                         jqyoui-droppable="{multiple:true}">
+                        <div class="caption">
+                            <div class="btn btn-draggable" ng-repeat="item in list1 |  filter:addSearchKeyword"
+                                 ng-show="item.CommendKeyword" data-drag="{{item.drag}}"
+                                 data-jqyoui-options="{revert: 'invalid'}" ng-model="list1"
+                                 jqyoui-draggable="{index: {{$index}},animate:true}">{{item.CommendKeyword}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+    </ul>
+</div>
+
+
+<!--<p ng-show="userForm.username.$error.required">请选择权重</p>
+<p ng-show="userForm.username.$error.required">请选择侵权类型</p>-->
+<div class="modal-footer">
+    <span>权重:</span>
+    <select ng-model="weight" ng-options="x as x for x in weights" class="form-control selectOption-weight">
+        <option value="">选权重</option>
+    </select>
+    <span>{{$root.GetPrjAnalysisItemName_list_name}}:</span>
+    <select name="InfriType" ng-model="InfriType" ng-options="x.Key as x.Value for x in InfriTypes"
+            class="form-control selectOption" ng-show="InfriTypeschange">
+        <option value="">-- 请选择侵权类型 --</option>
+    </select>
+    <span ng-hide="InfriTypeschange" style="color:red;padding-right:15px;">{{InfriLawCodeStr1}}</span>
+    <button type="button" class="btn btn-tea" ng-click="newGroup()" ng-hide="Judgment">
+        保存
+    </button>
+    <button type="button" class="btn btn-tea" ng-click="changGroupSave()" ng-show="Judgment">
+        保存
+    </button>
+    <button type="button" class="btn btn-cancle" data-dismiss="modal" ng-click="cancel()">
+        取消
+    </button>
+
+</div>

@@ -1,0 +1,40 @@
+﻿<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<style>
+    .background {
+        fill: #eee;
+    }
+
+    line {
+        stroke: #fff;
+    }
+
+    text.active {
+        fill: red;
+    }
+</style>
+
+
+<div id="bd"></div>
+
+
+<script>
+    $(function () {
+        $('.fa-minus').click(function () {
+            var cardContent = $(this).parent().parent().parent('.main-panel').children('.main-panel-content');
+            if (cardContent.hasClass('active')) {
+                $(this).addClass('fa-minus');
+                $(this).removeClass('fa-plus');
+                $(cardContent).removeClass('active');
+            } else {
+                $(this).removeClass('fa-minus');
+                $(this).addClass('fa-plus');
+                $(cardContent).addClass('active');
+            }
+            cardContent.toggle(500);
+        });
+    })
+    $("[data-toggle='tooltip']").tooltip();
+
+</script>
+
+  

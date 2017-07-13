@@ -1,0 +1,12 @@
+﻿<div id="alert">
+    <!--<div class="alert alert-dismissable" ng-class="{isSuccess: 'alert-success', isDanger: 'alert-danger',isNull: 'hidden'}[$root.isSuccess]">
+        <button type="button" ng-click="alertClose()" class="close" data-dismiss="alert"
+                aria-hidden="true">
+            &times;
+        </button>
+        {{$root.error}}
+    </div>-->
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}"
+           close="closeAlert($index)">{{alert.msg}}
+    </alert>
+</div>

@@ -1,0 +1,38 @@
+﻿<style>
+    #alert_s {
+        float: right;
+        margin-left: 5px;
+        cursor: pointer;
+        font-size: 22px;
+    }
+    .alertCard {
+        position: fixed;
+        right: 10px;
+        top:70px;
+        z-index:100000!important;
+    }
+    .alert {
+        font-size: 16px !important;
+    }
+</style>
+<div class="alertCard">
+    <div class="alert alert-success" role="alert" ng-if="alert_success">
+        <i class="fa fa-times-circle" id="alert_s" ng-click="alert_close_fun()"></i>
+        <strong>成功!</strong> {{ alert_success_n}}
+    </div>
+
+    <div class="alert alert-info" role="alert" ng-if=" alert_info">
+        <i class="fa fa-times-circle" id="alert_s" ng-click="alert_close_fun()"></i>
+        <strong>提示!</strong> {{ alert_info_n}}
+    </div>
+
+    <div class="alert alert-warning" role="alert" ng-if="alert_warning">
+        <i class="fa fa-times-circle" id="alert_s" ng-click="alert_close_fun()"></i>
+        <strong>警告!</strong>{{alert_warning_n}}
+    </div>
+
+    <div class="alert alert-danger" role="alert" ng-if="alert_danger">
+        <i class="fa fa-times-circle" id="alert_s" ng-click="alert_close_fun()"></i>
+        <strong>错误!</strong> {{ alert_danger_n}}
+    </div>
+</div>

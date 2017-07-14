@@ -104,7 +104,7 @@
                 $rootScope.ShareToDiscover_Count = response.Count;
             })
             .error(function (response, status) {
-               // $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+               // $scope.addAlert('danger', "服务器连接出错");
             });
     }
     //加载更多
@@ -285,7 +285,7 @@
                 $rootScope.ShareOutComment_Count = response.Count;
             })
             .error(function (response, status) {
-                $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+                $scope.addAlert('danger', "服务器连接出错");
             });
     }
     //新增分享评论
@@ -317,7 +317,7 @@
             }
         });
         q.error(function (e) {
-            $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+            $scope.addAlert('danger', "服务器连接出错");
         });
     }
     //删除分享评论
@@ -338,7 +338,7 @@
                     $rootScope.GetShareOutComment($scope.num, $scope.num2);
                 })
                 .error(function (response, status) {
-                    $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+                    $scope.addAlert('danger', "服务器连接出错");
                 });
         }
 
@@ -361,7 +361,7 @@
             $rootScope.erweima = response.Message;
         })
         .error(function (response, status) {
-            $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+            $scope.addAlert('danger', "服务器连接出错");
         });
 
     }
@@ -407,7 +407,7 @@
             }
         });
         q.error(function (e) {
-            $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+            $scope.addAlert('danger', "服务器连接出错");
         });
     };
 
@@ -430,7 +430,7 @@
                     $rootScope.GetShareOutComment($scope.num, $scope.num2);
                 })
                 .error(function (response, status) {
-                    $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+                    $scope.addAlert('danger', "服务器连接出错");
                 });
         }
 

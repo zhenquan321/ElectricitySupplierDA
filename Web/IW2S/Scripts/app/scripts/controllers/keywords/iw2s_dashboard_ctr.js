@@ -23,7 +23,7 @@
 	}
 	//用于分享include下的变量
 	$scope.data = {
-		topNum: 25,
+		topNum: 10,
 		percent: 0,
 		searchTime: '',
 		num_1: '',
@@ -126,7 +126,7 @@
 
 		});
 		q.error(function(response) {
-			$scope.error = "网络打盹了，请稍后。。。";
+			$scope.error = "服务器连接出错";
 		});
 	}
 
@@ -426,13 +426,13 @@
 
 				//});
 				//q.error(function (e) {
-				//  $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+				//  $scope.addAlert('danger', "服务器连接出错");
 				//});
 
 			});
 		});
 		q.error(function(response) {
-			$scope.error = "网络打盹了，请稍后。。。";
+			$scope.error = "服务器连接出错";
 			$scope.isActiveStart = false;
 		});
 
@@ -741,13 +741,13 @@
 			    myChart.setOption(option);
 			});
 			q.error(function (response) {
-			    $scope.error = "网络打盹了，请稍后。。。";
+			    $scope.error = "服务器连接出错";
 			    $scope.isActiveStart = false;
 
 			});
 		});
 		q.error(function(e) {
-			$scope.addAlert('danger', "网络打盹了，请稍后。。。");
+			$scope.addAlert('danger', "服务器连接出错");
 		});
 
 		
@@ -779,7 +779,7 @@
 			});
 		});
 		q.error(function(response) {
-			$scope.error = "网络打盹了，请稍后。。。";
+			$scope.error = "服务器连接出错";
 		});
 	}
 
@@ -792,7 +792,7 @@
 			$scope.cipintu(response.noun, response.nounCount, response.verb, response.verbCount);
 		});
 		q.error(function(response) {
-			$scope.error = "网络打盹了，请稍后。。。";
+			$scope.error = "服务器连接出错";
 		});
 	}
 
@@ -936,7 +936,7 @@
 				$scope.skipTo(1);
 			});
 			q.error(function(response) {
-				$scope.error = "网络打盹了，请稍后。。。";
+				$scope.error = "服务器连接出错";
 			});
 		} else {
 			alert('输入日期格式不对或日期不存在！')
@@ -956,7 +956,7 @@
 			$scope.skipTo(1);
 		});
 		q.error(function(response) {
-			$scope.error = "网络打盹了，请稍后。。。";
+			$scope.error = "服务器连接出错";
 		});
 	}
 
@@ -1008,7 +1008,7 @@
 				console.log($scope.GetAllKeywordCategory_list);
 			});
 			q.error(function(response) {
-				$scope.error = "网络打盹了，请稍后。。。";
+				$scope.error = "服务器连接出错";
 			});
 		}
 		//未排除的关键词
@@ -1020,7 +1020,7 @@
 			$scope.GetBaiduLevelLinks2(response[0].id);
 		});
 		q.error(function(response) {
-			$scope.error = "网络打盹了，请稍后。。。";
+			$scope.error = "服务器连接出错";
 		});
 	}
 
@@ -1074,7 +1074,7 @@
 				}
 			})
 			q.error(function(response) {
-				$scope.error = "网络打盹了，请稍后。。。";
+				$scope.error = "服务器连接出错";
 			});
 		}
 		//2.3.1.1分页
@@ -1129,7 +1129,7 @@
 					checkedId = [];
 				});
 				q.error(function(e) {
-					$scope.addAlert('danger', "网络打盹了，请稍后。。。");
+					$scope.addAlert('danger', "服务器连接出错");
 				});
 			}
 		}
@@ -1150,7 +1150,7 @@
 					checkedId = [];
 				});
 				q.error(function(e) {
-					$scope.addAlert('danger', "网络打盹了，请稍后。。。");
+					$scope.addAlert('danger', "服务器连接出错");
 				});
 			}
 		}
@@ -1237,7 +1237,7 @@
 	            }
 	        });
 	        q.error(function (e) {
-	            $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+	            $scope.addAlert('danger', "服务器连接出错");
 	        });
 	  
 	}
@@ -1254,7 +1254,7 @@
 	        console.log(response);
 	    });
 	    q.error(function (e) {
-	        $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+	        $scope.addAlert('danger', "服务器连接出错");
 	    });
 
 	}
@@ -1273,30 +1273,10 @@
 	        }
 	    });
 	    q.error(function (e) {
-	        $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+	        $scope.addAlert('danger', "服务器连接出错");
 	    });
 
 	}
-    //文章数据分析
-	$scope.discourseAnalysis = function (id) {
-	    $rootScope.discAId = id;
-<<<<<<< HEAD
-	    var url = "/DnL/wordtree/?" + $rootScope.discAId;
-	    $location.path(url).replace();
-=======
-	    var url = "/DnL/wordtree?id=" + $rootScope.discAId + "&score=1";
-	    $location.url(url);
->>>>>>> c26f92d240a523a1903a8e87db204683ad299860
-	}
-
-
-
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> c26f92d240a523a1903a8e87db204683ad299860
 	//自动加载________________________________________________________
 
 	//折叠文件夹

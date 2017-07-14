@@ -78,7 +78,7 @@
             $scope.pie_chart_2($scope.GetUserCountList.PurchaseeUserPercent);
         })
         .error(function (response, status) {
-            // $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+            // $scope.addAlert('danger', "服务器连接出错");
         });
     }
     $scope.pie_chart_1 = function (date) {
@@ -221,7 +221,7 @@
            
         })
         .error(function (response, status) {
-            // $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+            // $scope.addAlert('danger', "服务器连接出错");
         });
     }
 
@@ -315,7 +315,7 @@
 
         })
         .error(function (response, status) {
-            // $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+            // $scope.addAlert('danger', "服务器连接出错");
         });
     }
 
@@ -815,7 +815,7 @@
             console.log(response);
         })
         .error(function (response, status) {
-            // $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+            // $scope.addAlert('danger', "服务器连接出错");
         });
     }
     //-----------------------------------------------------------------------

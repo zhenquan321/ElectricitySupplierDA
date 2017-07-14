@@ -81,7 +81,7 @@
 
     //    });
     //    q.error(function (response) {
-    //        $scope.error = "网络打盹了，请稍后。。。";
+    //        $scope.error = "服务器连接出错";
     //    });
     //}
 
@@ -95,7 +95,7 @@
     //        console.log($scope.GetAllKeywordCategory_list);
     //    });
     //    q.error(function (response) {
-    //        $scope.error = "网络打盹了，请稍后。。。";
+    //        $scope.error = "服务器连接出错";
     //    });
     //}
     //未排除的关键词
@@ -106,7 +106,7 @@
     //        $scope.GetAllKeywordCategory_list = response;
     //    });
     //    q.error(function (response) {
-    //        $scope.error = "网络打盹了，请稍后。。。";
+    //        $scope.error = "服务器连接出错";
     //    });
     //}
 
@@ -423,7 +423,7 @@
     //        myChart.setOption(option);
     //    });
     //    q.error(function (response) {
-    //        $scope.error = "网络打盹了，请稍后。。。";
+    //        $scope.error = "服务器连接出错";
     //    });
     //};
 
@@ -438,7 +438,7 @@
     //        $scope.showEcharts();
     //    });
     //    q.error(function (response) {
-    //        $scope.error = "网络打盹了，请稍后。。。";
+    //        $scope.error = "服务器连接出错";
     //    });
     //};
 

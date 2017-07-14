@@ -126,7 +126,7 @@
                 }
             });
             q.error(function (response) {
-                $scope.error = "网络打盹了，请稍后。。。";
+                $scope.error = "服务器连接出错";
             });
         }
     }
@@ -157,7 +157,7 @@
             $scope.getBaiduRecord($rootScope.getBaiduRecordId);
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
     //加载百度推荐关键词
@@ -199,7 +199,7 @@
             }
         })
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
 
@@ -255,7 +255,7 @@
                     $scope.GetBaiduLevelLinks2();
                 })
                 q.error(function (response) {
-                    $scope.error = "网络打盹了，请稍后。。。";
+                    $scope.error = "服务器连接出错";
                 });
             }
         } else if (type == "save") {
@@ -271,7 +271,7 @@
                     //console.log(response);
                 })
                 q.error(function (response) {
-                    $scope.error = "网络打盹了，请稍后。。。";
+                    $scope.error = "服务器连接出错";
                 });
             } else {
 
@@ -282,7 +282,7 @@
                     //console.log(response);
                 })
                 q.error(function (response) {
-                    $scope.error = "网络打盹了，请稍后。。。";
+                    $scope.error = "服务器连接出错";
                 });
             }
         }
@@ -332,7 +332,7 @@
                 }
             });
             q.error(function (e) {
-                $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+                $scope.addAlert('danger', "服务器连接出错");
             });
         }
     }
@@ -365,7 +365,7 @@
                 $scope.GetBaiduLevelLinks2();
             });
             q.error(function (e) {
-                $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+                $scope.addAlert('danger', "服务器连接出错");
             });
         }
 
@@ -403,7 +403,7 @@
             $scope.GetAllKeywordCategory_list = response;
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     };
 
@@ -436,7 +436,7 @@
             console.log('showDesc_ctr>SetLinkInfriType');
         })
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     };
 

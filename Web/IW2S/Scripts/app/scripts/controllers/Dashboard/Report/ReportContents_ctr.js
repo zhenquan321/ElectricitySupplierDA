@@ -55,7 +55,7 @@
                 $rootScope.ShareOutComment_Count = response.Count;
             })
             .error(function (response, status) {
-                $scope.alert_fun('danger', "网络打盹了，请稍后。。。");
+                $scope.alert_fun('danger', "服务器连接出错");
             });
     }
     //新增分享评论
@@ -87,7 +87,7 @@
             }
         });
         q.error(function (e) {
-            $scope.alert_fun('danger', "网络打盹了，请稍后。。。");
+            $scope.alert_fun('danger', "服务器连接出错");
         });
     }
     //删除分享评论
@@ -108,7 +108,7 @@
                     $rootScope.GetShareOutComment($scope.num, $scope.num2);
                 })
                 .error(function (response, status) {
-                    $scope.alert_fun('danger', "网络打盹了，请稍后。。。");
+                    $scope.alert_fun('danger', "服务器连接出错");
                 });
         }
 
@@ -226,7 +226,7 @@
             }
         });
         q.error(function (e) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
 
@@ -243,7 +243,7 @@
             console.log(response.Result);
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
     $scope.GetDescription(true);
@@ -264,7 +264,7 @@
 
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
     //修改报告描述
@@ -298,7 +298,7 @@
             }
         });
         q.error(function (e) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
     //显示修改_________________________________________________________________________________________________
@@ -322,7 +322,7 @@
             console.log(response)
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
     //隐藏关检测___未完
@@ -340,7 +340,7 @@
             console.log(response)
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
 
@@ -362,7 +362,7 @@
             console.log(response)
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
     //更新统计信息描述
@@ -378,7 +378,7 @@
             }
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
     //更新统计描述方法
@@ -428,7 +428,7 @@
             }, 300)
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
     $scope.GetKeywordChart(false);
@@ -584,7 +584,7 @@
             }
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
    
@@ -610,7 +610,7 @@
             $scope.D_PieChart();
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
     $scope.GetLinkOverview(false);
@@ -628,7 +628,7 @@
             }
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
     //获取连接数
@@ -641,7 +641,7 @@
             $scope.skipTo(1);
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
     $scope.GetTimeLinkDetails(false);
@@ -655,7 +655,7 @@
             $scope.skipTo(1);
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
 
@@ -755,7 +755,7 @@
                 }
             });
             q.error(function(response) {
-                $scope.error = "网络打盹了，请稍后。。。";
+                $scope.error = "服务器连接出错";
                 $scope.isActiveStart = false;
             });
         }
@@ -975,7 +975,7 @@
             }
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
 
@@ -1002,7 +1002,7 @@
             },200)
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
     $scope.GetLinkChartCate(false);
@@ -1441,7 +1441,7 @@
             }
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
 
@@ -1729,7 +1729,7 @@
             }
         });
         q.error(function (e) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
     //删除插入链接图表
@@ -1745,7 +1745,7 @@
             }
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
 
 
@@ -1791,7 +1791,7 @@
             }
         });
         q.error(function (e) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
 
@@ -1847,7 +1847,7 @@
             }
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
 
     }
@@ -1866,7 +1866,7 @@
             }
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
 
@@ -1883,7 +1883,7 @@
             }
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
  
@@ -1914,7 +1914,7 @@
             $scope.D_GetBubbleList();
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
     //$scope.GetDomainOverview(false);
@@ -2148,7 +2148,7 @@
             }
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
 
@@ -2190,7 +2190,7 @@
             }
         });
         q.error(function (e) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
     //获取话语分析
@@ -2202,7 +2202,7 @@
             $scope.GetWordTreeList = response.Result;
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
     $scope.GetWordTree();
@@ -2220,7 +2220,7 @@
 
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
     //修改话语分析
@@ -2257,7 +2257,7 @@
             }
         });
         q.error(function (e) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
    

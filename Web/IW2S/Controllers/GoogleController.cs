@@ -713,7 +713,7 @@ namespace IW2S.Controllers
             catch
             {
                 result.IsSuccess = false;
-                result.Message = "网络打盹了，请稍后。。。！";
+                result.Message = "服务器连接出错！";
             }
             return result;
         }

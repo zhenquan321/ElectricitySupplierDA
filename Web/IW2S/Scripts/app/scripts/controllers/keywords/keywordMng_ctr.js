@@ -18,7 +18,6 @@
   $scope.TopListShow = 1;
   $scope.NamedEntity = false;
   $scope.addEntityLeishow = true;
-  $scope.WebRelations = true;
   chk_global_vars($cookieStore, $rootScope, null, $location, $http, myApplocalStorage);
   //_______________________________________________________________
 
@@ -71,7 +70,7 @@
       $scope.modelCallBack(groupId, 1, null, $scope.InfriLawCode, 0, ParentName, ParentId);
     });
     q.error(function (response) {
-      $scope.error = "网络打盹了，请稍后。。。";
+      $scope.error = "服务器连接出错";
     });
   };
 
@@ -108,7 +107,7 @@
       }
     });
     q.error(function (response) {
-      $scope.error = "网络打盹了，请稍后。。。";
+      $scope.error = "服务器连接出错";
     });
 
   };
@@ -127,7 +126,7 @@
       }
     });
     q.error(function (response) {
-      $scope.error = "网络打盹了，请稍后。。。";
+      $scope.error = "服务器连接出错";
     });
   }
   //搜所有关键词
@@ -144,7 +143,7 @@
       }
     });
     q.error(function (response) {
-      $scope.error = "网络打盹了，请稍后。。。";
+      $scope.error = "服务器连接出错";
     });
   }
 
@@ -201,7 +200,7 @@
       console.log(response);
     });
     q.error(function (response) {
-      $scope.error = "网络打盹了，请稍后。。。";
+      $scope.error = "服务器连接出错";
     });
   };
 
@@ -222,7 +221,7 @@
 
     });
     q.error(function (response) {
-      $scope.error = "网络打盹了，请稍后。。。";
+      $scope.error = "服务器连接出错";
     });
   }
 
@@ -236,7 +235,7 @@
         $scope.RefreshList();
       });
       q.error(function (response) {
-        $scope.error = "网络打盹了，请稍后。。。";
+        $scope.error = "服务器连接出错";
       });
     }
   };
@@ -285,7 +284,7 @@
 
     });
     q.error(function (response) {
-      $scope.error = "网络打盹了，请稍后。。。";
+      $scope.error = "服务器连接出错";
     });
   };
 
@@ -301,7 +300,7 @@
         }
     });
     q.error(function (response) {
-      $scope.error = "网络打盹了，请稍后。。。";
+      $scope.error = "服务器连接出错";
     });
   }
   $scope.ecahrtsJZ = function (jsonStr) {
@@ -410,7 +409,7 @@
         }
     });
     q.error(function (response) {
-      $scope.error = "网络打盹了，请稍后。。。";
+      $scope.error = "服务器连接出错";
     });
   }
 
@@ -487,7 +486,7 @@
       }
     });
     q.error(function (response) {
-      $scope.error = "网络打盹了，请稍后。。。";
+      $scope.error = "服务器连接出错";
     });
   }
 
@@ -1217,39 +1216,58 @@
 
     });
     q.error(function (response) {
-      $scope.error = "网络打盹了，请稍后。。。";
+      $scope.error = "服务器连接出错";
     });
   }
 
-   
+    //关键词管理切换
+ 
+  $scope.keywordControlIsActive = function (num) {
+      $scope.keywordCisActive = num;
+      if (num == 1) {
+
+      } else if (num == 2) {
+          $('#Tilford-Tree svg').remove();
+          $scope.GetD3TreeData();
+      } else if (num == 3) {
+          $('#tree-container svg').remove();
+          $scope.GetTreeData();
+      } else if (num == 4) {
+          $('#bd svg').remove();
+          $scope.GetData();
+      } else if (num == 5) {
+          $scope.juzhentu();
+      } else if (num == 6) {
+          $scope.GetAnalysisItem();
+      } else if (num == 7) {
+          $scope.GetECGuanxi();
+          $scope.TextExtractByEntity();
+      } else if (num == 8) {
+          $scope.GetEntity();
+      } else if (num == 9) {
+          $scope.GetAllDomainCategoryFrist();
+      }
+  };
+
+
     //侧栏Top显示
   $scope.CListShow = true;
   $scope.CListShowFun = function () {
       $scope.CListShow = !$scope.CListShow;
       $scope.GetECGuanxi();
   }
-   //echart关系图切换显示
+    //echart关系图切换显示
   $scope.GXtimeIntervalFun = function (num) {
       $scope.GXtimeInterval = num;
       $scope.GetECGuanxi();
   }
-    //切换关系图类型
-  
-  $scope.WebRelationsFun = function () {
-      $scope.WebRelations = !$scope.WebRelations;
-      $scope.GetECGuanxi();
-  }
 
-  //echart关系图
+
+
+    //echart关系图
+
 
   $scope.GetECGuanxi = function () {
-      if ($scope.WebRelations) {
-          var titlelei = '报道关系现状'
-          var url = "/api/Keyword/GetLinkReference?prjId=" + $rootScope.getProjectId + "&timeInterval=" + $scope.GXtimeInterval;
-      } else {
-          var titlelei = '网站关系现状';
-          var url = "/api/Keyword/GetDomainReference?prjId=" + $rootScope.getProjectId + "&timeInterval=" + $scope.GXtimeInterval;
-      }
       var url = "/api/Keyword/GetLinkReference?prjId=" + $rootScope.getProjectId + "&timeInterval=" + $scope.GXtimeInterval;
       var q = $http.get(url);
       q.success(function (response, status) {
@@ -1281,11 +1299,7 @@
           data.counties = datalegend;
           data.timeline = timeData;
           data.series = $scope.ReferList;
-          if ($scope.WebRelations) {
-              var myChart = echarts.init(document.getElementById('GetECGuanxiTime'));
-          } else {
-              var myChart = echarts.init(document.getElementById('GetECGuanxiTime2'));
-          }
+          var myChart = echarts.init(document.getElementById('GetECGuanxiTime'));
           option = {
     
                 baseOption: {
@@ -1435,7 +1449,7 @@
                       ceDataIndex: n,
                       title: {
                           show: true,
-                          'text': data.timeline[n] + titlelei,
+                          'text': data.timeline[n] + '报道关系现状',
                           left: 'center',
                       },
                       series: {
@@ -1505,7 +1519,7 @@
    
       });
       q.error(function (response) {
-          $scope.error = "网络打盹了，请稍后。。。";
+          $scope.error = "服务器连接出错";
       });
   }
 
@@ -1805,7 +1819,7 @@
       }
     });
     q.error(function (e) {
-      $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+      $scope.addAlert('danger', "服务器连接出错");
     });
   }
   $scope.InsertAnalysisItem2 = function () {
@@ -1846,7 +1860,7 @@
       }
     });
     q.error(function (e) {
-      $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+      $scope.addAlert('danger', "服务器连接出错");
     });
   }
   $scope.clearAnalysisItem = function () {
@@ -1877,7 +1891,7 @@
 
       })
       .error(function (response, status) {
-        $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+        $scope.addAlert('danger', "服务器连接出错");
       });
     //}
   }
@@ -1905,7 +1919,7 @@
 
       })
       .error(function (response, status) {
-        $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+        $scope.addAlert('danger', "服务器连接出错");
       });
   }
   //修改分析指项
@@ -1944,7 +1958,7 @@
           $scope.addAlert('success', response.Message);
         })
         .error(function (response, status) {
-          $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+          $scope.addAlert('danger', "服务器连接出错");
         });
     }
 
@@ -2042,7 +2056,7 @@
           }
       });
       q.error(function (e) {
-          $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+          $scope.addAlert('danger', "服务器连接出错");
       });
   }
     //删除命名实体
@@ -2337,7 +2351,7 @@
               }
           });
           q.error(function (e) {
-              $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+              $scope.addAlert('danger', "服务器连接出错");
           });
       }
   }
@@ -2373,7 +2387,7 @@
           }
       });
       q.error(function (e) {
-          $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+          $scope.addAlert('danger', "服务器连接出错");
       });
   }
     //删除分组
@@ -2389,7 +2403,7 @@
               }
           });
           q.error(function (e) {
-              $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+              $scope.addAlert('danger', "服务器连接出错");
           });
       }
   }
@@ -2463,7 +2477,7 @@
           }
       });
       q.error(function (e) {
-          $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+          $scope.addAlert('danger', "服务器连接出错");
       });
   }
 
@@ -2549,7 +2563,7 @@
           }
       });
       q.error(function (e) {
-          $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+          $scope.addAlert('danger', "服务器连接出错");
       });
   }
 
@@ -2576,7 +2590,7 @@
               }
           });
           q.error(function (e) {
-              $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+              $scope.addAlert('danger', "服务器连接出错");
           });
       } else {
           $scope.addAlert('danger', "没有勾选要删除的域名");
@@ -2598,7 +2612,7 @@
           }
       });
       q.error(function (e) {
-          $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+          $scope.addAlert('danger', "服务器连接出错");
       });
   }
 
@@ -2613,7 +2627,7 @@
           $scope.groupList = response;
       });
       q.error(function (e) {
-          $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+          $scope.addAlert('danger', "服务器连接出错");
       });
   }
 
@@ -2631,7 +2645,7 @@
           $scope.activeId = response.DomainCategoryId;
       });
       q.error(function (e) {
-          $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+          $scope.addAlert('danger', "服务器连接出错");
       });
   }
 
@@ -2677,7 +2691,7 @@
           $.fn.zTree.init($("#treeDemo"), setting, $scope.zNodes);
       });
       q.error(function (response) {
-          $scope.error = "网络打盹了，请稍后。。。";
+          $scope.error = "服务器连接出错";
       });
   }
 
@@ -2713,7 +2727,7 @@
           }
       });
       q.error(function (e) {
-          $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+          $scope.addAlert('danger', "服务器连接出错");
       });
 
       var url = "/api/Keyword/GetDomainStatis?categoryId=" + $scope.categoryId + "&prjId=" + $rootScope.getProjectId;
@@ -2876,165 +2890,11 @@
       }
       );
       q.error(function (response) {
-          $scope.error = "网络打盹了，请稍后。。。";
+          $scope.error = "服务器连接出错";
           $scope.isActiveStart = false;
 
       });
   };
-
-    //网页关系简述
-  $scope.GetLinkReferCount = function () {
-      var url = "/api/Keyword/GetLinkReferCount?projectId=" + $rootScope.getProjectId;
-      var q = $http.get(url);
-      q.success(function (response, status) {
-          $scope.GetLinkReferCountList = response;
-      });
-      q.error(function (response) {
-          $scope.error = "网络打盹了，请稍后。。。";
-      });
-  }
-    //网页关系简述设置
-  $scope.GXT = {describeNum:0};
-  $scope.GXTdescribe = function (num) {
-      if ($scope.GXT.describeNum == num) {
-          $scope.GXT.describeNum = 0;
-
-      } else {
-          $scope.GXT.describeNum = num;
-
-      }
-    
-  }
-    //插入关系图描述
-  $scope.descList = {a:"",b:"",c:"",d:""};
-  $scope.InsertReferChartDesc = function () {
-      var addAll = true;
-      $scope.descList2 = [$scope.descList.a, $scope.descList.b, $scope.descList.c, $scope.descList.d];
-      for (var i = 0; i < $scope.descList2.length; i++) {
-          if (!$scope.descList2[i]) {
-             addAll=false
-          }
-      }
-      if (!addAll) {
-          $scope.alert_fun('warning', '请输入完整的关系图描述');
-      } else {
-          $scope.paramsList = {
-              descList: $scope.descList2,
-              projectId: $rootScope.getProjectId,
-          };
-          var urls = "/api/Keyword/InsertReferChartDesc";
-          var q = $http.post(
-                  urls,
-                 JSON.stringify($scope.paramsList),
-                 {
-                     headers: {
-                         'Content-Type': 'application/json'
-                     }
-                 }
-              )
-          q.success(function (response, status) {
-              if (response.IsSuccess == true) {
-                  $scope.alert_fun('success', "添加成功！");
-                  $scope.GXTdescribe(0);
-              } else {
-                  $scope.alert_fun('danger', response.Message);
-              }
-          });
-          q.error(function (e) {
-              alert("网络打盹了，请稍后。。。");
-          });
-      }
-
-  }
-  //更新关系图描述
-  $scope.UpdateReferChartDesc = function () {
-      var addAll = true;
-      $scope.descList2 = [$scope.descList.a, $scope.descList.b, $scope.descList.c, $scope.descList.d];
-      for (var i = 0; i < $scope.descList2.length; i++) {
-          if (!$scope.descList2[i]) {
-              addAll = false
-          }
-      }
-      if (!addAll) {
-          $scope.alert_fun('warning', '请输入完整的关系图描述');
-      } else {
-          $scope.paramsList = {
-              descList: $scope.descList2,
-              descId: $scope.GetReferChartDescList.Id,
-              projectId: $rootScope.getProjectId,
-          };
-          var urls = "/api/Keyword/UpdateReferChartDesc";
-          var q = $http.post(
-                  urls,
-                 JSON.stringify($scope.paramsList),
-                 {
-                     headers: {
-                         'Content-Type': 'application/json'
-                     }
-                 }
-              )
-          q.success(function (response, status) {
-              if (response.IsSuccess == true) {
-                  $scope.alert_fun('success', "更新成功！");
-                  $scope.GXTdescribe(0);
-              } else {
-                  $scope.alert_fun('danger', response.Message);
-              }
-          });
-          q.error(function (e) {
-              alert("网络打盹了，请稍后。。。");
-          });
-      }
-
-  }
-    //获取获取关系图描述
-  $scope.GetReferChartDesc = function () {
-      var url = "/api/Keyword/GetReferChartDesc?projectId=" + $rootScope.getProjectId;
-      var q = $http.get(url);
-      q.success(function (response, status) {
-          $scope.GetReferChartDescList = response;
-          $scope.descList = { a: $scope.GetReferChartDescList.DescList[0], b: $scope.GetReferChartDescList.DescList[1], c: $scope.GetReferChartDescList.DescList[2], d: $scope.GetReferChartDescList.DescList[3] };
-          console.log(response);
-      });
-      q.error(function (response) {
-          $scope.error = "网络打盹了，请稍后。。。";
-      });
-  }
-
-
-
-
-    //切换与加载_______________________________________________________
-  $scope.keywordControlIsActive = function (num) {
-      $scope.keywordCisActive = num;
-      if (num == 1) {
-
-      } else if (num == 2) {
-          $('#Tilford-Tree svg').remove();
-          $scope.GetD3TreeData();
-      } else if (num == 3) {
-          $('#tree-container svg').remove();
-          $scope.GetTreeData();
-      } else if (num == 4) {
-          $('#bd svg').remove();
-          $scope.GetData();
-      } else if (num == 5) {
-          $scope.juzhentu();
-      } else if (num == 6) {
-          $scope.GetAnalysisItem();
-      } else if (num == 7) {
-          $scope.GetECGuanxi();
-          $scope.TextExtractByEntity();
-          $scope.GetLinkReferCount();
-          $scope.GetReferChartDesc();
-
-      } else if (num == 8) {
-          $scope.GetEntity();
-      } else if (num == 9) {
-          $scope.GetAllDomainCategoryFrist();
-      }
-  };
-
 
 
 });

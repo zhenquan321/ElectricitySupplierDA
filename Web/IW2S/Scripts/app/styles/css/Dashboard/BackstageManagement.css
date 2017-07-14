@@ -1296,7 +1296,7 @@
   color: #C33B26;
 }
 #UserManage #caseInquiry .panel-header > table {
-  width: 83%;
+  width: 74%;
 }
 #UserManage #caseInquiry table {
   max-width: 100%;
@@ -1594,7 +1594,4 @@
   border-top: none;
   color: #858585;
   font-size: 13px;
-}
-#UserManage .panel-header > table {
-  width: 83%;
 }

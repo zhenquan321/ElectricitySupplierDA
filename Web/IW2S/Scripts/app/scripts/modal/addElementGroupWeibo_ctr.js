@@ -61,7 +61,7 @@ var addElementGroupWeibo_ctr = function ($scope, $modalInstance, $rootScope, $ht
                 $rootScope.GetBaiduSearchKeyword2($rootScope.getBaiduRecordId, $rootScope.getBaiduRecordName);
             })
             q.error(function (response) {
-                $scope.error = "网络打盹了，请稍后。。。";
+                $scope.error = "服务器连接出错";
             });
         }
         else if ($scope.operate == 2) {
@@ -74,7 +74,7 @@ var addElementGroupWeibo_ctr = function ($scope, $modalInstance, $rootScope, $ht
                 $rootScope.GetBaiduSearchKeyword2($rootScope.getBaiduRecordId, $rootScope.getBaiduRecordName);
             })
             q.error(function (response) {
-                $scope.error = "网络打盹了，请稍后。。。";
+                $scope.error = "服务器连接出错";
             });
         }
     }

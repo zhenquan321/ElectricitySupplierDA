@@ -119,7 +119,7 @@ var addElementGroup_ctr = function ($scope, $modalInstance, $rootScope, $http, $
                 $rootScope.GetBaiduSearchKeyword2($rootScope.getBaiduRecordId, $rootScope.getBaiduRecordName);
             })
             q.error(function (response) {
-                $scope.error = "网络打盹了，请稍后。。。";
+                $scope.error = "服务器连接出错";
             });
         }
         //if ($scope.operate == 2) {
@@ -131,7 +131,7 @@ var addElementGroup_ctr = function ($scope, $modalInstance, $rootScope, $http, $
         //    $rootScope.GetBaiduSearchKeyword2($rootScope.getBaiduRecordId, $rootScope.getBaiduRecordName);
         //  })
         //  q.error(function (response) {
-        //    $scope.error = "网络打盹了，请稍后。。。";
+        //    $scope.error = "服务器连接出错";
         //  });
         //}
     }
@@ -152,7 +152,7 @@ var addElementGroup_ctr = function ($scope, $modalInstance, $rootScope, $http, $
     //    $rootScope.GetBaiduSearchKeyword2($rootScope.getBaiduRecordId, $rootScope.getBaiduRecordName);
     //  })
     //  q.error(function (response) {
-    //    $scope.error = "网络打盹了，请稍后。。。";
+    //    $scope.error = "服务器连接出错";
     //  });
     //}
     //判断标题
@@ -388,7 +388,7 @@ var addElementGroup_ctr = function ($scope, $modalInstance, $rootScope, $http, $
                 }
             });
             q.error(function (e) {
-                alert("网络打盹了，请稍后。。。");
+                alert("服务器连接出错");
             });
         }
 
@@ -407,7 +407,7 @@ var addElementGroup_ctr = function ($scope, $modalInstance, $rootScope, $http, $
                 }
             });
             q.error(function (e) {
-                $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+                $scope.addAlert('danger', "服务器连接出错");
             });
         }
     }

@@ -34,7 +34,7 @@
 
         });
         q.error(function (response) {
-            alert("网络打盹了，请稍后。。。");
+            alert("服务器连接出错");
             $rootScope.loadingTrue = false;//加载中
 
         });

@@ -23,7 +23,7 @@
 			$scope.ChartList = response;
 		});
 		q.error(function(e) {
-		    $scope.alert_fun('danger', "网络打盹了，请稍后。。。");
+		    $scope.alert_fun('danger', "服务器连接出错");
 		});
 	}
 
@@ -87,7 +87,7 @@
 				}
 			});
 			q.error(function(e) {
-			    $scope.alert_fun('danger', "网络打盹了，请稍后。。。");
+			    $scope.alert_fun('danger', "服务器连接出错");
 			});
 		}
 	}

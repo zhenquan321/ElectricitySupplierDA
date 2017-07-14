@@ -109,7 +109,7 @@
 
       });
       q.error(function (response) {
-        $scope.error = "网络打盹了，请稍后。。。";
+        $scope.error = "服务器连接出错";
       });
     }
 
@@ -240,13 +240,13 @@
             $scope.showLink = false;
           });
           q.error(function (e) {
-            $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+            $scope.addAlert('danger', "服务器连接出错");
           });
 
         });
       });
       q.error(function (response) {
-        $scope.error = "网络打盹了，请稍后。。。";
+        $scope.error = "服务器连接出错";
         $scope.isActiveStart = false;
       });
 
@@ -278,7 +278,7 @@
         }
       });
       q.error(function (e) {
-        $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+        $scope.addAlert('danger', "服务器连接出错");
       });
 
 
@@ -477,7 +477,7 @@
         }
       );
       q.error(function (response) {
-        $scope.error = "网络打盹了，请稍后。。。";
+        $scope.error = "服务器连接出错";
         $scope.isActiveStart = false;
 
       });
@@ -510,7 +510,7 @@
         });
       });
       q.error(function (response) {
-        $scope.error = "网络打盹了，请稍后。。。";
+        $scope.error = "服务器连接出错";
       });
     }
 
@@ -524,7 +524,7 @@
         $scope.cipintu(response.noun, response.nounCount, response.verb, response.verbCount);
       });
       q.error(function (response) {
-        $scope.error = "网络打盹了，请稍后。。。";
+        $scope.error = "服务器连接出错";
       });
     }
 
@@ -652,7 +652,7 @@
           $scope.skipTo(1);
         });
         q.error(function (response) {
-          $scope.error = "网络打盹了，请稍后。。。";
+          $scope.error = "服务器连接出错";
         });
       } else {
         alert('输入日期格式不对或日期不存在！')
@@ -672,7 +672,7 @@
         $scope.skipTo(1);
       });
       q.error(function (response) {
-        $scope.error = "网络打盹了，请稍后。。。";
+        $scope.error = "服务器连接出错";
       });
     }
 
@@ -725,7 +725,7 @@
         console.log($scope.GetAllKeywordCategory_list);
       });
       q.error(function (response) {
-        $scope.error = "网络打盹了，请稍后。。。";
+        $scope.error = "服务器连接出错";
       });
     }
 //未排除的关键词
@@ -737,7 +737,7 @@
         $scope.GetBaiduLevelLinks2(response[0].id);
       });
       q.error(function (response) {
-        $scope.error = "网络打盹了，请稍后。。。";
+        $scope.error = "服务器连接出错";
       });
     }
 
@@ -793,7 +793,7 @@
         }
       })
       q.error(function (response) {
-        $scope.error = "网络打盹了，请稍后。。。";
+        $scope.error = "服务器连接出错";
       });
     }
 //2.3.1.1分页
@@ -848,7 +848,7 @@
           checkedId = [];
         });
         q.error(function (e) {
-          $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+          $scope.addAlert('danger', "服务器连接出错");
         });
       }
     }
@@ -869,7 +869,7 @@
           checkedId = [];
         });
         q.error(function (e) {
-          $scope.addAlert('danger', "网络打盹了，请稍后。。。");
+          $scope.addAlert('danger', "服务器连接出错");
         });
       }
     }

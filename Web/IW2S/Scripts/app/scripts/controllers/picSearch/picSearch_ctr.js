@@ -262,7 +262,7 @@
                 console.log(response)
             })
             .error(function (response, status) {
-                $rootScope.addAlert('danger', "网络打盹了，请稍后。。。");
+                $rootScope.addAlert('danger', "服务器连接出错");
             });
     }
 
@@ -292,7 +292,7 @@
                 console.log(response);
             })
             .error(function (response, status) {
-                $rootScope.addAlert('danger', "网络打盹了，请稍后。。。");
+                $rootScope.addAlert('danger', "服务器连接出错");
             });
 
     }
@@ -324,7 +324,7 @@
             }
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     };
 

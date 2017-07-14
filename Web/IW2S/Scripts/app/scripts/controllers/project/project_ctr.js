@@ -55,7 +55,7 @@
                 }
             });
             q.error(function (e) {
-                alert("网络打盹了，请稍后。。。")
+                alert("服务器连接出错")
 
                 $rootScope.loadingTrue = false;//加载中
 
@@ -136,7 +136,7 @@
             $scope.loadProjects();
         });
         p.error(function (e) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
 
@@ -160,7 +160,7 @@
             $scope.loadProjects();
         });
         p.error(function (e) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     }
     //7.停止项目

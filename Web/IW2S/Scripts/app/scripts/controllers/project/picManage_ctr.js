@@ -97,7 +97,7 @@
             }
         );
         p.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
             $scope.isActiveList = false;
             $rootScope.loadingTrue = false;//加载中
 
@@ -131,7 +131,7 @@
     //        }
     //        );
     //    p.error(function (response) {
-    //        $scope.error = "网络打盹了，请稍后。。。";
+    //        $scope.error = "服务器连接出错";
     //    });
     //}
 
@@ -198,7 +198,7 @@
                 }
             });
             p.error(function (e) {
-                $scope.error = "网络打盹了，请稍后。。。";
+                $scope.error = "服务器连接出错";
 
             });
         }
@@ -354,7 +354,7 @@
                 }
             });
             p.error(function (e) {
-                $scope.error = "网络打盹了，请稍后。。。";
+                $scope.error = "服务器连接出错";
 
             });
         }
@@ -415,7 +415,7 @@
 
             });
         p.error(function (response) {
-            alert("网络打盹了，请稍后。。。");
+            alert("服务器连接出错");
             $rootScope.loadingTrue = false;//加载中
 
         });
@@ -469,7 +469,7 @@
     //             $scope.isSearchblogdata = false;
     //         });
     //    p.error(function (response) {
-    //        $scope.error = "网络打盹了，请稍后。。。";
+    //        $scope.error = "服务器连接出错";
     //        $scope.isActiveList = false;
     //    });
     //};

@@ -78,7 +78,7 @@
             }
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     };
 
@@ -112,7 +112,7 @@
             }
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     };
     //获取项目列表
@@ -126,7 +126,7 @@
             }
         });
         q.error(function (response) {
-            $scope.error = "网络打盹了，请稍后。。。";
+            $scope.error = "服务器连接出错";
         });
     };
     $scope.GetProjects2();

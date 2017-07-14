@@ -636,7 +636,10 @@ namespace IW2S.Controllers
             return t;
         }
 
-       
+        public class TextTree
+        {
+            public string TreeValues { get; set; }
+        }
         #endregion
 
         #region 权重图

@@ -54,6 +54,7 @@
                     if (response.UsrRole == 0) {
                         chk_global_vars($cookieStore, $rootScope, response, null, $http);
                         $location.path("/modelSelect").replace();
+                      
                     } else {
                         chk_global_vars($cookieStore, $rootScope, response, null, $http);
                         $location.path("/computingResources").replace();
@@ -61,7 +62,7 @@
                 }
             });
             q.error(function (response) {
-                $scope.error = "网络打盹了，请稍后。。。";
+                $scope.error = "服务器连接出错";
             });
         }
         ;

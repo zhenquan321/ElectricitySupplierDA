@@ -28,7 +28,7 @@
                 console.log($scope.GetImgSearchLinks_list1);
             })
             .error(function (response, status) {
-                $rootScope.addAlert('danger', "网络打盹了，请稍后。。。");
+                $rootScope.addAlert('danger', "服务器连接出错");
             });
 
     }
@@ -55,7 +55,7 @@
 
             })
             .error(function (response, status) {
-                $rootScope.addAlert('danger', "网络打盹了，请稍后。。。");
+                $rootScope.addAlert('danger', "服务器连接出错");
             });
 
     }

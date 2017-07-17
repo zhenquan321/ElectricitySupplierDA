@@ -1,39 +1,13 @@
 ﻿var wordtree_ctr = myApp.controller("wordtree_ctr", function ($scope, $rootScope, $http, $location, $window, $cookieStore, $modal, myApplocalStorage) {
-<<<<<<< HEAD
-
-    $scope.duibiShow = false;
-    chk_global_vars($cookieStore, $rootScope, null, $location, $http, myApplocalStorage);
-
-=======
     $scope.GetLinkContentN = '';
     $scope.duibiShow = false;
     chk_global_vars($cookieStore, $rootScope, null, $location, $http, myApplocalStorage);
 
     document.documentElement.scrollTop = document.body.scrollTop = 0;
->>>>>>> c26f92d240a523a1903a8e87db204683ad299860
 
     $scope.duibiShowFun = function () {
         $scope.duibiShow = !$scope.duibiShow;
 
-<<<<<<< HEAD
-
-
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
     }
 
     function GetQueryString(name) {
@@ -69,7 +43,6 @@
 
     //_________________________________________________________________________
     $scope.GetBaiduKeyword();
->>>>>>> c26f92d240a523a1903a8e87db204683ad299860
 
 
 });

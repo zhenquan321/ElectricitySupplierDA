@@ -13,7 +13,7 @@ var addPicture_ctr = function ($scope, $modalInstance, $rootScope, $http,$timeou
         xiuxiu.remove("userpic");
         $('#flashEditorOut').html("<div id='altContent'></div>");
         xiuxiu.embedSWF("altContent", 1, "100%", "100%", "userpic");
-        xiuxiu.setUploadURL('http://211.154.6.166:9999/api/File/ImgUpload');
+        xiuxiu.setUploadURL('http://43.240.138.233:9999/api/File/ImgUpload');
         xiuxiu.setUploadType(2);
         xiuxiu.setUploadDataFieldName("upload_file");
         var cc = 'http://' + window.location.host;

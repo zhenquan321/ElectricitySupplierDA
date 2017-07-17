@@ -494,6 +494,20 @@ namespace IW2S.Models
         /// 网站数
         /// </summary>
         public int SiteNum { get; set; }
+    }
 
+    /// <summary>
+    /// 插入生成的订单信息
+    /// </summary>
+    public class OrderInfo
+    {
+        /// <summary>
+        /// 订单信息
+        /// </summary>
+        public IWSData.Model.OrderDto order { get; set; }
+        /// <summary>
+        /// 二维码
+        /// </summary>
+        public string qrcode { get; set; }
     }
 }

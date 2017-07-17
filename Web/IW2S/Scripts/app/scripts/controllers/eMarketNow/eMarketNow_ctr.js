@@ -137,7 +137,7 @@ var eMarketNow_ctr = myApp.controller("eMarketNow_ctr", function ($scope, $rootS
             $scope.GetKeyword();
         });
         q.error(function (status) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
 
     };
@@ -219,7 +219,7 @@ var eMarketNow_ctr = myApp.controller("eMarketNow_ctr", function ($scope, $rootS
     //                }
     //            });
     //            q.error(function (response) {
-    //                $scope.error = "服务器连接出错";
+    //                $scope.error = "网络打盹了，请稍后。。。";
     //                $scope.isActiveAdd = false;
 
     //            });
@@ -266,7 +266,7 @@ var eMarketNow_ctr = myApp.controller("eMarketNow_ctr", function ($scope, $rootS
 
     //            });
     //            q.error(function (response) {
-    //                $scope.error = "服务器连接出错";
+    //                $scope.error = "网络打盹了，请稍后。。。";
     //                $scope.isActiveAdd = false;
     //            });
     //        }
@@ -295,7 +295,7 @@ var eMarketNow_ctr = myApp.controller("eMarketNow_ctr", function ($scope, $rootS
 
                 });
                 q.error(function (response) {
-                    $scope.error = "服务器连接出错";
+                    $scope.error = "网络打盹了，请稍后。。。";
                     $scope.isActiveAdd = false;
                 });
             }
@@ -336,7 +336,7 @@ var eMarketNow_ctr = myApp.controller("eMarketNow_ctr", function ($scope, $rootS
         q.error(function (response) {
             $scope.isActiveAdd50 = false;
 
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
             $scope.isActiveStart = false;
         });
     };
@@ -365,7 +365,7 @@ var eMarketNow_ctr = myApp.controller("eMarketNow_ctr", function ($scope, $rootS
         q.error(function (response) {
             $scope.isActiveAdd50 = false;
 
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
             $scope.isActiveStart = false;
         });
     };
@@ -405,7 +405,7 @@ var eMarketNow_ctr = myApp.controller("eMarketNow_ctr", function ($scope, $rootS
         q.error(function (response) {
             $scope.isActiveAdd50 = false;
 
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
             $scope.isActiveStart = false;
         });
     };
@@ -467,7 +467,7 @@ var eMarketNow_ctr = myApp.controller("eMarketNow_ctr", function ($scope, $rootS
             }
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
 
         });
     }
@@ -487,7 +487,7 @@ var eMarketNow_ctr = myApp.controller("eMarketNow_ctr", function ($scope, $rootS
             }
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
 
         });
     }
@@ -514,7 +514,7 @@ var eMarketNow_ctr = myApp.controller("eMarketNow_ctr", function ($scope, $rootS
 
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
 
         });
     }
@@ -540,7 +540,7 @@ var eMarketNow_ctr = myApp.controller("eMarketNow_ctr", function ($scope, $rootS
 
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
 
         });
     }
@@ -566,7 +566,7 @@ var eMarketNow_ctr = myApp.controller("eMarketNow_ctr", function ($scope, $rootS
 
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
 
         });
     }
@@ -593,7 +593,7 @@ var eMarketNow_ctr = myApp.controller("eMarketNow_ctr", function ($scope, $rootS
 
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
 
         });
     }
@@ -607,7 +607,7 @@ var eMarketNow_ctr = myApp.controller("eMarketNow_ctr", function ($scope, $rootS
             $scope.GetImgLink = response[0];
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
 
         });
     }
@@ -867,7 +867,7 @@ var eMarketNow_ctr = myApp.controller("eMarketNow_ctr", function ($scope, $rootS
             myChart.setOption(option);
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
             $scope.isActiveStart = false;
 
         });
@@ -1737,7 +1737,7 @@ var eMarketNow_ctr = myApp.controller("eMarketNow_ctr", function ($scope, $rootS
 
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
             $scope.isActiveStart = false;
 
         });
@@ -1767,7 +1767,7 @@ var eMarketNow_ctr = myApp.controller("eMarketNow_ctr", function ($scope, $rootS
 
     //    });
     //    q.error(function (response) {
-    //        $scope.error = "服务器连接出错";
+    //        $scope.error = "网络打盹了，请稍后。。。";
 
     //    });
     //};
@@ -1796,7 +1796,7 @@ var eMarketNow_ctr = myApp.controller("eMarketNow_ctr", function ($scope, $rootS
             }
         );
         p.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
             $scope.isActiveList = false;
         });
     }
@@ -1857,7 +1857,7 @@ var eMarketNow_ctr = myApp.controller("eMarketNow_ctr", function ($scope, $rootS
             }
         );
         p.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     }
 
@@ -1955,7 +1955,7 @@ var eMarketNow_ctr = myApp.controller("eMarketNow_ctr", function ($scope, $rootS
 
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
             $scope.isActiveStart = false;
 
         });
@@ -2110,7 +2110,7 @@ var eMarketNow_ctr = myApp.controller("eMarketNow_ctr", function ($scope, $rootS
             }
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     };
     //16切换项目

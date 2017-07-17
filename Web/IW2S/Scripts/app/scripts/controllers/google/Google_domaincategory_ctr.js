@@ -165,7 +165,7 @@
                 }
             });
             q.error(function (e) {
-                $scope.addAlert('danger', "服务器连接出错");
+                $scope.addAlert('danger', "网络打盹了，请稍后。。。");
             });
         }
     }
@@ -201,7 +201,7 @@
             }
         });
         q.error(function (e) {
-            $scope.addAlert('danger', "服务器连接出错");
+            $scope.addAlert('danger', "网络打盹了，请稍后。。。");
         });
     }
     //删除分组
@@ -217,7 +217,7 @@
                 }
             });
             q.error(function (e) {
-                $scope.addAlert('danger', "服务器连接出错");
+                $scope.addAlert('danger', "网络打盹了，请稍后。。。");
             });
         }
     }
@@ -291,7 +291,7 @@
             }
         });
         q.error(function (e) {
-            $scope.addAlert('danger', "服务器连接出错");
+            $scope.addAlert('danger', "网络打盹了，请稍后。。。");
         });
     }
 
@@ -377,7 +377,7 @@
             }
         });
         q.error(function (e) {
-            $scope.addAlert('danger', "服务器连接出错");
+            $scope.addAlert('danger', "网络打盹了，请稍后。。。");
         });
     }
 
@@ -404,7 +404,7 @@
                 }
             });
             q.error(function (e) {
-                $scope.addAlert('danger', "服务器连接出错");
+                $scope.addAlert('danger', "网络打盹了，请稍后。。。");
             });
         } else {
             $scope.addAlert('danger', "没有勾选要删除的域名");
@@ -426,7 +426,7 @@
             }
         });
         q.error(function (e) {
-            $scope.addAlert('danger', "服务器连接出错");
+            $scope.addAlert('danger', "网络打盹了，请稍后。。。");
         });
     }
 
@@ -441,7 +441,7 @@
             $scope.groupList = response;
         });
         q.error(function (e) {
-            $scope.addAlert('danger', "服务器连接出错");
+            $scope.addAlert('danger', "网络打盹了，请稍后。。。");
         });
     }
 
@@ -459,7 +459,7 @@
             $scope.activeId = response.DomainCategoryId;
         });
         q.error(function (e) {
-            $scope.addAlert('danger', "服务器连接出错");
+            $scope.addAlert('danger', "网络打盹了，请稍后。。。");
         });
     }
 
@@ -505,7 +505,7 @@
             $.fn.zTree.init($("#treeDemo"), setting, $scope.zNodes);
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     }
 
@@ -541,7 +541,7 @@
             }
         });
         q.error(function (e) {
-            $scope.addAlert('danger', "服务器连接出错");
+            $scope.addAlert('danger', "网络打盹了，请稍后。。。");
         });
 
         var url = "/api/Google/GetDomainStatis?categoryId=" + $scope.categoryId + "&prjId=" + $rootScope.getProjectId;
@@ -704,7 +704,7 @@
             }
         );
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
             $scope.isActiveStart = false;
 
         });

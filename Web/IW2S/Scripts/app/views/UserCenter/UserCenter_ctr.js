@@ -4,13 +4,36 @@
     $scope.newPw = "";
     $scope.oldPw1 = '';
     $scope.newPw_q = '';
+    $scope.COpage = 1;
+    $scope.COpagesize = 10;
+    $scope.NCOpage = 1;
+    $scope.NCOpagesize = 10;
     chk_global_vars($cookieStore, $rootScope, null, $location, $http, myApplocalStorage);
-    $scope.show_list_fun = function (num) {
-        $scope.show_list = num;
-        if (num = 1) {
 
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var str = location.href;
+        var num = str.indexOf("?")
+        str = str.substr(num + 1);
+        var r = str.match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+
+    $scope.show_list_fun = function (num) {
+        if (num) {
+            $scope.show_list = num;
+            if (num == 1) {
+
+            } else if (num == 5) {
+                $scope.CompletedGetOrder();
+                $scope.NoCompletedGetOrder();
+            }
+        } else {
+            $scope.show_list = 3;
         }
     }
+
+    $scope.show_list_fun(GetQueryString('tab'));
     //修改 用户信息
     var pattern = /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/;
     $scope.changeXinxi = function () {
@@ -80,7 +103,7 @@
         xiuxiu.remove("userpic");
         $('#flashEditorOut').html("<div id='altContent'></div>");
         xiuxiu.embedSWF("altContent", 5, "100%", "100%", "userpic");
-        xiuxiu.setUploadURL('http://211.154.6.166:9999/api/File/ImgUpload');
+        xiuxiu.setUploadURL('http://43.240.138.233:9999/api/File/ImgUpload');
         xiuxiu.setUploadType(2);
         xiuxiu.setUploadDataFieldName("upload_file");
         var cc = $rootScope.uer_PictureSrc;
@@ -176,18 +199,14 @@
             console.log($scope.GetUserInfoByIdList);
         })
         .error(function (response, status) {
-            // $scope.addAlert('danger', "服务器连接出错");
+            // $scope.addAlert('danger', "网络打盹了，请稍后。。。");
         });
     }
- //
-    $scope.PayPageShowFun1 = function () {
 
-
-
-
-    }
+ 
     //付费页面_Gong
     $scope.getPayPage = function (x) {
+  
         var kw_scope = $rootScope.$new();
         kw_scope.projectName = x.Name;
         kw_scope.selectPjt0bjectList = x.ProjectList;
@@ -208,9 +227,49 @@
             $scope.GetProjectCategory();
         });
     };
+    //获取订单信息
+    //type：要查询的订单类型，0为所有，1为未完成，2为已完成
 
+    $scope.CompletedGetOrder = function () {
+        var url = "/api/Pay/GetOrder?userId=" + $rootScope.userID + "&page=" + ($scope.COpage-1) + "&pagesize=" + $scope.COpagesize + "&type=" + 2;
+        var q = $http.get(url);
+        q.success(function (response, status) {
+          
+            $scope.CompletedGetOrderList = response.Result;
+            $scope.CompletedGetOrderListCount = response.Count;
+        });
+        q.error(function (response) {
+            $scope.alert_fun('danger', '哎呀，网络打盹了，请重试一下！');
+        });
+    }
+    $scope.NoCompletedGetOrder = function () {
+        var url = "/api/Pay/GetOrder?userId=" + $rootScope.userID + "&page=" + ($scope.NCOpage-1) + "&pagesize=" + $scope.NCOpagesize + "&type=" + 1;
+        var q = $http.get(url);
+        q.success(function (response, status) {
+            console.log(response);
+            $scope.NoCompletedGetOrderList = response.Result;
+            $scope.NoCompletedGetOrderListCount = response.Count;
+        });
+        q.error(function (response) {
+            $scope.alert_fun('danger', '哎呀，网络打盹了，请重试一下！');
+        });
+    }
+    //删除订单
+    $scope.DelOrder = function (id) {
+        if(confirm("您确定要删除该订单吗")){
+            var url = "/api/Pay/DelOrder?orderId=" + id;
+            var q = $http.get(url);
+            q.success(function (response, status) {
+                $scope.alert_fun('success', '订单删除成功');
+                $scope.NoCompletedGetOrder();
+            });
+            q.error(function (response) {
+                $scope.alert_fun('danger', '哎呀，网络打盹了，请重试一下！');
+            });
+        }
+    }
 
     //自动调用__________________________________
     $scope.GetUserInfoById();
-
+   
 });

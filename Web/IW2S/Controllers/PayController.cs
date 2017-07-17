@@ -203,15 +203,6 @@ namespace IW2S.Controllers
                     };
                     proDtoList.Add(proDto);
                 }
-<<<<<<< HEAD
-
-                var order = new OrderMongo
-                {
-                    _id=ObjectId.GenerateNewId(),
-                    CreatedAt = DateTime.Now.AddHours(8),
-                    ProductList = productList,
-                    UserId = userObjId
-=======
                 var ran = new Random();
                 string tradeNo = string.Format("DT{0}{1}", DateTime.Now.ToString("yyyyMMddHHmmss"), ran.Next(9999));
                 var order = new OrderMongo
@@ -221,7 +212,6 @@ namespace IW2S.Controllers
                     ProductList = productList,
                     UserId = userObjId,
                     TradeNo = tradeNo
->>>>>>> c26f92d240a523a1903a8e87db204683ad299860
                 };
                 order.TotalPrice = productList.Select(x => x.Num * x.Price).Sum();
                 colOrder.InsertOne(order);
@@ -231,22 +221,14 @@ namespace IW2S.Controllers
                 {
                     Id = order._id.ToString(),
                     ProductList = proDtoList,
-<<<<<<< HEAD
-                    TotalPrice = order.TotalPrice
-=======
                     TotalPrice = order.TotalPrice,
                     CreatedAt = order.CreatedAt,
                     TradeNo = order.TradeNo
->>>>>>> c26f92d240a523a1903a8e87db204683ad299860
                 };
                 result.order = orderDto;
 
                 //获取二维码
-<<<<<<< HEAD
-                result.qrcode = GetWxPayQcode(order._id.ToString());
-=======
-                result.qrcode = "/api/Pay/GetWxPayQcode?orderId={0}&tradeNo={1}".FormatStr(orderDto.Id, tradeNo);
->>>>>>> c26f92d240a523a1903a8e87db204683ad299860
+                result.qrcode = "/api/Pay/GetWxPayQcode?orderId={0}".FormatStr(orderDto.Id);
                 return result;
             }
             catch
@@ -303,12 +285,8 @@ namespace IW2S.Controllers
                         Id = x._id.ToString(),
                         IsPay = x.IsPay,
                         PayAt = x.PayAt,
-<<<<<<< HEAD
-                        TotalPrice = x.TotalPrice
-=======
                         TotalPrice = x.TotalPrice,
                         TradeNo = x.TradeNo
->>>>>>> c26f92d240a523a1903a8e87db204683ad299860
                     };
                     var productList = new List<ProductInOrderDto>();
                     foreach (var y in x.ProductList)
@@ -380,16 +358,9 @@ namespace IW2S.Controllers
         /// <summary>
         /// 获取微信支付二维码
         /// </summary>
-<<<<<<< HEAD
-        /// <param name="orderId"></param>
+        /// <param name="orderId">订单Id</param>
         [HttpGet]
         public HttpResponseMessage GetWxPayQcode(string orderId)
-=======
-        /// <param name="orderId">订单Id</param>
-        /// <param name="tradeNo">订单编号</param>
-        [HttpGet]
-        public HttpResponseMessage GetWxPayQcode(string orderId,string tradeNo)
->>>>>>> c26f92d240a523a1903a8e87db204683ad299860
         {
 
             //获取订单信息及总价
@@ -403,11 +374,7 @@ namespace IW2S.Controllers
             }
 
             //生成微信支付链接
-<<<<<<< HEAD
-            string tradeNo = WxPayApi.GenerateOutTradeNo();     //微信订单号
-
-=======
->>>>>>> c26f92d240a523a1903a8e87db204683ad299860
+            string xxTradeNo = WxPayApi.GenerateOutTradeNo();
             Log.Info(this.GetType().ToString(), "Native pay mode 2 url is producing...");
 
             double fee = order.TotalPrice * 100;
@@ -415,7 +382,7 @@ namespace IW2S.Controllers
             WxPayData data = new WxPayData();
             data.SetValue("body", "DWC服务费");//商品描述
             data.SetValue("attach", "北京");//附加数据
-            data.SetValue("out_trade_no", tradeNo);//商户订单号
+            data.SetValue("out_trade_no", xxTradeNo);//商户订单号
             data.SetValue("total_fee", fee.ToString());//总金额
             data.SetValue("time_start", DateTime.Now.ToString("yyyyMMddHHmmss"));//交易起始时间
             data.SetValue("time_expire", DateTime.Now.AddMinutes(10).ToString("yyyyMMddHHmmss"));//交易结束时间
@@ -436,7 +403,7 @@ namespace IW2S.Controllers
             response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/png");
 
             //更新订单中的微信订单号
-            var update = new UpdateDocument { { "$set", new QueryDocument { { "TradeNo", tradeNo } } } };
+            var update = new UpdateDocument { { "$set", new QueryDocument { { "WxTradeNo", xxTradeNo } } } };
             col.UpdateOne(filter, update);
 
             return response;

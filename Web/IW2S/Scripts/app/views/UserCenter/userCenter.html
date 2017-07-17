@@ -8,6 +8,7 @@
                     <tbody>
                         <tr>
                             <th ng-class="{true:'active',false:''}[show_list==3]" ng-click="show_list_fun(3)"><div class="topselect"></div><a>我的服务</a></th>
+                            <th ng-class="{true:'active',false:''}[show_list==5]" ng-click="show_list_fun(5)"><div class="topselect"></div><a>我的订单</a></th>
                             <th ng-class="{true:'active',false:''}[show_list==4]" ng-click="show_list_fun(4)"><div class="topselect"></div><a>服务账单</a></th>
                             <th ng-class="{true:'active',false:''}[show_list==1]" ng-click="show_list_fun(1)"><div class="topselect"></div><a>个人信息</a></th>
                             <th ng-class="{true:'active',false:''}[show_list==2]" ng-click="show_list_fun(2)"><div class="topselect"></div><a>修改密码</a></th>
@@ -390,6 +391,74 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="instructions " style="display: block;">
+                        <p class="typeReminder colorababab">1.每月8日结算上月账单，请在每月28日前结清上月账单，逾期未缴将暂停提供所有云服务</p>
+                        <p class="typeReminder colorababab">2. “平台数据服务”指使用平台搜索的数据流量</p>
+                        <p class="typeReminder colorababab">3. “平台基础服务”指平台的基础使用费用</p>
+                    </div>
+                </div>
+                <div ng-show="show_list==5" class="ServiceBill">
+                    <div class="module-list module_keys_list_out">
+                        <div class="orderListTitle">
+                            <div>
+                                待支付订单
+                            </div>
+                        </div>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>订单号</th>
+                                    <th>服务名称</th>
+                                    <th>价格</th>
+                                    <th>是否支付</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody style="border-bottom:1px solid #ccc">
+                                <tr ng-repeat="x in NoCompletedGetOrderList">
+                                    <td>{{x.TradeNo}}</td>
+                                    <td>{{x.ProductList[0].Name}}</td>
+                                    <td>￥{{x.TotalPrice}}</td>
+                                    <td><a ng-click="getPayPageAgein(x)"style="cursor:pointer">立即支付</a></td>
+                                    <td><i class="fa fa-trash-o" ng-click="DelOrder(x.Id)"style="font-size: 16px; cursor: pointer;"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="row text-right pr20">
+                            <pagination boundary-links="true" class="pagination-sm" total-items="NoCompletedGetOrderListCount"
+                                        items-per-page="NCOpagesize" ng-change="NoCompletedGetOrder()" ng-model="NCOpage"
+                                        max-size="5" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;"
+                                        last-text="&raquo;">
+                            </pagination>
+                        </div>
+                    </div>
+                    <div class="module-list module_keys_list_out"style=" margin: 20px 0 50px;">
+                        <div class="orderListTitle">
+                            <div>
+                                已完成订单
+                            </div>
+                        </div>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th width="240">订单号</th>
+                                    <th>名称</th>
+                                    <th>价格</th>
+                                    <th>支付方式</th>
+                                    <th>购买时间</th>
+                                </tr>
+                            </thead>
+                            <tbody style="border-bottom:1px solid #ccc">
+                                <tr ng-repeat="x in CompletedGetOrderList">
+                                    <td>{{x.TradeNo}}</td>
+                                    <td>{{x.ProductList[0].Name}}</td>
+                                    <td>{{x.TotalPrice}}</td>
+                                    <td>微信支付</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                     <div class="instructions " style="display: block;">
                         <p class="typeReminder colorababab">1.每月8日结算上月账单，请在每月28日前结清上月账单，逾期未缴将暂停提供所有云服务</p>

@@ -56,7 +56,7 @@ var eMarketNowMng_ctr = myApp.controller("eMarketNowMng_ctr", function ($scope, 
             $scope.modelCallBack(groupId, 1, null, $scope.InfriLawCode, 0);
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     };
 
@@ -93,7 +93,7 @@ var eMarketNowMng_ctr = myApp.controller("eMarketNowMng_ctr", function ($scope, 
             }
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
 
     };
@@ -151,7 +151,7 @@ var eMarketNowMng_ctr = myApp.controller("eMarketNowMng_ctr", function ($scope, 
             console.log(response);
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     };
 
@@ -172,7 +172,7 @@ var eMarketNowMng_ctr = myApp.controller("eMarketNowMng_ctr", function ($scope, 
 
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     }
 
@@ -186,7 +186,7 @@ var eMarketNowMng_ctr = myApp.controller("eMarketNowMng_ctr", function ($scope, 
                 $scope.RefreshList();
             });
             q.error(function (response) {
-                $scope.error = "服务器连接出错";
+                $scope.error = "网络打盹了，请稍后。。。";
             });
         }
     };
@@ -233,7 +233,7 @@ var eMarketNowMng_ctr = myApp.controller("eMarketNowMng_ctr", function ($scope, 
 
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     };
 
@@ -780,7 +780,7 @@ var eMarketNowMng_ctr = myApp.controller("eMarketNowMng_ctr", function ($scope, 
 
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     }
 
@@ -881,7 +881,7 @@ var eMarketNowMng_ctr = myApp.controller("eMarketNowMng_ctr", function ($scope, 
             }
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     }
 
@@ -900,7 +900,7 @@ var eMarketNowMng_ctr = myApp.controller("eMarketNowMng_ctr", function ($scope, 
             }
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     }
 });

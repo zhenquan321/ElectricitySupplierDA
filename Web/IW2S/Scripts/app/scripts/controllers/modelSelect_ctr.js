@@ -170,7 +170,7 @@
             }
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     };
 
@@ -231,7 +231,7 @@
             $scope.GetShareToMeProjects();
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     };
 
@@ -269,7 +269,7 @@
                 },50)
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     };
 
@@ -305,7 +305,7 @@
                 },50)
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     };
     //复制项目
@@ -317,7 +317,7 @@
             $scope.GetProjects();
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     };
    
@@ -370,7 +370,7 @@
             }, 50)
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     };
     //删除项目组
@@ -383,7 +383,7 @@
             }
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     }
     //更新项目组
@@ -420,10 +420,24 @@
             }
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     }
-    
+    //获取产品价格
+    $scope.GetProduct = function () {
+        var url = "/api/Pay/GetProduct?page=" + 0 + "&pagesize=" + 1000;
+        var q = $http.get(url);
+        q.success(function (response, status) {
+            console.log(response);
+            $rootScope.GetProductList = response;
+            $scope.GetProductListCount = response.length;
+            myApplocalStorage.setObject('GetProductList', $rootScope.GetProductList);
+
+        });
+        q.error(function (response) {
+            $scope.error = "网络打盹了，请稍后。。。";
+        });
+    }
 
 
     //自动加载______________________________________________________________________________
@@ -431,5 +445,6 @@
     $scope.GetMyShareProjects();
     $scope.GetShareToMeProjects();
     $scope.GetProjectCategory();
+    $scope.GetProduct();
 });
 

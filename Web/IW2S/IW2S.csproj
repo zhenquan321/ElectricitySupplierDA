@@ -62,6 +62,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\JieBaSegmenter\Libs\JiebaNet.Segmenter.dll</HintPath>
     </Reference>
+    <Reference Include="LitJson">
+      <HintPath>..\packages\LitJson.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.dll</HintPath>
     </Reference>
@@ -253,6 +256,7 @@
     <Compile Include="Controllers\JiebaController.cs" />
     <Compile Include="Controllers\MediaController.cs" />
     <Compile Include="Controllers\KeywordController.cs" />
+    <Compile Include="Controllers\PayController.cs" />
     <Compile Include="Controllers\ProCategoryController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\ShareController.cs" />
@@ -283,6 +287,29 @@
     </Compile>
     <Compile Include="Helpers\VerifyCodeClass.cs" />
     <Compile Include="Helpers\WebHelper.cs" />
+    <Compile Include="Helpers\WeiXinPay\business\DownloadBill.cs" />
+    <Compile Include="Helpers\WeiXinPay\business\JsApiPay.cs" />
+    <Compile Include="Helpers\WeiXinPay\business\MicroPay.cs" />
+    <Compile Include="Helpers\WeiXinPay\business\NativeNotify.cs" />
+    <Compile Include="Helpers\WeiXinPay\business\NativePay.cs" />
+    <Compile Include="Helpers\WeiXinPay\business\OrderQuery.cs" />
+    <Compile Include="Helpers\WeiXinPay\business\Refund.cs" />
+    <Compile Include="Helpers\WeiXinPay\business\RefundQuery.cs" />
+    <Compile Include="Helpers\WeiXinPay\business\ResultNotify.cs" />
+    <Compile Include="Helpers\WeiXinPay\lib\Config.cs" />
+    <Compile Include="Helpers\WeiXinPay\lib\Data.cs" />
+    <Compile Include="Helpers\WeiXinPay\lib\Exception.cs" />
+    <Compile Include="Helpers\WeiXinPay\lib\HttpService.cs" />
+    <Compile Include="Helpers\WeiXinPay\lib\Log.cs" />
+    <Compile Include="Helpers\WeiXinPay\lib\Notify.cs" />
+    <Compile Include="Helpers\WeiXinPay\lib\WxPayApi.cs" />
+    <Compile Include="Helpers\WeiXinPay\ResultNotifyPage.aspx.cs">
+      <DependentUpon>ResultNotifyPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Helpers\WeiXinPay\ResultNotifyPage.aspx.designer.cs">
+      <DependentUpon>ResultNotifyPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\ZXingQrcodeHelper.cs" />
     <Compile Include="Models\CasecauseDto.cs" />
     <Compile Include="Models\Compute.cs" />
@@ -357,6 +384,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="Helpers\VerifyCode.aspx" />
+    <Content Include="Helpers\WeiXinPay\ResultNotifyPage.aspx" />
     <Content Include="pivottable-master\.gitignore" />
     <Content Include="pivottable-master\dist\c3_renderers.js" />
     <Content Include="pivottable-master\dist\c3_renderers.min.js" />
@@ -460,6 +488,7 @@
     <Content Include="Scripts\app\images\echartT\eChart3.png" />
     <Content Include="Scripts\app\images\favicon.png" />
     <Content Include="Scripts\app\images\fenzhi.png" />
+    <Content Include="Scripts\app\images\guanxitub.png" />
     <Content Include="Scripts\app\images\icons.png" />
     <Content Include="Scripts\app\images\jb51.png" />
     <Content Include="Scripts\app\images\jcsuccess.jpg" />
@@ -470,6 +499,7 @@
     <Content Include="Scripts\app\images\NewHome\damePic.png" />
     <Content Include="Scripts\app\images\NewHome\DLCould_b.png" />
     <Content Include="Scripts\app\images\NewHome\DLCould_w.png" />
+    <Content Include="Scripts\app\images\NewHome\guanxitub.png" />
     <Content Include="Scripts\app\images\NewHome\weChat.jpg" />
     <Content Include="Scripts\app\images\pie.png" />
     <Content Include="Scripts\app\images\products.png" />
@@ -498,6 +528,11 @@
     <Content Include="Scripts\app\scripts\controllers\bing\Bing_showDesc_ctr.js" />
     <Content Include="Scripts\app\scripts\controllers\bing\iw2s_bing_ctr.js" />
     <Content Include="Scripts\app\scripts\controllers\BackstageManagement\computingResources_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\computingResources_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\Dashboard\modal\getKWSArticle_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\Dashboard\modal\GetGZHInfo_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\Dashboard\modal\getShareArticle_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\Dashboard\modal\payPage_ctr.js" />
     <Content Include="Scripts\app\scripts\controllers\Dashboard\modal\SelectKws_ctr.js" />
     <Content Include="Scripts\app\scripts\controllers\Dashboard\projectGroup\PGDashboard_ctr.js" />
     <Content Include="Scripts\app\scripts\controllers\Dashboard\Dashboard_ctr.js" />
@@ -533,12 +568,14 @@
     <Content Include="Scripts\app\scripts\controllers\wordtree\wordTree.css" />
     <Content Include="Scripts\app\scripts\controllers\wordtree\wordtreeListShow.min.js" />
     <Content Include="Scripts\app\scripts\controllers\wordtree\wordtree_ctr.js" />
+    <Content Include="Scripts\app\scripts\modal\WC_addElementGroup_ctr.js" />
     <Content Include="Scripts\app\scripts\modal\addProjectGroup_ctr.js" />
     <Content Include="Scripts\app\scripts\Service\localStorage.js" />
     <Content Include="Scripts\app\views\BackstageManagement\commen\UMheader.html" />
     <Content Include="Scripts\app\views\BackstageManagement\SalesManagement.html" />
     <Content Include="Scripts\app\views\BackstageManagement\UserManage.html" />
     <Content Include="Scripts\app\views\common\footer-content2.html" />
+    <Content Include="Scripts\app\views\computingResources.html" />
     <Content Include="Scripts\app\views\Dashboard\comment\header.html" />
     <Content Include="Scripts\app\views\Dashboard\Dashboard.html" />
     <Content Include="Scripts\app\scripts\controllers\Dashboard\Report\ReportContents_ctr.js" />
@@ -694,6 +731,7 @@
     <Content Include="Scripts\app\views\common\header2.html" />
     <Content Include="Scripts\app\views\common\alertNew.html" />
     <Content Include="Scripts\app\views\BackstageManagement\computingResources.html" />
+    <Content Include="Scripts\app\views\Dashboard\DataAnalysis\WC_DataAnalysis.html" />
     <Content Include="Scripts\app\views\Dashboard\DataAnalysis\DataAnalysis.html" />
     <Content Include="Scripts\app\views\Dashboard\Introduce\ExportPDF\dist\jspdf.debug.js" />
     <Content Include="Scripts\app\views\Dashboard\Introduce\ExportPDF\dist\jspdf.min.js" />
@@ -907,6 +945,10 @@
     <Content Include="Scripts\app\views\Dashboard\Introduce\time_kj\timer_4.html" />
     <Content Include="Scripts\app\views\Dashboard\Introduce\time_kj\www.jq22.com.txt" />
     <Content Include="Scripts\app\views\Dashboard\modal\addPicture.html" />
+    <Content Include="Scripts\app\views\Dashboard\modal\GetGZHInfo.html" />
+    <Content Include="Scripts\app\views\Dashboard\modal\getKWSArticle.html" />
+    <Content Include="Scripts\app\views\Dashboard\modal\getShareArticle.html" />
+    <Content Include="Scripts\app\views\Dashboard\modal\payPage.html" />
     <Content Include="Scripts\app\views\Dashboard\modal\SelectKws.html" />
     <Content Include="Scripts\app\views\Dashboard\modal\shareReport.html" />
     <Content Include="Scripts\app\views\Dashboard\projectGroup\PGDashboard.html" />
@@ -925,6 +967,28 @@
     <Content Include="Scripts\app\views\Dashboard\Report\RModal\modal7.html" />
     <Content Include="Scripts\app\views\Dashboard\Report\RModal\modal4.html" />
     <Content Include="Scripts\app\views\Dashboard\Report\shareReportHeader.html" />
+    <Content Include="Scripts\app\views\Dashboard\WeChat\WC_dashboard.html" />
+    <Content Include="Scripts\app\views\Dashboard\WeChat\WC_domaincategory.html" />
+    <Content Include="Scripts\app\views\Dashboard\WeChat\WC_keywordcConstrast.html" />
+    <Content Include="Scripts\app\views\Dashboard\WeChat\WC_keywordMng.html" />
+    <Content Include="Scripts\app\views\Dashboard\WeChat\WC_keywordViews.html" />
+    <Content Include="Scripts\app\views\Dashboard\WeChat\WC_linkCollection.html" />
+    <Content Include="Scripts\app\views\Dashboard\WeChat\WC_model\WC_share_1.html" />
+    <Content Include="Scripts\app\views\Dashboard\WeChat\WC_model\WC_share_10.html" />
+    <Content Include="Scripts\app\views\Dashboard\WeChat\WC_model\WC_share_11.html" />
+    <Content Include="Scripts\app\views\Dashboard\WeChat\WC_model\WC_share_2.html" />
+    <Content Include="Scripts\app\views\Dashboard\WeChat\WC_model\WC_share_3.html" />
+    <Content Include="Scripts\app\views\Dashboard\WeChat\WC_model\WC_share_4.html" />
+    <Content Include="Scripts\app\views\Dashboard\WeChat\WC_model\WC_share_5.html" />
+    <Content Include="Scripts\app\views\Dashboard\WeChat\WC_model\WC_share_12.html" />
+    <Content Include="Scripts\app\views\Dashboard\WeChat\WC_model\WC_share_6.html" />
+    <Content Include="Scripts\app\views\Dashboard\WeChat\WC_model\WC_share_7.html" />
+    <Content Include="Scripts\app\views\Dashboard\WeChat\WC_model\WC_share_8.html" />
+    <Content Include="Scripts\app\views\Dashboard\WeChat\WC_model\WC_share_9.html" />
+    <Content Include="Scripts\app\views\Dashboard\WeChat\WC_model\WC_share_9_2.html" />
+    <Content Include="Scripts\app\views\Dashboard\WeChat\WC_model\WC_TabCounter.html" />
+    <Content Include="Scripts\app\views\Dashboard\WeChat\WC_showDesc.html" />
+    <Content Include="Scripts\app\views\Dashboard\WeChat\WeChat.html" />
     <Content Include="Scripts\app\views\eMarketNow\eMarketNow.html" />
     <Content Include="Scripts\app\views\eMarketNow\eMarketNowDashboard.html" />
     <Content Include="Scripts\app\views\eMarketNow\eMarketNowMng.html" />
@@ -1030,11 +1094,13 @@
     <Content Include="Scripts\app\views\DiscoveryPage.html" />
     <Content Include="Scripts\app\views\keywords\baidu_dashboard\baidu_share_10.html" />
     <Content Include="Scripts\app\views\keywords\baidu_dashboard\baidu_share_9.html" />
+    <Content Include="Scripts\app\views\keywords\baidu_dashboard\baidu_share_9_2.html" />
     <Content Include="Scripts\app\views\keywords\baidu_dashboard\TabCounter.html" />
     <Content Include="Scripts\app\views\keywords\iw2s_dashboard.html" />
     <Content Include="Scripts\app\views\keywords\iw2s_domaincategory.html" />
     <Content Include="Scripts\app\views\keywords\keywordcConstrast.html" />
     <Content Include="Scripts\app\views\keywords\linkCollection.html" />
+    <Content Include="Scripts\app\views\modal\WC_addElementGroup.html" />
     <Content Include="Scripts\app\views\modal\addkeywordFilterBing.html" />
     <Content Include="Scripts\app\views\modal\addProjectGroup.html" />
     <Content Include="Scripts\app\views\modal\getChart.html" />
@@ -1229,6 +1295,7 @@
     <Content Include="pivottable-master\pivottable_css\pivottable.less" />
     <Content Include="pivottable-master\ReadMe.md" />
     <Content Include="pivottable-master\tests\pivot_spec.coffee" />
+    <Content Include="Helpers\WeiXinPay\cert\apiclient_cert.p12" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\app\font\fontawesome-webfont.eot" />

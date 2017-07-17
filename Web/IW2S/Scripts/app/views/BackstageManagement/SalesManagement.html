@@ -1,4 +1,107 @@
 ﻿<div ng-include="'Scripts/app/views/BackstageManagement/commen/UMheader.html'"></div>
-<div id="SalesManagement">
-     
+<div id="SalesManagement" class="container" style="margin-top:60px;">
+    <div id="caseInquiry" class="wrapper">
+        <div class="panel" style="width:100%;box-shadow:0 2px 4px #ccc;">
+            <div class="panel-header">
+                <table>
+                    <tbody>
+                        <tr>
+                            <th ng-class="{true:'active',false:''}[show_list==1]" ng-click="show_list_fun(1)"><div class="topselect"></div><a>产品库</a></th>
+                            <th ng-class="{true:'active',false:''}[show_list==2]" ng-click="show_list_fun(2)"><div class="topselect"></div><a>添加/修改产品</a></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--<div class="module-store-filter header" ng-show="show_list==1">
+                <div class="row">
+                    <div class="col-md-7">
+                    </div>
+                    <div class="col-md-5">
+                        <div class="col-md-12">
+                            <input id="upload-code-submit" class="btn btn-blue " value="搜索" type="submit" style="width:80px;float:right;margin-left:15px;" ng-click="GetCase()">
+                            <form class="input-group input-group-filter" novalidate="novalidate" style="float:right;width:70%;">
+                                <div class="input-group" style="float:left">
+                                    <div class="input-group-btn">
+                                        <button type="button" class="btn btn-default dropdown-toggle  btn_xl" data-toggle="dropdown">{{select_sc}}<span class="caret ml10"></span></button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li ng-click="search_tj(1,'案件号')"><a href="">案件号</a></li>
+                                            <li ng-click="search_tj(2,'案件名称')"><a href="">案件名称</a></li>
+                                            <li ng-click="search_tj(4,'目标当事人')"><a href="">目标当事人</a></li>
+                                        </ul>
+                                    </div>
+                                    <input type="text" class="form-control" ng-model="search_kw">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </div>
+
+    <div class="wrapper pt0 " id="ZombieCase_list" ng-show="show_list==1">
+        <div class="miaoshu">
+            产品库共有产品：<span style=" color: #607d8b; font-weight: 600; margin-right: 4px;">{{GetProductListCount}}</span>个
+        </div>
+        <div class="row">
+            <div class="col-lg-4 mb15" ng-repeat="x in GetProductList">
+                <div class=" ZombieCase_card">
+                    <div class="img_div">
+                        <div class="wenzi_t">
+                            ￥{{x.Price}}
+                        </div>
+                    </div>
+                    <div class="nei_r">
+                        <div class="ban_top">
+                            <div class="anjian_m">
+                                <div class="aj_left" title="{{x.Name}}" ng-click="chakanxiangqing(x)">
+                                    {{x.Name.length>10? ((x.Name | limitTo:10)+"...") : x.Name }}
+                                </div>
+                                <div class="aj_rignt">
+                                    <i class="fa fa-pencil-square" ng-click="changeProduct(x)"></i>
+                                    <i class="fa fa-minus-square" ng-click="DelProduct(x.Id)"></i>
+                                </div>
+                            </div>
+                            <div class="miaoshu" ng-hide="x.ZombieValue>0&&x.ZombieValue!=null">
+                                <span style="font-weight:600">描述：</span>{{x.Description}}
+                            </div>
+                          
+                        </div>
+                        <div class="ban_bottom row">
+                            <div class="b_left col-lg-7">
+                              
+                            </div>
+                            <div class="b_right col-lg-5">
+                                <span >预留</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="addCase" ng-show="show_list==2">
+        <div class="wrapper">
+            <div class="row "style="padding:0 20%">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">名称</label>
+                    <input type="text" class="form-control" id="exampleil1" placeholder="请输入产品名称" ng-model="InsertProduct.name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">价格</label>
+                    <input type="text" class="form-control" id="examutPasword1" placeholder="请输入产品价格" ng-model="InsertProduct.price">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">描述</label>
+                    <textarea class="form-control" rows="4" id="ZombieReason" placeholder="请输入产品描述" ng-model="InsertProduct.description"></textarea>
+                </div>
+            </div>
+            <div class=" but_g " style="margin-top:30px">
+                <input id="upload-code-submit" class="btn btn-blue btn-tea" value="添加" ng-show="!changeProductIf" type="submit" style=" width:130px;" ng-click="InsertProductFun()">
+                <input id="upload-code-submit" class="btn btn-blue btn-tea" value="更新" ng-show="changeProductIf" type="submit" style="width:130px;" ng-click="UpdateProduct()">
+                <input id="form-cancel-ver" class="warning btn btn-white form-btn-cancel btn-hui" value="取消" type="button" style="width:130px;" ng-click="quxiao()">
+            </div>
+        </div>
+    </div>
 </div>

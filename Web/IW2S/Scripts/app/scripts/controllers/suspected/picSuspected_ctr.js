@@ -52,7 +52,7 @@
     //                          alert("没有搜索到结果！")
     //                      }
     //                  } else {
-    //                      $scope.error = "服务器连接出错";
+    //                      $scope.error = "网络打盹了，请稍后。。。";
     //                  }
 
     //              }
@@ -70,12 +70,12 @@
     //                $scope.SuspectedList = data.Result;
     //            }
     //        } else {
-    //            $scope.error = "服务器连接出错";
+    //            $scope.error = "网络打盹了，请稍后。。。";
     //            $scope.loadImgs();
     //        }
     //    });
     //    p.error(function (e) {
-    //        $scope.error = "服务器连接出错";
+    //        $scope.error = "网络打盹了，请稍后。。。";
 
     //    });
     //}
@@ -130,7 +130,7 @@
                 }
             });
         p.error(function (e) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     };
     //5.排除侵权
@@ -194,7 +194,7 @@
 
         });
         q.error(function (response) {
-            alert("服务器连接出错");
+            alert("网络打盹了，请稍后。。。");
             $rootScope.loadingTrue = false;//加载中
 
         });

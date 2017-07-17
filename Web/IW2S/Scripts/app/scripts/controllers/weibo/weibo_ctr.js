@@ -154,7 +154,7 @@
                 }
             });
             q.error(function (response) {
-                $scope.error = "服务器连接出错";
+                $scope.error = "网络打盹了，请稍后。。。";
             });
         }
     }
@@ -190,7 +190,7 @@
             }
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     }
 
@@ -232,7 +232,7 @@
             }
         })
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     }
 
@@ -288,7 +288,7 @@
                     $scope.GetBaiduLevelLinks2();
                 })
                 q.error(function (response) {
-                    $scope.error = "服务器连接出错";
+                    $scope.error = "网络打盹了，请稍后。。。";
                 });
             }
         } else if (type == "save") {
@@ -304,7 +304,7 @@
                     console.log('iw2s_ctr>SetLinkStatus');
                 })
                 q.error(function (response) {
-                    $scope.error = "服务器连接出错";
+                    $scope.error = "网络打盹了，请稍后。。。";
                 });
             } else {
 
@@ -315,7 +315,7 @@
                     //console.log(response);
                 })
                 q.error(function (response) {
-                    $scope.error = "服务器连接出错";
+                    $scope.error = "网络打盹了，请稍后。。。";
                 });
             }
         }
@@ -402,7 +402,7 @@
     //            }
     //        });
     //        q.error(function (e) {
-    //            $scope.addAlert('danger', "服务器连接出错");
+    //            $scope.addAlert('danger', "网络打盹了，请稍后。。。");
     //        });
     //    }
     //}
@@ -420,7 +420,7 @@
                 $scope.GetBaiduLevelLinks($scope.firstKeyword);
             });
             q.error(function (e) {
-                $scope.addAlert('danger', "服务器连接出错");
+                $scope.addAlert('danger', "网络打盹了，请稍后。。。");
             });
         }
 
@@ -460,7 +460,7 @@
             console.log(response);
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     };
 
@@ -506,7 +506,7 @@
             console.log('iw2s_ctr>SetLinkInfriType');
         })
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     };
 
@@ -542,7 +542,7 @@
             }
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     };
     //获取设置项目分析指项
@@ -573,7 +573,7 @@
 
             })
             .error(function (response, status) {
-                $scope.addAlert('danger', "服务器连接出错");
+                $scope.addAlert('danger', "网络打盹了，请稍后。。。");
             });
     }
 

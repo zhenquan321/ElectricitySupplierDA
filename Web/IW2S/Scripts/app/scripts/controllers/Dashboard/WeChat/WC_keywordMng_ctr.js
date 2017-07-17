@@ -19,6 +19,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
   $scope.TopListShow = 1;
   $scope.NamedEntity = false;
   $scope.addEntityLeishow = true;
+  $scope.WebRelations = true;
   chk_global_vars($cookieStore, $rootScope, null, $location, $http, myApplocalStorage);
   //_______________________________________________________________
 
@@ -71,7 +72,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
       $scope.modelCallBack(groupId, 1, null, $scope.InfriLawCode, 0, ParentName, ParentId);
     });
     q.error(function (response) {
-      $scope.error = "服务器连接出错";
+      $scope.error = "网络打盹了，请稍后。。。";
     });
   };
 
@@ -108,7 +109,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
       }
     });
     q.error(function (response) {
-      $scope.error = "服务器连接出错";
+      $scope.error = "网络打盹了，请稍后。。。";
     });
 
   };
@@ -127,7 +128,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
       }
     });
     q.error(function (response) {
-      $scope.error = "服务器连接出错";
+      $scope.error = "网络打盹了，请稍后。。。";
     });
   }
   //搜所有关键词
@@ -144,7 +145,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
       }
     });
     q.error(function (response) {
-      $scope.error = "服务器连接出错";
+      $scope.error = "网络打盹了，请稍后。。。";
     });
   }
 
@@ -202,7 +203,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
       console.log(response);
     });
     q.error(function (response) {
-      $scope.error = "服务器连接出错";
+      $scope.error = "网络打盹了，请稍后。。。";
     });
   };
 
@@ -223,7 +224,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
 
     });
     q.error(function (response) {
-      $scope.error = "服务器连接出错";
+      $scope.error = "网络打盹了，请稍后。。。";
     });
   }
 
@@ -237,7 +238,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
         $scope.RefreshList();
       });
       q.error(function (response) {
-        $scope.error = "服务器连接出错";
+        $scope.error = "网络打盹了，请稍后。。。";
       });
     }
   };
@@ -286,7 +287,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
 
     });
     q.error(function (response) {
-      $scope.error = "服务器连接出错";
+      $scope.error = "网络打盹了，请稍后。。。";
     });
   };
 
@@ -302,7 +303,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
         }
     });
     q.error(function (response) {
-      $scope.error = "服务器连接出错";
+      $scope.error = "网络打盹了，请稍后。。。";
     });
   }
   $scope.ecahrtsJZ = function (jsonStr) {
@@ -411,7 +412,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
         }
     });
     q.error(function (response) {
-      $scope.error = "服务器连接出错";
+      $scope.error = "网络打盹了，请稍后。。。";
     });
   }
 
@@ -488,7 +489,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
       }
     });
     q.error(function (response) {
-      $scope.error = "服务器连接出错";
+      $scope.error = "网络打盹了，请稍后。。。";
     });
   }
 
@@ -1218,38 +1219,11 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
 
     });
     q.error(function (response) {
-      $scope.error = "服务器连接出错";
+      $scope.error = "网络打盹了，请稍后。。。";
     });
   }
 
-    //关键词管理切换
- 
-  $scope.keywordControlIsActive = function (num) {
-      $scope.keywordCisActive = num;
-      if (num == 1) {
-
-      } else if (num == 2) {
-          $('#Tilford-Tree svg').remove();
-          $scope.GetD3TreeData();
-      } else if (num == 3) {
-          $('#tree-container svg').remove();
-          $scope.GetTreeData();
-      } else if (num == 4) {
-          $('#bd svg').remove();
-          $scope.GetData();
-      } else if (num == 5) {
-          $scope.juzhentu();
-      } else if (num == 6) {
-          $scope.GetAnalysisItem();
-      } else if (num == 7) {
-          $scope.GetECGuanxi();
-          $scope.TextExtractByEntity();
-      } else if (num == 8) {
-          $scope.GetEntity();
-      } else if (num == 9) {
-          $scope.GetAllDomainCategoryFrist();
-      }
-  };
+   
 
 
     //侧栏Top显示
@@ -1263,19 +1237,28 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
       $scope.GXtimeInterval = num;
       $scope.GetECGuanxi();
   }
+    //切换关系图类型
 
-
+  $scope.WebRelationsFun = function () {
+      $scope.WebRelations = !$scope.WebRelations;
+      $scope.GetECGuanxi();
+  }
 
     //echart关系图
 
 
   $scope.GetECGuanxi = function () {
-      var url = "/api/Media/GetLinkReference?prjId=" + $rootScope.getProjectId + "&timeInterval=" + $scope.GXtimeInterval;
+      if ($scope.WebRelations) {
+          var titlelei ='文章关系现状'
+          var url = "/api/Media/GetLinkReference?prjId=" + $rootScope.getProjectId + "&timeInterval=" + $scope.GXtimeInterval;
+      } else {
+          var titlelei = '公众号关系现状'
+          var url = "/api/Media/GetNameReference?prjId=" + $rootScope.getProjectId + "&timeInterval=" + $scope.GXtimeInterval;
+      }
       var q = $http.get(url);
       q.success(function (response, status) {
           console.log('keywordMng_ctr>GetTreeData');
           console.log(response);
-         
           var timeData = response.DateTimeList;
           for (var i = 0; i < timeData.length; i++) {
               if ($scope.GXtimeInterval==0) {
@@ -1301,9 +1284,12 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
           data.counties = datalegend;
           data.timeline = timeData;
           data.series = $scope.ReferList;
-          var myChart = echarts.init(document.getElementById('GetECGuanxiTime'));
+          if ($scope.WebRelations) {
+              var myChart = echarts.init(document.getElementById('GetECGuanxiTime'));
+          } else {
+              var myChart = echarts.init(document.getElementById('GetECGuanxiTime2'));
+          }
           option = {
-    
                 baseOption: {
                     timeline: {
                         axisType: 'category',
@@ -1451,7 +1437,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
                       ceDataIndex: n,
                       title: {
                           show: true,
-                          'text': data.timeline[n] + '报道关系现状',
+                          'text': data.timeline[n] + titlelei,
                           left: 'center',
                       },
                       series: {
@@ -1521,7 +1507,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
    
       });
       q.error(function (response) {
-          $scope.error = "服务器连接出错";
+          $scope.error = "网络打盹了，请稍后。。。";
       });
   }
 
@@ -1821,7 +1807,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
       }
     });
     q.error(function (e) {
-      $scope.addAlert('danger', "服务器连接出错");
+      $scope.addAlert('danger', "网络打盹了，请稍后。。。");
     });
   }
   $scope.InsertAnalysisItem2 = function () {
@@ -1862,7 +1848,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
       }
     });
     q.error(function (e) {
-      $scope.addAlert('danger', "服务器连接出错");
+      $scope.addAlert('danger', "网络打盹了，请稍后。。。");
     });
   }
   $scope.clearAnalysisItem = function () {
@@ -1893,7 +1879,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
 
       })
       .error(function (response, status) {
-        $scope.addAlert('danger', "服务器连接出错");
+        $scope.addAlert('danger', "网络打盹了，请稍后。。。");
       });
     //}
   }
@@ -1921,7 +1907,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
 
       })
       .error(function (response, status) {
-        $scope.addAlert('danger', "服务器连接出错");
+        $scope.addAlert('danger', "网络打盹了，请稍后。。。");
       });
   }
   //修改分析指项
@@ -1960,7 +1946,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
           $scope.addAlert('success', response.Message);
         })
         .error(function (response, status) {
-          $scope.addAlert('danger', "服务器连接出错");
+          $scope.addAlert('danger', "网络打盹了，请稍后。。。");
         });
     }
 
@@ -2058,7 +2044,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
           }
       });
       q.error(function (e) {
-          $scope.addAlert('danger', "服务器连接出错");
+          $scope.addAlert('danger', "网络打盹了，请稍后。。。");
       });
   }
     //删除命名实体
@@ -2118,7 +2104,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
       xiuxiu.remove("userpic");
       $('#flashEditorOut').html("<div id='altContent'></div>");
       xiuxiu.embedSWF("altContent", 1, "100%", "100%", "userpic");
-      xiuxiu.setUploadURL('http://211.154.6.166:9999/api/File/ImgUpload');
+      xiuxiu.setUploadURL('http://43.240.138.233:9999/api/File/ImgUpload');
       xiuxiu.setUploadType(2);
       xiuxiu.setUploadDataFieldName("upload_file");
       //var cc = $rootScope.uer_PictureSrc;
@@ -2353,7 +2339,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
               }
           });
           q.error(function (e) {
-              $scope.addAlert('danger', "服务器连接出错");
+              $scope.addAlert('danger', "网络打盹了，请稍后。。。");
           });
       }
   }
@@ -2389,7 +2375,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
           }
       });
       q.error(function (e) {
-          $scope.addAlert('danger', "服务器连接出错");
+          $scope.addAlert('danger', "网络打盹了，请稍后。。。");
       });
   }
     //删除分组
@@ -2405,7 +2391,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
               }
           });
           q.error(function (e) {
-              $scope.addAlert('danger', "服务器连接出错");
+              $scope.addAlert('danger', "网络打盹了，请稍后。。。");
           });
       }
   }
@@ -2479,7 +2465,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
           }
       });
       q.error(function (e) {
-          $scope.addAlert('danger', "服务器连接出错");
+          $scope.addAlert('danger', "网络打盹了，请稍后。。。");
       });
   }
 
@@ -2565,7 +2551,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
           }
       });
       q.error(function (e) {
-          $scope.addAlert('danger', "服务器连接出错");
+          $scope.addAlert('danger', "网络打盹了，请稍后。。。");
       });
   }
 
@@ -2592,7 +2578,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
               }
           });
           q.error(function (e) {
-              $scope.addAlert('danger', "服务器连接出错");
+              $scope.addAlert('danger', "网络打盹了，请稍后。。。");
           });
       } else {
           $scope.addAlert('danger', "没有勾选要删除的域名");
@@ -2614,7 +2600,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
           }
       });
       q.error(function (e) {
-          $scope.addAlert('danger', "服务器连接出错");
+          $scope.addAlert('danger', "网络打盹了，请稍后。。。");
       });
   }
 
@@ -2629,7 +2615,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
           $scope.groupList = response;
       });
       q.error(function (e) {
-          $scope.addAlert('danger', "服务器连接出错");
+          $scope.addAlert('danger', "网络打盹了，请稍后。。。");
       });
   }
 
@@ -2647,7 +2633,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
           $scope.activeId = response.DomainCategoryId;
       });
       q.error(function (e) {
-          $scope.addAlert('danger', "服务器连接出错");
+          $scope.addAlert('danger', "网络打盹了，请稍后。。。");
       });
   }
 
@@ -2693,7 +2679,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
           $.fn.zTree.init($("#treeDemo"), setting, $scope.zNodes);
       });
       q.error(function (response) {
-          $scope.error = "服务器连接出错";
+          $scope.error = "网络打盹了，请稍后。。。";
       });
   }
 
@@ -2729,7 +2715,7 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
           }
       });
       q.error(function (e) {
-          $scope.addAlert('danger', "服务器连接出错");
+          $scope.addAlert('danger', "网络打盹了，请稍后。。。");
       });
 
       var url = "/api/Media/GetDomainStatis?categoryId=" + $scope.categoryId + "&prjId=" + $rootScope.getProjectId;
@@ -2892,11 +2878,156 @@ var WC_keywordMng_ctr = myApp.controller("WC_keywordMng_ctr", function ($scope, 
       }
       );
       q.error(function (response) {
-          $scope.error = "服务器连接出错";
+          $scope.error = "网络打盹了，请稍后。。。";
           $scope.isActiveStart = false;
 
       });
   };
+    //网页关系简述
+  $scope.GetLinkReferCount = function () {
+      var url = "/api/Keyword/GetLinkReferCount?projectId=" + $rootScope.getProjectId;
+      var q = $http.get(url);
+      q.success(function (response, status) {
+          $scope.GetLinkReferCountList = response;
+      });
+      q.error(function (response) {
+          $scope.error = "网络打盹了，请稍后。。。";
+      });
+  }
+    //网页关系简述设置
+  $scope.GXT = { describeNum: 0 };
+  $scope.GXTdescribe = function (num) {
+      if ($scope.GXT.describeNum == num) {
+          $scope.GXT.describeNum = 0;
+      } else {
+          $scope.GXT.describeNum = num;
+      }
 
+  }
 
+    //插入关系图描述
+  $scope.descList = { a: "", b: "", c: "", d: "" };
+  $scope.InsertReferChartDesc = function () {
+      var addAll = true;
+      $scope.descList2 = [$scope.descList.a, $scope.descList.b, $scope.descList.c, $scope.descList.d];
+      for (var i = 0; i < $scope.descList2.length; i++) {
+          if (!$scope.descList2[i]) {
+              addAll = false
+          }
+      }
+      if (!addAll) {
+          $scope.alert_fun('warning', '请输入完整的关系图描述');
+      } else {
+          $scope.paramsList = {
+              descList: $scope.descList2,
+              projectId: $rootScope.getProjectId,
+          };
+          var urls = "/api/Media/InsertReferChartDesc";
+          var q = $http.post(
+                  urls,
+                 JSON.stringify($scope.paramsList),
+                 {
+                     headers: {
+                         'Content-Type': 'application/json'
+                     }
+                 }
+              )
+          q.success(function (response, status) {
+              if (response.IsSuccess == true) {
+                  $scope.alert_fun('success', "添加成功！");
+                  $scope.GXTdescribe(0);
+              } else {
+                  $scope.alert_fun('danger', response.Message);
+              }
+          });
+          q.error(function (e) {
+              alert("网络打盹了，请稍后。。。");
+          });
+      }
+
+  }
+    //更新关系图描述
+  $scope.UpdateReferChartDesc = function () {
+      var addAll = true;
+      $scope.descList2 = [$scope.descList.a, $scope.descList.b, $scope.descList.c, $scope.descList.d];
+      for (var i = 0; i < $scope.descList2.length; i++) {
+          if (!$scope.descList2[i]) {
+              addAll = false
+          }
+      }
+      if (!addAll) {
+          $scope.alert_fun('warning', '请输入完整的关系图描述');
+      } else {
+          $scope.paramsList = {
+              descList: $scope.descList2,
+              descId: $scope.GetReferChartDescList.Id,
+              projectId: $rootScope.getProjectId,
+          };
+          var urls = "/api/Media/UpdateReferChartDesc";
+          var q = $http.post(
+                  urls,
+                 JSON.stringify($scope.paramsList),
+                 {
+                     headers: {
+                         'Content-Type': 'application/json'
+                     }
+                 }
+              )
+          q.success(function (response, status) {
+              if (response.IsSuccess == true) {
+                  $scope.alert_fun('success', "更新成功！");
+                  $scope.GXTdescribe(0);
+              } else {
+                  $scope.alert_fun('danger', response.Message);
+              }
+          });
+          q.error(function (e) {
+              alert("网络打盹了，请稍后。。。");
+          });
+      }
+
+  }
+    //获取获取关系图描述
+  $scope.GetReferChartDesc = function () {
+      var url = "/api/Media/GetReferChartDesc?projectId=" + $rootScope.getProjectId;
+      var q = $http.get(url);
+      q.success(function (response, status) {
+          $scope.GetReferChartDescList = response;
+          $scope.descList = { a: $scope.GetReferChartDescList.DescList[0], b: $scope.GetReferChartDescList.DescList[1], c: $scope.GetReferChartDescList.DescList[2], d: $scope.GetReferChartDescList.DescList[3] };
+          console.log(response);
+      });
+      q.error(function (response) {
+          $scope.error = "网络打盹了，请稍后。。。";
+      });
+  }
+
+  //___________________________________________________________________________________
+  $scope.keywordControlIsActive = function (num) {
+      $scope.keywordCisActive = num;
+      if (num == 1) {
+
+      } else if (num == 2) {
+          $('#Tilford-Tree svg').remove();
+          $scope.GetD3TreeData();
+      } else if (num == 3) {
+          $('#tree-container svg').remove();
+          $scope.GetTreeData();
+      } else if (num == 4) {
+          $('#bd svg').remove();
+          $scope.GetData();
+      } else if (num == 5) {
+          $scope.juzhentu();
+      } else if (num == 6) {
+          $scope.GetAnalysisItem();
+      } else if (num == 7) {
+          $scope.GetECGuanxi();
+          $scope.TextExtractByEntity();
+          $scope.GetLinkReferCount();
+          $scope.GetReferChartDesc();
+      } else if (num == 8) {
+          $scope.GetEntity();
+      } else if (num == 9) {
+          $scope.GetAllDomainCategoryFrist();
+      }
+  };
 });

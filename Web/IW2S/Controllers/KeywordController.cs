@@ -18,6 +18,7 @@ using System.Web.Script.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
+using HtmlAgilityPack;
 
 namespace IW2S.Controllers
 {
@@ -342,6 +343,38 @@ namespace IW2S.Controllers
             return GetTxtFromHtml(html);
         }
         #endregion
+
+        [HttpGet]
+        public QueryResult<string> Get5118Key(string keyword)
+        {
+            var result = new QueryResult<string>();
+            result.Result = new List<string>();
+            string url = "http://www.5118.com/seo/words/{0}".FormatStr(keyword);
+            //抓取网页源码，最多尝试5次
+            string html = null;
+            int num = 0;
+            int maxTry = 5;
+            while (num < maxTry)
+            {
+                html = GetFastHtml(url);
+                if (!string.IsNullOrEmpty(html))
+                    break;
+                else
+                    num++;
+            }
+            HtmlDocument doc = new HtmlDocument();
+            doc.LoadHtml(html);
+            HtmlNodeCollection nodes = doc.DocumentNode.SelectNodes("//span[@class=\"hoverToHide\"]");
+            if (nodes != null && nodes.Count > 0)
+            {
+                foreach (var node in nodes)
+                {
+                    result.Result.Add(node.InnerText);
+                }
+                result.Count = nodes.Count;
+            }
+            return result;
+        }
 
         /// <summary>
         /// 删除关键词映射
@@ -1047,9 +1080,42 @@ namespace IW2S.Controllers
             catch
             {
                 result.IsSuccess = false;
-                result.Message = "服务器连接出错！";
+                result.Message = "网络打盹了，请稍后。。。！";
             }
             return result;
+        }
+
+        /// <summary>
+        /// 获取链接正文
+        /// </summary>
+        /// <param name="linkId">链接Id</param>
+        /// <returns></returns>
+        public string GetLinkContent(string linkId)
+        {
+            var builder = Builders<Dnl_Link_Baidu>.Filter;
+            var filter = builder.Eq(x => x._id, new ObjectId(linkId));
+            var col = MongoDBHelper.Instance.GetDnl_Link_Baidu();
+            var wordTree = new TextTree();
+            string content = "";
+            try
+            {
+                var query = col.Find(filter).FirstOrDefault();
+                if (!string.IsNullOrEmpty(query.Content))
+                {
+                    wordTree.TreeValues= query.Content;
+                }
+                else
+                {
+                    wordTree.TreeValues = GetMainContentHelper.GetMainContent(query.Html);
+                }
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+            JiebaController jieba = new JiebaController();
+            content = jieba.WordSegemete(wordTree).TreeValues;
+            return content;
         }
         #endregion
 
@@ -2202,7 +2268,7 @@ namespace IW2S.Controllers
             /* 判断是否有分组
              * 有则使用原有分组信息
              * 无则仅建立所有词一组数据 */
-            if (!cateIsRoot)
+            if (!cateIsRoot) 
             {
                 //去除根结点
                 cateIds.Remove(ObjectId.Empty);
@@ -2225,6 +2291,7 @@ namespace IW2S.Controllers
             allTimeFilter &= builder.Nin(x => x._id, exLinkObjIds);
             var allQueryDatas = MongoDBHelper.Instance.GetDnl_Link_Baidu().Find(allTimeFilter).Project(x => new
             {
+                Id = x._id.ToString(),
                 PublishTime = x.PublishTime,
                 Title = x.Title,
                 LinkUrl = x.LinkUrl,
@@ -2243,6 +2310,7 @@ namespace IW2S.Controllers
                     continue;
                 }
                 IW2S_Timelevel1linkDto data = new IW2S_Timelevel1linkDto();
+                data.Id = gr.Id;
                 data.PublishTime = tpTime;
                 data.Title = gr.Title;
                 data.LinkUrl = gr.LinkUrl;
@@ -4702,7 +4770,6 @@ namespace IW2S.Controllers
 
             //建立节点信息
             var linkNodeList = new List<LinkReferNode>();         //节点信息
-            int index = 0;
             for (int i = 0; i < queryLink.Count;i++ )
             {
                 //未存在发布信息时跳过该链接
@@ -4719,7 +4786,6 @@ namespace IW2S.Controllers
                     linkUrl = queryLink[i].LinkUrl,
                     value = 1,
                     SortNum = queryLink[i].DCNum,
-                    Index = index++
                 };
                 if (queryLink[i].Title != null && queryLink[i].Title.Length > 20)
                     link.name = queryLink[i].Title.Substring(0, 19) + "…";
@@ -4829,6 +4895,11 @@ namespace IW2S.Controllers
             result.ReferList = new List<LinkReferDto>();
             for (int i = 0; i < result.DateTimeList.Count;i++ )
             {
+                //重标记结点的顺序
+                for (int j = 0; j < timeLinkNodeList[i].Count; j++)
+                {
+                    timeLinkNodeList[i][j].Index = j;
+                }
                 var referData = ComputerLinkRefer(timeLinkNodeList[i], cateInfo,keyIdList);
                 result.ReferList.Add(referData);
             }
@@ -5169,7 +5240,7 @@ namespace IW2S.Controllers
         }
 
         /// <summary>
-        /// 获取链接关系图谱
+        /// 获取链接关系统计
         /// </summary>
         /// <param name="prjId">项目Id</param>
         /// <returns></returns>
@@ -5320,6 +5391,625 @@ namespace IW2S.Controllers
 
             result.LinkNum = linkNodeList.Count;
             result.SiteNum = queryLink.Select(x => x.Domain).Distinct().Count();
+
+            return result;
+        }
+
+        /// <summary>
+        /// 插入描述信息
+        /// </summary>
+        /// <param name="post"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ResultDto InsertReferChartDesc(ReferChartPost post)
+        {
+            ResultDto result = new ResultDto();
+            ObjectId proObjId = new ObjectId(post.projectId);
+            var builder = Builders<ReferChartDescMongo>.Filter;
+            var filter = builder.Eq(x => x.ProjectId, proObjId);
+            filter &= builder.Eq(x => x.Type, SourceType.Enginee) & builder.Eq(x => x.IsDel, false);
+            var col = MongoDBHelper.Instance.GetReferChartDesc();
+            try
+            {
+                //检查是否已保存与该描述相同的记录
+                var query = col.Find(filter).FirstOrDefault();
+                if (query != null)
+                {
+                    result.Message = "该描述已存在！";
+                    return result;
+                }
+                var desc = new ReferChartDescMongo
+                {
+                    ProjectId = proObjId,
+                    CreatedAt = DateTime.Now.AddHours(8),
+                    DescList = post.descList,
+                    Type = SourceType.Enginee
+                };
+                col.InsertOne(desc);
+                result.IsSuccess = true;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+                return result;
+            }
+        }
+
+        /// <summary>
+        /// 修改描述
+        /// </summary>
+        /// <param name="post"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ResultDto UpdateReferChartDesc(ReferChartPost post)
+        {
+            ResultDto result = new ResultDto();
+            ObjectId proObjId = new ObjectId(post.projectId);
+            var builder = Builders<ReferChartDescMongo>.Filter;
+            var filter = builder.Eq(x => x._id, new ObjectId(post.descId));
+            filter &= builder.Eq(x => x.Type, SourceType.Enginee) & builder.Eq(x => x.IsDel, false);
+            var col = MongoDBHelper.Instance.GetReferChartDesc();
+            try
+            {
+                //删除原有记录，写入新记录
+                col.DeleteOne(filter);
+                InsertReferChartDesc(post);
+                result.IsSuccess = true;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+                return result;
+            }
+        }
+
+        /// <summary>
+        /// 获取描述信息
+        /// </summary>
+        /// <param name="projectId">项目ID</param>
+        /// <returns></returns>
+        [HttpGet]
+        public ReferChartDescDto GetReferChartDesc(string projectId)
+        {
+            ObjectId proObjId = new ObjectId(projectId);
+            var builder = Builders<ReferChartDescMongo>.Filter;
+            var filter = builder.Eq(x => x.ProjectId, proObjId);
+            filter &= builder.Eq(x => x.Type, SourceType.Enginee) & builder.Eq(x => x.IsDel, false);
+            var col = MongoDBHelper.Instance.GetReferChartDesc();
+            try
+            {
+                //检查是否已保存与该描述相同的记录
+                var query = col.Find(filter).Project(x => new ReferChartDescDto
+                {
+                    Id = x._id.ToString(),
+                    DescList = x.DescList
+                }).FirstOrDefault();
+                return query;
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 删除描述信息
+        /// </summary>
+        /// <param name="descId">描述Id</param>
+        /// <returns></returns>
+        [HttpGet]
+        public ResultDto DelReferChartDesc(string descId)
+        {
+            ResultDto result = new ResultDto();
+            var builder = Builders<ReferChartDescMongo>.Filter;
+            var filter = builder.Eq(x => x._id, new ObjectId(descId));
+            filter &= builder.Eq(x => x.Type, SourceType.Enginee) & builder.Eq(x => x.IsDel, false);
+            var col = MongoDBHelper.Instance.GetReferChartDesc();
+            try
+            {
+                var update = new UpdateDocument { { "$set", new QueryDocument { { "IsDel", true } } } };
+                col.UpdateOne(filter, update);
+                result.IsSuccess = true;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+                return result;
+            }
+        }
+        #endregion
+
+        #region 域名关系图
+        /// <summary>
+        /// 获取域名关系图谱
+        /// </summary>
+        /// <param name="prjId">项目Id</param>
+        /// <param name="timeInterval">时间间隔，0为全部，1为月，2为季，3为年</param>
+        /// <returns></returns>
+        [HttpGet]
+        public TimeLinkRefer GetDomainReference(string prjId, int timeInterval)
+        {
+            var result = new TimeLinkRefer();
+            var sw = new System.Diagnostics.Stopwatch();
+            sw.Start();
+            if (string.IsNullOrEmpty(prjId))
+            {
+                return null;
+            }
+            List<ObjectId> cateIds = new List<ObjectId>();
+            //获取第1级关键词组
+            var builderCate = Builders<Dnl_KeywordCategory>.Filter;
+            var filterCate = builderCate.Eq(x => x.ProjectId, new ObjectId(prjId));
+            filterCate &= builderCate.Eq(x => x.IsDel, false) & builderCate.Eq(x => x.ParentId, ObjectId.Empty);
+            var queryCate = MongoDBHelper.Instance.GetDnl_KeywordCategory().Find(filterCate).Project(x => new
+            {
+                Id = x._id,
+                Name = x.Name
+            }).ToList();
+            var cateObjIdList = queryCate.Select(x => x.Id).ToList();      //词组ObjectId列表
+            //建立分组信息
+            var cateInfo = new List<LinkReferCate>();
+            foreach (var x in queryCate)
+            {
+                var cate = new LinkReferCate();
+                //判断是否需要裁剪分组名
+                if (x.Name.Length <= 15)
+                {
+                    cate.name = x.Name;
+                    cate.baseName = x.Name;
+                }
+                else
+                {
+                    cate.name = x.Name.Substring(0, 14) + "…";
+                    cate.baseName = x.Name.Substring(0, 14) + "…";
+                }
+                cate.id = x.Id.ToString();
+                cateInfo.Add(cate);
+            }
+
+            //获取组内关键词
+            var builderMap = Builders<Dnl_KeywordMapping>.Filter;
+            var filterMap = builderMap.In(x => x.CategoryId, cateObjIdList) & builderMap.Eq(x => x.IsDel, false);
+            var queryKey = MongoDBHelper.Instance.GetDnl_KeywordMapping().Find(filterMap).Project(x => new
+            {
+                KeywordId = x.KeywordId.ToString(),
+                CategoryId = x.CategoryId,
+                Keyword = x.Keyword,
+            }).ToList();
+            var keyIdList = queryKey.Select(x => x.KeywordId).ToList();    //关键词ObjectId列表
+
+            //建议关键词与词组字典
+            var keyToCate = new Dictionary<string, string>();
+            //var keyGroup = queryKey.GroupBy(x => x.KeywordId).ToList();
+            queryKey = queryKey.DistinctBy(x => x.KeywordId).ToList();
+            foreach (var key in queryKey)
+            {
+                var cateId = queryCate.Find(x => x.Id.Equals(key.CategoryId)).Id.ToString();
+                keyToCate.Add(key.KeywordId, cateId);
+            }
+
+            //获取项目内已删除的链接Id
+            var builderLinkMap = Builders<Dnl_LinkMapping_Baidu>.Filter;
+            var filterLinkMap = builderLinkMap.Eq(x => x.ProjectId, new ObjectId(prjId)) & builderLinkMap.Eq(x => x.DataCleanStatus, (byte)2);
+            var exLinkObjIdList = MongoDBHelper.Instance.GetDnl_LinkMapping_Baidu().Find(filterLinkMap).Project(x => x.LinkId).ToList();       //项目中已删除的链接ID列表
+
+            //获取链接信息
+            var builderLink = Builders<Dnl_Link_Baidu>.Filter;
+            var filterLink = builderLink.In(x => x.SearchkeywordId, keyIdList);
+            filterLink &= builderLink.Nin(x => x._id, exLinkObjIdList);
+            var queryLink = MongoDBHelper.Instance.GetDnl_Link_Baidu().Find(filterLink).Project(x => new
+            {
+                Title = x.Title,
+                Keyword = x.Keywords,
+                KeywordId = x.SearchkeywordId,
+                DCNum = x.DCNum,
+                Domain = x.Domain
+            }).ToList();
+
+            //建立节点信息
+            var linkNodes = new List<LinkReferNode>();         //节点信息
+            var linkByDomain = queryLink.GroupBy(x => x.Domain).ToList();
+            int index = 0;
+            for (int i = 0; i < linkByDomain.Count; i++)
+            {
+                //获取链接信息
+                var links = linkByDomain[i].ToList();
+                var domain = new LinkReferNode
+                {
+                    value = 1,
+                    SortNum = queryLink[i].DCNum,
+                    Index = index++,
+                    name = linkByDomain[i].Key,
+                };
+
+                var tempLinks = links.DistinctBy(x => x.KeywordId);
+                domain.keyWordCount = tempLinks.Count;
+                domain.keyWordList = tempLinks.Select(x => x.Keyword).ToList();
+                domain.keyWordIdList = tempLinks.Select(x => x.KeywordId).ToList();
+
+                //获取归属组序号
+                var cateId = keyToCate[queryLink[i].KeywordId];
+                var cateIndex = cateInfo.FindIndex(s => s.id == cateId);
+                domain.category = cateIndex;
+                linkNodes.Add(domain);
+            }
+
+            //建立时间坐标并将链接信息按时间分组
+            DateTime startTime = linkNodes.Min(x => x.publishTime);
+            DateTime endTime = linkNodes.Max(x => x.publishTime);
+            result.DateTimeList = new List<DateTime>();
+            int year = startTime.Year;
+            int month = startTime.Month;
+            int season = (month - 1) / 3;
+            var timeLinkNodeList = new List<List<LinkReferNode>>();        //按时间分组的链接节点信息
+            switch (timeInterval)
+            {
+                case 0:     //一次返回所有时间段
+                    result.DateTimeList.Add(startTime);
+                    timeLinkNodeList.Add(linkNodes);
+                    break;
+                case 1:     //按月返回
+                    {
+                        DateTime timeCoordinate = new DateTime(year, month, 1);
+                        while (timeCoordinate <= endTime)
+                        {
+                            DateTime temp = timeCoordinate;
+                            result.DateTimeList.Add(temp);
+                            timeCoordinate = timeCoordinate.AddMonths(1);
+                        }
+                        //将链接信息按月分组
+                        foreach (var time in result.DateTimeList)
+                        {
+                            var tempNode = new List<LinkReferNode>();
+                            tempNode = linkNodes.Where(x => x.publishTime >= time && x.publishTime < time.AddMonths(1)).ToList();
+                            timeLinkNodeList.Add(tempNode);
+                        }
+                        break;
+                    }
+                case 2:     //按季返回
+                    {
+                        DateTime timeCoordinate = new DateTime(year, 1 + 3 * season, 1);
+                        while (timeCoordinate < endTime)
+                        {
+                            DateTime temp = timeCoordinate;
+                            result.DateTimeList.Add(temp);
+                            timeCoordinate = timeCoordinate.AddMonths(3);
+                        }
+                        //将链接信息按季分组
+                        foreach (var time in result.DateTimeList)
+                        {
+                            var tempNode = new List<LinkReferNode>();
+                            tempNode = linkNodes.Where(x => x.publishTime >= time && x.publishTime < time.AddMonths(3)).ToList();
+                            timeLinkNodeList.Add(tempNode);
+                        }
+                        break;
+                    }
+                case 3:     //按年返回
+                    {
+                        DateTime timeCoordinate = new DateTime(year, 1, 1);
+                        while (timeCoordinate < endTime)
+                        {
+                            DateTime temp = timeCoordinate;
+                            result.DateTimeList.Add(temp);
+                            timeCoordinate = timeCoordinate.AddYears(1);
+                        }
+                        //将链接信息按月分组
+                        foreach (var time in result.DateTimeList)
+                        {
+                            var tempNode = new List<LinkReferNode>();
+                            tempNode = linkNodes.Where(x => x.publishTime >= time && x.publishTime < time.AddYears(1)).ToList();
+                            timeLinkNodeList.Add(tempNode);
+                        }
+                        break;
+                    }
+                default:
+                    return null;
+            }
+            result.ReferList = new List<LinkReferDto>();
+            for (int i = 0; i < result.DateTimeList.Count; i++)
+            {
+                var referData = ComputerDomainRefer(timeLinkNodeList[i], cateInfo, keyIdList);
+                result.ReferList.Add(referData);
+            }
+
+            sw.Stop();
+            return result;
+
+        }
+
+        /// <summary>
+        /// 计算节点关系
+        /// </summary>
+        /// <param name="linkNodeList">节点信息</param>
+        /// <param name="cateInfo">分组信息</param>
+        /// <param name="keyIdList">关键词Id列表</param>
+        /// <returns></returns>
+        [HttpGet]
+        LinkReferDto ComputerDomainRefer(List<LinkReferNode> linkNodeList, List<LinkReferCate> cateInfo, List<string> keyIdList)
+        {
+            LinkReferDto result = new LinkReferDto();
+            //建立节点关系
+            var sw = new System.Diagnostics.Stopwatch();
+            sw.Start();
+            var linkReferList = new List<LinkReferIn2Node>();        //节点间关系
+            //按关键词分组生成小集群列表
+            var linkByKeyList = new List<LinkReferByKey>();         //关键词链接信息列表
+            //var centerNodeList = new List<LinkReferNode>();         //核心节点列表
+            foreach (var keyId in keyIdList)
+            {
+                var nodeList = linkNodeList.FindAll(x => x.keyWordIdList.Contains(keyId));
+                if (nodeList.Count > 0)
+                {
+                    var linkByKey = new LinkReferByKey
+                    {
+                        KeywordId = keyId,
+                        NodeList = nodeList
+                    };
+                    linkByKeyList.Add(linkByKey);
+                }
+            }
+            //遍历计算关系
+            for (int i = 0; i < linkByKeyList.Count; i++)
+            {
+                string keyId = linkByKeyList[i].KeywordId;
+                var nodeList = linkByKeyList[i].NodeList;
+                //计算集群内部关系
+                var center = nodeList.OrderByDescending(x => x.SortNum).FirstOrDefault();     //选取核心点
+                //centerNodeList.Add(center);
+                foreach (var node in nodeList)
+                {
+                    if (node.name == center.name)
+                        continue;
+                    var refer = new LinkReferIn2Node
+                    {
+                        source = center.Index,
+                        target = node.Index
+                    };
+                    linkReferList.Add(refer);
+                }
+            }
+
+            #region 旧节点关系计算优化方法（废弃）
+            //for (int i = 0; i < linkNodeList.Count; i++)
+            //{
+            //    for (int j = i + 1; j < linkNodeList.Count; j++)
+            //    {
+            //        //判断i和j两个节点是否有关联
+            //        bool isRefer = false;
+            //        foreach (var keyId in linkNodeList[i].keyWordIdList)
+            //        {
+            //            if (isRefer)
+            //            {
+            //                break;
+            //            }
+            //            if (linkNodeList[j].keyWordIdList.Contains(keyId))
+            //            {
+            //                var refer = new LinkReferIn2Node
+            //                {
+            //                    source = i,
+            //                    target = j
+            //                };
+            //                linkReferList.Add(refer);
+            //                isRefer = true;
+            //            }
+            //        }
+            //    }
+            //}
+            ////清理重复集群关系
+            //var tempGroup = linkReferList.GroupBy(x => x.source).ToList();              //统计获取集群中心点
+            //var tempCount = tempGroup.Select(x => new { Key = x.Key, Count = x.Count() }).OrderByDescending(x => x.Count).ToList();               //统计获取集群中心点
+            //var usedIndex = new List<int>();    //已清理节点
+            //foreach (var x in tempCount)
+            //{
+            //    if (usedIndex.Contains(x.Key))
+            //    {
+            //        continue;
+            //    }
+            //    var centerNode = linkNodeList[x.Key];      //集群中心点
+            //    var referNodeList = tempGroup.Find(s => s.Key == x.Key);
+            //    var referIndexs = referNodeList.Select(s => s.target).ToList();      //集群内所有相关点位置
+            //    foreach (var y in referNodeList)            //遍历集群相关点
+            //    {
+            //        var referNode = linkNodeList[y.target];    //单个相关点
+            //        if (centerNode.category != referNode.category)
+            //        {
+            //            continue;
+            //        }
+            //        //清除相关点与集群内其他点的关系
+            //        var referInfos = linkReferList.FindAll(s => s.source == y.target);
+            //        var tempIndexs = referInfos.Select(s => s.target).ToList();     //相关点其所有关系节点位置
+            //        foreach (var z in referInfos)
+            //        {
+            //            if (referIndexs.Contains(z.target))
+            //            {
+            //                var targetRefer = linkReferList.FindAll(s => s.source == z.target).Select(s => s.target).ToList();     //当前对应相关点的关系节点其自身所有关系节点位置
+            //                //判断关系节点是否在同一集群
+            //                if (targetRefer.All(s => referIndexs.Contains(s)))
+            //                {
+            //                    linkReferList.Remove(z);
+            //                }
+            //            }
+            //        }
+            //        usedIndex.Add(y.target);
+            //    }
+            //}
+            #endregion
+
+            sw.Stop();
+            //生成Json对象
+            JObject json = new JObject();
+            JProperty jCtart = new JProperty("type", "force");
+            json.Add(jCtart);
+
+            JArray jArrayCate = new JArray();
+            foreach (var x in cateInfo)
+            {
+                JObject cate = new JObject();
+                JProperty name = new JProperty("name", x.name);
+                cate.Add(name);
+                JProperty keyword = new JProperty("keyword", x.keyword);
+                cate.Add(keyword);
+                JProperty baseName = new JProperty("base", x.baseName);
+                cate.Add(baseName);
+                jArrayCate.Add(cate);
+            }
+            JProperty jCate = new JProperty("categories", jArrayCate);
+            json.Add(jCate);
+
+            JArray jArrayLink = new JArray();
+            foreach (var x in linkNodeList)
+            {
+                JObject link = new JObject();
+                JProperty name = new JProperty("name", x.name);
+                link.Add(name);
+                JProperty value = new JProperty("value", x.value);
+                link.Add(value);
+                JProperty keyWordCount = new JProperty("keyWordCount", x.keyWordCount);
+                link.Add(keyWordCount);
+
+
+                JArray jArrayKey = new JArray();
+                //添加链接对应关键词
+                foreach (var y in x.keyWordList)
+                {
+                    jArrayKey.Add(y);
+                }
+                JProperty keyWordList = new JProperty("keyWordList", jArrayKey);
+                link.Add(keyWordList);
+
+                JProperty category = new JProperty("category", x.category);
+                link.Add(category);
+                JProperty describe = new JProperty("base", x.describe);
+                link.Add(describe);
+                JProperty linkUrl = new JProperty("linkUrl", x.linkUrl);
+                link.Add(linkUrl);
+                jArrayLink.Add(link);
+            }
+            JProperty jLink = new JProperty("nodes", jArrayLink);
+            json.Add(jLink);
+
+            JArray jArrayRefer = new JArray();
+            foreach (var x in linkReferList)
+            {
+                JObject refer = new JObject();
+                JProperty source = new JProperty("source", x.source);
+                refer.Add(source);
+                JProperty target = new JProperty("target", x.target);
+                refer.Add(target);
+                jArrayRefer.Add(refer);
+            }
+            JProperty jRefer = new JProperty("links", jArrayRefer);
+            json.Add(jRefer);
+            result.Json = json.ToString();
+
+            //获取Top10的集群中心点
+            var topIndex = linkReferList.GroupBy(x => x.source).Select(x => new { Key = x.Key, Count = x.Count() }).OrderByDescending(x => x.Count).Take(10).ToList();
+            result.TopData = new List<LinkReferNode>();
+            foreach (var x in topIndex)
+            {
+                var data = new LinkReferNode(linkNodeList[x.Key]);
+                data.value = x.Count;
+                result.TopData.Add(data);
+            }
+            if (result.TopData.Count < 10)
+            {
+                foreach (var x in topIndex)
+                {
+                    //获取集群内其他点
+                    var temp = linkReferList.FindAll(s => s.source == x.Key);
+                    foreach (var y in temp)
+                    {
+                        var data = new LinkReferNode(linkNodeList[y.target]);
+                        data.value = linkReferList.Count(s => s.source == y.target);
+                        result.TopData.Add(data);
+                        if (result.TopData.Count == 10)
+                            break;
+                    }
+                    if (result.TopData.Count == 10)
+                        break;
+                }
+                //获取孤立结点
+                foreach (var x in linkNodeList)
+                {
+                    if (result.TopData.Count == 10)
+                        break;
+                    if (!result.TopData.Contains(x))
+                    {
+                        var data = new LinkReferNode(x);
+                        data.value = 1;
+                        result.TopData.Add(data);
+                    }
+                }
+            }
+
+
+            //获取包含关键词最多的10个节点
+            result.TopKeyData = new List<LinkReferNode>();
+            var tpData = linkNodeList.OrderByDescending(x => x.keyWordCount).Take(10).ToList();
+            for (int i = 0; i < tpData.Count; i++)
+            {
+                var data = new LinkReferNode(tpData[i]);
+                data.value = data.keyWordCount;
+                result.TopKeyData.Add(data);
+            }
+
+            //获取组外链接数最多的10个节点
+            var linkGroupCount = new List<LinkGroupCount>();
+            for (int i = 0; i < linkNodeList.Count; i++)
+            {
+                int count = 0;
+                //获取该结点所有相关节点
+                var referIndexs = linkReferList.FindAll(x => x.source == i).Select(x => x.target).ToList();
+                referIndexs.AddRange(linkReferList.FindAll(x => x.target == i).Select(x => x.source).ToList());
+                referIndexs = referIndexs.Distinct().ToList();
+                foreach (var x in referIndexs)
+                {
+                    if (linkNodeList[i].category != linkNodeList[x].category)
+                        count++;
+                }
+                if (count == 0)
+                    continue;
+                var linkGroup = new LinkGroupCount
+                {
+                    Pos = i,
+                    Count = count
+                };
+                linkGroupCount.Add(linkGroup);
+            }
+            linkGroupCount = linkGroupCount.OrderByDescending(x => x.Count).Take(10).ToList();
+            result.TopCateData = new List<LinkReferNode>();
+            foreach (var x in linkGroupCount)
+            {
+                var data = new LinkReferNode(linkNodeList[x.Pos]);
+                data.value = x.Count;
+                result.TopCateData.Add(data);
+            }
+
+            //获取词组影响力
+            result.CateWeights = new List<CategoryWeight>();
+            for (int i = 0; i < cateInfo.Count; i++)
+            {
+                var cateWeight = new CategoryWeight();
+                cateWeight.Category = cateInfo[i].name;
+                topIndex = linkReferList.GroupBy(x => x.source).Select(x => new { Key = x.Key, Count = x.Count() }).OrderByDescending(x => x.Count).Take(10).ToList();
+                int referNum = 0;
+                int keywordNum = 0;
+                for (int j = 0; j < linkNodeList.Count; j++)
+                {
+                    if (linkNodeList[j].category == i)
+                    {
+                        referNum += linkReferList.Where(x => x.source == j || x.target == j).Count();
+                        keywordNum += linkNodeList[j].keyWordCount;
+                    }
+                }
+                cateWeight.Weight = keywordNum * 99 + referNum * 12;
+                result.CateWeights.Add(cateWeight);
+            }
+            result.CateWeights = result.CateWeights.OrderByDescending(x => x.Weight).ToList();
 
             return result;
         }
@@ -6225,9 +6915,7 @@ namespace IW2S.Controllers
             }
 
         }
-        #endregion
-
-        
+        #endregion      
 
         #region ID拆分
         /// <summary>

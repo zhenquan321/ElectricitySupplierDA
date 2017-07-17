@@ -84,7 +84,7 @@
 
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     }
 
@@ -107,7 +107,7 @@
             console.log($scope.GetAllKeywordCategory_list);
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     }
     //默认加载
@@ -118,7 +118,7 @@
             $scope.GetAllKeywordCategory_list = response;
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     }
 
@@ -203,7 +203,7 @@
             }
         });
         q.error(function (e) {
-            $scope.addAlert('danger', "服务器连接出错");
+            $scope.addAlert('danger', "网络打盹了，请稍后。。。");
         });
     }
 
@@ -220,7 +220,7 @@
                     $scope.GetBaiduLevelLinksView();
                 })
                 q.error(function (response) {
-                    $scope.error = "服务器连接出错";
+                    $scope.error = "网络打盹了，请稍后。。。";
                 });
             }
         } else if (type == "save") {
@@ -236,7 +236,7 @@
                     console.log('iw2s_ctr>SetLinkStatus');
                 })
                 q.error(function (response) {
-                    $scope.error = "服务器连接出错";
+                    $scope.error = "网络打盹了，请稍后。。。";
                 });
             } else {
 
@@ -247,7 +247,7 @@
                     //console.log(response);
                 })
                 q.error(function (response) {
-                    $scope.error = "服务器连接出错";
+                    $scope.error = "网络打盹了，请稍后。。。";
                 });
             }
         }
@@ -327,7 +327,7 @@
                 }
             })
             q.error(function (response) {
-                $scope.error = "服务器连接出错";
+                $scope.error = "网络打盹了，请稍后。。。";
             });
         }
     };

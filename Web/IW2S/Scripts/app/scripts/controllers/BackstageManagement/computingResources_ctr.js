@@ -95,7 +95,7 @@
       $scope.GetBotListShow = response;
     });
     q.error(function (response) {
-      $scope.error = "服务器连接出错";
+      $scope.error = "网络打盹了，请稍后。。。";
     });
   };
 
@@ -312,7 +312,7 @@
       $scope.changPieChart('baidu')
     });
     q.error(function (response) {
-      $scope.error = "服务器连接出错";
+      $scope.error = "网络打盹了，请稍后。。。";
       $scope.isActiveStart = false;
     });
   };
@@ -768,7 +768,7 @@
       $scope.lineChartLinks();
     });
     q.error(function (response) {
-      $scope.error = "服务器连接出错";
+      $scope.error = "网络打盹了，请稍后。。。";
       $scope.isActiveStart = false;
     });
   };
@@ -789,7 +789,7 @@
       console.log(response);
     });
     q.error(function (response) {
-      $scope.error = "服务器连接出错";
+      $scope.error = "网络打盹了，请稍后。。。";
     });
   }
   $scope.jumpToUserResource = function (id,name) {

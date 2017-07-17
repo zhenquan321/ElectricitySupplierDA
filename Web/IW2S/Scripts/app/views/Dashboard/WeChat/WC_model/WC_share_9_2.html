@@ -2,36 +2,44 @@
     <div ng-include="'Scripts/app/views/Dashboard/WeChat/WC_model/WC_TabCounter.html'"></div>
     <div class="main-panel-content" style="min-height:650px;max-height:none;">
         <div id="AnalysisZ" class="mb10">
+            <div class="WebRelationsSelect">
+                <a ng-click="WebRelationsFun()" ng-class="{true: 'active', false: ''}[WebRelations]">文章关系</a>
+                <a ng-click="WebRelationsFun()" ng-class="{true: 'active', false: ''}[!WebRelations]">公众号关系</a>
+            </div>
             <div class="top_change">
                 <a href="" class="fixed_time1  " ng-class="{true: 'active', false: ''}[GXtimeInterval==0]" ng-click="GXtimeIntervalFun(0)" style="border:0px;">
                     总览
                 </a>
-                <a href="" class="fixed_time1 " ng-class="{true: 'active', false: ''}[GXtimeInterval==3]" ng-click="GXtimeIntervalFun(3)">
+                <!--<a href="" class="fixed_time1 " ng-class="{true: 'active', false: ''}[GXtimeInterval==3]" ng-click="GXtimeIntervalFun(3)" >
                     年度
                 </a>
-                <a href="" class="fixed_time1 " ng-class="{true: 'active', false: ''}[GXtimeInterval==2]" ng-click="GXtimeIntervalFun(2)">
+                <a href="" class="fixed_time1 " ng-class="{true: 'active', false: ''}[GXtimeInterval==2]" ng-click="GXtimeIntervalFun(2)" >
                     季度
                 </a>
-                <a href="" class="fixed_time1 " ng-class="{true: 'active', false: ''}[GXtimeInterval==1]" ng-click="GXtimeIntervalFun(1)">
+                <a href="" class="fixed_time1 " ng-class="{true: 'active', false: ''}[GXtimeInterval==1]" ng-click="GXtimeIntervalFun(1)" >
                     月度
-                </a>
+                </a>-->
             </div>
         </div>
         <div style="position:relative" class="row">
             <div style="position: absolute; right: 20px; top: -20px; color: #ababab; font-size: 16px; cursor:pointer">
-                <i class="fa fa-minus-square" ng-show="CListShow" ng-click="CListShowFun()"></i><i class="fa fa-plus-square" ng-hide="CListShow" ng-click="CListShowFun()"></i>
+                <i class="fa fa-minus-square" ng-show="!CListShow" ng-click="CListShowFun()"></i>
+                <i class="fa fa-plus-square" ng-hide="!CListShow" ng-click="CListShowFun()"></i>
             </div>
-            <div class="col-lg-12" style="border-right: 1px solid #ccc;" ng-if="!CListShow">
+            <div class="col-lg-12" style="background:url(Scripts/app/images/NewHome/guanxitub.png) no-repeat top  scroll; background-size: contain;  border-right: 1px solid #ccc;" ng-if="!CListShow">
                 <div id="GetECGuanxiTime" style="height:600px"></div>
             </div>
             <div ng-if="CListShow">
                 <div class="col-lg-3 pr20 pt10 ">
                     <div class="row mt10">
-                        <span style="color: #337777; margin-left: 20px; font-size: 16px; ">{{getProjectName}}</span>
+                        <span style="color: #337777; margin-left: 20px; font-size: 16px; ">{{}}
+                            {{getProjectName.length>15? ((getProjectName | limitTo:14)+"...") : getProjectName}}
+                        </span>
                         <div style="text-align: center; height: 78px; margin-top: 10px;">
                             <div class="col-lg-6">
                                 <span style="color: #099; font-size: 30px; margin: 20px 0 10px; display: inline-block">{{ariticalsNum}}</span><br />
-                                网页数
+                                <span ng-show="WebRelations">文章数</span>
+                                <span ng-show="!WebRelations">公众号数</span>
                             </div>
                             <div class="col-lg-6">
                                 <span style="color: #099; font-size: 30px; margin: 20px 0 10px; display: inline-block">{{ariticalslinksNum}}</span><br />
@@ -46,27 +54,40 @@
                                 <span ng-hide="TopListShow==2" class="weiXian" ng-click="TopListShowFun(2)">2</span>
                                 <span ng-show="TopListShow==3" class="weiXianShow"><span class="weiXianNum">3</span>命中关键词</span>
                                 <span ng-hide="TopListShow==3" class="weiXian" ng-click="TopListShowFun(3)">3</span>
-                                <span ng-show="TopListShow==4" class="weiXianShow"><span class="weiXianNum">4</span>报道联系数</span>
+                                <span ng-show="TopListShow==4&&WebRelations" class="weiXianShow"><span class="weiXianNum">4</span>文章联系数</span>
+                                <span ng-show="TopListShow==4&&!WebRelations" class="weiXianShow"><span class="weiXianNum">4</span>公众号联系数</span>
                                 <span ng-hide="TopListShow==4" class="weiXian" ng-click="TopListShowFun(4)">4</span>
                             </div>
                             <ul ng-show="TopListShow==1">
                                 <li style="padding: 7px 5px; font-size: 15px; border-bottom: 1px solid #099; font-weight: 600;">&nbsp;组织机构<span style=" float: right; ">指数</span></li>
                             </ul>
                             <ul ng-show="TopListShow==1">
-                                <li ng-repeat="x in CateWeights" style="padding:10px 5px; font-size: 14px; border-bottom: 1px solid #ccc; " ng-show="$index<10" >{{$index+1}}.<a>{{x.Category.length>15? ((x.Category | limitTo:14)+"...") : x.Category}}</a><span style=" float: right; color: #e65f1c; font-weight: 600;">{{x.Weight}}</span></li>
+                                <li ng-repeat="x in CateWeights" style="padding:10px 5px; font-size: 14px; border-bottom: 1px solid #ccc; " ng-show="$index<10" >{{$index+1}}.<a>{{x.Category.length>13? ((x.Category | limitTo:12)+"...") : x.Category}}</a><span style=" float: right; color: #e65f1c; font-weight: 600;">{{x.Weight}}</span></li>
                             </ul>
 
-                            <ul ng-show="TopListShow!=1">
+                            <ul ng-show="TopListShow!=1&&WebRelations">
                                 <li style="padding: 7px 5px; font-size: 15px; border-bottom: 1px solid #099; font-weight: 600;">&nbsp;网页标题<span style=" float: right; ">指数</span></li>
                             </ul>
-                            <ul ng-show="TopListShow==2">
-                                <li ng-repeat="x in TopArtices" style="padding:10px 5px; font-size: 14px; border-bottom: 1px solid #ccc; ">{{$index+1}}.<a ng-href="{{x.linkUrl}}" target="_blank">{{x.name.length>15? ((x.name | limitTo:14)+"...") : x.name}}</a><span style=" float: right; color: #e65f1c; font-weight: 600;">{{x.value}}</span></li>
+                            <ul ng-show="TopListShow==2&&WebRelations">
+                                <li ng-repeat="x in TopArtices" style="padding:10px 5px; font-size: 14px; border-bottom: 1px solid #ccc; ">{{$index+1}}.<a ng-href="{{x.linkUrl}}" target="_blank">{{x.name.length>13? ((x.name | limitTo:12)+"...") : x.name}}</a><span style=" float: right; color: #e65f1c; font-weight: 600;">{{x.value}}</span></li>
                             </ul>
-                            <ul ng-show="TopListShow==3">
-                                <li ng-repeat="x in TopKeyArtices" style="padding:10px 5px; font-size: 14px; border-bottom: 1px solid #ccc; ">{{$index+1}}.<a ng-href="{{x.linkUrl}}" target="_blank">{{x.name.length>15? ((x.name | limitTo:14)+"...") : x.name}}</a><span style=" float: right; color: #e65f1c; font-weight: 600;">{{x.value}}</span></li>
+                            <ul ng-show="TopListShow==3&&WebRelations">
+                                <li ng-repeat="x in TopKeyArtices" style="padding:10px 5px; font-size: 14px; border-bottom: 1px solid #ccc; ">{{$index+1}}.<a ng-href="{{x.linkUrl}}" target="_blank">{{x.name.length>13? ((x.name | limitTo:12)+"...") : x.name}}</a><span style=" float: right; color: #e65f1c; font-weight: 600;">{{x.value}}</span></li>
                             </ul>
-                            <ul ng-show="TopListShow==4">
-                                <li ng-repeat="x in TopCateArtices" style="padding:10px 5px; font-size: 14px; border-bottom: 1px solid #ccc; ">{{$index+1}}.<a ng-href="{{x.linkUrl}}" target="_blank">{{x.name.length>15? ((x.name | limitTo:14)+"...") : x.name}}</a><span style=" float: right; color: #e65f1c; font-weight: 600;">{{x.value}}</span></li>
+                            <ul ng-show="TopListShow==4&&WebRelations">
+                                <li ng-repeat="x in TopCateArtices" style="padding:10px 5px; font-size: 14px; border-bottom: 1px solid #ccc; ">{{$index+1}}.<a ng-href="{{x.linkUrl}}" target="_blank">{{x.name.length>13? ((x.name | limitTo:12)+"...") : x.name}}</a><span style=" float: right; color: #e65f1c; font-weight: 600;">{{x.value}}</span></li>
+                            </ul>
+                            <ul ng-show="TopListShow!=1&&!WebRelations">
+                                <li style="padding: 7px 5px; font-size: 15px; border-bottom: 1px solid #099; font-weight: 600;">&nbsp;公众号名称<span style=" float: right; ">指数</span></li>
+                            </ul>
+                            <ul ng-show="TopListShow==2&&!WebRelations">
+                                <li ng-repeat="x in TopArtices" style="padding:10px 5px; font-size: 14px; border-bottom: 1px solid #ccc; ">{{$index+1}}.<a ng-href="{{x.linkUrl}}" target="_blank">{{x.nickname.length>13? ((x.nickname | limitTo:12)+"...") : x.nickname}}</a><span style=" float: right; color: #e65f1c; font-weight: 600;">{{x.value}}</span></li>
+                            </ul>
+                            <ul ng-show="TopListShow==3&&!WebRelations">
+                                <li ng-repeat="x in TopKeyArtices" style="padding:10px 5px; font-size: 14px; border-bottom: 1px solid #ccc; ">{{$index+1}}.<a ng-href="{{x.linkUrl}}" target="_blank">{{x.nickname.length>13? ((x.nickname | limitTo:12)+"...") : x.nickname}}</a><span style=" float: right; color: #e65f1c; font-weight: 600;">{{x.value}}</span></li>
+                            </ul>
+                            <ul ng-show="TopListShow==4&&!WebRelations">
+                                <li ng-repeat="x in TopCateArtices" style="padding:10px 5px; font-size: 14px; border-bottom: 1px solid #ccc; ">{{$index+1}}.<a ng-href="{{x.linkUrl}}" target="_blank">{{x.nickname.length>13? ((x.nickname | limitTo:12)+"...") : x.nickname}}</a><span style=" float: right; color: #e65f1c; font-weight: 600;">{{x.value}}</span></li>
                             </ul>
                         </div>
                     </div>
@@ -74,37 +95,79 @@
                 <div class="col-lg-9 wangGuanX2">
                     <h4>监测概要</h4> 
                     <p>
-                        基金会与公益组织监测项目对<span>24</span>家基金会和<span>26</span>家公益机构进行全网信息搜索评估：获得<span>3782</span>条来自<span>1151</span>个网站，在百度搜索结果TOP30的搜索结果。DataWeco分析引擎对这些网站影响和网页内容进行分析
-                        <br />基于分析结果，发现<span>50</span>家基金会和机构，按照他们可以在互联网上被检索到的结果和内容，以及在网上发布出来的时间，可以反映出他们的影响力和认知度。
+                        <span>{{GetLinkReferCountList.ProName}}</span>，是为{{GetLinkReferCountList.ProDesc}}。使用<span>{{GetLinkReferCountList.KeywordNum}}</span>个关键词，分为<span>{{GetLinkReferCountList.CateNum}}</span>个词组，查询百度搜索引擎排名前三页的结果链接，按照排名靠前则容易被用户看到的原则，对关键词代表的新闻、资讯、官方网站的链接可视度进行细化分析。以上搜搜，共获得 <span>{{GetLinkReferCountList.LinkNum}}</span>篇文章，来自<span>{{GetLinkReferCountList.SiteNum}}</span>个公众号。
                     </p>
                     <div class="row">
-                        <div class="col-lg-7"style="background: url(Scripts/app/images/NewHome/guanxitub.png) no-repeat top left scroll; background-size: contain; ">
-                            <div id="GetECGuanxiTime" style="height:650px;"></div>
+                        <div class="col-lg-8">
+                            <div style="background: url(Scripts/app/images/NewHome/guanxitub.png) no-repeat top left scroll; background-size: contain; ">
+                                <div id="GetECGuanxiTime" style="height:680px;" ng-if="WebRelations"></div>
+                                <div id="GetECGuanxiTime2" style="height:680px;" ng-if="!WebRelations"></div>
+                            </div>
                         </div>
-                        <div class="col-lg-5">
-                            <div class="SLcard">
-                                <h4>核心区：</h4> 
-                                <div>
-                                    共有<span>15</span>家服务机构，其影响力比较大。DataWeco分析引擎按照他们可以在互联网上被检索到的结果和内容，以及在网上发布出来的时间，可以反映出他们的影响力和认知度。
+                        <div class="col-lg-4">
+                            <div class="GXTdescribe ">
+                                <i class="fa fa-question-circle" ng-click="GXTdescribe(1)"></i>
+                                <i class="fa fa-pencil-square" ng-click="GXTdescribe(2)"></i>
+                                <div class="describeCard" ng-show="GXT.describeNum==1">
+                                    <h3>说明:</h3>
+                                    <p>
+                                        从搜索到的网页中，逐一比计数包含的关键词个数，用圆点的大小表示，记录以及两两包含同一个关键词的网页用关系连线表示。并以不同的颜色表示不同的词组。我们得到一个按照关键词聚类，按照组别选定颜色的可见网页内容关系图。
+                                    </p>
+                                    <p>
+                                        按照弹簧电子模型，以圆形显示所有不同的网页关键词命中数和两两关联关系，就得到下述力感可视化图形。包含越多关键词和连接数的网页和网页族（link cluster）就会出现在核心的位置，而随着网页关键词、连接数的变化，网页族被显示在内圈（仅仅次于核心的份量）、外圈、边缘。
+                                    </p>
+                                    <p>
+                                        我们用核心、内圈、外圈、边缘来标示不同的数据族在一个网络可见度的评价模型中的重要地位。
+                                    </p>
                                 </div>
                             </div>
-                            <div class="SLcard">
-                                <h4>缓冲区：</h4>
-                                <div>
-                                    共有<span>15</span>家服务机构，其影响力尚可。DataWeco分析引擎按照他们可以在互联网上被检索到的结果和内容，以及在网上发布出来的时间，可以反映出他们的影响力和认知度。
+                            <div class="SLcard mt5" ng-show="GXT.describeNum!=1">
+                                <h4>核心区：</h4>
+                                <div ng-show="GXT.describeNum==2">
+                                    <textarea class="form-control" rows="4" ng-model="descList.a"></textarea>
+                                </div>
+                                <div ng-show="GXT.describeNum==0" style="height: 110px; overflow-y: auto;">
+                                    <span ng-show="GetReferChartDescList.Id">{{descList.a}}</span>
+                                    <span ng-show="!GetReferChartDescList.Id" ng-click="GXTdescribe(2)">尚未添加描述</span>
                                 </div>
                             </div>
-                            <div class="SLcard">
+                            <div class="SLcard" ng-show="GXT.describeNum!=1">
+                                <h4>内圈区：</h4>
+                                <div ng-show="GXT.describeNum==2">
+                                    <textarea class="form-control" rows="4" ng-model="descList.b"></textarea>
+                                </div>
+                                <div ng-show="GXT.describeNum==0" style="height: 110px; overflow-y: auto;">
+                                    <span ng-show="GetReferChartDescList.Id">{{descList.b}}</span>
+                                    <span ng-show="!GetReferChartDescList.Id" ng-click="GXTdescribe(2)">尚未添加描述</span>
+                                </div>
+                            </div>
+                            <div class="SLcard" ng-show="GXT.describeNum!=1">
+                                <h4>外圈区：</h4>
+                                <div ng-show="GXT.describeNum===2">
+                                    <textarea class="form-control" rows="4" ng-model="descList.c"></textarea>
+                                </div>
+                                <div ng-show="GXT.describeNum===0" style="height: 110px; overflow-y: auto;">
+                                    <span ng-show="GetReferChartDescList.Id">{{descList.c}}</span>
+                                    <span ng-show="!GetReferChartDescList.Id" ng-click="GXTdescribe(2)">尚未添加描述</span>
+                                </div>
+                            </div>
+                            <div class="SLcard" ng-show="GXT.describeNum!=1">
                                 <h4>边缘区：</h4>
-                                <div>
-                                    共有<span>15</span>家服务机构，其影响力较弱。DataWeco分析引擎按照他们可以在互联网上被检索到的结果和内容，以及在网上发布出来的时间，可以反映出他们的影响力和认知度。
+                                <div ng-show="GXT.describeNum===2">
+                                    <textarea class="form-control" rows="4" ng-model="descList.d"></textarea>
+                                </div>
+                                <div ng-show="GXT.describeNum===0" style="height: 110px; overflow-y: auto;">
+                                    <span ng-show="GetReferChartDescList.Id">{{descList.d}}</span>
+                                    <span ng-show="!GetReferChartDescList.Id" ng-click="GXTdescribe(2)">尚未添加描述</span>
                                 </div>
                             </div>
-                            <div class="SLcard">
-                                <h4>边缘区：</h4>
-                                <div>
-                                    共有<span>15</span>家服务机构，其影响力较弱。DataWeco分析引擎按照他们可以在互联网上被检索到的结果和内容，以及在网上发布出来的时间，可以反映出他们的影响力和认知度。
-                                </div>
+                            <div ng-show="GXT.describeNum===2">
+                                <button type="button" class="btn btn-tea" data-dismiss="modal" id="btn1" style=" margin-top: 10px; width: 97%;" ng-click="InsertReferChartDesc()" ng-show="!GetReferChartDescList.Id">
+                                    提交
+                                </button>
+                                <button type="button" class="btn btn-tea" data-dismiss="modal" id="btn1" style=" margin-top: 10px; width: 97%;" ng-click="UpdateReferChartDesc()" ng-show="GetReferChartDescList.Id">
+                                    更新
+                                </button>
                             </div>
                         </div>
                     </div>

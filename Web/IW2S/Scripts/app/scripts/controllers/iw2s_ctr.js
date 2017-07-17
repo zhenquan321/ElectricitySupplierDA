@@ -161,7 +161,7 @@
     //            }
     //        });
     //        q.error(function (response) {
-    //            $scope.error = "服务器连接出错";
+    //            $scope.error = "网络打盹了，请稍后。。。";
     //        });
     //    }
     //}
@@ -201,7 +201,7 @@
                 }
             });
             q.error(function (e) {
-                alert("服务器连接出错");
+                alert("网络打盹了，请稍后。。。");
             });
         }
 
@@ -253,7 +253,7 @@
             $scope.getBaiduRecord($rootScope.getBaiduRecordId);
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     }
     //加载百度推荐关键词
@@ -295,7 +295,7 @@
             }
         })
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     }
 
@@ -351,7 +351,7 @@
                     $scope.GetBaiduLevelLinks2();
                 })
                 q.error(function (response) {
-                    $scope.error = "服务器连接出错";
+                    $scope.error = "网络打盹了，请稍后。。。";
                 });
             }
         } else if (type == "save") {
@@ -367,7 +367,7 @@
                     console.log('iw2s_ctr>SetLinkStatus');
                 })
                 q.error(function (response) {
-                    $scope.error = "服务器连接出错";
+                    $scope.error = "网络打盹了，请稍后。。。";
                 });
             } else {
 
@@ -378,7 +378,7 @@
                     //console.log(response);
                 })
                 q.error(function (response) {
-                    $scope.error = "服务器连接出错";
+                    $scope.error = "网络打盹了，请稍后。。。";
                 });
             }
         }
@@ -465,7 +465,7 @@
                 }
             });
             q.error(function (e) {
-                $scope.addAlert('danger', "服务器连接出错");
+                $scope.addAlert('danger', "网络打盹了，请稍后。。。");
             });
         }
     }
@@ -490,7 +490,7 @@
                 $scope.GetBaiduLevelLinks2();
             });
             q.error(function (e) {
-                $scope.addAlert('danger', "服务器连接出错");
+                $scope.addAlert('danger', "网络打盹了，请稍后。。。");
             });
         }
 
@@ -530,7 +530,7 @@
             console.log(response);
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     };
 
@@ -572,7 +572,7 @@
             console.log('iw2s_ctr>SetLinkInfriType');
         })
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     };
 
@@ -609,7 +609,7 @@
             }
         });
         q.error(function (response) {
-            $scope.error = "服务器连接出错";
+            $scope.error = "网络打盹了，请稍后。。。";
         });
     };
     //获取设置项目分析指项
@@ -639,7 +639,7 @@
                 }
             })
             .error(function (response, status) {
-                $scope.addAlert('danger', "服务器连接出错");
+                $scope.addAlert('danger', "网络打盹了，请稍后。。。");
             });
     }
 
@@ -780,7 +780,7 @@
                 $rootScope.OperateComment_Count = response.Count;
             })
             .error(function (response, status) {
-                $scope.addAlert('danger', "服务器连接出错");
+                $scope.addAlert('danger', "网络打盹了，请稍后。。。");
             });
     }
     //获取操作日志
@@ -806,7 +806,7 @@
                 }
             })
             .error(function (response, status) {
-                $scope.addAlert('danger', "服务器连接出错");
+                $scope.addAlert('danger', "网络打盹了，请稍后。。。");
             });
     }
     //新增评论
@@ -838,7 +838,7 @@
             }
         });
         q.error(function (e) {
-            $scope.addAlert('danger', "服务器连接出错");
+            $scope.addAlert('danger', "网络打盹了，请稍后。。。");
         });
     }
     //删除评论
@@ -859,7 +859,7 @@
                     $rootScope.GetOperateComment($scope.num, $scope.num2);
                 })
                 .error(function (response, status) {
-                    $scope.addAlert('danger', "服务器连接出错");
+                    $scope.addAlert('danger', "网络打盹了，请稍后。。。");
                 });
         }
 
@@ -885,7 +885,7 @@
                 $rootScope.ShareOutComment_Count = response.Count;
             })
             .error(function (response, status) {
-                $scope.addAlert('danger', "服务器连接出错");
+                $scope.addAlert('danger', "网络打盹了，请稍后。。。");
             });
     }
     //新增分享评论
@@ -917,7 +917,7 @@
             }
         });
         q.error(function (e) {
-            $scope.addAlert('danger', "服务器连接出错");
+            $scope.addAlert('danger', "网络打盹了，请稍后。。。");
         });
     }
     //删除分享评论
@@ -938,7 +938,7 @@
                     $rootScope.GetShareOutComment($scope.num, $scope.num2);
                 })
                 .error(function (response, status) {
-                    $scope.addAlert('danger', "服务器连接出错");
+                    $scope.addAlert('danger', "网络打盹了，请稍后。。。");
                 });
         }
 
@@ -961,7 +961,7 @@
             $rootScope.erweima = response.Message;
         })
         .error(function (response, status) {
-            $scope.addAlert('danger', "服务器连接出错");
+            $scope.addAlert('danger', "网络打盹了，请稍后。。。");
         });
 
     }
@@ -998,7 +998,7 @@
                 $rootScope.ShareOutComment_Count = response.Count;
             })
             .error(function (response, status) {
-                $scope.addAlert('danger', "服务器连接出错");
+                $scope.addAlert('danger', "网络打盹了，请稍后。。。");
             });
     }
     //新增分享到发现
@@ -1031,7 +1031,7 @@
             }
         });
         q.error(function (e) {
-            $scope.addAlert('danger', "服务器连接出错");
+            $scope.addAlert('danger', "网络打盹了，请稍后。。。");
         });
     };
 
@@ -1053,7 +1053,7 @@
                     $rootScope.GetShareOutComment($scope.num, $scope.num2);
                 })
                 .error(function (response, status) {
-                    $scope.addAlert('danger', "服务器连接出错");
+                    $scope.addAlert('danger', "网络打盹了，请稍后。。。");
                 });
         }
 

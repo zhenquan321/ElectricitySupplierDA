@@ -35,7 +35,7 @@
     //        $scope.GetImgSearchTasks_fun()
     //    })
     //    .error(function (response, status) {
-    //        $rootScope.addAlert('danger', "服务器连接出错");
+    //        $rootScope.addAlert('danger', "网络打盹了，请稍后。。。");
     //    });
     //}
 

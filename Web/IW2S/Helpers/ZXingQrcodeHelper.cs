@@ -13,9 +13,19 @@ using ZXing.QrCode.Internal;
 
 namespace IW2S.Helpers
 {
+    /// <summary>
+    /// 二维码工具类
+    /// </summary>
     public class ZXingQrcodeHelper
     { 
-         //生成中间带图片的二维码
+         /// <summary>
+         /// 生成中间带图片的二维码，返回Byte数组
+         /// </summary>
+         /// <param name="msg">链接地址</param>
+         /// <param name="logo">图片</param>
+         /// <param name="width">长</param>
+         /// <param name="height">宽</param>
+         /// <returns>Byte数组</returns>
         public static byte[] GetQrBitmap(string msg, string logo, int width = 300, int height = 300)
         {
             try
@@ -55,7 +65,13 @@ namespace IW2S.Helpers
             }
         }
 
-        //生成普通二维码（不带图片）
+        /// <summary>
+        /// 生成中间不带图片的二维码
+        /// </summary>
+        /// <param name="msg">链接地址</param>
+        /// <param name="width">长</param>
+        /// <param name="height">宽</param>
+        /// <returns></returns>
         static Bitmap GetQrBitmap(string msg, int width = 300, int height = 300)
         {
             //构造二维码写码器
@@ -72,7 +88,14 @@ namespace IW2S.Helpers
             return img;
         }
 
-        //生成中间带图片的二维码
+        /// <summary>
+        /// 生成中间带图片的二维码，返回bitmap文件
+        /// </summary>
+        /// <param name="msg">链接地址</param>
+        /// <param name="logo">图片</param>
+        /// <param name="width">长</param>
+        /// <param name="height">宽</param>
+        /// <returns>Byte数组</returns>
         static Bitmap GetQrBitmapWithMiddleImg(string msg, Image logoImage, int width = 300, int height = 300)
         {
 

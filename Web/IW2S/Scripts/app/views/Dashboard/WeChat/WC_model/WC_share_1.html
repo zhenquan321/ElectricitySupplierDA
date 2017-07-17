@@ -31,7 +31,7 @@
 							<div class="col-sm-3">
 								<div class="input-group">
 									<div class="input-group-addon">间隔</div>
-									<select class="form-control" ng-init="selectedTime = timeOptions[0]" ng-model="selectedTime" ng-options="x.name for x in timeOptions"></select>
+									<select class="form-control" ng-init="selectedTime = timeOptions[1]" ng-model="selectedTime" ng-options="x.name for x in timeOptions"></select>
 								</div>
 							</div>
 							<div class="col-sm-2" ng-show="selectedTime.isShow">
@@ -136,7 +136,8 @@
 							<th>公众号</th>
 							<th>标题</th>
 							<th style="width:200px;">关键词</th>
-                            <th >分享到发现</th>
+                            <th>话语分析</th>
+                            <th>分享到发现</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -144,17 +145,20 @@
 							<th style="font-weight:normal">{{x.PublishTime| date:'yyyy-MM-dd'}}</th>
 							<th>
                                 <a style="font-weight:normal" target="_blank" href="{{ 'http://'+x.domain}}" title={{x.Domain}}>
-                                    {{x.Name.length>15?((x.Name | limitTo:12)+"...") : x.Name }}
+                                    {{x.Name.length>10?((x.Name | limitTo:10)+"...") : x.Name }}
                                 </a>
 							</th>
 							<th>
 								<a style="font-weight:normal" target="_blank" href={{x.LinkUrl}} title={{x.Title}}>
-                                    {{x.Title.length>22?((x.Title | limitTo:21)+"...") : x.Title }}
+                                    {{x.Title.length>15?((x.Title | limitTo:15)+"...") : x.Title }}
                                 </a>
 							</th>
 							<td title={{x.Keywords}}>
 								{{x.Keywords.length>13? ((x.Keywords | limitTo:12)+"...") : x.Keywords }}
 							</td>
+                            <td class="mainBut_i">
+                                <i class="fa fa-eye-slash" ng-click="discourseAnalysis(x.Id)"></i>
+                            </td>
                             <td class="mainBut_i">
                                 <i class="fa fa-share-square"></i>
                             </td>

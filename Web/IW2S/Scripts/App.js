@@ -618,14 +618,9 @@ var chk_global_vars = function ($cookieStore, $rootScope, usr, $location, $http,
         $rootScope.userID = $cookieStore.get("userID");
         $rootScope.LoginName = $cookieStore.get("LoginName");
         $rootScope.UsrRole = $cookieStore.get("UsrRole");
-        $rootScope.UsrKey = $cookieStore.get("UsrKey");
-        $rootScope.UsrNum = $cookieStore.get("UsrNum");
-        $rootScope.UsrEmail = $cookieStore.get("UsrEmail");
         $rootScope.uer_PictureSrc = $cookieStore.get("uer_PictureSrc");
         $rootScope.Gender = $cookieStore.get("Gender");
-        $rootScope.MobileNo = $cookieStore.get("MobileNo");
         $rootScope.Remarks = $cookieStore.get("Remarks");
-
         //页面
         $rootScope.keyword = $cookieStore.get("keyword");
         $rootScope.keywordName = $cookieStore.get("keywordName");
@@ -643,7 +638,7 @@ var chk_global_vars = function ($cookieStore, $rootScope, usr, $location, $http,
         $rootScope.keyId = $cookieStore.get("keyIds");
         $rootScope.keyName = $cookieStore.get("keyNames");
         $rootScope.reload_LS = $cookieStore.get("reload_LS");
-        $rootScope.projectsList = myApplocalStorage.getObject("projectsList");//$cookieStore.get("projectsList");
+     
         $rootScope.isActiveModale = $cookieStore.get("isActiveModale");
         $rootScope.PrjAnalysisItemName_list = $cookieStore.get("PrjAnalysisItemName_list");
         $rootScope.GetPrjAnalysisItemName_list_name = $cookieStore.get("GetPrjAnalysisItemName_list_name");
@@ -658,7 +653,9 @@ var chk_global_vars = function ($cookieStore, $rootScope, usr, $location, $http,
         $rootScope.getProjectGroupId = $cookieStore.get("getProjectGroupId");
         $rootScope.getProjectGroupName = $cookieStore.get("getProjectGroupName");
         $rootScope.getPGPIdS = $cookieStore.get("getPGPIdS");
-        
+        //myApplocalStorage
+        $rootScope.projectsList = myApplocalStorage.getObject("projectsList");//$cookieStore.get("projectsList");
+        $rootScope.GetProductList = myApplocalStorage.getObject("GetProductList");//$cookieStore.get("projectsList");
     }
 
     //判断有没有登录&&是否有cookie

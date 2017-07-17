@@ -145,31 +145,19 @@
 							<th style="font-weight:normal">{{x.PublishTime| date:'yyyy-MM-dd'}}</th>
 							<th>
                                 <a style="font-weight:normal" target="_blank" href="{{ 'http://'+x.domain}}" title={{x.Domain}}>
-<<<<<<< HEAD
-                                    {{x.Name.length>15?((x.Name | limitTo:12)+"...") : x.Name }}
-=======
                                     {{x.Name.length>10?((x.Name | limitTo:10)+"...") : x.Name }}
->>>>>>> c26f92d240a523a1903a8e87db204683ad299860
                                 </a>
 							</th>
 							<th>
 								<a style="font-weight:normal" target="_blank" href={{x.LinkUrl}} title={{x.Title}}>
-<<<<<<< HEAD
-                                    {{x.Title.length>22?((x.Title | limitTo:21)+"...") : x.Title }}
-=======
                                     {{x.Title.length>15?((x.Title | limitTo:15)+"...") : x.Title }}
->>>>>>> c26f92d240a523a1903a8e87db204683ad299860
                                 </a>
 							</th>
 							<td title={{x.Keywords}}>
 								{{x.Keywords.length>13? ((x.Keywords | limitTo:12)+"...") : x.Keywords }}
 							</td>
                             <td class="mainBut_i">
-<<<<<<< HEAD
-                                <i class="fa fa-eye-slash"ng-click=""></i>
-=======
                                 <i class="fa fa-eye-slash" ng-click="discourseAnalysis(x.Id)"></i>
->>>>>>> c26f92d240a523a1903a8e87db204683ad299860
                             </td>
                             <td class="mainBut_i">
                                 <i class="fa fa-share-square"></i>

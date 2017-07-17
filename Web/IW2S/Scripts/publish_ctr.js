@@ -1,4 +1,4 @@
-﻿var publich_ctr = myApp.controller("publich_ctr", function ($scope, $rootScope, $http, $location, $window, $cookieStore, $interval, $filter, $timeout, myApplocalStorage) {
+﻿var publich_ctr = myApp.controller("publich_ctr", function ($scope, $rootScope, $http, $location, $window, $cookieStore, $interval, $filter, $timeout,$modal, myApplocalStorage) {
     
 
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -151,4 +151,94 @@
         $cookieStore.remove("getBaiduRecordId");
         $cookieStore.remove("selectStatus");
     }
+    //_____________________________________________________________________________________
+    //企业套餐服务订单生成
+    $scope.InsertOrder = function (x) {
+        $scope.paramsList = {
+            userId: $rootScope.userID,
+            productList: [{ id: x.Id, num: 1 }]
+        };
+        var urls = "/api/Pay/InsertOrder";
+        var q = $http.post(
+                urls,
+               JSON.stringify($scope.paramsList),
+               {
+                   headers: {
+                       'Content-Type': 'application/json'
+                   }
+               }
+            )
+        q.success(function (response, status) {
+            console.log(response);
+            if (response) {
+                $scope.getPayPage(response);
+            } else {
+                $scope.alert_fun('danger', "订单生成失败！");
+            }
+        });
+        q.error(function (e) {
+            alert("网络打盹了，请稍后。。。");
+        });
+    }
+    //付费页面_Gong
+    $scope.getPayPage = function (x) {
+        var kw_scope = $rootScope.$new();
+        kw_scope.Order = x;
+        var frm = $modal.open({
+            templateUrl: 'Scripts/app/views/Dashboard/modal/payPage.html',
+            controller: payPage_ctr,
+            scope: kw_scope,
+            // label: label,
+            keyboard: false,
+            backdrop: 'static',
+            size: 'md'
+        });
+        frm.result.then(function (response, status) {
+            var url = "/UserCenter?tab=5";
+            $location.url(url);
+        });
+    };
+    //订单处支付
+    $scope.getPayPageAgein = function (x) {
+        var mag = {
+            order: x,
+            qrcode: "/api/Pay/GetWxPayQcode?orderId=" + x.Id,
+            ifadd: true
+        }
+        $scope.getPayPage(mag);
+        //var url = "/api/Pay/GetWxPayQcode?orderId=" + x.Id + "&tradeNo=" + x.TradeNo;
+        //var q = $http.get(url);
+        //q.success(function (response, status) {
+        //    mag.qrcode = response;
+        //    $scope.getPayPage(mag);
+        //});
+        //q.error(function (response) {
+        //    $scope.error = "网络打盹了，请稍后。。。";
+        //});
+    }
+    //专业服务
+    $scope.zhuanyepaypage = function () {
+        $scope.InsertOrder($rootScope.GetProductList[1])
+    }
+    //企业服务
+    $scope.qiyePayPage = function () {
+        $scope.InsertOrder($rootScope.GetProductList[0])
+    }
+    //专业数据分析
+    $scope.ProfessionalDataAnalysis = function () {
+        $scope.InsertOrder($rootScope.GetProductList[2])
+    }
+    //3次支持服务
+    $scope.TechnicalAervices3 = function () {
+        $scope.InsertOrder($rootScope.GetProductList[3])
+    }
+    //6次支持服务
+    $scope.TechnicalAervices6 = function () {
+        $scope.InsertOrder($rootScope.GetProductList[4])
+    }
+    //12次支持服务
+    $scope.TechnicalAervices12 = function () {
+        $scope.InsertOrder($rootScope.GetProductList[5])
+    }
+    //____________________________________________________________________________________________________
 })

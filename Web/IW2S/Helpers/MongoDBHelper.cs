@@ -562,6 +562,26 @@ namespace IW2S.Helpers
             return base.GetCollection<WXNameMongo>("WXName");
         }
         #endregion
+
+        public IMongoCollection<ReferChartDescMongo> GetReferChartDesc()
+        {
+            return base.GetCollection<ReferChartDescMongo>("ReferChartDesc");
+        }
+
+        public IMongoCollection<ProductMongo> GetProduct()
+        {
+            return base.GetCollection<ProductMongo>("Product");
+        }
+
+        public IMongoCollection<OrderMongo> GetOrder()
+        {
+            return base.GetCollection<OrderMongo>("Order");
+        }
+
+        public IMongoCollection<MediaMappingCoPresent> GetMediaMappingCoPresent()
+        {
+            return base.GetCollection<MediaMappingCoPresent>("MediaMappingCoPresent");
+        }
     }
 
     public static class MongoExtension

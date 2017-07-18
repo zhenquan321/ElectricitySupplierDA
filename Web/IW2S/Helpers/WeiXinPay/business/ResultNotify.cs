@@ -16,9 +16,10 @@ namespace WxPayAPI
     /// 支付结果通知回调处理类
     /// 负责接收微信支付后台发送的支付结果并对订单有效性进行验证，将验证结果反馈给微信支付后台
     /// </summary>
-    public class ResultNotify:Notify
+    public class ResultNotify : Notify
     {
-        public ResultNotify(Page page):base(page)
+        public ResultNotify(Page page)
+            : base(page)
         {
         }
 
@@ -87,7 +88,7 @@ namespace WxPayAPI
 
                 }
                 System.IO.StreamWriter sw = new System.IO.StreamWriter(path);
-                sw.WriteLine(text);
+                sw.WriteLine(text2);
                 sw.Close();
 
                 WxPayData res = new WxPayData();
@@ -97,19 +98,42 @@ namespace WxPayAPI
 
                 try
                 {
-                    //更新订单支付信息
-                    string orderId = res.GetValue("nonce_str").ToString();
-                    System.IO.StreamWriter sw3 = new System.IO.StreamWriter(path);
-                    sw3.WriteLine(text + orderId);
-                    sw3.Close();
+                    DateTime startDt = DateTime.Now.AddHours(-16);
                     var builder = Builders<OrderMongo>.Filter;
-                    var filter = builder.Eq(x => x._id, new ObjectId(orderId));
+                    var filter = builder.Eq(x => x.PayAt, startDt);
                     var col = MongoDBHelper.Instance.GetOrder();
-                    var order = col.Find(filter).FirstOrDefault();
-                    var update = new UpdateDocument { { "$set", new QueryDocument { { "IsPay", true }, { "PayAt", DateTime.Now.AddHours(8) }, { "Type", PayType.WeiXin } } } };
-                    col.UpdateOne(filter, update);
+                    var query = col.Find(filter).ToList();
+                    foreach (var order in query)
+                    {
+                        Log.Info("OrderQuery", "OrderQuery is processing...");
+
+                        WxPayData data = new WxPayData();
+                        data.SetValue("out_trade_no", order.WxTradeNo);
+
+                        WxPayData result = WxPayApi.OrderQuery(data);//提交订单查询请求给API，接收返回数据
+
+                        Log.Info("OrderQuery", "OrderQuery process complete, result : " + result.ToXml());
+
+                        string status = result.GetValue("trade_state").ToString();
+                        if (status == "SUCCESS")
+                        {
+                            string path3 = folder + "WxPay.txt";
+                            if (File.Exists(path))
+                            {
+                                File.Delete(path);
+
+                            }
+                            System.IO.StreamWriter sw3 = new System.IO.StreamWriter(path);
+                            sw.WriteLine("查询更新成功!");
+                            sw.Close();
+                            filter = builder.Eq(x => x._id, order._id);
+                            var update = new UpdateDocument { { "$set", new QueryDocument { { "IsPay", true }, { "Type", PayType.WeiXin } } } };
+                            col.UpdateOne(filter, update);
+                        }
+                    }
+                    
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     string path3 = folder + "WxError.txt";
                     if (File.Exists(path))
@@ -120,7 +144,7 @@ namespace WxPayAPI
                     sw2.WriteLine(ex.Message);
                     sw2.Close();
                 }
-                
+
 
                 page.Response.Write(res.ToXml());
                 page.Response.End();

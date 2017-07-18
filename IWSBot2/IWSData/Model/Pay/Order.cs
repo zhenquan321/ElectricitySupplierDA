@@ -53,9 +53,17 @@ namespace IWSData.Model
         /// </summary>
         public DateTime DelAt { get; set; }
         /// <summary>
-        /// 订单号
+        /// 本地订单号
         /// </summary>
         public string TradeNo { get; set; }
+        /// <summary>
+        /// 微信支付链接
+        /// </summary>
+        public string WxPayUrl { get; set; }
+        /// <summary>
+        /// 微信商户订单号
+        /// </summary>
+        public string WxTradeNo { get; set; }
     }
 
     /// <summary>

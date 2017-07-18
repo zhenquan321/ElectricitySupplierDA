@@ -362,10 +362,10 @@ namespace IW2S.Controllers
         [HttpGet]
         public HttpResponseMessage GetWxPayQcode(string orderId)
         {
-
-            //获取订单信息及总价
+            //获取订单信息
             var builder = Builders<OrderMongo>.Filter;
             var filter = builder.Eq(x => x._id, new ObjectId(orderId));
+            filter &= builder.Eq(x => x.IsPay, false);
             var col = MongoDBHelper.Instance.GetOrder();
             var order = col.Find(filter).FirstOrDefault();
             if (order == null)
@@ -373,40 +373,61 @@ namespace IW2S.Controllers
                 return null;
             }
 
-            //生成微信支付链接
-            string xxTradeNo = WxPayApi.GenerateOutTradeNo();
-            Log.Info(this.GetType().ToString(), "Native pay mode 2 url is producing...");
+            DateTime payAt = order.PayAt;
+            TimeSpan ts = DateTime.Now - payAt;     //上次支付到当前时间间隔
+            string payUrl = order.WxPayUrl;
+            string wxTradeNo = WxPayApi.GenerateOutTradeNo();
 
-            double fee = order.TotalPrice * 100;
+            //判断是使用原有的支付链接还是需要重新生成支付链接
+            if (string.IsNullOrEmpty(order.WxPayUrl) || ts.TotalMinutes > 10)
+            {
+                //生成微信支付链接
+                Log.Info(this.GetType().ToString(), "Native pay mode 2 url is producing...");
 
-            WxPayData data = new WxPayData();
-            data.SetValue("body", "DWC服务费");//商品描述
-            data.SetValue("attach", "北京");//附加数据
-            data.SetValue("out_trade_no", xxTradeNo);//商户订单号
-            data.SetValue("total_fee", fee.ToString());//总金额
-            data.SetValue("time_start", DateTime.Now.ToString("yyyyMMddHHmmss"));//交易起始时间
-            data.SetValue("time_expire", DateTime.Now.AddMinutes(10).ToString("yyyyMMddHHmmss"));//交易结束时间
-           // data.SetValue("goods_tag", "jjj");//商品标记
-            data.SetValue("trade_type", "NATIVE");//交易类型
-            data.SetValue("product_id", orderId);//商品ID
-            data.SetValue("nonce_str", orderId);//随机字符串，设为订单号，用于在支付成功时更新订单数据
+                double fee = order.TotalPrice * 100;
 
-            WxPayData result = WxPayApi.UnifiedOrder(data);//调用统一下单接口
-            string url = result.GetValue("code_url").ToString();//获得统一下单接口返回的二维码链接
-            Log.Info(this.GetType().ToString(), "Get native pay mode 2 url : " + url);
+                WxPayData data = new WxPayData();
+                data.SetValue("body", "DWC服务费");//商品描述
+                data.SetValue("attach", "北京");//附加数据
+                data.SetValue("out_trade_no", wxTradeNo);//商户订单号
+                data.SetValue("total_fee", fee.ToString());//总金额
+                data.SetValue("time_start", DateTime.Now.ToString("yyyyMMddHHmmss"));//交易起始时间
+                data.SetValue("time_expire", DateTime.Now.AddMinutes(10).ToString("yyyyMMddHHmmss"));//交易结束时间
+                // data.SetValue("goods_tag", "jjj");//商品标记
+                data.SetValue("trade_type", "NATIVE");//交易类型
+                data.SetValue("product_id", orderId);//商品ID
+
+                WxPayData result = WxPayApi.UnifiedOrder(data);//调用统一下单接口
+                payUrl = result.GetValue("code_url").ToString();//获得统一下单接口返回的支付链接
+                Log.Info(this.GetType().ToString(), "Get native pay mode 2 url : " + payUrl);
+            }
 
             //生成二维码
-            var qrcode = ZXingQrcodeHelper.GetQrBitmap(url,null);
+            var qrcode = ZXingQrcodeHelper.GetQrBitmap(payUrl, null);
             HttpResponseMessage response = new HttpResponseMessage(System.Net.HttpStatusCode.OK);
             MemoryStream stream = new MemoryStream(qrcode);
             response.Content = new StreamContent(stream);
             response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/png");
 
-            //更新订单中的微信订单号
-            var update = new UpdateDocument { { "$set", new QueryDocument { { "WxTradeNo", xxTradeNo } } } };
+            //更新订单中信息
+            var update = new UpdateDocument { { "$set", new QueryDocument { { "WxTradeNo", wxTradeNo }, { "WxPayUrl", payUrl }, { "PayAt", DateTime.Now.AddHours(8) } } } };
             col.UpdateOne(filter, update);
 
             return response;
+        }
+
+        [HttpGet]
+        public string Run(string out_trade_no)
+        {
+            Log.Info("OrderQuery", "OrderQuery is processing...");
+
+            WxPayData data = new WxPayData();
+                data.SetValue("out_trade_no", out_trade_no);
+
+            WxPayData result = WxPayApi.OrderQuery(data);//提交订单查询请求给API，接收返回数据
+
+            Log.Info("OrderQuery", "OrderQuery process complete, result : " + result.ToXml());
+            return result.ToPrintStr();
         }
         #endregion
     }

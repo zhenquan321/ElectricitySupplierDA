@@ -543,6 +543,7 @@
     <Content Include="Scripts\app\scripts\controllers\Dashboard\Report\addReport_ctr.js" />
     <Content Include="Scripts\app\scripts\controllers\Dashboard\Report\shareReportHeader_ctr.js" />
     <Content Include="Scripts\app\scripts\controllers\Dashboard\Report\Report_ctr.js" />
+    <Content Include="Scripts\app\scripts\controllers\Dashboard\Verification\Verification_ctr.js" />
     <Content Include="Scripts\app\scripts\controllers\Dashboard\WeChat\baidu_share_2_ctr.js" />
     <Content Include="Scripts\app\scripts\controllers\Dashboard\WeChat\baidu_share_ctr.js" />
     <Content Include="Scripts\app\scripts\controllers\Dashboard\WeChat\WC_dashboard_ctr.js" />
@@ -948,6 +949,7 @@
     <Content Include="Scripts\app\views\Dashboard\modal\GetGZHInfo.html" />
     <Content Include="Scripts\app\views\Dashboard\modal\getKWSArticle.html" />
     <Content Include="Scripts\app\views\Dashboard\modal\getShareArticle.html" />
+    <Content Include="Scripts\app\views\Dashboard\modal\payPage - 复制.html" />
     <Content Include="Scripts\app\views\Dashboard\modal\payPage.html" />
     <Content Include="Scripts\app\views\Dashboard\modal\SelectKws.html" />
     <Content Include="Scripts\app\views\Dashboard\modal\shareReport.html" />
@@ -967,6 +969,7 @@
     <Content Include="Scripts\app\views\Dashboard\Report\RModal\modal7.html" />
     <Content Include="Scripts\app\views\Dashboard\Report\RModal\modal4.html" />
     <Content Include="Scripts\app\views\Dashboard\Report\shareReportHeader.html" />
+    <Content Include="Scripts\app\views\Dashboard\Verification\Verification.html" />
     <Content Include="Scripts\app\views\Dashboard\WeChat\WC_dashboard.html" />
     <Content Include="Scripts\app\views\Dashboard\WeChat\WC_domaincategory.html" />
     <Content Include="Scripts\app\views\Dashboard\WeChat\WC_keywordcConstrast.html" />

@@ -31,7 +31,11 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
             controller: "Home_New_ctr",
             templateUrl: "Scripts/app/views/Home_New/Home_New.html"
         })
-
+        .state("Verification", {
+            url: "/Verification",
+            controller: "Verification_ctr",
+            templateUrl: "Scripts/app/views/Dashboard/Verification/Verification.html"
+        })
         //.state("home", {
         //    url: "/home",
         //    controller: "login_ctr",

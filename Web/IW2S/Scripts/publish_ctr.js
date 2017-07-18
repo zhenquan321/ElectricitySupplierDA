@@ -121,13 +121,14 @@
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     //5.退出清cookie
     $scope.off = function () {
-        $location.path("/home/main_1").replace();
+      
         $rootScope.userID = "";
         $rootScope.LoginName = "";
         $rootScope.UsrRole = "";
         $rootScope.UsrKey = "";
         $rootScope.UsrNum = "";
         $rootScope.UsrEmail = "";
+        $rootScope.logined = false;
         //页面
         $rootScope.keyword = "";
         $rootScope.keywordName = "";
@@ -150,10 +151,37 @@
         $cookieStore.remove("keywordsListRecord");
         $cookieStore.remove("getBaiduRecordId");
         $cookieStore.remove("selectStatus");
+        $cookieStore.remove("logined");
+        
+        var url =window.location.hash;
+        if (url === "#/home/main_1") {
+            window.reaload();
+            return
+        }
+        $location.path("/home/main_1").replace();
     }
     //_____________________________________________________________________________________
+    //获取产品价格
+    $scope.GetProduct = function () {
+        var url = "/api/Pay/GetProduct?page=" + 0 + "&pagesize=" + 1000;
+        var q = $http.get(url);
+        q.success(function (response, status) {
+            console.log(response);
+            $rootScope.GetProductList = response;
+            $scope.GetProductListCount = response.length;
+            myApplocalStorage.setObject('GetProductList', $rootScope.GetProductList);
+
+        });
+        q.error(function (response) {
+            $scope.error = "网络打盹了，请稍后。。。";
+        });
+    }
+    $scope.GetProduct();
     //企业套餐服务订单生成
     $scope.InsertOrder = function (x) {
+        if (!$rootScope.userID) {
+            $location.path("/login").replace();
+        }
         $scope.paramsList = {
             userId: $rootScope.userID,
             productList: [{ id: x.Id, num: 1 }]
@@ -206,15 +234,6 @@
             ifadd: true
         }
         $scope.getPayPage(mag);
-        //var url = "/api/Pay/GetWxPayQcode?orderId=" + x.Id + "&tradeNo=" + x.TradeNo;
-        //var q = $http.get(url);
-        //q.success(function (response, status) {
-        //    mag.qrcode = response;
-        //    $scope.getPayPage(mag);
-        //});
-        //q.error(function (response) {
-        //    $scope.error = "网络打盹了，请稍后。。。";
-        //});
     }
     //专业服务
     $scope.zhuanyepaypage = function () {

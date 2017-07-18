@@ -1,9 +1,11 @@
-﻿var Home_New_ctr = myApp.controller("Home_New_ctr", function ($scope, $rootScope, $http, $location, $window, $cookieStore, $modal,$timeout) {
+﻿var Home_New_ctr = myApp.controller("Home_New_ctr", function ($scope, $rootScope, $http, $location, $window, $cookieStore, $modal, $timeout, myApplocalStorage) {
     $scope.head_active = false;
     $scope.scooled_top = true;
     $scope.hover_li_t = 1;
     $scope.ptSever_show = 0;
     $scope.erwema = 1;
+    chk_global_vars($cookieStore, $rootScope, null, $location, $http, myApplocalStorage);
+
     //header onmouse
     $scope.head_hover = function (num) {
         if (num==1) {

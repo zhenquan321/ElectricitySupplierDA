@@ -1,9 +1,10 @@
-﻿var main_1_ctr = myApp.controller("main_1_ctr", function ($scope, $rootScope, $http, $location, $window, $cookieStore, $modal, $timeout) {
+﻿var main_1_ctr = myApp.controller("main_1_ctr", function ($scope, $rootScope, $http, $location, $window, $cookieStore, $modal, $timeout, myApplocalStorage) {
 
     $scope.select_st = true;
     $scope.sel_inbiao = 1;
 
 
+    chk_global_vars($cookieStore, $rootScope, null, $location, $http, myApplocalStorage);
 
 
     //title_show

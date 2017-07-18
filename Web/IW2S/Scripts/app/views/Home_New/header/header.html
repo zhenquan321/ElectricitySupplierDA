@@ -28,20 +28,20 @@
                 </div>
                 <div class="nav-right" style="min-width: 970px;">
                     <div class="nav-right">
-                        <div class="authenticated" id="ifSigned" ng-show="false">
+                        <div class="authenticated" id="ifSigned" ng-show="$root.logined">
                             <div class="profile toConsole">
-                                <img src="Scripts/app_pc/images/uploadpic.jpg">
-                                <img ng-src="{{$root.uer_PictureSrc}}">
+                                <img src="Scripts/app/images/uploadpic.jpg" ng-show="!$root.uer_PictureSrc">
+                                <img ng-src="{{$root.uer_PictureSrc}}" ng-show="$root.uer_PictureSrc">
                                 <span>
                                 </span>
                                 <span class="arr-b">
-                                    {{$root.NickName}}
+                                    <a ng-show="$root.Gender" style=" color: #ababab;">{{$root.Gender}}</a>
+                                    <a ng-show="!$root.Gender" style=" color: #ababab;">{{$root.LoginName}}</a>
                                 </span>
                             </div>
-                            <ul class="nav-list single" style="top:75px;">
+                            <ul class="nav-list single" style="top:64px;">
                                 <li class="nav-list-item">
-                                    <a class="nav-link-single" 
-                                       ="UserCMain.User_Msg">
+                                    <a class="nav-link-single" ui-sref="UserCenter">
                                         <i class="fa fa-television">
                                         </i>
                                         <span>
@@ -50,7 +50,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-list-item" id="sign_out">
-                                    <a class="nav-link-single" ng-click="signout()">
+                                    <a class="nav-link-single" ng-click="off()">
                                         <i class="fa fa-sign-out">
                                         </i>
                                         <span>
@@ -60,11 +60,11 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="unauthenticated link-group mr0">
+                        <div class="unauthenticated link-group mr0" ng-show="!$root.logined">
                             <a ui-sref="login" style="margin-right:10px;" class="login_but" id="login_but">
                                 登录
                             </a>
-                            <a ui-sref="signup"style="color:#fff!important">
+                            <a ui-sref="signup" style="color:#fff!important">
                                 注册
                             </a>
                         </div>
@@ -91,8 +91,8 @@
                             </a>
                         </li>
                         <li id="nav_point" style="width:170px;">
-                            <a class="title_c" ng-mouseover="ptSever_fun(5)">
-                                合作伙伴
+                            <a class="title_c" ui-sref="PurchaseService">
+                                VIP服务
                             </a>
                         </li>
                     </ul>

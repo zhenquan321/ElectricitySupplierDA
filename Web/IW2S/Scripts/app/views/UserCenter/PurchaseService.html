@@ -35,7 +35,7 @@
                             <div class="per-con bor-right">免费</div>
                         </div>
                         <div class="none enterprise">
-                            <div class="none-ent">企业版</div>
+                            <div class="none-ent">{{$root.GetProductList[0].Name}}</div>
                             <div class="ent-con bor-right">
                                 <p>
                                     多套餐，<a href="">按需定制</a> <br />
@@ -44,7 +44,7 @@
                             </div>
                         </div>
                         <div class="none major">
-                            <div class="none-maj">专业版</div>
+                            <div class="none-maj">{{$root.GetProductList[1].Name}}</div>
                             <div class="maj-con bor-right">
                                 <p>
                                     基础费用<br />
@@ -58,8 +58,8 @@
                             <tr class="singular tr-first-active" style="">
                                 <td>开户费用</td>
                                 <td>￥0.00</td>
-                                <td>￥13,600</td>
-                                <td>￥258 + N</td>
+                                <td>￥{{$root.GetProductList[0].Price}}</td>
+                                <td>￥{{$root.GetProductList[1].Price}} + N</td>
                             </tr>
                             <tr class="dual">
                                 <td>监测项目</td>

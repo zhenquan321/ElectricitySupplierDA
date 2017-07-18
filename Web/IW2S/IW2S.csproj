@@ -1135,10 +1135,6 @@
     <Content Include="Scripts\app\views\modal\addElementGroup.html" />
     <Content Include="Scripts\app\views\modal\addGroupModal.html" />
     <Content Include="Scripts\app\views\modelSelect.html" />
-    <Content Include="Scripts\app\scripts\controllers\wordtree\Libs\JiebaNet.Analyser.dll" />
-    <Content Include="Scripts\app\scripts\controllers\wordtree\Libs\JiebaNet.Analyser.pdb" />
-    <Content Include="Scripts\app\scripts\controllers\wordtree\Libs\JiebaNet.Segmenter.dll" />
-    <Content Include="Scripts\app\scripts\controllers\wordtree\Libs\JiebaNet.Segmenter.pdb" />
     <Content Include="Resources\dict.txt" />
     <Content Include="Resources\idf.txt" />
     <Content Include="Resources\stopwords.txt" />

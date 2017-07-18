@@ -253,27 +253,55 @@ namespace IW2S.Controllers
                 return null;
             }
             var result = new QueryResult<OrderDto>();
-            var builder = Builders<OrderMongo>.Filter;
-            var filter = builder.Eq(x => x.UserId, new ObjectId(userId));
-            filter&=builder.Eq(x=>x.IsDel,false);
-            //判断要查询的订单类型
-            switch (type)
-            {
-                case 0:
-                    break;
-                case 1:
-                    filter &= builder.Eq(x => x.IsPay, false);
-                    break;
-                case 2:
-                    filter &= builder.Eq(x => x.IsPay, true);
-                    break;
-                default:
-                    break;
-            }
 
-            var col = MongoDBHelper.Instance.GetOrder();
             try
             {
+                //获取未完成订单，查询是否已支付完成
+                var builder = Builders<OrderMongo>.Filter;
+                var filter = builder.Eq(x => x.UserId, new ObjectId(userId));
+                var col = MongoDBHelper.Instance.GetOrder();
+                //filter &= builder.Eq(x => x.IsDel, false);
+                //filter &= builder.Eq(x => x.IsPay, false);
+                //var query = col.Find(filter).ToList();
+                //var finishObjIds = new List<ObjectId>();
+                //foreach (var order in query)
+                //{
+                //    if (string.IsNullOrEmpty(order.WxTradeNo))
+                //        continue;
+
+                //    //查询是否已支付完成
+                //    WxPayData data = new WxPayData();
+                //    data.SetValue("out_trade_no", order.WxTradeNo);
+                //    WxPayData response = WxPayApi.OrderQuery(data);//提交订单查询请求给API，接收返回数据
+                //    string status = response.GetValue("trade_state").ToString();
+                //    if (status == "SUCCESS")
+                //    {
+                //        finishObjIds.Add(order._id);
+                //    }
+                //}
+                //if (finishObjIds.Count > 0)
+                //{
+                //    var filterUp = builder.In(x => x._id, finishObjIds);
+                //    var update = new UpdateDocument { { "$set", new QueryDocument { { "IsPay", true }, { "Type", PayType.WeiXin } } } };
+                //    col.UpdateMany(filterUp, update);
+                //}
+
+                filter &= builder.Eq(x => x.IsDel, false);
+                //判断要查询的订单类型
+                switch (type)
+                {
+                    case 0:
+                        break;
+                    case 1:
+                        filter &= builder.Eq(x => x.IsPay, false);
+                        break;
+                    case 2:
+                        filter &= builder.Eq(x => x.IsPay, true);
+                        break;
+                    default:
+                        break;
+                }
+
                 result.Count = col.Find(filter).Count();
 
                 var query = col.Find(filter).Skip(page * pagesize).Limit(pagesize).ToList();
@@ -314,17 +342,37 @@ namespace IW2S.Controllers
             }
         }
 
+        [HttpGet]
         public bool GetOrderStatus(string orderId)
         {
+            bool isPay = false;
             var builder = Builders<OrderMongo>.Filter;
             var filter = builder.Eq(x => x._id, new ObjectId(orderId));
             var col = MongoDBHelper.Instance.GetOrder();
             var order = col.Find(filter).FirstOrDefault();
-            if (order == null)
+            if (order.IsPay)
             {
-                return false;
+                isPay = true;
             }
-            return order.IsPay;
+            else
+            {
+                if (!string.IsNullOrEmpty(order.WxTradeNo))
+                {
+                    //查询是否已支付完成
+                    WxPayData data = new WxPayData();
+                    data.SetValue("out_trade_no", order.WxTradeNo);
+                    WxPayData result = WxPayApi.OrderQuery(data);//提交订单查询请求给API，接收返回数据
+                    string status = result.GetValue("trade_state").ToString();
+                    if (status == "SUCCESS")
+                    {
+                        filter = builder.Eq(x => x._id, order._id);
+                        var update = new UpdateDocument { { "$set", new QueryDocument { { "IsPay", true }, { "Type", PayType.WeiXin } } } };
+                        col.UpdateOne(filter, update);
+                        isPay = true;
+                    }
+                }
+            }
+            return isPay;
         }
 
         /// <summary>
@@ -376,7 +424,7 @@ namespace IW2S.Controllers
             DateTime payAt = order.PayAt;
             TimeSpan ts = DateTime.Now - payAt;     //上次支付到当前时间间隔
             string payUrl = order.WxPayUrl;
-            string wxTradeNo = WxPayApi.GenerateOutTradeNo();
+            string wxTradeNo = order.WxTradeNo;
 
             //判断是使用原有的支付链接还是需要重新生成支付链接
             if (string.IsNullOrEmpty(order.WxPayUrl) || ts.TotalMinutes > 10)
@@ -384,6 +432,7 @@ namespace IW2S.Controllers
                 //生成微信支付链接
                 Log.Info(this.GetType().ToString(), "Native pay mode 2 url is producing...");
 
+                wxTradeNo = WxPayApi.GenerateOutTradeNo();
                 double fee = order.TotalPrice * 100;
 
                 WxPayData data = new WxPayData();
@@ -400,6 +449,10 @@ namespace IW2S.Controllers
                 WxPayData result = WxPayApi.UnifiedOrder(data);//调用统一下单接口
                 payUrl = result.GetValue("code_url").ToString();//获得统一下单接口返回的支付链接
                 Log.Info(this.GetType().ToString(), "Get native pay mode 2 url : " + payUrl);
+
+                //更新订单中信息
+                var update = new UpdateDocument { { "$set", new QueryDocument { { "WxTradeNo", wxTradeNo }, { "WxPayUrl", payUrl }, { "PayAt", DateTime.Now.AddHours(8) } } } };
+                col.UpdateOne(filter, update);
             }
 
             //生成二维码
@@ -409,25 +462,7 @@ namespace IW2S.Controllers
             response.Content = new StreamContent(stream);
             response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/png");
 
-            //更新订单中信息
-            var update = new UpdateDocument { { "$set", new QueryDocument { { "WxTradeNo", wxTradeNo }, { "WxPayUrl", payUrl }, { "PayAt", DateTime.Now.AddHours(8) } } } };
-            col.UpdateOne(filter, update);
-
             return response;
-        }
-
-        [HttpGet]
-        public string Run(string out_trade_no)
-        {
-            Log.Info("OrderQuery", "OrderQuery is processing...");
-
-            WxPayData data = new WxPayData();
-                data.SetValue("out_trade_no", out_trade_no);
-
-            WxPayData result = WxPayApi.OrderQuery(data);//提交订单查询请求给API，接收返回数据
-
-            Log.Info("OrderQuery", "OrderQuery process complete, result : " + result.ToXml());
-            return result.ToPrintStr();
         }
         #endregion
     }

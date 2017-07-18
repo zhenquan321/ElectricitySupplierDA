@@ -25,31 +25,11 @@ namespace WxPayAPI
 
         public override void ProcessNotify()
         {
-            string folder = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;
-            string path = folder + "WxTest.txt";
-            string text = "微信支付";
-            if (File.Exists(path))
-            {
-                File.Delete(path);
-                System.IO.StreamWriter sw = new System.IO.StreamWriter(path);
-                sw.WriteLine(text);
-                sw.Close();
-            }
-            else
-            {
-                System.IO.StreamWriter sw = new System.IO.StreamWriter(path);
-                sw.WriteLine(text);
-                sw.Close();
-            }
             WxPayData notifyData = GetNotifyData();
 
             //检查支付结果中transaction_id是否存在
             if (!notifyData.IsSet("transaction_id"))
             {
-                text = "transaction_id是否存在";
-                System.IO.StreamWriter sw = new System.IO.StreamWriter(path);
-                sw.WriteLine(text);
-                sw.Close();
                 //若transaction_id不存在，则立即返回结果给微信支付后台
                 WxPayData res = new WxPayData();
                 res.SetValue("return_code", "FAIL");
@@ -65,10 +45,6 @@ namespace WxPayAPI
             //查询订单，判断订单真实性
             if (!QueryOrder(transaction_id))
             {
-                text = "订单查询失败";
-                System.IO.StreamWriter sw = new System.IO.StreamWriter(path);
-                sw.WriteLine(text);
-                sw.Close();
                 //若订单查询失败，则立即返回结果给微信支付后台
                 WxPayData res = new WxPayData();
                 res.SetValue("return_code", "FAIL");
@@ -80,71 +56,10 @@ namespace WxPayAPI
             //查询订单成功
             else
             {
-                string path2 = folder + "WxTest.txt";
-                string text2 = "微信支付成功";
-                if (File.Exists(path))
-                {
-                    File.Delete(path);
-
-                }
-                System.IO.StreamWriter sw = new System.IO.StreamWriter(path);
-                sw.WriteLine(text2);
-                sw.Close();
-
                 WxPayData res = new WxPayData();
                 res.SetValue("return_code", "SUCCESS");
                 res.SetValue("return_msg", "OK");
                 Log.Info(this.GetType().ToString(), "order query success : " + res.ToXml());
-
-                try
-                {
-                    DateTime startDt = DateTime.Now.AddHours(-16);
-                    var builder = Builders<OrderMongo>.Filter;
-                    var filter = builder.Eq(x => x.PayAt, startDt);
-                    var col = MongoDBHelper.Instance.GetOrder();
-                    var query = col.Find(filter).ToList();
-                    foreach (var order in query)
-                    {
-                        Log.Info("OrderQuery", "OrderQuery is processing...");
-
-                        WxPayData data = new WxPayData();
-                        data.SetValue("out_trade_no", order.WxTradeNo);
-
-                        WxPayData result = WxPayApi.OrderQuery(data);//提交订单查询请求给API，接收返回数据
-
-                        Log.Info("OrderQuery", "OrderQuery process complete, result : " + result.ToXml());
-
-                        string status = result.GetValue("trade_state").ToString();
-                        if (status == "SUCCESS")
-                        {
-                            string path3 = folder + "WxPay.txt";
-                            if (File.Exists(path))
-                            {
-                                File.Delete(path);
-
-                            }
-                            System.IO.StreamWriter sw3 = new System.IO.StreamWriter(path);
-                            sw.WriteLine("查询更新成功!");
-                            sw.Close();
-                            filter = builder.Eq(x => x._id, order._id);
-                            var update = new UpdateDocument { { "$set", new QueryDocument { { "IsPay", true }, { "Type", PayType.WeiXin } } } };
-                            col.UpdateOne(filter, update);
-                        }
-                    }
-                    
-                }
-                catch (Exception ex)
-                {
-                    string path3 = folder + "WxError.txt";
-                    if (File.Exists(path))
-                    {
-                        File.Delete(path);
-                    }
-                    System.IO.StreamWriter sw2 = new System.IO.StreamWriter(path);
-                    sw2.WriteLine(ex.Message);
-                    sw2.Close();
-                }
-
 
                 page.Response.Write(res.ToXml());
                 page.Response.End();

@@ -455,10 +455,17 @@
                                     <td>{{x.ProductList[0].Name}}</td>
                                     <td>{{x.TotalPrice}}</td>
                                     <td>微信支付</td>
-                                    <td></td>
+                                    <td>{{x.PayAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
                                 </tr>
                             </tbody>
                         </table>
+                        <div class="row text-right pr20">
+                            <pagination boundary-links="true" class="pagination-sm" total-items="CompletedGetOrderListCount"
+                                        items-per-page="COpagesize" ng-change="CompletedGetOrder1()" ng-model="COpage"
+                                        max-size="5" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;"
+                                        last-text="&raquo;">
+                            </pagination>
+                        </div>
                     </div>
                     <div class="instructions " style="display: block;">
                         <p class="typeReminder colorababab">1.每月8日结算上月账单，请在每月28日前结清上月账单，逾期未缴将暂停提供所有云服务</p>

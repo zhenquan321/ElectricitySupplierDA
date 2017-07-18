@@ -25,7 +25,7 @@
             if (num == 1) {
 
             } else if (num == 5) {
-                $scope.CompletedGetOrder();
+                $scope.CompletedGetOrder1();
                 $scope.NoCompletedGetOrder();
             }
         } else {
@@ -33,7 +33,7 @@
         }
     }
 
-    $scope.show_list_fun(GetQueryString('tab'));
+
     //修改 用户信息
     var pattern = /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/;
     $scope.changeXinxi = function () {
@@ -230,20 +230,20 @@
     //获取订单信息
     //type：要查询的订单类型，0为所有，1为未完成，2为已完成
 
-    $scope.CompletedGetOrder = function () {
-        var url = "/api/Pay/GetOrder?userId=" + $rootScope.userID + "&page=" + ($scope.COpage-1) + "&pagesize=" + $scope.COpagesize + "&type=" + 2;
+    $scope.CompletedGetOrder1 = function () {
+        var url = "/api/Pay/GetOrder?userId=" + $rootScope.userID + "&page=" + ($scope.COpage - 1) + "&pagesize=" + $scope.COpagesize + "&type=" + 2;
         var q = $http.get(url);
         q.success(function (response, status) {
-          
+
             $scope.CompletedGetOrderList = response.Result;
             $scope.CompletedGetOrderListCount = response.Count;
         });
         q.error(function (response) {
             $scope.alert_fun('danger', '哎呀，网络打盹了，请重试一下！');
         });
-    }
+    };
     $scope.NoCompletedGetOrder = function () {
-        var url = "/api/Pay/GetOrder?userId=" + $rootScope.userID + "&page=" + ($scope.NCOpage-1) + "&pagesize=" + $scope.NCOpagesize + "&type=" + 1;
+        var url = "/api/Pay/GetOrder?userId=" + $rootScope.userID + "&page=" + ($scope.NCOpage - 1) + "&pagesize=" + $scope.NCOpagesize + "&type=" + 1;
         var q = $http.get(url);
         q.success(function (response, status) {
             console.log(response);
@@ -253,7 +253,7 @@
         q.error(function (response) {
             $scope.alert_fun('danger', '哎呀，网络打盹了，请重试一下！');
         });
-    }
+    };
     //删除订单
     $scope.DelOrder = function (id) {
         if(confirm("您确定要删除该订单吗")){
@@ -271,5 +271,5 @@
 
     //自动调用__________________________________
     $scope.GetUserInfoById();
-   
+    $scope.show_list_fun(GetQueryString('tab'));
 });

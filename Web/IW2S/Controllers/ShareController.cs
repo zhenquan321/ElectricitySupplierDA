@@ -743,7 +743,7 @@ namespace IW2S.Controllers
                 //string upload_file_url = CommonHelper.file_sys_base_url + "/api/ipfile/upload_ipfile?md5=" + qrcode_id + "&content_type=png";
                 //WebApiHelper.UploadFile(upload_file_url, file);
                 //File.Delete(file);
-                baseurl = "http://211.154.6.166:9999";
+                baseurl = "http://43.240.138.233:9999";
                 string upload_file_url = baseurl + "/api/File/ImgUpload";
                 // WebApiHelper.UploadFile(upload_file_url, path);
                 WebClient wc = new WebClient();

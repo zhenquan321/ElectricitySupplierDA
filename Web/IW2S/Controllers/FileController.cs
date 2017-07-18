@@ -43,7 +43,7 @@ namespace IW2S.Controllers
             //保存图片
             //Request.Files[0].SaveAs(path);
             //调用保存图片
-            string baseUrl = "http://211.154.6.166:9999";
+            string baseUrl = "http://43.240.138.233:9999";
             string upload_file_url = baseUrl + "/api/File/UploadFile?fileId=" + imgId + "&fileType=png&fileName=" + name;
             WebClient wc = new WebClient();
             byte[] sendData = System.Text.Encoding.UTF8.GetBytes(filePath);
@@ -85,7 +85,7 @@ namespace IW2S.Controllers
             ff.CreateAt = DateTime.Now.AddHours(8);
             MongoDBHelper.Instance.GetDnl_File().InsertOne(ff);
             //返回图片链接
-            string baseUrl = "http://211.154.6.166:9999";
+            string baseUrl = "http://43.240.138.233:9999";
             string imgUrl = baseUrl + "/api/File/DownloadFile?fileId=" + imgId;
             return imgUrl;
         }

@@ -36,3 +36,9 @@ F:\DNL\IWSBot2\IWSData\bin\Release\MongoDB.Bson.dll
 F:\DNL\IWSBot2\IWSData\obj\Release\IWSData.csprojResolveAssemblyReference.cache
 F:\DNL\IWSBot2\IWSData\obj\Release\IWSData.dll
 F:\DNL\IWSBot2\IWSData\obj\Release\IWSData.pdb
+G:\MyGit\IWSBot2\IWSData\bin\Release\IWSData.dll
+G:\MyGit\IWSBot2\IWSData\bin\Release\IWSData.pdb
+G:\MyGit\IWSBot2\IWSData\bin\Release\MongoDB.Bson.dll
+G:\MyGit\IWSBot2\IWSData\obj\Release\IWSData.csprojResolveAssemblyReference.cache
+G:\MyGit\IWSBot2\IWSData\obj\Release\IWSData.dll
+G:\MyGit\IWSBot2\IWSData\obj\Release\IWSData.pdb

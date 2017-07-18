@@ -18,6 +18,7 @@ using System.Web.Script.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
+using HtmlAgilityPack;
 
 namespace IW2S.Controllers
 {
@@ -342,6 +343,38 @@ namespace IW2S.Controllers
             return GetTxtFromHtml(html);
         }
         #endregion
+
+        [HttpGet]
+        public QueryResult<string> Get5118Key(string keyword)
+        {
+            var result = new QueryResult<string>();
+            result.Result = new List<string>();
+            string url = "http://www.5118.com/seo/words/{0}".FormatStr(keyword);
+            //抓取网页源码，最多尝试5次
+            string html = null;
+            int num = 0;
+            int maxTry = 5;
+            while (num < maxTry)
+            {
+                html = GetFastHtml(url);
+                if (!string.IsNullOrEmpty(html))
+                    break;
+                else
+                    num++;
+            }
+            HtmlDocument doc = new HtmlDocument();
+            doc.LoadHtml(html);
+            HtmlNodeCollection nodes = doc.DocumentNode.SelectNodes("//span[@class=\"hoverToHide\"]");
+            if (nodes != null && nodes.Count > 0)
+            {
+                foreach (var node in nodes)
+                {
+                    result.Result.Add(node.InnerText);
+                }
+                result.Count = nodes.Count;
+            }
+            return result;
+        }
 
         /// <summary>
         /// 删除关键词映射

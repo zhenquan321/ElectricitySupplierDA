@@ -886,7 +886,7 @@ namespace IW2S.Controllers
                     wordTree.TreeValues = GetMainContentHelper.GetMainContent(query.Html);
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 return null;
             }

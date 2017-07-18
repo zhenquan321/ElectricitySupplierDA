@@ -228,7 +228,7 @@ namespace IW2S.Controllers
                 result.order = orderDto;
 
                 //获取二维码
-                result.qrcode = "/api/Pay/GetWxPayQcode?orderId={0}&tradeNo={1}".FormatStr(orderDto.Id, tradeNo);
+                result.qrcode = "/api/Pay/GetWxPayQcode?orderId={0}".FormatStr(orderDto.Id);
                 return result;
             }
             catch
@@ -359,9 +359,8 @@ namespace IW2S.Controllers
         /// 获取微信支付二维码
         /// </summary>
         /// <param name="orderId">订单Id</param>
-        /// <param name="tradeNo">订单编号</param>
         [HttpGet]
-        public HttpResponseMessage GetWxPayQcode(string orderId,string tradeNo)
+        public HttpResponseMessage GetWxPayQcode(string orderId)
         {
 
             //获取订单信息及总价
@@ -375,6 +374,7 @@ namespace IW2S.Controllers
             }
 
             //生成微信支付链接
+            string xxTradeNo = WxPayApi.GenerateOutTradeNo();
             Log.Info(this.GetType().ToString(), "Native pay mode 2 url is producing...");
 
             double fee = order.TotalPrice * 100;
@@ -382,7 +382,7 @@ namespace IW2S.Controllers
             WxPayData data = new WxPayData();
             data.SetValue("body", "DWC服务费");//商品描述
             data.SetValue("attach", "北京");//附加数据
-            data.SetValue("out_trade_no", tradeNo);//商户订单号
+            data.SetValue("out_trade_no", xxTradeNo);//商户订单号
             data.SetValue("total_fee", fee.ToString());//总金额
             data.SetValue("time_start", DateTime.Now.ToString("yyyyMMddHHmmss"));//交易起始时间
             data.SetValue("time_expire", DateTime.Now.AddMinutes(10).ToString("yyyyMMddHHmmss"));//交易结束时间
@@ -403,7 +403,7 @@ namespace IW2S.Controllers
             response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/png");
 
             //更新订单中的微信订单号
-            var update = new UpdateDocument { { "$set", new QueryDocument { { "TradeNo", tradeNo } } } };
+            var update = new UpdateDocument { { "$set", new QueryDocument { { "WxTradeNo", xxTradeNo } } } };
             col.UpdateOne(filter, update);
 
             return response;
